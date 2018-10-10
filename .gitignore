@@ -9,3 +9,7 @@ web/instalaciones_electricas/tmp/cache/persistent/myapp_cake_core_translations_d
 web/instalaciones_electricas/tmp/debug_kit.sqlite
 web/instalaciones_electricas/tmp/sessions/empty
 web/instalaciones_electricas/tmp/tests/empty
+web/instalaciones_electricas/logs/debug.log
+*.log
+web/instalaciones_electricas/tmp/cache/models/myapp_cake_model_debug_kit_panels
+*.sqlite
