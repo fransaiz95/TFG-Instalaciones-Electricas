@@ -232,7 +232,7 @@ return [
             //'port' => 'non_standard_port_number',
             'username' => 'Fran1234',
             'password' => 'Fran1234',
-            'database' => 'instalaciones_electricas',
+            'database' => 'weblectric',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
