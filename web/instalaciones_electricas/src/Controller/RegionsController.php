@@ -13,7 +13,17 @@ class RegionsController extends AppController
 
     public function home(){
 
-        $regions = $this->paginate($this->Regions);
+        $query = $this->Regions->find('all');
+        $query->select(['Regions.id', 'Regions.name', 'Regions.dem_for', 'Regions.ren_for']);
+        $query->select(['Countries.name']);
+        $query->join([
+            'alias' => 'Countries',
+            'table' => 'countries',
+            'type' => 'INNER',
+            'conditions' => 'Countries.id = Regions.id_country'
+        ]);
+                
+        $regions = $this->paginate($query);
 
         $this->set('regions', $regions);
         $this->set('_serialize', ['regions']);

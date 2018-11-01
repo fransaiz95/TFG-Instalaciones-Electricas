@@ -8,14 +8,6 @@ body {
 	line-height: 1.5em;
 }
  
-h1 {
-	font-size: 2.3em;
-	line-height: 1.3em;
-	margin: 15px 0;
-	/* text-align: center; */
-	font-weight: 300;
-}
- 
 p {
 	margin: 0 0 1.5em 0;
 }
@@ -96,6 +88,8 @@ nav {
 				display: block;
 				padding: 0 10px;
 				text-decoration: none;
+				min-width: 150px;
+				text-align: center;
 			}
 			
 				nav ul li a:hover {
@@ -124,6 +118,14 @@ nav {
 
 /* GENERALES */
 
+h1{
+	font-size: 2.3em;
+	color: #333;
+	line-height: 1.3em;
+	margin: 15px 0;
+	font-weight: 300;
+}
+
 .p-1 
 { 
 	padding: 15px 15px 15px 15px;
@@ -148,6 +150,42 @@ nav {
 .ta-center 
 {
 	text-align: center;
+}
+.ta-right 
+{
+	text-align: right;
+}
+.ta-left 
+{
+	text-align: left;
+}
+.f-right 
+{
+	float: right;
+}
+.f-left 
+{
+	float: left;
+}
+
+.btn-back
+{
+    border: 2px solid #666666;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    color: #333;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+	margin-top: 20px;
+	min-width: 100px;
+}
+.btn-back:hover
+{
+	color: #333;
+	background-color: #d3d3d3;
+
 }
 
 /* PORTAL */
@@ -196,7 +234,6 @@ nav {
 
 .buttons-portal a::before
 {
-	/* content: ''; */
 	position: absolute;
 	z-index: -1;
 	top: -8px;
@@ -236,4 +273,105 @@ nav {
 .buttons-portal a.technologies:hover 
 {
 	background-color: #f8ebb6;
+}
+
+/* tablas */
+
+table
+{
+	border: 2px solid #666666;
+	color: #333;
+}
+
+table td, table th {
+	padding-left: 8px;
+}
+
+.table100-head {
+	height: 60px;
+	background: #cdcdcd;
+}
+
+.table100-head th
+{
+	font-size: 18px;
+	color: inherit;
+	line-height: 1.2;
+	font-weight: unset;
+	border-bottom: 2px solid #666666;
+}
+
+.table100-head th a {
+	font-size: 18px;
+	color: inherit;
+	line-height: 1.2;
+	font-weight: unset;
+}
+
+.table100-head th.actions {
+	height: 60px;
+	max-width: 30px;
+	text-align: center;
+}
+
+table tbody tr td.actions {
+	max-width: 30px;
+	text-align: center;
+}
+table tbody tr {
+	height: 50px;
+}
+table tbody tr:last-child {
+	border: 0;
+}
+table td, table th {
+	text-align: left;
+}
+table td.l, table th.l {
+	text-align: right;
+}
+table td.c, table th.c {
+	text-align: center;
+}
+table td.r, table th.r {
+	text-align: center;
+}
+
+tbody tr {
+	font-size: 15px;
+	color: inherit;
+	line-height: 1.2;
+	font-weight: unset;
+	cursor: default;
+}
+
+.wrapper
+{
+	text-align: center;
+	padding: 15px 0 0 0;
+	color: #333;
+}
+
+.pagination li, .pagination li.prev, .pagination li.next{
+	border: 2px solid #777777;
+	margin-left: 13px; 
+	border-radius: 16px;
+	padding: 0px;
+	color: inherit;
+}
+.pagination li a{
+	color:inherit;
+}
+
+.pagination li.active
+{
+	background-color: #777777;
+	border-radius: 16px;
+	color: white;
+}
+
+.pagination li:hover, .pagination li a:hover {
+	background-color: #777777;
+	border-radius: 16px;
+	color: white;
 }
