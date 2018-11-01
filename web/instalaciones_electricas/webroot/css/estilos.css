@@ -122,22 +122,118 @@ nav {
 
 
 
-/* 
-GENERALES
-*/
+/* GENERALES */
 
-.p-1 { 
+.p-1 
+{ 
 	padding: 15px 15px 15px 15px;
 }
-.p-left-1 { 
+.p-left-1 
+{ 
 	padding-left: 15px;
 }
-.p-right-1 { 
+.p-right-1 
+{ 
 	padding-right: 15px;
 }
-.p-top-1 { 
+.p-top-1 
+{ 
 	padding-top: 15px;
 }
-.p-bottom-1 { 
+.p-bottom-1 
+{ 
 	padding-bottom: 15px;
+}
+
+.ta-center 
+{
+	text-align: center;
+}
+
+/* PORTAL */
+
+.buttons-portal div
+{
+	padding-top: 15%;
+}
+
+.buttons-portal a 
+{
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	position: relative;
+	line-height: 200px;
+	background-color: #d3d3d3;
+	border-radius: 100px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .25), 0 2px 3px rgba(0, 0, 0, .1);
+}
+
+.buttons-portal img
+{
+	max-width: 165px;
+	max-height: 165px;
+	display: inline-block;
+	position: relative;
+	background-color: #d3d3d3;
+	border-radius: 100px;
+}
+
+.div-font
+{
+	font-size: 35px;
+	font-family: Roboto;
+	font-family: "Lucida Grande", Tahoma;
+	color: black;
+	text-transform: uppercase;
+	font-weight: 100 !important;
+}
+
+.buttons-portal a:active 
+{
+	top: 1px;
+}
+
+.buttons-portal a::before
+{
+	/* content: ''; */
+	position: absolute;
+	z-index: -1;
+	top: -8px;
+	right: -8px;
+	bottom: -8px;
+	left: -8px;
+	background-color: #eaeaea;
+	border-radius: 140px;
+	opacity: 0.5;		
+}
+
+.buttons-portal a:active 
+{
+	top: -9px;
+}
+ 
+.buttons-portal a:hover 
+{
+	opacity: 1;
+}
+
+.buttons-portal a.regions:hover 
+{
+	background-color: #c6f0f8;
+}
+ 
+.buttons-portal a.countries:hover
+{
+	background-color: #d3ffdc;
+}
+ 
+.buttons-portal a.fuels:hover 
+{
+	background-color: #fadae6;
+}
+ 
+.buttons-portal a.technologies:hover 
+{
+	background-color: #f8ebb6;
 }
