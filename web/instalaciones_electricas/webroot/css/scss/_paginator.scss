@@ -1,0 +1,28 @@
+.wrapper {
+  text-align: center;
+  padding: 15px 0 0 0;
+  color: #333;
+}
+
+.pagination li {
+  border: 2px solid #777777;
+  margin-left: 13px;
+  border-radius: 16px;
+  padding: 0px;
+  color: inherit;
+  &.prev, &.next {
+    border: 2px solid #777777;
+    margin-left: 13px;
+    border-radius: 16px;
+    padding: 0px;
+    color: inherit;
+  }
+  a {
+    color: inherit;
+  }
+  &.active, &:hover, a:hover {
+    background-color: #777777;
+    border-radius: 16px;
+    color: white;
+  }
+}

@@ -1,0 +1,68 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #666;
+	background: #f2f2f2; 
+	font-size: 1em;
+	line-height: 1.5em;
+}
+ 
+p {
+	margin: 0 0 1.5em 0;
+}
+ 
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+h1{
+	font-size: 2.3em;
+	color: #333;
+	line-height: 1.3em;
+	margin: 15px 0;
+	font-weight: 300;
+}
+
+.p-1 
+{ 
+	padding: 15px 15px 15px 15px;
+}
+.p-left-1 
+{ 
+	padding-left: 15px;
+}
+.p-right-1 
+{ 
+	padding-right: 15px;
+}
+.p-top-1 
+{ 
+	padding-top: 15px;
+}
+.p-bottom-1 
+{ 
+	padding-bottom: 15px;
+}
+
+.ta-center 
+{
+	text-align: center;
+}
+.ta-right 
+{
+	text-align: right;
+}
+.ta-left 
+{
+	text-align: left;
+}
+.f-right 
+{
+	float: right;
+}
+.f-left 
+{
+	float: left;
+}
