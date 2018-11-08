@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="estilos.css">
 </head>
  
-<body>
+<body></body>
 	<header id="main-header">
 		<a id="logo-header" href="#">
 			<span class="site-name"><?php echo __('WEBLECTRIC'); ?></span>
@@ -61,5 +61,3 @@
 			</ul>
 		</nav>
 	</header>
-</body>
-</html>

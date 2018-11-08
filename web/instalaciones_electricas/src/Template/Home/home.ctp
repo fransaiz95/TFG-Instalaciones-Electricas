@@ -1,8 +1,8 @@
 <div class="grid-container">
 
-    <div class="grid-x grid-padding-x buttons-portal ta-center">
+    <div class="grid-x grid-padding-x buttons-portal ta-center p-bottom-1">
 
-        <div class="large-3 medium-3 cell p-top-1 ta-center">
+        <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/countries.png',array('class'=>'')), 
@@ -21,7 +21,7 @@
                 <?php echo __('Countries') ?>
             </div>
         </div>
-        <div class="large-3 medium-3 cell p-top-1">
+        <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/regions.png',array('class'=>'')), 
@@ -40,7 +40,7 @@
                 <?php echo __('Regions') ?>
             </div>
         </div>
-        <div class="large-3 medium-3 cell p-top-1">
+        <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/fuels.png',array('class'=>'')), 
@@ -59,7 +59,7 @@
                 <?php echo __('Fuels') ?>
             </div>
         </div>
-        <div class="large-3 medium-3 cell p-top-1">
+        <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/technologies.png',array('class'=>'')), 
@@ -76,6 +76,25 @@
             ?>
             <div class="large-12 medium-12 cell div-font">
                 <?php echo __('Technologies') ?>
+            </div>
+        </div>
+        <div class="large-4 medium-4 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/arcs.png',array('class'=>'')), 
+                array(
+                    // 'controller' => 'technologies',
+                    // 'action' => 'home'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'arcs',
+                    'title' => __('Arcs')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Arcs') ?>
             </div>
         </div>
 

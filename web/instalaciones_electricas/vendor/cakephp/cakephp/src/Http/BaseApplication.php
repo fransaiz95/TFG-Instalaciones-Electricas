@@ -57,6 +57,7 @@ abstract class BaseApplication implements ConsoleApplicationInterface, HttpAppli
      */
     public function bootstrap()
     {
+        require_once $this->configDir . '/constantes.php';
         require_once $this->configDir . '/bootstrap.php';
     }
 

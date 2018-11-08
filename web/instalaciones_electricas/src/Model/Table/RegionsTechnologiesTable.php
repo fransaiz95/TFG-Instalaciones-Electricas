@@ -21,9 +21,23 @@ class RegionsTechnologiesTable extends Table {
 		$this->displayField('power');
 		$this->primaryKey(['id_region', 'id_technology']);
 
-		// $this->belongsTo('Countries', [
-		// 	'foreignKey' => 'id_country',
-		// ]);
+		$this->belongsTo('Regions')
+		->setForeignKey('id_region');
+
+		$this->belongsTo('Technologies')
+		->setForeignKey('id_technology');
+	}
+
+	// public function findRegionTechnologyByRegionAndTechnology(Query $query, $name){
+	public function findRegionTechnologyByRegionAndTechnology($id_region, $id_technology){
+		$query = $this->find('all');
+        $query->select(['RegionsTechnologies.id_region', 'RegionsTechnologies.id_technology', 'RegionsTechnologies.power', 'RegionsTechnologies.cap_ava']);
+		$query->where([
+			'RegionsTechnologies.id_region' => $id_region,
+			'RegionsTechnologies.id_technology' => $id_technology,
+		]);
+
+		return $query->toArray();
 	}
 
 }

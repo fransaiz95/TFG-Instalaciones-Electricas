@@ -2,9 +2,9 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: Helvetica, Arial, sans-serif;
-	color: #666;
+	color: $letter-color;
 	background: #f2f2f2; 
-	font-size: 1em;
+	font-size: 1.1em;
 	line-height: 1.5em;
 }
  
@@ -18,13 +18,34 @@ img {
 }
 
 h1{
-	font-size: 2.3em;
-	color: #333;
+	font-size: 2.5em;
+	color: $primary-color;
 	line-height: 1.3em;
 	margin: 15px 0;
 	font-weight: 300;
 }
 
+h2{
+	font-size: 2em;
+	color: $secondary-color;
+	line-height: 1.3em;
+	margin: 15px 0;
+	font-weight: 300;
+}
+
+.titles-view{
+	font-size: 1.3em;
+	color: $primary-color;
+	line-height: 1.3em;
+	margin: 15px 0;
+	font-weight: 300;
+	width: inherit;
+}
+
+.p-0 
+{ 
+	padding: 0px 0px 0px 0px;
+}
 .p-1 
 { 
 	padding: 15px 15px 15px 15px;
@@ -42,6 +63,30 @@ h1{
 	padding-top: 15px;
 }
 .p-bottom-1 
+{ 
+	padding-bottom: 15px;
+}
+.m-0 
+{ 
+	margin: 0px 0px 0px 0px;
+}
+.m-1 
+{ 
+	margin: 15px 15px 15px 15px;
+}
+.m-left-1 
+{ 
+	margin-left: 15px;
+}
+.m-right-1 
+{ 
+	margin-right: 15px;
+}
+.m-top-1 
+{ 
+	margin-top: 15px;
+}
+.m-bottom-1 
 { 
 	padding-bottom: 15px;
 }
@@ -65,4 +110,29 @@ h1{
 .f-left 
 {
 	float: left;
+}
+
+.d-none
+{
+	display: none;
+}
+
+.c-pointer
+{
+	cursor: pointer;
+}
+
+.c-default
+{
+	cursor: default;
+}
+
+.not-link
+{
+	.not-active {
+		pointer-events: none;
+		cursor: default;
+		text-decoration: none;
+		color: inherit;
+	  }
 }

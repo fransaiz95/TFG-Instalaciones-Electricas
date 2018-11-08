@@ -1,0 +1,55 @@
+.cnt-form
+{
+	background-color: white !important;
+	padding: 0px;
+	margin: 0px;
+}
+
+.input_field
+{
+	input
+	{
+		border: none;
+		box-shadow: none;
+		border-bottom: 2px solid $third-color;
+		color: $primary-color;
+		&:focus
+		{
+			border: none;
+			box-shadow: none;
+			border-bottom: 2px solid $primary-color;
+			color: $primary-color;
+		}
+	}
+	label
+	{
+		font-size: 18px;
+		color: $primary-color;
+	}
+	.select2
+	{
+		top: 11px;
+		.select2-selection
+		{
+			border: none !important;
+			box-shadow: none !important;
+			border-bottom: 2px solid $third-color !important;
+			color: $primary-color !important;
+			border-radius: 0px !important;
+			position: relative;
+			&:focus
+			{
+				border: none;
+				box-shadow: none;
+				border-bottom: 2px solid $primary-color !important;
+				color: $primary-color;
+			}
+			.select2-selection__rendered
+			{
+				position: relative;
+				top: -7px;
+			}
+		}
+	}
+	
+}

@@ -21,12 +21,10 @@ class CountriesTable extends Table {
 		$this->table('countries');
 		$this->displayField('name');
 		$this->primaryKey('id');
-		$this->belongsTo('Regions', [
-			'foreignKey' => 'id',
-		]);
-		$this->hasMany('Regions', [
-			'foreignKey' => 'id_country',
-		]);
+
+		$this->hasMany('Regions')
+    	->setForeignKey([ 'id_country' ]);
+	
 	}
 
 	
@@ -42,7 +40,18 @@ class CountriesTable extends Table {
             ->notEmpty('name');
 
 
+			debug($validator);Exit;
         return $validator;
-    }
+	}
+	
+	public function search_list (){
+		$query = $this->find('list', [
+			'keyField' => 'id',
+			'valueField' => 'name'
+		])
+		->toArray();
+
+		return $query;
+	}
 
 }

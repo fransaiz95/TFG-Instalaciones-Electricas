@@ -1,0 +1,83 @@
+.buttons-tabs-home {
+  
+  padding-top: 15px;
+
+  a {
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+    display: inline-block;
+    position: relative;
+    line-height: 200px;
+    background-color: #d3d3d3;
+    border-radius: 100px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 3px rgba(0, 0, 0, 0.1);
+
+    &:active {
+      top: 1px;
+    }
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: -8px;
+      right: -8px;
+      bottom: -8px;
+      left: -8px;
+      background-color: #eaeaea;
+      border-radius: 140px;
+      opacity: 0.5;
+    }
+    &.regions:hover {
+      background-color: $regions-color;
+    }
+    &.countries:hover {
+      background-color: $countries-color;
+    }
+    &.fuels:hover {
+      background-color: $fuels-color;
+    }
+    &.technologies:hover {
+      background-color: $technologies-color;
+    }
+    &.arcs:hover {
+      background-color: $arcs-color;
+    }
+
+    // .active-tab
+    // {
+    //   background-color: #f8ebb6;
+    // }
+
+  }
+  .active-tab
+    {
+      &.regions {
+        background-color: $regions-color;
+      }
+      &.countries {
+        background-color: $countries-color;
+      }
+      &.fuels {
+        background-color: $fuels-color;
+      }
+      &.technologies {
+        background-color: $technologies-color;
+      }
+      &.arcs {
+        background-color: $arcs-color;
+      }
+    }
+  img {
+    max-width: 80px;
+    max-height: 80px;
+    display: inline-block;
+    position: relative;
+    top: -51px;
+    background-color: #d3d3d3;
+    border-radius: 100px;
+  }
+}
+
+// .buttons-tabs-home a {
+  
+// }

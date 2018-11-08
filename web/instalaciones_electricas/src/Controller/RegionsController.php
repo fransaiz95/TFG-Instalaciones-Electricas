@@ -3,25 +3,22 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
+use ConstantesBooleanas;
+use ConstantesTabs;
 
 class RegionsController extends AppController
 {
 
     public function home(){
 
-        $query = $this->Regions->find('all');
-        $query->select(['Regions.id', 'Regions.name', 'Regions.dem_for', 'Regions.ren_for']);
-        $query->select(['Countries.name']);
-        $query->join([
-            'alias' => 'Countries',
-            'table' => 'countries',
-            'type' => 'INNER',
-            'conditions' => 'Countries.id = Regions.id_country'
-        ]);
+        $query = $this->Regions->getQueryRegionsAndCountry();
                 
         $regions = $this->paginate($query);
 
@@ -53,14 +50,26 @@ class RegionsController extends AppController
     /**
      * View method
      *
-     * @param string|null $id Country id.
+     * @param string $id_region Region id.
      */
-    public function view($id = null)
+    public function view($id_region)
     {
-        $region = $this->Regions->get($id);
+        $region = $this->Regions->getRegionAndCountryByRegionId($id_region);
 
-        $this->set(compact('region'));
-        $this->set('_serialize', ['region']);
+        $region_technologies = $this->Regions->getTechnologiesByRegionId($id_region); 
+        $region_arcs = $this->Regions->getArcsByRegionId($id_region); 
+
+        $enabled_tabs = [
+            ConstantesTabs::TECHNOLOGIES,
+            ConstantesTabs::ARCS
+        ];
+
+        $active_tab = ConstantesTabs::TECHNOLOGIES;
+
+        $this->set(
+            compact('region', 'region_technologies', 'region_arcs', 'enabled_tabs', 'active_tab')
+        );
+        $this->set('_serialize', ['region', 'region_technologies', 'region_arcs', 'enabled_tabs', 'active_tab']);
     }
 
     /**
@@ -73,6 +82,8 @@ class RegionsController extends AppController
     public function edit($id = null)
     {
         $region = $this->Regions->get($id);
+        $countries = $this->Regions->Countries->search_list();
+
         if(!$this->request->is('get')){
             $region = $this->Regions->patchEntity($region, $this->request->data);
             if ($this->Regions->save($region)) {
@@ -83,8 +94,8 @@ class RegionsController extends AppController
             }
         }
                 
-        $this->set(compact('region'));
-        $this->set('_serialize', ['region']);
+        $this->set(compact('region', 'countries'));
+        $this->set('_serialize', ['region', 'countries']);
     }
 
     /**
@@ -99,9 +110,9 @@ class RegionsController extends AppController
         if(!$this->request->is('get')){
             $region = $this->Regions->get($id);
             if ($this->Regions->delete($region)) {
-                $this->Flash->success('Country has been deleted.');
+                $this->Flash->success('Region has been deleted.');
             } else {
-                $this->Flash->error('Country could not be deleted. Please, try again.');
+                $this->Flash->error('Region could not be deleted. Please, try again.');
             }
         }
         return $this->redirect(['action' => 'home']);

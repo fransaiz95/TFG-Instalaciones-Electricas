@@ -1,7 +1,7 @@
 <?php
 
 class ConstantesPath{
-//    const DIR_WEBROOT = '/app/webroot';
+   const DIR_WEBROOT = '/app/webroot';
     const DIR_FILES = '/files/';
 }
 
@@ -20,4 +20,12 @@ class ConstantesFuels{
     const NG = 7;
     const SOW = 8;
     const URA = 9;
+}
+
+class ConstantesTabs{
+    const COUNTRIES = 1;
+    const REGIONS = 2;
+    const FUELS = 3;
+    const TECHNOLOGIES = 4;
+    const ARCS = 5;
 }

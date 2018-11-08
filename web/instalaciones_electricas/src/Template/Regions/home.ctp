@@ -3,30 +3,19 @@
         <div class="large-10 cell ta-left">
             <h1><?php echo __('Regions')?></h1>
         </div>
-        <div class="large-2 cell ta-right">
-            <?php
-            echo $this->Html->link( 
-                __('« ') . '&nbsp' . __(' Back'), 
-                array(
-                    'controller' => 'home',
-                    'action' => 'home'
-                ), 
-                array(
-                    'escape' => false,
-                    'class' => 'btn-back',
-                    'title' => __('Back')
-                )
-            );
-            ?>
-        </div>
+        <?php 
+        $url = ['controller' => 'home' , 'action' => 'home'];
+        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
         <div class="large-12 cell ">
             <div class="large-12 cell">
                 
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                         <tr class="table100-head">
-                            <th class="p-left-1"><?php echo $this->Paginator->sort('name') ?></th>
-                            <th><?= $this->Paginator->sort('Country') ?></th>
+                            <th class="p-left-1"><?php echo __('Name') ?></th>
+                            <th class="ta-center"><?php echo __('Country') ?></th>
+                            <th class="ta-center"><?php echo __('Dem for') ?></th>
+                            <th class="ta-center"><?php echo __('Ren for') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -35,11 +24,50 @@
                     foreach ($regions as $region){ ?>
                         <tr>
                             <td class="p-left-1"><?php echo h($region->name) ?></td>
-                            <td><?php echo h($region->Countries['name']) ?></td>
+                            <td class="ta-center"><?php echo h($region->Countries['name']) ?></td>
+                            <td class="ta-center"><?php echo h($region->dem_for) ?></td>
+                            <td class="ta-center"><?php echo h($region->ren_for) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $region->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $region->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $region->id], ['confirm' => __('Are you sure you want to delete # {0}?', $region->id)]) ?>
+                                <?php
+                                echo $this->Html->link( 
+                                    '<span class="c-primary"><ion-icon name="eye"></ion-icon></span>', 
+                                    [
+                                        'controller' => 'regions',
+                                        'action' => 'view',
+                                        $region->id
+                                    ], 
+                                    [
+                                        'escape' => false,
+                                        'title' => __('View')
+                                    ]
+                                );
+                                echo $this->Html->link( 
+                                    '<span class="c-primary"><ion-icon name="create"></ion-icon></span>',
+                                    [
+                                        'controller' => 'regions',
+                                        'action' => 'edit',
+                                        $region->id
+                                    ],
+                                    [
+                                        'escape' => false,
+                                        'style' => 'padding-left:4px;',
+                                        'title' => __('Edit')
+                                    ]
+                                );
+                                echo $this->Form->postLink( 
+                                    '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
+                                    [
+                                        'controller' => 'regions',
+                                        'action' => 'delete', 
+                                        $region->id
+                                    ], 
+                                    [
+                                        'escape' => false,
+                                        'title' => __('Delete?'),
+                                        'confirm' => __('Are you sure you want to delete region: {0}?', $region->name)
+                                    ]
+                                );
+                                ?>
                             </td>
                         </tr>
 
@@ -47,18 +75,7 @@
                     }?>
                     </tbody>
                 </table>
-                <?php
-                if($this->Paginator->numbers() != false){ ?>
-                    <div class="wrapper">
-                        <ul class="pagination">
-                            <?php echo $this->Paginator->prev(__('Prev')) ?>
-                            <?php echo $this->Paginator->numbers() ?>
-                            <?php echo $this->Paginator->next(__('next')) ?>
-                        </ul>
-                    </div>
-                <?php    
-                }?>
-                
+                <?php echo $this->element('Comun/paginator'); ?>
             </div>
         </div>
     </div>

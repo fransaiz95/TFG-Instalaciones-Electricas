@@ -1,0 +1,9 @@
+.cnt-form {
+  background-color: white !important; }
+
+.input text input {
+  border-bottom: 1px solid; }
+
+.input text label {
+  font-size: 14px;
+  color: lime; }

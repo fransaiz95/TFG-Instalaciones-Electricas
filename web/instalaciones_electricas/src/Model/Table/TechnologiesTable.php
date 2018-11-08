@@ -20,6 +20,10 @@ class TechnologiesTable extends Table {
 		$this->table('technologies');
 		$this->displayField('name');
 		$this->primaryKey('id');
+
+		$this->belongsToMany('Regions', [
+            'joinTable' => 'regions_technologies',
+        ]);
 	}
 
 }

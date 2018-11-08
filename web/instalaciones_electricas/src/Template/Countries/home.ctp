@@ -3,22 +3,9 @@
         <div class="large-10 cell ta-left">
             <h1><?php echo __('Countries')?></h1>
         </div>
-        <div class="large-2 cell ta-right">
-            <?php
-            echo $this->Html->link( 
-                __('« ') . '&nbsp' . __(' Back'), 
-                array(
-                    'controller' => 'home',
-                    'action' => 'home'
-                ), 
-                array(
-                    'escape' => false,
-                    'class' => 'btn-back',
-                    'title' => __('Back')
-                )
-            );
-            ?>
-        </div>
+        <?php
+        $url = ['controller' => 'home' , 'action' => 'home'];
+        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
         <div class="large-12 cell">
             <table cellpadding="0" cellspacing="0">
             <thead>

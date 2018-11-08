@@ -22,6 +22,16 @@
     echo $this->Html->script('lib/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js');
     echo $this->fetch('script');
     ?>
+
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <!-- IonIcons -->
+    <link href="https://unpkg.com/ionicons@4.4.6/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
+
+    <?php echo $this->Html->script('app-script.js'); ?>
 </head>
 
 <div id="container">

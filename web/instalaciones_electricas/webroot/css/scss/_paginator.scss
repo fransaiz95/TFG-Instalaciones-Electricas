@@ -1,7 +1,7 @@
 .wrapper {
   text-align: center;
   padding: 15px 0 0 0;
-  color: #333;
+  color: $primary-color;
 }
 
 .pagination li {
@@ -20,7 +20,15 @@
   a {
     color: inherit;
   }
-  &.active, &:hover, a:hover {
+  &:hover, a:hover {
+    background-color: #777777;
+    border-radius: 16px;
+    color: white;
+  }
+  &.active{
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
     background-color: #777777;
     border-radius: 16px;
     color: white;
