@@ -1,23 +1,15 @@
 
 <div class="grid-container p-1">
-    <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
-            <?php 
-            echo $this->Form->create($country); ?>
-            <fieldset>
-                <h1><?= __('Edit Country') ?></h1>
-                <?php
-                    echo $this->Form->input('name');
-                ?>
-            </fieldset>
-            <?= 
-            $this->Form->button(
-                __('Submit'),
-                array(
-                    'class' => 'success button'
-                )
-            ) ?>
-            <?= $this->Form->end() ?>
+
+    <div class="grid-x">
+        <div class="large-10 cell ta-left">
+            <h1><?= __('Edit Country') ?></h1>
         </div>
+        <?php 
+        $url = ['controller' => 'countries' , 'action' => 'home'];
+        echo $this->element('Comun/btn_back', array('url' => $url));?>
     </div>
+
+    <?php echo $this->element('../Countries/Elements/form'); ?>
+
 </div>

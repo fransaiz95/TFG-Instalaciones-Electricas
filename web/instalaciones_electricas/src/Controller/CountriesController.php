@@ -8,14 +8,28 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
+use ConstantesBooleanas;
+use ConstantesTabs;
+
 class CountriesController extends AppController
 {
 
     public function home(){
 
-        $countries = $this->paginate($this->Countries);
+        $country_name = (isset($_GET['country_name'])) ? $_GET['country_name'] : '';
 
-        $this->set('countries', $countries);
+        $filters = [];
+
+        if($country_name != '' ){
+            $filters['Countries.name LIKE'] = '%' . $country_name . '%';
+        }
+
+        $query = $this->Countries->getQueryCountries($filters);
+        $countries = $this->paginate($query);
+
+        $this->request->data = $_GET;
+
+        $this->set(compact('countries'));
         $this->set('_serialize', ['countries']);
     }
 
@@ -27,6 +41,7 @@ class CountriesController extends AppController
     public function add()
     {
         $country = $this->Countries->newEntity();
+
         if ($this->request->is('post')) {
             $country = $this->Countries->patchEntity($country, $this->request->data);
             if ($this->Countries->save($country)) {
@@ -44,14 +59,34 @@ class CountriesController extends AppController
     /**
      * View method
      *
-     * @param string|null $id Country id.
+     * @param string|null $id_country Country id.
      */
-    public function view($id = null)
+    public function view($id_country)
     {
-        $country = $this->Countries->get($id);
+        $country = $this->Countries->findById($id_country)->first()->toArray();
 
-        $this->set(compact('country'));
-        $this->set('_serialize', ['country']);
+        $region_name = (isset($_GET['region_name'])) ? $_GET['region_name'] : '';
+        $filters = [];
+        if($region_name != '' ){
+            $filters['Regions.name LIKE'] = '%' . $region_name . '%';
+        }
+        $filters['Regions.id_country'] = $id_country;
+
+        $query = $this->Countries->Regions->getQueryRegionsAndCountry($filters);
+        $regions = $this->paginate($query);
+
+        $enabled_tabs = [
+            ConstantesTabs::REGIONS,
+        ];
+
+        $active_tab = ConstantesTabs::REGIONS;
+
+        $this->request->data = $_GET;
+
+        $this->set(
+            compact('country', 'regions', 'enabled_tabs', 'active_tab')
+        );
+        $this->set('_serialize', ['country', 'regions', 'enabled_tabs', 'active_tab']);
     }
 
     /**

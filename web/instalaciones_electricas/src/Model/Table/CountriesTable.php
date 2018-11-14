@@ -27,6 +27,14 @@ class CountriesTable extends Table {
 	
 	}
 
+	public function getQueryCountries ($filters){
+		$query = $this->find('all');
+        $query->select(['Countries.id', 'Countries.name']);
+		$query->where($filters);
+		
+		return $query;	
+	}
+
 	
     /**
      * Default validation rules.
@@ -39,8 +47,6 @@ class CountriesTable extends Table {
         $validator
             ->notEmpty('name');
 
-
-			debug($validator);Exit;
         return $validator;
 	}
 	
