@@ -27,7 +27,7 @@
                 $this->Html->image('/img/portal/regions.png',array('class'=>'')), 
                 array(
                     'controller' => 'regions',
-                    'action' => 'home'
+                    'action' => 'home',
                 ), 
                 array(
                     'escape' => false,

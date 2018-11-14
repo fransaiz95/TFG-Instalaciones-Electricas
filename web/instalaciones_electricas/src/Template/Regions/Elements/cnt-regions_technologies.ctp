@@ -16,7 +16,7 @@
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                         <tr class="table100-head">
-                            <th class="p-left-1"><?php echo __('Name') ?></th>
+                            <th class="p-left-1"><?php echo __('Name')?></th>
                             <th class="ta-center"><?php echo __('Renowable') ?></th>
                             <th class="ta-center"><?php echo __('Power') ?></th>
                             <th class="ta-center"><?php echo __('Cap Ava') ?></th>

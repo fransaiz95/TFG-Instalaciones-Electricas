@@ -30,8 +30,7 @@ class RegionsTable extends Table {
 
 		$this->hasMany('Arcs')
     	->setForeignKey([ 'id_region_1' ])
-    	->setForeignKey([ 'id_region_2' ]);
-		
+		->setForeignKey([ 'id_region_2' ]);
 	}
 
 	    /**
@@ -66,20 +65,22 @@ class RegionsTable extends Table {
                 'Region.name' => $name
             ]);
 	}
-	
-	public function getQueryRegionsAndCountry (){
+
+	public function getQueryRegionsAndCountry ($filters){
 		$query = $this->find('all');
-        $query->select(['Regions.id', 'Regions.name', 'Regions.dem_for', 'Regions.ren_for']);
         $query->select(['Countries.name']);
+        $query->select(['Regions.id', 'Regions.name', 'Regions.dem_for', 'Regions.ren_for']);
         $query->join([
             'alias' => 'Countries',
             'table' => 'countries',
             'type' => 'INNER',
             'conditions' => 'Countries.id = Regions.id_country'
 		]);
-		$query->order([
-			'Regions.name' => 'ASC'
-		]);
+		$query->where($filters);
+		// $query->order([
+		// 	'Regions.name' => 'DESC',
+		// ]);
+
 		
 		return $query;
 	}

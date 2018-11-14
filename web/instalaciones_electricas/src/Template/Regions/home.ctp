@@ -6,16 +6,21 @@
         <?php 
         $url = ['controller' => 'home' , 'action' => 'home'];
         echo $this->element('Comun/btn_back', array('url' => $url)); ?>
+
+        <div class="large-12">
+            <?php echo $this->element('../Regions/Elements/search'); ?>
+        </div>
+
         <div class="large-12 cell ">
             <div class="large-12 cell">
                 
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                         <tr class="table100-head">
-                            <th class="p-left-1"><?php echo __('Name') ?></th>
-                            <th class="ta-center"><?php echo __('Country') ?></th>
-                            <th class="ta-center"><?php echo __('Dem for') ?></th>
-                            <th class="ta-center"><?php echo __('Ren for') ?></th>
+                            <th class="p-left-1"><?php echo $this->Paginator->sort('Regions.name', __('Name')); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Regions.id_country', __('Country'))?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Regions.dem_for', __('Dem for') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Regions.ren_for', __('Ren for') ); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>

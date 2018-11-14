@@ -26,6 +26,15 @@ table {
       min-width: 50px;
       text-align: center;
     }
+    a.asc {
+      padding-right: 20px;
+      background: url('../img/paginator/arrow_up.svg') no-repeat top right;
+    }
+    
+    a.desc {
+      padding-right: 20px;
+      background: url('../img/paginator/arrow_down.svg') no-repeat top right;
+    }
   }
 }
 

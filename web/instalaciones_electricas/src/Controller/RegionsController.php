@@ -18,12 +18,26 @@ class RegionsController extends AppController
 
     public function home(){
 
-        $query = $this->Regions->getQueryRegionsAndCountry();
-                
+        $region_name = (isset($_GET['region_name'])) ? $_GET['region_name'] : '';
+        $id_country = (isset($_GET['id_country'])) ? $_GET['id_country'] : '';
+
+        $filters = [];
+        if($region_name != '' || $id_country != ''){
+            $filters = [
+                'Regions.name like' => '%' . $region_name . '%',
+                'Countries.id ' => $id_country
+            ];
+        }
+        
+        $query = $this->Regions->getQueryRegionsAndCountry($filters);
         $regions = $this->paginate($query);
 
-        $this->set('regions', $regions);
-        $this->set('_serialize', ['regions']);
+        $countries = $this->Regions->Countries->search_list();
+
+        $this->request->data = $_GET;
+
+        $this->set(compact('regions', 'countries'));
+        $this->set('_serialize', ['regions', 'countries']);
     }
 
     /**
@@ -34,6 +48,8 @@ class RegionsController extends AppController
     public function add()
     {
         $region = $this->Regions->newEntity();
+        $countries = $this->Regions->Countries->search_list();
+        
         if ($this->request->is('post')) {
             $region = $this->Regions->patchEntity($region, $this->request->data);
             if ($this->Regions->save($region)) {
@@ -43,8 +59,8 @@ class RegionsController extends AppController
                 $this->Flash->error('Region could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('region'));
-        $this->set('_serialize', ['region']);
+        $this->set(compact('region', 'countries'));
+        $this->set('_serialize', ['region', 'countries']);
     }
 
     /**
