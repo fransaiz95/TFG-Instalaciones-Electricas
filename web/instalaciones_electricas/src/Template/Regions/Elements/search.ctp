@@ -15,7 +15,7 @@ echo $this->Form->create(
         <div class="large-12 title-searcher">
             <?php echo __('Search:') ?>
         </div>
-        <div class="large-3 p-1 input_field">
+        <div class="large-3 p-1 input_field p-bottom-0">
             <?php echo $this->Form->input(
                 'region_name',
                 array(
@@ -40,7 +40,7 @@ echo $this->Form->create(
             );
             ?>
         </div>
-        <div class="large-1 p-1 input_field">
+        <div class="large-1 p-1">
             <?php echo $this->Form->button(
                 '<span class="c-primary"><ion-icon name="search"></ion-icon></span>',
                 array(

@@ -5,10 +5,17 @@
         </div>
         <?php 
         $url = ['controller' => 'home' , 'action' => 'home'];
-        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
-
+        echo $this->element('Comun/btn_back', array('url' => $url));?>
+        
         <div class="large-12">
             <?php echo $this->element('../Regions/Elements/search'); ?>
+        </div>
+
+        <div class="large-12 cell ta-right">
+            <?php
+            $url = ['controller' => 'regions' , 'action' => 'add'];
+            $label = __('New Region');
+            echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
         </div>
 
         <div class="large-12 cell ">

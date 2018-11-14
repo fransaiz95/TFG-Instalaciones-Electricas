@@ -77,10 +77,6 @@ class RegionsTable extends Table {
             'conditions' => 'Countries.id = Regions.id_country'
 		]);
 		$query->where($filters);
-		// $query->order([
-		// 	'Regions.name' => 'DESC',
-		// ]);
-
 		
 		return $query;
 	}

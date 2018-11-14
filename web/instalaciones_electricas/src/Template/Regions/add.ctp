@@ -1,8 +1,14 @@
 
 <div class="grid-container p-1">
+    <div class="grid-x">
+        <div class="large-10 cell ta-left">
+            <h1><?= __('New Region') ?></h1>
+        </div>
+        <?php 
+        $url = ['controller' => 'regions' , 'action' => 'home'];
+        echo $this->element('Comun/btn_back', array('url' => $url));?>
+    </div>
 
-<h1><?= __('New Region') ?></h1>
-
-<?php echo $this->element('../Regions/Elements/form'); ?>
+    <?php echo $this->element('../Regions/Elements/form'); ?>
 
 </div>

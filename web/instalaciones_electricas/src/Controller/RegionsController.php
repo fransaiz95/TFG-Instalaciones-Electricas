@@ -22,13 +22,14 @@ class RegionsController extends AppController
         $id_country = (isset($_GET['id_country'])) ? $_GET['id_country'] : '';
 
         $filters = [];
-        if($region_name != '' || $id_country != ''){
-            $filters = [
-                'Regions.name like' => '%' . $region_name . '%',
-                'Countries.id ' => $id_country
-            ];
+
+        if($region_name != '' ){
+            $filters['Regions.name LIKE'] = '%' . $region_name . '%';
         }
-        
+        if($id_country != '' ){
+            $filters['Countries.id '] = $id_country;
+        }
+
         $query = $this->Regions->getQueryRegionsAndCountry($filters);
         $regions = $this->paginate($query);
 
