@@ -3,7 +3,7 @@ echo $this->Form->create(
     'Searcher',
     array(
         'url' => array(
-            'controller' => 'fuels',
+            'controller' => 'technologies',
             'action' => 'home'
         ),
         'type' => 'get',
@@ -17,11 +17,31 @@ echo $this->Form->create(
         </div>
         <div class="large-3 p-1 input_field p-bottom-0">
             <?php echo $this->Form->input(
-                'country_name',
+                'technology_name',
                 array(
                     'type' => 'text',
-                    'label' => __('Country'),
+                    'label' => __('Fuel'),
                     'div' => '',
+                )
+            );
+            ?>
+        </div>
+        <div class="large-2 p-1 input_field p-form">
+            <?php echo $this->Form->input(
+                'is_renowable_yes',
+                array(
+                    'type' => 'checkbox',
+                    'label' => __('Renowable'),
+                )
+            );
+            ?>
+        </div>
+        <div class="large-2 p-1 input_field p-form">
+            <?php echo $this->Form->input(
+                'is_renowable_no',
+                array(
+                    'type' => 'checkbox',
+                    'label' => __('No Renowable'),
                 )
             );
             ?>

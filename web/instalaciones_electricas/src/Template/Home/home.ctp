@@ -64,8 +64,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/technologies.png',array('class'=>'')), 
                 array(
-                    // 'controller' => 'technologies',
-                    // 'action' => 'home'
+                    'controller' => 'technologies',
+                    'action' => 'home'
                 ), 
                 array(
                     'escape' => false,

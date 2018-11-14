@@ -30,4 +30,15 @@ class TechnologiesTable extends Table {
 		]);
 	}
 
+	public function getQueryTechnologies ($filters){
+		$query = $this->find('all');
+		$query->select(['Technologies.id', 'Technologies.name', 'Technologies.renowable', 'Technologies.wat_wit', 'Technologies.genco_pri', 
+		'Technologies.cap', 'Technologies.new_cap_cos', 'Technologies.man_cos', 'Technologies.man_cos_new_cap', 'Technologies.gen_cos', 
+		'Technologies.gen_cos_new_cap', 'Technologies.life_time', 'Technologies.ghg_emi', 'Technologies.inv_cap_emp', 
+		'Technologies.man_cap_emp', 'Technologies.dec_cam_emp', 'Technologies.om_cap_emp', 'Technologies.fue_cap_emp', 'Technologies.wat_con']);
+		$query->where($filters);
+		
+		return $query;	
+	}
+
 }

@@ -27,7 +27,7 @@ echo $this->Form->create(
             );
             ?>
         </div>
-        <div class="large-1 p-1">
+        <div class="large-2 p-1 ta-right">
             <?php echo $this->Form->button(
                 '<span class="c-primary"><ion-icon name="search"></ion-icon></span>',
                 array(
