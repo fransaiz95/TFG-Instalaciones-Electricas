@@ -32,7 +32,7 @@
                     echo $this->Form->input(
                         ' ',
                         [
-                            'label' => __('Region name'),
+                            'label' => __('Technology name'),
                             'readonly' => true,
                             'value' => $technology->name
                         ]

@@ -23,7 +23,11 @@ class TechnologiesTable extends Table {
 
 		$this->belongsToMany('Regions', [
             'joinTable' => 'regions_technologies',
-        ]);
+		]);
+		
+		$this->belongsToMany('Fuels', [
+			'joinTable' => 'fuels_technologies',
+		]);
 	}
 
 }

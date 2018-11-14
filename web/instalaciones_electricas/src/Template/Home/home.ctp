@@ -45,8 +45,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/fuels.png',array('class'=>'')), 
                 array(
-                    // 'controller' => 'fuels',
-                    // 'action' => 'home'
+                    'controller' => 'fuels',
+                    'action' => 'home'
                 ), 
                 array(
                     'escape' => false,

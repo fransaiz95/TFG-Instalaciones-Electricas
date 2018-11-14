@@ -19,6 +19,12 @@ class FuelsTechnologiesTable extends Table {
 	public function initialize(array $config) {
 		$this->table('fuels_technologies');
 		$this->primaryKey(['id_fuel', 'id_technology']);
+
+		$this->belongsTo('Fuels')
+		->setForeignKey('id_fuel');
+
+		$this->belongsTo('Technologies')
+		->setForeignKey('id_technology');
 	}
 
 }
