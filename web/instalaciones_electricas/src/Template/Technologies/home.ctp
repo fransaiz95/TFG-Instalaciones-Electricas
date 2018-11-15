@@ -62,19 +62,19 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                // echo $this->Form->postLink( 
-                                //     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                //     [
-                                //         'controller' => 'technologies',
-                                //         'action' => 'delete', 
-                                //         $technology->id
-                                //     ], 
-                                //     [
-                                //         'escape' => false,
-                                //         'title' => __('Delete?'),
-                                //         'confirm' => __('Are you sure you want to delete technology: {0}?', $technology->name)
-                                //     ]
-                                // );
+                                echo $this->Form->postLink( 
+                                    '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
+                                    [
+                                        'controller' => 'technologies',
+                                        'action' => 'delete', 
+                                        $technology->id
+                                    ], 
+                                    [
+                                        'escape' => false,
+                                        'title' => __('Delete?'),
+                                        'confirm' => __('Are you sure you want to delete technology: {0}?', $technology->name)
+                                    ]
+                                );
                                 ?>
                             </td>
                         </tr>

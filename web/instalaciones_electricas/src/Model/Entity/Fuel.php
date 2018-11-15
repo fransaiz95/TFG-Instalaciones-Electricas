@@ -15,6 +15,7 @@ class Fuel extends Entity {
 	 */
 	protected $_accessible = [
 		'id' => true,
+		'name' => true,
 		'fue_cos' => true,
 		'production' => true,
 	];

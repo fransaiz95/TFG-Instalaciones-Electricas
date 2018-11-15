@@ -23,11 +23,11 @@ class TechnologiesTable extends Table {
 
 		$this->belongsToMany('Regions', [
             'joinTable' => 'regions_technologies',
-		]);
+		])->setForeignKey('id_technology');;
 		
 		$this->belongsToMany('Fuels', [
 			'joinTable' => 'fuels_technologies',
-		]);
+		])->setForeignKey('id_technology');
 	}
 
 	public function getQueryTechnologies ($filters){

@@ -73,6 +73,14 @@
 
         <div class="large-4 medium-4 cell p-form">
             <span class="titles-view">
+                <?php echo __('Gen Cos:') ?>
+            </span>
+            <?php 
+            echo $technology['gen_cos']; ?>
+        </div>
+
+        <div class="large-4 medium-4 cell p-form">
+            <span class="titles-view">
                 <?php echo __('Gen Cos New Cap:') ?>
             </span>
             <?php 
@@ -129,7 +137,7 @@
 
         <div class="large-4 medium-4 cell p-form">
             <span class="titles-view">
-                <?php echo __('Fue Çap Emp:') ?>
+                <?php echo __('Fue Cap Emp:') ?>
             </span>
             <?php 
             echo $technology['fue_cap_emp']; ?>

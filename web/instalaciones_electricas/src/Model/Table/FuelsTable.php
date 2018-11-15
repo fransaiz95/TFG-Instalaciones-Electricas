@@ -18,7 +18,7 @@ class FuelsTable extends Table {
  */
 	public function initialize(array $config) {
 		$this->table('fuels');
-		$this->displayField('id');
+		$this->displayField('name');
 		$this->primaryKey('id');
 
 		$this->belongsToMany('Technologies', [
