@@ -70,7 +70,7 @@
                         'ArcsTypelines.num_lines', 
                         [
                             'label' => __('Num lines'),
-                            'type' => 'text',
+                            'type' => 'number',
                             'required' => true
                         ]
                     );
@@ -98,8 +98,8 @@
         </div>
 
         <?php
-        $url = ['controller' => 'regions' , 'action' => 'view', $arc_with_regions->id_region_1];
-        // echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
+        $url = ['controller' => 'arcs' , 'action' => 'home'];
+        echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
 
         <?php echo $this->Form->end() ?>
         

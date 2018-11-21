@@ -15,7 +15,7 @@
             <?php
             $url = ['controller' => 'arcs' , 'action' => 'add'];
             $label = __('New Arc');
-            // echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
+            echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
         </div>
 
         <div class="large-12 cell ">

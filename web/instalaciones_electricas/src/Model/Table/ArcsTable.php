@@ -92,7 +92,7 @@ class ArcsTable extends Table {
 			->where([
 				'Arcs.id' => $id_arc
 			])
-			->select(['ArcsTypelines.num_lines'])
+			->select(['ArcsTypelines.id_arc', 'ArcsTypelines.id_typeline', 'ArcsTypelines.num_lines'])
 			->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.new_line_cos', 'Typelines.man_lin_cos', 'Typelines.flo_cos', 
 					  'Typelines.new_lim_emp', 'Typelines.man_lim_emp', 'Typelines.flo_emp', 'Typelines.eff_lin'
 					])
