@@ -9,6 +9,7 @@
                     'name',
                     [
                         'label' => __('Name'),
+                        'required' => true
                     ]
                 );
                 ?>
@@ -23,8 +24,9 @@
                         'class' => 'js-example-basic-single',
                         'multiple' => false,
                         'options' => $countries, 
+                        'required' => false,
                         'empty' => false
-                    ]
+                     ]
                 );
                 ?>
             </div>
@@ -35,7 +37,9 @@
                     'dem_for',
                     [
                         'label' => __('Dem for'),
-                        'type' => 'number'
+                        'type' => 'number',
+                        'required' => false,
+                        'empty' => true
                     ]
                 );
                 ?>
@@ -46,8 +50,10 @@
                 echo $this->Form->input(
                     'ren_for',
                     [
-                        'label' => __('Rem for'),
-                        'type' => 'number'
+                        'label' => __('Ren for'),
+                        'type' => 'number',
+                        'required' => false,
+                        'empty' => true
                     ]
                 );
                 ?>

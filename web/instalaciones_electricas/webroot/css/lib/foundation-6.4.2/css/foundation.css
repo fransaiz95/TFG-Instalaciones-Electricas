@@ -2991,7 +2991,7 @@ select {
   color: #cc4b37; }
 
 .form-error {
-  display: none;
+  /* display: none; */
   margin-top: -0.5rem;
   margin-bottom: 1rem;
   font-size: 0.75rem;

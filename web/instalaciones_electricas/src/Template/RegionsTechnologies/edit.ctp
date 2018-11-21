@@ -18,7 +18,8 @@
                         [
                             'label' => __('Region name'),
                             'readonly' => true,
-                            'value' => $region->name
+                            'value' => $region->name,
+                            'required' => true
                         ]
                     );
                     ?>
@@ -34,7 +35,8 @@
                         [
                             'label' => __('Technology name'),
                             'readonly' => true,
-                            'value' => $technology->name
+                            'value' => $technology->name,
+                            'required' => true
                         ]
                     );
                     ?>

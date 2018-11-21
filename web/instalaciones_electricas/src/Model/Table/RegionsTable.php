@@ -4,6 +4,9 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\RulesChecker;
+
+use ConstantesLimitDataTypes;
 
 /**
  * Regions Model
@@ -33,7 +36,7 @@ class RegionsTable extends Table {
 		->setForeignKey([ 'id_region_2' ]);
 	}
 
-	    /**
+	/**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
@@ -41,9 +44,21 @@ class RegionsTable extends Table {
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->notEmpty('id_country');
+        $validator->notEmpty('id_country');
+		$validator->notEmpty('name');
+		$validator->allowEmpty('dem_for');
+		$validator->allowEmpty('ren_for');
 
+		$validator->add('dem_for',[
+			'dem_for'=>[
+				'rule'=>[$this, 'id_decimal_7_4'],
+			]
+		]);
+		$validator->add('ren_for',[
+			'ren_for'=>[
+				'rule'=>[$this, 'id_decimal_7_4'],
+			]
+		]);
 
         return $validator;
 	}

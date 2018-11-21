@@ -26,6 +26,32 @@ class FuelsTable extends Table {
 		])->setForeignKey('id_fuel');
 	}
 
+	/**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+		$validator->notEmpty('name');
+		$validator->allowEmpty('fue_cos');
+		$validator->allowEmpty('production');
+
+		$validator->add('fue_cos',[
+			'fue_cos'=>[
+				'rule'=>[$this, 'id_decimal_8_2'],
+			]
+		]);
+		$validator->add('production',[
+			'production'=>[
+				'rule'=>[$this, 'id_decimal_12_0'],
+			]
+		]);
+
+        return $validator;
+	}
+
 	public function getQueryFuels ($filters){
 		$query = $this->find('all');
         $query->select(['Fuels.id', 'Fuels.name', 'Fuels.fue_cos', 'Fuels.production']);

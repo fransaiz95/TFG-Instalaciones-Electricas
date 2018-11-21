@@ -27,6 +27,14 @@
 		font-size: 18px;
 		color: $primary-color;
 	}
+	.required
+	{
+		label::after {
+			color: red;
+			content: "*";
+			padding-left: 2px;
+		}
+	}
 	.select2
 	{
 		top: 11px;
@@ -68,4 +76,45 @@
 .p-form
 {
 	padding-top: 43px;
+}
+
+.form-error {
+	/* display: none; */
+	margin-top: -0.5rem;
+	margin-bottom: 1rem;
+	font-size: 0.75rem;
+	font-weight: bold;
+	color: #cc4b37; 
+}
+
+.form-error.is-visible {
+	display: block; 
+}
+
+
+// .form-error input[type="text"], .error input[type="password"], .error input[type="date"], .error input[type="datetime"], .error input[type="datetime-local"], .error input[type="month"], .error input[type="week"], .error input[type="email"], .error input[type="number"], .error input[type="search"], .error input[type="tel"], .error input[type="time"], .error input[type="url"], .error textarea, .error select {
+.error
+{
+	label
+	{
+		color: $error-leter-color;
+	}
+	input.form-error
+	{
+		border: 2px solid $error-leter-color;
+		border-color: $error-leter-color;
+		background-color: rgba(198, 15, 19, 0.1);
+		margin-bottom: 0.2em;
+		position: relative;
+		top: 7px;
+		color: $error-leter-color;
+	}
+	.error-message
+	{
+		color: $error-leter-color;
+		position: relative;
+		top: 7px;
+		font-size: 13px;
+		font-style: italic;
+	}
 }

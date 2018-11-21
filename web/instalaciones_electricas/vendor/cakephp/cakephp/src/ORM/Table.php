@@ -41,6 +41,7 @@ use Cake\Validation\ValidatorAwareInterface;
 use Cake\Validation\ValidatorAwareTrait;
 use InvalidArgumentException;
 use RuntimeException;
+use ConstantesLimitDataTypes;
 
 /**
  * Represents a single database table.
@@ -2749,4 +2750,76 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
             'connectionName' => $conn ? $conn->configName() : null
         ];
     }
+
+    public function id_decimal_3_0($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 3 || isset($value_array[1]) && strlen($value_array[1]) > 0  ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_3;
+        }
+        return true;
+	}
+
+    public function id_decimal_5_0($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 5 || isset($value_array[1]) && strlen($value_array[1]) > 0  ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_5;
+        }
+        return true;
+	}
+
+    public function id_decimal_5_2($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 3 || (isset($value_array[1]) && strlen($value_array[1]) > 2) ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_3 . ',' . ConstantesLimitDataTypes::LIMIT_2;
+        }
+        return true;
+	}
+
+    public function id_decimal_7_4($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 3 || (isset($value_array[1]) && strlen($value_array[1]) > 4) ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_3 . ',' . ConstantesLimitDataTypes::LIMIT_4;
+        }
+        return true;
+	}
+
+    public function id_decimal_8_2($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 6 || (isset($value_array[1]) && strlen($value_array[1]) > 2) ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_6 . ',' . ConstantesLimitDataTypes::LIMIT_2;
+        }
+        return true;
+    }
+    
+    public function id_decimal_10_0($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 10 || isset($value_array[1]) && strlen($value_array[1]) > 0  ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_10;
+        }
+        return true;
+	}
+    
+    public function id_decimal_12_0($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 12 || isset($value_array[1]) && strlen($value_array[1]) > 0  ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_12;
+        }
+        return true;
+	}
+    
+    public function id_decimal_12_2($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 10 || (isset($value_array[1]) && strlen($value_array[1]) > 2)  ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_10 . ',' . ConstantesLimitDataTypes::LIMIT_2;
+        }
+        return true;
+	}
+    
+    public function id_decimal_15_0($value, $context){
+        $value_array = explode('.', $value);
+        if( strlen($value_array[0]) > 15 || isset($value_array[1]) && strlen($value_array[1]) > 0  ){
+            return 'Limit is: ' . ConstantesLimitDataTypes::LIMIT_15;
+        }
+        return true;
+	}
 }
