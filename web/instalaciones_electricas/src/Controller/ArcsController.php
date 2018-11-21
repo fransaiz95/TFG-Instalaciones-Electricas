@@ -44,17 +44,51 @@ class ArcsController extends AppController
     public function add()
     {
         $arc = $this->Arcs->newEntity();
-        if ($this->request->is('post')) {
+        $regions = $this->Arcs->Regions->search_list(); 
+        $typelines = $this->Arcs->Typelines->search_list();
+        
+        if(!$this->request->is('get')){
+
+            $connection = ConnectionManager::get('default');
+            $connection->begin();
+
             $arc = $this->Arcs->patchEntity($arc, $this->request->data);
-            if ($this->Arcs->save($arc)) {
-                $this->Flash->success('Arc has been saved.');
-                return $this->redirect(['action' => 'home']);
+            $arc_bd = $this->Arcs->save($arc);
+            $error = false;
+
+            if ($arc_bd) {
+
+                $arc_id = $arc_bd['id'];
+
+                $arc_typeline['id_typeline'] = intval($this->request->data['Typelines']['id']);
+                $arc_typeline['num_lines'] = $this->request->data['ArcsTypelines']['num_lines'];
+
+                $entity = $this->Arcs->ArcsTypelines->newEntity();
+                $arc_typeline['id_arc'] = $arc_id;
+                $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline);
+                
+                if($this->Arcs->ArcsTypelines->save($arc_typeline)){
+                    $this->Flash->success('Arc has been saved.');
+                }else{
+                    $error = true;
+                }
+
             } else {
+                $error = true;
                 $this->Flash->error('Arc could not be saved. Please, try again.');
             }
+
+            if($error == false){
+                $connection->commit();
+                return $this->redirect(['controller' => 'arcs', 'action' => 'home']);
+            }else{
+                $connection->rollback();
+            }
+
         }
-        $this->set(compact('arc'));
-        $this->set('_serialize', ['arc']);
+                
+        $this->set(compact('arc', 'regions', 'typelines'));
+        $this->set('_serialize', ['arc', 'regions', 'typelines']);
     }
 
     
@@ -142,7 +176,7 @@ class ArcsController extends AppController
 
             if($error == false){
                 $connection->commit();
-                return $this->redirect(['controller' => 'regions', 'action' => 'view', $arc_with_regions->id_region_1]);
+                return $this->redirect(['controller' => 'arcs', 'action' => 'home']);
             }else{
                 $connection->rollback();
             }
