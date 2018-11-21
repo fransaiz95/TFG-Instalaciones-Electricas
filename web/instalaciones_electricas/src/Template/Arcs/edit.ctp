@@ -3,8 +3,17 @@
 
         <h1><?= __('Edit Region Technology') ?></h1>
     
-        <?php 
-        echo $this->Form->create($arc); ?>
+        <?php echo $this->Form->create($arc_with_regions); ?>
+
+        <?php
+        echo $this->Form->hidden(
+            'id_arc',
+            [
+                'value' => $arc_with_regions->id
+            ]
+        );
+        ?>
+
         <div class="cnt-form">
 
             <div class="grid-x">
@@ -18,7 +27,8 @@
                         [
                             'label' => __('Origin region'),
                             'readonly' => true,
-                            'value' => $arc_with_regions[0]['Regions']['name']
+                            'value' => $arc_with_regions['Regions']['name'],
+                            'required' => true
                         ]
                     );
                     ?>
@@ -33,7 +43,8 @@
                             'class' => 'js-example-basic-single',
                             'multiple' => false,
                             'options' => $regions, 
-                            'empty' => false
+                            'empty' => false,
+                            'required' => true
                         ]
                     );
                     ?>
@@ -46,20 +57,49 @@
                     echo $this->Form->input(
                         'distance',
                         [
-                            'label' => __('Power'),
+                            'label' => __('Distance'),
                             'type' => 'number',
                         ]
                     );
                     ?>
                 </div>
 
+                <div class="large-3 p-1 input_field">
+                    <?php
+                    echo $this->Form->input(
+                        'ArcsTypelines.num_lines', 
+                        [
+                            'label' => __('Num lines'),
+                            'type' => 'text',
+                            'required' => true
+                        ]
+                    );
+                    ?>
+                </div>
+
+                <div class="large-3 p-1 input_field">
+                    <?php
+                    echo $this->Form->input(
+                        'Typelines.id', 
+                        [
+                            'label' => __('Typeline (Lin Cap)'),
+                            'type' => 'select',
+                            'class' => 'js-example-basic-single',
+                            'multiple' => false,
+                            'options' => $typelines, 
+                            'empty' => true,
+                            'required' => true
+                        ]
+                    );
+                    ?>
+                </div>
             </div>
 
         </div>
 
         <?php
-        $url = ['controller' => 'regions' , 'action' => 'view', $arc->id_region_1];
-        echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
+        $url = ['controller' => 'regions' , 'action' => 'view', $arc_with_regions->id_region_1];
+        // echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
 
         <?php echo $this->Form->end() ?>
         

@@ -83,8 +83,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/arcs.png',array('class'=>'')), 
                 array(
-                    // 'controller' => 'technologies',
-                    // 'action' => 'home'
+                    'controller' => 'arcs',
+                    'action' => 'home'
                 ), 
                 array(
                     'escape' => false,

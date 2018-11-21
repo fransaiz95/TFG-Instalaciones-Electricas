@@ -5,7 +5,7 @@
             <?php 
             echo $this->Form->create($region); ?>
             <fieldset>
-                <h1><?= __('Add Region') ?></h1>
+                <h1><?= __('Add Arc') ?></h1>
                 <?php
                     echo $this->Form->input('name');
                 ?>

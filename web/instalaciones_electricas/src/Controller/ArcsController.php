@@ -16,6 +16,26 @@ use ConstantesTabs;
 class ArcsController extends AppController
 {
 
+    public function home(){
+
+        $region_name = (isset($_GET['region_name'])) ? $_GET['region_name'] : '';
+
+        $filters = [];
+
+        if($region_name != '' ){
+            $filters['or']['Regions.name LIKE'] = '%' . $region_name . '%';
+            $filters['or']['Regions2.name LIKE'] = '%' . $region_name . '%';
+        }
+
+        $query = $this->Arcs->getQueryArcsWithRegions($filters);
+        $arcs = $this->paginate($query);
+
+        $this->request->data = $_GET;
+
+        $this->set(compact('arcs'));
+        $this->set('_serialize', ['arcs']);
+    }
+
     /**
      * Add method
      *
@@ -23,18 +43,34 @@ class ArcsController extends AppController
      */
     public function add()
     {
-        $region = $this->Regions->newEntity();
+        $arc = $this->Arcs->newEntity();
         if ($this->request->is('post')) {
-            $region = $this->Regions->patchEntity($region, $this->request->data);
-            if ($this->Regions->save($region)) {
-                $this->Flash->success('Region has been saved.');
+            $arc = $this->Arcs->patchEntity($arc, $this->request->data);
+            if ($this->Arcs->save($arc)) {
+                $this->Flash->success('Arc has been saved.');
                 return $this->redirect(['action' => 'home']);
             } else {
-                $this->Flash->error('Region could not be saved. Please, try again.');
+                $this->Flash->error('Arc could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('region'));
-        $this->set('_serialize', ['region']);
+        $this->set(compact('arc'));
+        $this->set('_serialize', ['arc']);
+    }
+
+    
+    /**
+     * View method
+     *
+     * @param string $id_region Region id.
+     */
+    public function view($id_arc)
+    {
+        $arcs = $this->Arcs->getArcsWithRegionsAndTypeLine($id_arc);
+
+        $this->set(
+            compact('arcs')
+        );
+        $this->set('_serialize', ['arcs']);
     }
 
     /**
@@ -46,23 +82,47 @@ class ArcsController extends AppController
      */
     public function edit($arc_id)
     {
-        $arc = $this->Arcs->get($arc_id);
         $arc_with_regions = $this->Arcs->getArcsWithRegions($arc_id);
         $regions = $this->Arcs->Regions->search_list(); 
-
-
+        $typelines = $this->Arcs->Typelines->search_list();
+        
         if(!$this->request->is('get')){
-            $arc = $this->Arcs->patchEntity($arc, $this->request->data);
-            if ($this->Arcs->save($arc)) {
-                $this->Flash->success('Arc has been saved.');
-                return $this->redirect(['controller' => 'regions', 'action' => 'view', $arc->id_region_1]);
+            
+            $arc_with_regions = $this->Arcs->patchEntity($arc_with_regions, $this->request->data);
+
+
+            //Problemas al guardar, la relacion ya está echa.
+
+
+            debug($arc_with_regions);Exit;
+            if ($this->Arcs->save($arc_with_regions)) {
+
+
+
+
+
+                $arc_typeline['ArcTypelines']['id_arc'] = $arc_with_regions['id_arc'];
+                $arc_typeline['ArcTypelines']['id_typeline'] = $arc_with_regions['Typelines']['id'];
+
+
+
+
+                
+
+                if($this->Arcs->ArcsTypelines->save($arc_typeline)){
+                    $this->Flash->success('Arc has been saved.');
+                    return $this->redirect(['controller' => 'regions', 'action' => 'view', $arc_with_regions->id_region_1]);
+                }
             } else {
                 $this->Flash->error('Arc could not be saved. Please, try again.');
             }
+
         }
+
+        
                 
-        $this->set(compact('arc', 'arc_with_regions', 'regions'));
-        $this->set('_serialize', ['arc', 'arc_with_regions', 'regions']);
+        $this->set(compact('arc_with_regions', 'regions', 'typelines'));
+        $this->set('_serialize', ['arc_with_regions', 'regions', 'typelines']);
     }
 
     /**

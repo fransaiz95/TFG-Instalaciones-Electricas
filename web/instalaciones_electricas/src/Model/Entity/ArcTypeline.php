@@ -14,6 +14,7 @@ class ArcTypeline extends Entity {
 	 * @var array
 	 */
 	protected $_accessible = [
+		'id' => true,
 		'id_arc' => true,
 		'id_typeline' => true,
 		'num_lines' => true,

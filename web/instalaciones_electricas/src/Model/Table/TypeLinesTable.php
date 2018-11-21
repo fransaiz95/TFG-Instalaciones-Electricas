@@ -18,12 +18,25 @@ class TypelinesTable extends Table {
  */
 	public function initialize(array $config) {
 		$this->table('typelines');
-		$this->displayField('eff_lin');
+		$this->displayField('lin_cap');
 		$this->primaryKey('id');
 
-		// $this->belongsTo('Countries', [
-		// 	'foreignKey' => 'id_country',
-		// ]);
+		$this->belongsToMany('Arcs', [
+			'joinTable' => 'arcs_typelines',
+		])->setForeignKey('id_typeline');
+
+		$this->hasMany('ArcsTypelines')
+    	->setForeignKey([ 'id_typeline' ]);
+	}
+
+	public function search_list (){
+		$query = $this->find('list', [
+			'keyField' => 'id',
+			'valueField' => 'lin_cap'
+		])
+		->toArray();
+
+		return $query;
 	}
 
 }
