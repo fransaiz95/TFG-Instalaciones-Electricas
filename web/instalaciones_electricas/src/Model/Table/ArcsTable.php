@@ -76,7 +76,7 @@ class ArcsTable extends Table {
 			'ArcsTypelines' => [
 				'table' => 'arcs_typelines',
 				'type' => 'LEFT',
-				'conditions' => 'ArcsTypeLines.id_arc = Arcs.id'
+				'conditions' => 'ArcsTypelines.id_arc = Arcs.id'
 			],
 		]);
 		
@@ -110,12 +110,12 @@ class ArcsTable extends Table {
 				'ArcsTypelines' => [
 					'table' => 'arcs_typelines',
 					'type' => 'LEFT',
-					'conditions' => 'ArcsTypeLines.id_arc = Arcs.id'
+					'conditions' => 'ArcsTypelines.id_arc = Arcs.id'
 				],
 				'Typelines' => [
 					'table' => 'typelines',
 					'type' => 'LEFT',
-					'conditions' => 'ArcsTypeLines.id_typeline = Typelines.id'
+					'conditions' => 'ArcsTypelines.id_typeline = Typelines.id'
 				],
 			]);
 			
@@ -150,12 +150,12 @@ class ArcsTable extends Table {
 				'ArcsTypelines' => [
 					'table' => 'arcs_typelines',
 					'type' => 'LEFT',
-					'conditions' => 'ArcsTypeLines.id_arc = Arcs.id'
+					'conditions' => 'ArcsTypelines.id_arc = Arcs.id'
 				],
 				'Typelines' => [
 					'table' => 'typelines',
 					'type' => 'LEFT',
-					'conditions' => 'ArcsTypeLines.id_typeline = Typelines.id'
+					'conditions' => 'ArcsTypelines.id_typeline = Typelines.id'
 				],
 			]);
 			

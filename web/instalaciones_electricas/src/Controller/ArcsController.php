@@ -204,7 +204,7 @@ class ArcsController extends AppController
                 $this->Flash->error('Arc could not be deleted. Please, try again.');
             }
         }
-        return $this->redirect(['controller' => 'regions', 'action' => 'view', $arc->id_region_1]);
+        return $this->redirect(['controller' => 'arcs', 'action' => 'home']);
     }
 
 }
