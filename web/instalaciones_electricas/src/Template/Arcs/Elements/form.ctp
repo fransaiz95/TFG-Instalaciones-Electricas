@@ -24,6 +24,7 @@ if($action == 'edit'){
                 echo $this->Form->input(
                     'id_region_1', 
                     [
+                        'label' => __('Origin region'),
                         'type' => 'select',
                         'class' => 'js-example-basic-single',
                         'multiple' => false,
@@ -54,6 +55,7 @@ if($action == 'edit'){
             echo $this->Form->input(
                 'id_region_2', 
                 [
+                    'label' => __('Destination region'),
                     'type' => 'select',
                     'class' => 'js-example-basic-single',
                     'multiple' => false,

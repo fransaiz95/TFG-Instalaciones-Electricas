@@ -52,7 +52,22 @@ class ArcsTable extends Table {
 			]
 		]);
 
+		$validator->add('id_region_2',[
+			'id_region_2'=>[
+				'rule'=>[$this, 'not_equal_region_1'],
+			]
+		]);
+
         return $validator;
+	}
+
+	public function not_equal_region_1($value, $context){
+
+		if($value == $context['data']['id_region_1']){
+			return 'Destination region can\'t be the same as Origin region';
+		}else{
+			return true;
+		}
 	}
 
 	public function getQueryArcsWithRegions ($filters){
