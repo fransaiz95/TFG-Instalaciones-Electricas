@@ -42,6 +42,10 @@
     &.arcs:hover {
       background-color: $arcs-color;
     }
+    &.typelines:hover {
+      background-color: $typelines-color;
+    } 
+
 
     // .active-tab
     // {
@@ -50,23 +54,27 @@
 
   }
   .active-tab
-    {
-      &.regions {
-        background-color: $regions-color;
-      }
-      &.countries {
-        background-color: $countries-color;
-      }
-      &.fuels {
-        background-color: $fuels-color;
-      }
-      &.technologies {
-        background-color: $technologies-color;
-      }
-      &.arcs {
-        background-color: $arcs-color;
-      }
+  {
+    &.regions {
+      background-color: $regions-color;
     }
+    &.countries {
+      background-color: $countries-color;
+    }
+    &.fuels {
+      background-color: $fuels-color;
+    }
+    &.technologies {
+      background-color: $technologies-color;
+    }
+    &.arcs {
+      background-color: $arcs-color;
+    }
+    &.typelines {
+      background-color: $typelines-color;
+    } 
+
+  }
   img {
     max-width: 80px;
     max-height: 80px;

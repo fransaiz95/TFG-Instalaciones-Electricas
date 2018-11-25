@@ -29,6 +29,14 @@ class TypelinesTable extends Table {
     	->setForeignKey([ 'id_typeline' ]);
 	}
 
+	public function getQueryTypelines ($filters = array()){
+		$query = $this->find('all');
+        $query->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.new_line_cos', 'Typelines.man_lin_cos', 'Typelines.flo_cos', 'Typelines.new_lim_emp', 'Typelines.man_lim_emp', 'Typelines.flo_emp', 'Typelines.eff_lin']);
+		$query->where($filters);
+		
+		return $query;	
+	}
+
 	public function search_list (){
 		$query = $this->find('list', [
 			'keyField' => 'id',

@@ -97,6 +97,25 @@
                 <?php echo __('Arcs') ?>
             </div>
         </div>
+        <div class="large-4 medium-4 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/typelines.png',array('class'=>'')), 
+                array(
+                    'controller' => 'typelines',
+                    'action' => 'home'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'typelines',
+                    'title' => __('Typelines')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Typelines') ?>
+            </div>
+        </div>
 
     </div>
 
