@@ -16,7 +16,7 @@ class Technology extends Entity {
 	protected $_accessible = [
 		'id' => true,
 		'name' => true,
-		'renowable' => true,
+		'renewable' => true,
 		'wat_wit' => true,
 		'genco_pri' => true,
 		'cap' => true,

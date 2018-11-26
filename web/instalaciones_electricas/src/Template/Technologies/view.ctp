@@ -17,10 +17,10 @@
 
         <div class="large-4 medium-4 cell p-form">
             <span class="titles-view">
-                <?php echo __('Renowable:') ?>
+                <?php echo __('Renewable:') ?>
             </span>
             <?php 
-            echo ($technology['renowable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO'); ?>
+            echo ($technology['renewable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO'); ?>
         </div>
 
         <div class="large-4 medium-4 cell p-form">

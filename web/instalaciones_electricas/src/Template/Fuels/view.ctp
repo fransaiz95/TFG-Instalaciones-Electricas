@@ -49,7 +49,7 @@
                     <thead>
                         <tr class="table100-head">
                             <th class="p-left-1"><?php echo __('Name')?></th>
-                            <th class="ta-center"><?php echo __('Renowable') ?></th>
+                            <th class="ta-center"><?php echo __('Renewable') ?></th>
                             <th class="ta-center"><?php echo __('Power') ?></th>
                             <th class="ta-center"><?php echo __('Perc Con') ?></th>
                             <th class="ta-center"><?php echo __('Fue Con') ?></th>
@@ -61,7 +61,7 @@
                     foreach($fuels_technologies as $fuel_technology){ ?>
                         <tr>
                             <td class="p-left-1"><?php echo h($fuel_technology['Technology']['name']); ?></td>
-                            <td class="ta-center"><?php echo ($fuel_technology['Technology']['renowable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO') ?></td>
+                            <td class="ta-center"><?php echo ($fuel_technology['Technology']['renewable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO') ?></td>
                             <td class="ta-center"><?php echo h($fuel_technology['FuelsTechnology']['power']) ?></td>
                             <td class="ta-center"><?php echo h($fuel_technology['FuelsTechnology']['perc_con']) ?></td>
                             <td class="ta-center"><?php echo h($fuel_technology['FuelsTechnology']['fue_con']) ?></td>

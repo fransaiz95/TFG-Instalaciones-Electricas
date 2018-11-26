@@ -28,20 +28,20 @@ echo $this->Form->create(
         </div>
         <div class="large-2 p-1 input_field p-form">
             <?php echo $this->Form->input(
-                'is_renowable_yes',
+                'is_renewable_yes',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Renowable'),
+                    'label' => __('Renewable'),
                 )
             );
             ?>
         </div>
         <div class="large-2 p-1 input_field p-form">
             <?php echo $this->Form->input(
-                'is_renowable_no',
+                'is_renewable_no',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('No Renowable'),
+                    'label' => __('No Renewable'),
                 )
             );
             ?>

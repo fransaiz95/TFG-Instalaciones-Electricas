@@ -64,7 +64,7 @@ class FuelsTable extends Table {
 		$query = $this->find('all');
 		$query
 			->select(['Fuels.id', 'Fuels.name'])
-			->select(['Technology.id', 'Technology.name', 'Technology.renowable'])
+			->select(['Technology.id', 'Technology.name', 'Technology.renewable'])
 			->select(['FuelsTechnology.id_fuel', 'FuelsTechnology.id_technology', 'FuelsTechnology.power', 'FuelsTechnology.perc_con', 'FuelsTechnology.fue_con'])
 			->where([
 				'Fuels.id' => $id_fuel

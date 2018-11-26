@@ -6,7 +6,7 @@ use Cake\ORM\Entity;
 /**
  * RegionTechnology Entity.
  */
-class Rangerenowable extends Entity {
+class Rangerenewable extends Entity {
 
 	/**
 	 * Fields that can be mass assigned using newEntity() or patchEntity().

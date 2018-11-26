@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="grid-container" style="max-width: 80rem">
 
     <div class="grid-x grid-padding-x buttons-portal ta-center p-bottom-1">
 
@@ -114,6 +114,63 @@
             ?>
             <div class="large-12 medium-12 cell div-font">
                 <?php echo __('Typelines') ?>
+            </div>
+        </div>
+        <div class="large-4 medium-4 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/rangedemand.png',array('class'=>'')), 
+                array(
+                    'controller' => 'rangedemands',
+                    'action' => 'home'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'range',
+                    'title' => __('Range demands')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Range demands') ?>
+            </div>
+        </div>
+        <div class="large-4 medium-4 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/rangemeteos.png',array('class'=>'')), 
+                array(
+                    // 'controller' => 'rangemeteos',
+                    // 'action' => 'home'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'range',
+                    'title' => __('Range meteos')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Range meteos') ?>
+            </div>
+        </div>
+        <div class="large-4 medium-4 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/rangerenewable.png',array('class'=>'')), 
+                array(
+                    // 'controller' => 'rangerenewables',
+                    // 'action' => 'home'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'range',
+                    'title' => __('Range renewables')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Range renewables') ?>
             </div>
         </div>
 

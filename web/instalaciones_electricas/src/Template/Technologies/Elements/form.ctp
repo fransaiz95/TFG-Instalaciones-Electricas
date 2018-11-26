@@ -17,10 +17,10 @@
             <div class="large-4 p-1 p-form">
                 <?php
                 echo $this->Form->input(
-                    'renowable',
+                    'renewable',
                     array(
                         'type' => 'checkbox',
-                        'label' => __('Renowable')
+                        'label' => __('Renewable')
                     )
                 );
                 ?>

@@ -8,7 +8,7 @@ use Cake\Validation\Validator;
 /**
  * RegionsTechnology Model
  */
-class RangerenowablesTable extends Table {
+class RangerenewablesTable extends Table {
 
 /**
  * Initialize method
@@ -17,7 +17,7 @@ class RangerenowablesTable extends Table {
  * @return void
  */
 	public function initialize(array $config) {
-		$this->table('rangerenowables');
+		$this->table('rangerenewables');
 		$this->displayField('gen_Ava');
 		$this->primaryKey(['id_region', 'id_technology', 'start']);
 

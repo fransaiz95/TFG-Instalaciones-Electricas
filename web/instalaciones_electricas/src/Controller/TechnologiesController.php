@@ -19,23 +19,23 @@ class TechnologiesController extends AppController
     public function home(){
 
         $technology_name = (isset($_GET['technology_name'])) ? $_GET['technology_name'] : '';
-        $is_renowable_yes = (isset($_GET['is_renowable_yes'])) ? $_GET['is_renowable_yes'] : '';
-        $is_renowable_no = (isset($_GET['is_renowable_no'])) ? $_GET['is_renowable_no'] : '';
+        $is_renewable_yes = (isset($_GET['is_renewable_yes'])) ? $_GET['is_renewable_yes'] : '';
+        $is_renewable_no = (isset($_GET['is_renewable_no'])) ? $_GET['is_renewable_no'] : '';
 
         $filters = [];
 
         if( $technology_name != '' ){
             $filters['Technologies.name LIKE'] = '%' . $technology_name . '%';
         }
-        if( $is_renowable_yes == ConstantesBooleanas::SI ){
-            $filters['Technologies.renowable'] = ConstantesBooleanas::SI;
+        if( $is_renewable_yes == ConstantesBooleanas::SI ){
+            $filters['Technologies.renewable'] = ConstantesBooleanas::SI;
         }
-        if( $is_renowable_no == ConstantesBooleanas::SI ){
-            $filters['Technologies.renowable'] = ConstantesBooleanas::NO;
+        if( $is_renewable_no == ConstantesBooleanas::SI ){
+            $filters['Technologies.renewable'] = ConstantesBooleanas::NO;
         }
-        if( $is_renowable_yes == ConstantesBooleanas::SI && $is_renowable_no == ConstantesBooleanas::SI ){
-            // Así coge todas las renowables y no renowables.
-            unset($filters['Technologies.renowable']);
+        if( $is_renewable_yes == ConstantesBooleanas::SI && $is_renewable_no == ConstantesBooleanas::SI ){
+            // Así coge todas las renewables y no renewables.
+            unset($filters['Technologies.renewable']);
         }
 
         $query = $this->Technologies->getQueryTechnologies($filters);

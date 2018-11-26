@@ -45,6 +45,9 @@
     &.typelines:hover {
       background-color: $typelines-color;
     } 
+    &.range:hover {
+      background-color: $range-color;
+    } 
 
 
     // .active-tab
@@ -72,6 +75,9 @@
     }
     &.typelines {
       background-color: $typelines-color;
+    } 
+    &.range {
+      background-color: $range-color;
     } 
 
   }

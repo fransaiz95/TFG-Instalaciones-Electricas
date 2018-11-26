@@ -1,14 +1,14 @@
 .buttons-portal {
   div {
-    padding-top: 7%;
+    padding-top: 4%;
   }
   
   a {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     display: inline-block;
     position: relative;
-    line-height: 200px;
+    line-height: 168px;
     background-color: #d3d3d3;
     border-radius: 100px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 3px rgba(0, 0, 0, 0.1);
@@ -51,11 +51,14 @@
     &.typelines:hover {
       background-color: $typelines-color;
     } 
+    &.range:hover {
+      background-color: $range-color;
+    } 
 
   }
   img {
-    max-width: 165px;
-    max-height: 165px;
+    max-width: 140px;
+    max-height: 140px;
     display: inline-block;
     position: relative;
     background-color: #d3d3d3;
@@ -64,7 +67,7 @@
 }
 
 .div-font {
-  font-size: 35px;
+  font-size: 30px;
   font-family: Roboto;
   font-family: "Lucida Grande", Tahoma;
   color: black;

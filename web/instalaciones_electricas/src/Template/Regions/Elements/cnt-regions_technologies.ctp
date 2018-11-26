@@ -17,7 +17,7 @@
                     <thead>
                         <tr class="table100-head">
                             <th class="p-left-1"><?php echo __('Name')?></th>
-                            <th class="ta-center"><?php echo __('Renowable') ?></th>
+                            <th class="ta-center"><?php echo __('Renewable') ?></th>
                             <th class="ta-center"><?php echo __('Power') ?></th>
                             <th class="ta-center"><?php echo __('Cap Ava') ?></th>
                             <th class="actions"><?php echo __('Actions') ?></th>
@@ -28,7 +28,7 @@
                     foreach($region_technologies as $region_technology){ ?>
                         <tr>
                             <td class="p-left-1"><?php echo h($region_technology['Technology']['name']); ?></td>
-                            <td class="ta-center"><?php echo ($region_technology['Technology']['renowable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO') ?></td>
+                            <td class="ta-center"><?php echo ($region_technology['Technology']['renewable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO') ?></td>
                             <td class="ta-center"><?php echo h($region_technology['RegionTechnology']['power']) ?></td>
                             <td class="ta-center"><?php echo h($region_technology['RegionTechnology']['cap_ava']) ?></td>
                             <td class="actions">

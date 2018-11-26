@@ -217,3 +217,4 @@ if (Configure::read('debug')) {
 
 require_once CONFIG . 'constantes.php';
 
+Plugin::load('Josegonzalez/Upload');

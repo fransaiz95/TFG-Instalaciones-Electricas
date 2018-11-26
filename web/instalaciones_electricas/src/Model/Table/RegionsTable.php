@@ -33,6 +33,9 @@ class RegionsTable extends Table {
 		$this->hasMany('Arcs')
     	->setForeignKey([ 'id_region_1' ])
 		->setForeignKey([ 'id_region_2' ]);
+
+		$this->hasMany('Rangedemands')
+    	->setForeignKey([ 'id_region' ]);
 	}
 
 	/**
@@ -117,7 +120,7 @@ class RegionsTable extends Table {
 		$query = $this->find('all');
 		$query
 			->select(['Regions.id', 'Regions.name'])
-			->select(['Technology.id', 'Technology.name', 'Technology.renowable'])
+			->select(['Technology.id', 'Technology.name', 'Technology.renewable'])
 			->select(['RegionTechnology.id_region', 'RegionTechnology.id_technology', 'RegionTechnology.power', 'RegionTechnology.cap_ava'])
 			->where([
 				'Regions.id' => $id_region

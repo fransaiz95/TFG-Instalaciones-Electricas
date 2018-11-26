@@ -25,7 +25,7 @@
                     <thead>
                         <tr class="table100-head">
                             <th class="p-left-1"><?php echo $this->Paginator->sort('Technologies.name', __('Name')); ?></th>
-                            <th class="ta-center"><?php echo $this->Paginator->sort('Fuels.renowable', __('Renowable') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Fuels.renewable', __('Renewable') ); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -34,7 +34,7 @@
                     foreach ($technologies as $technology){ ?>
                         <tr>
                             <td class="p-left-1"><?php echo h($technology->name) ?></td>
-                            <td class="ta-center"><?php echo ($technology->renowable == ConstantesBooleanas::SI) ? __('YES') : __('NO'); ?></td>
+                            <td class="ta-center"><?php echo ($technology->renewable == ConstantesBooleanas::SI) ? __('YES') : __('NO'); ?></td>
                             <td class="actions">
                                 <?php
                                 echo $this->Html->link( 

@@ -57,17 +57,17 @@ class HomeController extends AppController
         // $regions_techs_tmp = $spreadsheet->setActiveSheetIndexByName('CapAva')->toArray(null, true, true, true);
         // $this->_load_region_tech($regions_techs_tmp, 'cap_ava');
 
-        // // Rangerenowables - GenAva
-        // $rangerenowables_tmp = $spreadsheet->setActiveSheetIndexByName('GenAva')->toArray(null, true, true, true);
+        // // Rangerenewables - GenAva
+        // $rangerenewables_tmp = $spreadsheet->setActiveSheetIndexByName('GenAva')->toArray(null, true, true, true);
         // $this->_load_region_tech($regions_techs_tmp, 'power');
 
         // // Arcs & arcs_typelines - ExiLin
         // $arcs_tmp = $spreadsheet->setActiveSheetIndexByName('ExiLin')->toArray(null, true, true, true);
         // $this->_load_arcs($arcs_tmp);
 
-        // rangedemands - Dem
-        $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
-        $this->_load_demands($demands_tmp);
+        // // rangedemands - Dem
+        // $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
+        // $this->_load_demands($demands_tmp);
     }
 
     private function _load_regions($regions_tmp){
@@ -120,7 +120,7 @@ class HomeController extends AppController
             $this->Technologies = TableRegistry::get('Technologies');
             $id = 1;
 
-            $technologies_renowables = [
+            $technologies_renewables = [
                 'WIND',
                 'HYDRO',
                 'PV'
@@ -132,7 +132,7 @@ class HomeController extends AppController
                     $technology_to_save = array(
                         'id' => $id,
                         'name' => $technology_tmp['A'],
-                        'renowable' => (in_array($technology_tmp['A'], $technologies_renowables)) ? ConstantesBooleanas::SI : ConstantesBooleanas::NO ,
+                        'renewable' => (in_array($technology_tmp['A'], $technologies_renewables)) ? ConstantesBooleanas::SI : ConstantesBooleanas::NO ,
                         'wat_wit' => $technology_tmp['P'],
                         'genco_pri' => $technology_tmp['AI'],
                         'cap' => $technology_tmp['B'],
