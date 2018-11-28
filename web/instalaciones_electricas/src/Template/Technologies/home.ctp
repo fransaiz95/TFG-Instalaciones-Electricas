@@ -1,3 +1,5 @@
+<?php echo $this->Html->script('technologies.js'); ?>
+
 <div class="grid-container p-1">
     <div class="grid-x grid-padding-x">
         <div class="large-10 cell ta-left">

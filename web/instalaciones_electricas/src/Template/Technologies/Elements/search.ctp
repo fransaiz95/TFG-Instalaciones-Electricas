@@ -31,6 +31,7 @@ echo $this->Form->create(
                 'is_renewable_yes',
                 array(
                     'type' => 'checkbox',
+                    'id' => 'renewable-js',
                     'label' => __('Renewable'),
                 )
             );
@@ -41,6 +42,7 @@ echo $this->Form->create(
                 'is_renewable_no',
                 array(
                     'type' => 'checkbox',
+                    'id' => 'no-renewable-js',
                     'label' => __('No Renewable'),
                 )
             );
