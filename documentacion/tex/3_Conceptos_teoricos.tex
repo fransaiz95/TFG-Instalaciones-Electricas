@@ -1,83 +1,57 @@
 \capitulo{3}{Conceptos teóricos}
 
-En aquellos proyectos que necesiten para su comprensión y desarrollo de unos conceptos teóricos de una determinada materia o de un determinado dominio de conocimiento, debe existir un apartado que sintetice dichos conceptos.
+Aunque el proyecto está enfocado a la administración a través de una aplicación web de unos datos que nos facilita el cliente, la base del proyecto se cimienta sobre un algoritmo de optimización capaz de proporcionarnos soluciones acerca de la mejor distribución de plantas energéticas en México. 
 
-Algunos conceptos teóricos de \LaTeX \footnote{Créditos a los proyectos de Álvaro López Cantero: Configurador de Presupuestos y Roberto Izquierdo Amo: PLQuiz}.
+La solución proporcionada viene de parte de un algoritmo multiobjetivo llamado NSGA-II\footnote{Nondominated Sorting Genetic Algorithm II}.
 
-\section{Secciones}
+\section{NSGA-II}
 
-Las secciones se incluyen con el comando section.
+Implementando esta solución, la meta a la que se quiere llegar es a encontrar un vector de variables x=(x1,x2,…xj) que cumpla con todas las restricciones y condiciones, donde las funciones objetivos resultantes sean optimizadas. \cite{pdf:algoritmo}
 
-\subsection{Subsecciones}
+Se denomina espacio de solución al conjunto de todas las combinaciones posibles. Es denotado mediante: fn(x)=z=(z1,z2,…zM). 
 
-Además de secciones tenemos subsecciones.
+La diferencia entre problemas de optimizacion monoobjetivo y multiobjetivo, es que en los primeros, una solución se considera mejor que otra si con ella se obtiene una solución objetivo de menor valor si estamos minimizando, o una solución de mayor valor si estamos maximizando.
 
-\subsubsection{Subsubsecciones}
+Sin embargo, en los problemas multiobjetivo, este criterio no es correcto pues entran en juego simultáneamente funciones de minimizar y de maximizar.
 
-Y subsecciones. 
-
-
-\section{Referencias}
-
-Las referencias se incluyen en el texto usando cite \cite{wiki:latex}. Para citar webs, artículos o libros \cite{koza92}.
-
-
-\section{Imágenes}
-
-Se pueden incluir imágenes con los comandos standard de \LaTeX, pero esta plantilla dispone de comandos propios como por ejemplo el siguiente:
-
-\imagen{escudoInfor}{Autómata para una expresión vacía}
-
-
-
-\section{Listas de items}
-
-Existen tres posibilidades:
+Para llegar a una solución, en los problemas multiobjetivo, se introduce un nuevo operador, dominancia. Que define: una solución 
+x(1) domina otra solución x(2) si se cumplen las siguientes condiciones. \cite{pdf:nsga-ii}
 
 \begin{itemize}
-	\item primer item.
-	\item segundo item.
+	\item La solución x(1) no siempre es de menor calidad que x(2) en todos los objetivos.
+	\item Al menos en uno de los objetivos, la solución x(1) es estrictamente mejor que x(2).
 \end{itemize}
+
+Utilizando estas reglas de manera iterativa sobre un conjunto de soluciones de un probloema de optimización multiobjetivo, se puede llegar a establecer cuales son las alternativas dominantes. Las conocemos como Conjunto No Dominado.
+El resto de soluciones pasan a formar parte del Conjunto de Soluciones Dominadas. 
+
+Logrando establecer este conjunto de Soluciones Dominantes en un espacio objetivo, podemos hablar de Frente óptimo de Pareto.(2)
+
+\imagen{/conceptosTeoricos/frentePareto}{Frente de pareto en un problema de minimización.\cite{img:frente_pareto}}
+
+\subsection{Pseudocódigo NSGA-II \cite{pdf:nsga-ii}}
 
 \begin{enumerate}
-	\item primer item.
-	\item segundo item.
+	\item Generar una población P de tamaño N. 
+	\item Identificar los frentes de dominancia y evaluar las 
+	distancias de apilamiento en cada frente. 
+	\item Usando selección (<c)\footnote{Selección por torneo según operador de 
+		apilamiento. La selección retorna la solución ganadora i basándose en 
+		dos criterios fundamentales.  
+		\begin{itemize}
+			\item Si tiene mejor rango: ri<rj.
+			\item Si tienen el mismo rango pero i tiene mejor distancia de apilamiento: di>d.
+		\end{itemize}
+	}, cruzamiento y mutación se 
+	genera una población descendiente del mismo 
+	tamaño de P.  	
+	\item Reunir Padres e hijos en un conjunto de tamaño 2N y 
+	clasificar los frentes de dominancia. 
+	\item Determinar el conjunto descendiente final 
+	seleccionando los frentes de mejor rango. Si se 
+	supera el límite de población N, eliminar las 
+	soluciones con menor distancia de apilamiento en el 
+	último frente seleccionado. 
+	\item Sí se cumple el criterio de convergencia, Fin del 
+	proceso. De lo contrario retornar al paso 3.
 \end{enumerate}
-
-\begin{description}
-	\item[Primer item] más información sobre el primer item.
-	\item[Segundo item] más información sobre el segundo item.
-\end{description}
-	
-\begin{itemize}
-\item 
-\end{itemize}
-
-\section{Tablas}
-
-Igualmente se pueden usar los comandos específicos de \LaTeX o bien usar alguno de los comandos de la plantilla.
-
-\tablaSmall{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{herramientasportipodeuso}
-{ \multicolumn{1}{l}{Herramientas} & App AngularJS & API REST & BD & Memoria \\}{ 
-HTML5 & X & & &\\
-CSS3 & X & & &\\
-BOOTSTRAP & X & & &\\
-JavaScript & X & & &\\
-AngularJS & X & & &\\
-Bower & X & & &\\
-PHP & & X & &\\
-Karma + Jasmine & X & & &\\
-Slim framework & & X & &\\
-Idiorm & & X & &\\
-Composer & & X & &\\
-JSON & X & X & &\\
-PhpStorm & X & X & &\\
-MySQL & & & X &\\
-PhpMyAdmin & & & X &\\
-Git + BitBucket & X & X & X & X\\
-Mik\TeX{} & & & & X\\
-\TeX{}Maker & & & & X\\
-Astah & & & & X\\
-Balsamiq Mockups & X & & &\\
-VersionOne & X & X & X & X\\
-} 
