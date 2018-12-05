@@ -35,21 +35,36 @@ ZenHub es una plataforma de gestión de proyectos que se integra en Git-Hub, ins
 
 Es una herramienta muy cómoda y visual, ya que permite administrar todos los elementos comentados anteriormente característicos de la metodología SCRUM. Destacar que ZenHub llama a los \textit{sprints}, \textit{milestones}. El resto de nomenclatura es igual.
 
-En la figura 4.2 tenemos presentes las diferentes columnas del tablero. Siendo de gran utilidad para clasificar diferenciar por \textit{milestones}, cada \textit{issue}.
+En la figura \ref{fig:ZenHub} tenemos presentes las diferentes columnas del tablero. Siendo de gran utilidad para clasificar diferenciar por \textit{milestones}, cada \textit{issue}.
 
-\imagen{/conceptosTeoricos/ZenHub}{Ejemplo de nuestro tablero en ZenHub.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\textwidth]{/conceptosTeoricos/ZenHub}
+	\caption{Ejemplo de nuestro tablero en \textit{ZenHub}.}
+	\label{fig:ZenHub}
+\end{figure}
 
 \subsection{Control de versiones}
 
-Como repositorio y control de versiones, hemos elegido Git a través de la herramienta GitHub (fugura XX) \footnote{Software de código abierto y gratuito que permite un control de versiones a través de ramas (\textit{branchs}) en las que cada usuario puede editar y publicar cambios.}
+Como repositorio y control de versiones, hemos elegido \textit{Git} a través de la herramienta \textit{GitHub}\footnote{Software de código abierto y gratuito que permite un control de versiones a través de ramas (\textit{branchs}) en las que cada usuario puede editar y publicar cambios.} (figura \ref{fig:github})
 
-\imagen{/conceptosTeoricos/github}{Logo de GitHub.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{/conceptosTeoricos/github}
+	\caption{Logo de GitHub.}
+	\label{fig:github}
+\end{figure}
 
 GitHub es una plataforma online basada en Git, que permite la creación de repositorios tanto públicos como privados en los que posteriormente un equipo puede alojar su trabajo.
 
-Además, GitHub ofrece una version para escritorio (\textit{GitHub Desktop}) con la que poder realizar subidas y bajadas (\textit{push - pull}) directamente desde el escritorio. Nosotros, en cambio hemos utilizado \textit{Sourcetree} (figura XX). Un cliente Git que proporciona una interfaz amigable para interactuar con nuestros repositorios. Pertenece a la empresa \textit{Atlassian.}
+Además, GitHub ofrece una version para escritorio (\textit{GitHub Desktop}) con la que poder realizar subidas y bajadas (\textit{push - pull}) directamente desde el escritorio. Nosotros, en cambio hemos utilizado \textit{Sourcetree} (figura \ref{fig:sourcetree}). Un cliente Git que proporciona una interfaz amigable para interactuar con nuestros repositorios. Pertenece a la empresa \textit{Atlassian.}
 
-\imagen{/conceptosTeoricos/sourcetree}{Logo de Sourcetree.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{/conceptosTeoricos/sourcetree}
+	\caption{Logo de Sourcetree.}
+	\label{fig:sourcetree}
+\end{figure}
 
 \newpage
 
@@ -63,21 +78,31 @@ Para ello necesitamos de la siguiente herramienta.
 
 \subsection{XAMPP}
 
-XAMPP (figura XX) es un paquete de software libre que consiste principalmente en el sistema de gestión de bases de datos MySQL, el servidor web Apache e intérpretes para lenguajes PHP y Perl. \cite{wiki:xampp}
+XAMPP (figura \ref{fig:xampp}) es un paquete de software libre que consiste principalmente en el sistema de gestión de bases de datos MySQL, el servidor web Apache e intérpretes para lenguajes PHP y Perl. \cite{wiki:xampp}
 
 La ventaja de utilizar esta herramienta es que te ahorras el tiempo y la dificultad de configuración de cada uno de los servicios por separado. 
 
-\imagen{/conceptosTeoricos/xampp}{Logo de XAMPP.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/xampp}
+	\caption{Logo de XAMPP.}
+	\label{fig:xampp}
+\end{figure}
 
 \subsection{HeidiSQL}
 
-Aunque XAMPP trae consigo el servicio phpMyAdmin para gestionar las bases de datos MySQL, nosotros hemos decidido utilizar \textit{HeidiSQL} (figura XX) ya que tiene una interfaz más amigable y permite más opciones.
+Aunque XAMPP trae consigo el servicio phpMyAdmin para gestionar las bases de datos MySQL, nosotros hemos decidido utilizar \textit{HeidiSQL} (figura \ref{fig:heidisql}) ya que tiene una interfaz más amigable y permite más opciones.
 
 HeidiSQL es un software libre de código abierto que nos da la facilidad de conectarnos a servidores MySQL.
 
 Para administrar las bases de datos con esta herramienta, el usuario tiene que iniciar sesión en un servidor MySQL local o remoto. 
 
-\imagen{/conceptosTeoricos/heidisql}{Logo de HeidiSQL.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/heidisql}
+	\caption{Logo de HeidiSQL.}
+	\label{fig:heidisql}
+\end{figure}
 
 \subsection{Filezilla}
 
@@ -85,15 +110,25 @@ Una vez que tenemos nuestro entorno de desarrollo en local, es común necesitar 
 
 Tras establecer la conexión con el servidor, el manejo de los archivos y la navegación ente los directorios es fácil e intuitiva. Además, permite arrastrar y soltar, lo que facilita su uso.
 
-\imagen{/conceptosTeoricos/filezilla}{Logo de Filezilla.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/filezilla}
+	\caption{Logo de Filezilla.}
+	\label{fig:filezilla}
+\end{figure}
 
 \subsection{Visual Studio Code}
 
-Visual Studio Code (figura XX) es un editor de código fuente desarrollado por Microsoft. Al incluir control integrado de Git, hace que el resultado y el control de versiones de nuestro código sea más manejable.
+Visual Studio Code (figura \ref{fig:vscode}) es un editor de código fuente desarrollado por Microsoft. Al incluir control integrado de Git, hace que el resultado y el control de versiones de nuestro código sea más manejable.
 
 No es un IDE como tal pero gracias a numerosas extensiones hace que el trato con el sea mucho más satisfactorio. Acepta extensiones para hacer más facil la lectura de los lenguajes PHP, HTML, CSS y Javascript. 
 
-\imagen{/conceptosTeoricos/vscode}{Logo de Visual Studio Code.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/vscode}
+	\caption{Logo de Visual Studio Code.}
+	\label{fig:vscode}
+\end{figure}
 
 \subsection{Prepros}
 
@@ -101,30 +136,40 @@ No es un IDE como tal pero gracias a numerosas extensiones hace que el trato con
 
 Además, en mi caso, lo utilizo como compilador de archivos \textit{*.scss} a \textit{*.css} pues el desarrollo lo hago en Sass que aunque es parecido a CSS, no es igual. Posteriormente compilo mi estructura de archivos \textit{*.scss} en un *.css general que utiliza la web.
 
-Para una correcta estructuración de la hoja de estilos, en la figura XX podemos ver como se ha llevado a cabo.
+Para una correcta estructuración de la hoja de estilos, en la figura \ref{fig:scss} podemos ver como se ha llevado a cabo.
 Tenemos un directorio con cada uno de los archivos \textit{.scss} que se agrupan en un \textit{estilos.scss} que a su vez, siendo compilado con el \textit{Prepros}, genera un \textit{estilos.css}. Este archivo es de donde se nutre la aplicación web.
 
-\imagen{/conceptosTeoricos/scss}{Estructura de directorios de la hoja de estilos.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.3\textwidth]{/conceptosTeoricos/scss}
+	\caption{Estructura de directorios de la hoja de estilos.}
+	\label{fig:scss}
+\end{figure}
 
 \newpage
 
 \section{Frameworks }
 
-A continuación, iremos mencionando los diferentes \textit{frameworks \footnote{Entorno de trabajo.}} que tras integrarlos entre si, han hecho posible el desarrollo del proyecto.
+A continuación, iremos mencionando los diferentes\textit{frameworks \footnote{Entorno de trabajo.}} que tras integrarlos entre si, han hecho posible el desarrollo del proyecto.
 
 \subsection{CakePHP}
 
-\textit{CakePHP}\cite{web:cakephp} es un \textit{framework} que "facilita" el desarrollo de aplicaciones web en PHP, utilizando el patrón de diseño MVC\footnote{Modelo Vista Controlador}. \cite{wiki:cakephp}
+\textit{CakePHP}\cite{web:cakephp} es un \textit{framework} que facilita el desarrollo de aplicaciones web en PHP, utilizando el patrón de diseño MVC\footnote{Modelo Vista Controlador}. \cite{wiki:cakephp}
 
 Facilita alguna ayuda para integrar \textit{Ajax}\footnote{Asynchronous JavaScript And XML (JavaScript asíncrono y XML), es una técnica de desarrollo web para crear aplicaciones interactivas. \cite{wiki:ajax}}, Javascript, formularios... por lo que hace de su uso una herramienta interesante.
 
 Además, vienen incluidos componentes de seguridad y de sesión que para una aplicación web siempre son interesantes.
 
-En cuanto al Modelo Vista Controlador (figura XX), es un patrón de arquitectura de software que separa por una parte los datos y la lógica de una aplicación y por otra, la interfaz de usuario y el módulo encargado de gestionar los eventos y las comunicaciones. 
+En cuanto al Modelo Vista Controlador (figura \ref{fig:mvc}), es un patrón de arquitectura de software que separa por una parte los datos y la lógica de una aplicación y por otra, la interfaz de usuario y el módulo encargado de gestionar los eventos y las comunicaciones. 
 
 Separar las funciones de la aplicación en modelos, vistas y controladores hace que la aplicación sea mucho más ligera.
 
-\imagen{/conceptosTeoricos/mvc}{Ejemplo de arquitectura MVC.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.9\textwidth]{/conceptosTeoricos/mvc}
+	\caption{Ejemplo de arquitectura MVC.}
+	\label{fig:mvc}
+\end{figure}
 
 \subsection{Zurb Foundation}
 
@@ -143,5 +188,10 @@ Separar las funciones de la aplicación en modelos, vistas y controladores hace 
 
 La competencia más directa de \textit{Foundation} como \textit{framework de CSS}, es \textit{Bootstrap}. Aunque en nuestra aplicación hemos usado \textit{Foundation}, cabe destacar que \textit{Bootstrap} ofrece unos servicios parecidos y quizá más amplios pues la comunidad de usuarios es mayor.
 
-\imagen{/conceptosTeoricos/foundation}{Logo de Zurb Foundation.}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{/conceptosTeoricos/foundation}
+	\caption{Logo de Zurb Foundation.}
+	\label{fig:foundation}
+\end{figure}
 
