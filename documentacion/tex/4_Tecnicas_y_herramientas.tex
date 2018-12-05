@@ -50,3 +50,48 @@ GitHub es una plataforma online basada en Git, que permite la creación de repos
 Además, GitHub ofrece una version para escritorio (\textit{GitHub Desktop}) con la que poder realizar subidas y bajadas (\textit{push - pull}) directamente desde el escritorio. Nosotros, en cambio hemos utilizado \textit{Sourcetree} (figura XX). Un cliente Git que proporciona una interfaz amigable para interactuar con nuestros repositorios. Pertenece a la empresa \textit{Atlassian.}
 
 \imagen{/conceptosTeoricos/sourcetree}{Logo de Sourcetree.}
+
+\newpage
+
+\section{Entorno de desarrollo}
+
+Puesto que el objetivo principal del proyecto es construir una aplicación web dando soporte al cliente a que pueda cubrir sus necesidades, necesitamos un sitio donde alojar la aplicación. 
+
+Antes de contratar ningún servicio externo, empezamos a desarrollar la aplicación en nuestro entorno local. 
+
+Para ello necesitamos de la siguiente herramienta.
+
+\subsection{XAMPP}
+
+XAMPP (figura XX) es un paquete de software libre que consiste principalmente en el sistema de gestión de bases de datos MySQL, el servidor web Apache e intérpretes para lenguajes PHP y Perl. \cite{wiki:xampp}
+
+La ventaja de utilizar esta herramienta es que te ahorras el tiempo y la dificultad de configuración de cada uno de los servicios por separado. 
+
+\imagen{/conceptosTeoricos/xampp}{Logo de XAMPP.}
+
+\subsection{HeidiSQL}
+
+Aunque XAMPP trae consigo el servicio phpMyAdmin para gestionar las bases de datos MySQL, nosotros hemos decidido utilizar \textit{HeidiSQL} (figura XX) ya que tiene una interfaz más amigable y permite más opciones.
+
+HeidiSQL es un software libre de código abierto que nos da la facilidad de conectarnos a servidores MySQL.
+
+Para administrar las bases de datos con esta herramienta, el usuario tiene que iniciar sesión en un servidor MySQL local o remoto. 
+
+\imagen{/conceptosTeoricos/heidisql}{Logo de HeidiSQL.}
+
+\subsection{Filezilla}
+
+Una vez que tenemos nuestro entorno de desarrollo en local, es común necesitar un servidor externo donde alojar tu aplicación. Para transferir los archivos al servidor, utilizamos Filezilla. Un gestor FTP de código abierto y software libre.
+
+Tras establecer la conexión con el servidor, el manejo de los archivos y la navegación ente los directorios es fácil e intuitiva. Además, permite arrastrar y soltar, lo que facilita su uso.
+
+\imagen{/conceptosTeoricos/filezilla}{Logo de Filezilla.}
+
+\subsection{Visual Studio Code}
+
+Visual Studio Code (figura XX) es un editor de código fuente desarrollado por Microsoft. Al incluir control integrado de Git, hace que el resultado y el control de versiones de nuestro código sea más manejable.
+
+No es un IDE como tal pero gracias a numerosas extensiones hace que el trato con el sea mucho más satisfactorio. Acepta extensiones para hacer más facil la lectura de los lenguajes PHP, HTML, CSS y Javascript. 
+
+\imagen{/conceptosTeoricos/vscode}{Logo de Visual Studio Code.}
+
