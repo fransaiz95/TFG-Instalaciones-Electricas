@@ -1,6 +1,52 @@
 \capitulo{4}{Técnicas y herramientas}
 
-Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
-No se pretende que este apartado se convierta en un capítulo de un libro dedicado a cada una de las alternativas, sino comentar los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.
+Para el desarrollo del proyecto y para lograr alcanzar tanto los objetivos académicos como personales propuestos anteriormente, he considerado de utilidad las siguientes herramientas.
 
+\section{Gestión del proyecto y control de versiones}
 
+\subsection{Gestión del proyecto}
+
+A la hora de gestionar un proyecto, podemos clasificar el método usado para su gestión en dos grandes grupos: Metodología tradicional y metodología ágil.
+
+Analizando las diferencias entre ellas podemos afirmar:
+
+\begin{itemize}
+	\item En la metodología tradicional, esta presente la figura de un Project Manager que basa sus conocimientos en el PMBoK\footnote{Libro donde se recogen técnicas y acciones a llevar a cabo dentro de un proyecto para obtener un resultado próspero.}.
+	\item La metodología tradicional se centra en un enfoque proactivo y predictivo. Busca desde los orígenes del proyecto definir todo lo definible antes de empezar, anticiparse a cualquier cambio, buscar proyección, es decir, dar un alcance lo más completo posible y ajustar el coste al máximo.
+	
+	\item La metodología ágil surge como necesidad del cliente a proyectos no muy grandes. No existe una necesidad por parte del cliente de una planificación inicial exhaustiva, sino que necesita un producto en un espacio corto de tiempo y no hay tiempo para grandes planificaciones.
+	\item Es probable que el producto demandado por el cliente en un principio, sea diferente del demandado a final del proyecto. Esto se debe al continuo cambio sobretodo en el mundo de las TIC. El cliente sabe que necesita pero desconoce como se va a concretar a X días vista
+\end{itemize}
+
+Estando delante de un proyecto no muy grande y aprovechando los conocimientos recibidos en el grado, hemos decidido utilizar metodología ágil para gestionar nuestro proyecto.
+
+\subsubsection{SCRUM}
+
+SCRUM\footnote{No son siglas. Su significado viene de la palabra melé. Jugada de rugby en la que 
+	jugadores de ambos equipos se agrupan en una formación en la cual lucharán por obtener el balón que se introduce por el centro. \cite{web:scrum_origen}} es uno de los métodos ágiles más extendidos. Se trata de un método incremental e iterativo que divide el desarrollo del producto en ciclos llamados \textit{sprints}.
+
+Al inicio de cada \textit{sprint}, se realiza una reunión entre todos los integrantes del proyecto donde se definen los objetivos y requisitos de cada ciclo. Cada una de esas tareas se denomina \textit{issues}.
+
+Este tipo de metodología ha sido muy eficiente en el desarrollo. Una de las ventajas que nos ha proporcionado, ha sido la capacidad de reaccionar ante los cambios. En cada \textit{sprint}, ir creando especificaciones y requerimientos nuevos.
+
+\subsubsection{ZenHub}
+
+ZenHub es una plataforma de gestión de proyectos que se integra en Git-Hub, instalándose en el navegador mediante una extensión \footnote{Podemos descargarlo en https://www.zenhub.com/}.
+
+Es una herramienta muy cómoda y visual, ya que permite administrar todos los elementos comentados anteriormente característicos de la metodología SCRUM. Destacar que ZenHub llama a los \textit{sprints}, \textit{milestones}. El resto de nomenclatura es igual.
+
+En la figura 4.2 tenemos presentes las diferentes columnas del tablero. Siendo de gran utilidad para clasificar diferenciar por \textit{milestones}, cada \textit{issue}.
+
+\imagen{/conceptosTeoricos/ZenHub}{Ejemplo de nuestro tablero en ZenHub.}
+
+\subsection{Control de versiones}
+
+Como repositorio y control de versiones, hemos elegido Git a través de la herramienta GitHub (fugura XX) \footnote{Software de código abierto y gratuito que permite un control de versiones a través de ramas (\textit{branchs}) en las que cada usuario puede editar y publicar cambios.}
+
+\imagen{/conceptosTeoricos/github}{Logo de GitHub.}
+
+GitHub es una plataforma online basada en Git, que permite la creación de repositorios tanto públicos como privados en los que posteriormente un equipo puede alojar su trabajo.
+
+Además, GitHub ofrece una version para escritorio (\textit{GitHub Desktop}) con la que poder realizar subidas y bajadas (\textit{push - pull}) directamente desde el escritorio. Nosotros, en cambio hemos utilizado \textit{Sourcetree} (figura XX). Un cliente Git que proporciona una interfaz amigable para interactuar con nuestros repositorios. Pertenece a la empresa \textit{Atlassian.}
+
+\imagen{/conceptosTeoricos/sourcetree}{Logo de Sourcetree.}
