@@ -95,3 +95,53 @@ No es un IDE como tal pero gracias a numerosas extensiones hace que el trato con
 
 \imagen{/conceptosTeoricos/vscode}{Logo de Visual Studio Code.}
 
+\subsection{Prepros}
+
+\textit{Prepros} es una herramienta completa para desarrollo front-end\footnote{La parte del software que interactúa con los usuarios.}. Se trata de un compendio de funcionalidades que abarcan desde el desarrollo con lenguajes como CSS o Javascript, a la optimización de imágenes.
+
+Además, en mi caso, lo utilizo como compilador de archivos \textit{*.scss} a \textit{*.css} pues el desarrollo lo hago en Sass que aunque es parecido a CSS, no es igual. Posteriormente compilo mi estructura de archivos \textit{*.scss} en un *.css general que utiliza la web.
+
+Para una correcta estructuración de la hoja de estilos, en la figura XX podemos ver como se ha llevado a cabo.
+Tenemos un directorio con cada uno de los archivos \textit{.scss} que se agrupan en un \textit{estilos.scss} que a su vez, siendo compilado con el \textit{Prepros}, genera un \textit{estilos.css}. Este archivo es de donde se nutre la aplicación web.
+
+\imagen{/conceptosTeoricos/scss}{Estructura de directorios de la hoja de estilos.}
+
+\newpage
+
+\section{Frameworks }
+
+A continuación, iremos mencionando los diferentes \textit{frameworks \footnote{Entorno de trabajo.}} que tras integrarlos entre si, han hecho posible el desarrollo del proyecto.
+
+\subsection{CakePHP}
+
+\textit{CakePHP}\cite{web:cakephp} es un \textit{framework} que "facilita" el desarrollo de aplicaciones web en PHP, utilizando el patrón de diseño MVC\footnote{Modelo Vista Controlador}. \cite{wiki:cakephp}
+
+Facilita alguna ayuda para integrar \textit{Ajax}\footnote{Asynchronous JavaScript And XML (JavaScript asíncrono y XML), es una técnica de desarrollo web para crear aplicaciones interactivas. \cite{wiki:ajax}}, Javascript, formularios... por lo que hace de su uso una herramienta interesante.
+
+Además, vienen incluidos componentes de seguridad y de sesión que para una aplicación web siempre son interesantes.
+
+En cuanto al Modelo Vista Controlador (figura XX), es un patrón de arquitectura de software que separa por una parte los datos y la lógica de una aplicación y por otra, la interfaz de usuario y el módulo encargado de gestionar los eventos y las comunicaciones. 
+
+Separar las funciones de la aplicación en modelos, vistas y controladores hace que la aplicación sea mucho más ligera.
+
+\imagen{/conceptosTeoricos/mvc}{Ejemplo de arquitectura MVC.}
+
+\subsection{Zurb Foundation}
+
+\textit{Foundation\cite{web:foundation}} (figura XX) es un \textit{framework} de interfaz de usuario. Proporciona una cuadrícula responsive e incluye diferentes componentes:
+\begin{itemize}
+	\item Interfaz de usuario HTML y CSS.
+	\item Plantillas
+	\item Fragmentos de código reutilizables
+	\item Tipografías
+	\item Formularios
+	\item Botones, barras de navegación y otros componentes de interfaz usuario
+	\item Extensiones de Javascript opcionales
+\end{itemize}
+
+\textit{Foundation} está mantenida por zurb.com y es un proyecto de código abierto.
+
+La competencia más directa de \textit{Foundation} como \textit{framework de CSS}, es \textit{Bootstrap}. Aunque en nuestra aplicación hemos usado \textit{Foundation}, cabe destacar que \textit{Bootstrap} ofrece unos servicios parecidos y quizá más amplios pues la comunidad de usuarios es mayor.
+
+\imagen{/conceptosTeoricos/foundation}{Logo de Zurb Foundation.}
+
