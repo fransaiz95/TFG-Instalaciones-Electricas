@@ -22,6 +22,7 @@ class RangedemandsController extends AppController
         ini_set('memory_limit', '-1');
         set_time_limit(0); 
 
+        //Para pasarselo al formulario.
         $rangedemands = $this->Rangedemands->newEntity();
 
         if ($this->request->is('post')) {
@@ -38,14 +39,15 @@ class RangedemandsController extends AppController
     }
 
     private function _load_demands($demands_tmp){
-        ini_set('memory_limit', '-1');
-        set_time_limit(0); 
+        ini_set('memory_limit', '-1'); //Para usar toda la memoria que necesitemos.
+        set_time_limit(0); //Para usar todo el tiempo que necesitemos.
 
-        //Antes de insertar nada, borramos todo.
+        //Antes de insertar nada, borramos todo. (Aunque según dijimos, no habría que hacerlo).
         $this->Rangedemands->deleteAll(array());
 
+        //Del array cargado, eliminamos lo que serían las cabeceras.
         unset($demands_tmp[1]);
-        $header = $demands_tmp[2];
+        $header = $demands_tmp[2]; //Nos quedamos con la fila que tiene los ids de las regiones.
         unset($demands_tmp[2]);
         unset($demands_tmp[3]);
         
@@ -55,12 +57,16 @@ class RangedemandsController extends AppController
             $connection->begin();
             $error = false;
 
+            //Obtenemos una lista con todas nuestras regiones.
             $regions = $this->Rangedemands->Regions->find('list', [
                 'keyField' => 'id',
                 'valueField' => 'name'
             ])
             ->toArray();
 
+            // $connection->execute('LOCK TABLES rangedemands AS rangedemands WRITE;');
+
+            //Recorremos las filas del excel transformado en array.
             foreach($demands_tmp as $demand_tmp){
 
                 if($demand_tmp['A'] != null){
@@ -87,12 +93,14 @@ class RangedemandsController extends AppController
                                 'demand' => $demand_tmp[$letter]
                             ];
 
+                            //Creamos la entidad para guardarla
                             $rangedemand = $this->Rangedemands->newEntity();
                             $rangedemand = $this->Rangedemands->patchEntity($rangedemand, $rangedemand_to_save);
                             $rangedemand_bd = $this->Rangedemands->save($rangedemand);
-                            $connection->commit();
+                            
                             if(!$rangedemand_bd){
                                 $error = true;
+                                debug('here1!');Exit;
                                 $connection->rollback();
                                 $this->Rangedemands->deleteAll();
                             }
@@ -104,13 +112,19 @@ class RangedemandsController extends AppController
 
             if($error == false){
                 $connection->commit();
+
+                // execute query 
+                // $connection->execute('UNLOCK TABLES');
+
                 return $this->redirect(['action' => 'home']);
             }else{
-                $this->Rangedemands->deleteAll();
-                $connection->commit();
+                debug('here2!');Exit;
+                $connection->rollback();
+                $this->Rangedemands->deleteAll(); //Tampoco habría que hacerlo.
             }
 
         } catch(\Cake\ORM\Exception\PersistenceFailedException $e) {
+            debug('here3!');Exit;
             $connection->rollback();
         }
 

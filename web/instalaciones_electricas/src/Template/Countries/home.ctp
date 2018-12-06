@@ -60,7 +60,7 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
                                     [
                                         'controller' => 'countries',
@@ -69,8 +69,19 @@
                                     ], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete fuel: {0}?', $country->name)
+                                        'data-title' => __('Are you sure you want to delete country: {0}?', $country->name),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'countries',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'countries',
+                                            'action' => 'home', 
+                                        ], true),
+                                        'data-id' => $country->id
                                     ]
                                 );
                                 ?>

@@ -31,6 +31,12 @@
     <link href="https://unpkg.com/ionicons@4.4.6/dist/css/ionicons.min.css" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@4.4.6/dist/ionicons.js"></script>
 
+    <?php
+    //Sweet alert 2
+    echo $this->Html->script('lib/sweetalert2/sweetalert2.all.js');
+    echo $this->Html->script('lib/sweetalert2/promise.min.js');
+    ?>
+
     <?php echo $this->Html->script('app-script.js'); ?>
 </head>
 

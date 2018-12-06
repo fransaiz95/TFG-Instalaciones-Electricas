@@ -120,16 +120,27 @@ class CountriesController extends AppController
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete(){
+
+        $id_country = $this->request->data['id'];
         if(!$this->request->is('get')){
-            $country = $this->Countries->get($id);
-            if ($this->Countries->delete($country)) {
-                $this->Flash->success('Country has been deleted.');
-            } else {
-                $this->Flash->error('Country could not be deleted. Please, try again.');
+
+            $country = $this->Countries->get($id_country);
+
+            //Comprobamos si esta asociado con alguna otra entidad.
+            $regions = $this->Countries->Regions->findByIdCountry($id_country)->toArray();
+            if(empty($regions)){
+                if ($this->Countries->delete($country)) {
+                    echo 'OK';
+                } else {
+                    echo __('An error has occurred while we were deleting the country.');
+                }
+            }else{
+                echo __('An error was ocurred. The country is associated with a region.');
             }
+            
+            $this->autoRender = false;
         }
-        return $this->redirect(['action' => 'home']);
+
     }
 }
