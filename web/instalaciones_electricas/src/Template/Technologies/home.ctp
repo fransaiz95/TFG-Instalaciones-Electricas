@@ -64,17 +64,24 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'technologies',
-                                        'action' => 'delete', 
-                                        $technology->id
-                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete technology: {0}?', $technology->name)
+                                        'data-title' => __('Are you sure you want to delete technology: {0}?', $technology->name),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'technologies',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'technologies',
+                                            'action' => 'home', 
+                                        ], true),
+                                        'data-id' => $technology->id
                                     ]
                                 );
                                 ?>

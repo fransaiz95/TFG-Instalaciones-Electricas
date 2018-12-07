@@ -116,17 +116,17 @@ class TechnologiesController extends AppController
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id_technology)
-    {
+    public function delete(){
+        $id_technology = $this->request->data['id'];
         if(!$this->request->is('get')){
             $technology = $this->Technologies->get($id_technology);
             if ($this->Technologies->delete($technology)) {
-                $this->Flash->success('Technology has been deleted.');
+                echo 'OK';
             } else {
-                $this->Flash->error('Technology could not be deleted. Please, try again.');
+                echo __('An error has occurred while we were deleting this fuel.');
             }
         }
-        return $this->redirect(['action' => 'home']);
+        $this->autoRender = false;
     }
 
 }
