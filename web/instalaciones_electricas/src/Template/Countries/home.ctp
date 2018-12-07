@@ -62,11 +62,7 @@
                                 );
                                 echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'countries',
-                                        'action' => 'delete', 
-                                        $country->id
-                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
                                         'class' => 'delete-js',

@@ -125,6 +125,7 @@ class ArcsController extends AppController
             $connection = ConnectionManager::get('default');
             $connection->begin();
 
+
             $arc_with_regions = $this->Arcs->patchEntity($arc_with_regions, $this->request->data);
             $arc_bd = $this->Arcs->save($arc_with_regions);
             $error = false;
@@ -132,41 +133,53 @@ class ArcsController extends AppController
             if ($arc_bd) {
 
                 $create = false;
+                $typeline_empty = false;
 
                 $typeline_recived = $arc_with_regions['ArcsTypelines']['id_typeline'];
 
                 // Si el typeline recibido es diferente al que teníamos y veníamos de tener algo, borramos si existe y añadimos el nuevo mas adelante.
                 if( !empty(array_filter($arc_with_regions['ArcsTypelines'])) && $this->request->data['Typelines']['id'] != $typeline_recived ){
+
                     $arc_typeline = $this->Arcs->ArcsTypelines->get([$arc_id, $arc_with_regions['ArcsTypelines']['id_typeline']]);
-                    $arc_typeline['ArcsTypelines']['id_typeline'] = $this->request->data['Typelines']['id'];
-                    //Calculamos la entidad para borrarla
-                    $tmp = $this->Arcs->ArcsTypelines->delete($arc_typeline);
+                    if($this->request->data['Typelines']['id'] == ''){
+                        //Si nos viene vacío el typeline para un arco concreto, borramos la relación existente entre ese arco y el typeline anterior.
+                        $tmp = $this->Arcs->ArcsTypelines->delete($arc_typeline);
+
+                        $typeline_empty = true;
+                    }
+
                     $create = true;
                 }
 
-                $arc_typeline['id_typeline'] = intval($this->request->data['Typelines']['id']);
-                $arc_typeline['num_lines'] = $this->request->data['ArcsTypelines']['num_lines'];
+                //Si nos llega vacío, una vez borrado el arc_typeline existente, no hacemos más
+                if($typeline_empty == false){
 
-                if($create == true){
-                    $entity = $this->Arcs->ArcsTypelines->newEntity();
-                    $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($arc_typeline, $arc_typeline->toArray());
-                    $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline->toArray());
-                }else{
-                    //Si viene vacio, es decir, no hay creado ningún arc_typeline, lo creamos
-                    if( empty(array_filter($arc_with_regions['ArcsTypelines'])) ){
+                    $arc_typeline['id_typeline'] = intval($this->request->data['Typelines']['id']);
+                    $arc_typeline['num_lines'] = $this->request->data['ArcsTypelines']['num_lines'];
+
+                    // debug($this->request->data);Exit;
+                    if($create == true){
                         $entity = $this->Arcs->ArcsTypelines->newEntity();
-                        $arc_typeline['id_arc'] = $arc_id;
-                        $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline);
+                        $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($arc_typeline, $arc_typeline->toArray());
+                        $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline->toArray());
                     }else{
-                        $entity = $this->Arcs->ArcsTypelines->get([$arc_id, $arc_with_regions['ArcsTypelines']['id_typeline']]);
-                        $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline);
+                        //Si viene vacio, es decir, no hay creado ningún arc_typeline, lo creamos
+                        if( empty(array_filter($arc_with_regions['ArcsTypelines'])) ){
+                            $entity = $this->Arcs->ArcsTypelines->newEntity();
+                            $arc_typeline['id_arc'] = $arc_id;
+                            $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline);
+                        }else{
+                            $entity = $this->Arcs->ArcsTypelines->get([$arc_id, $arc_with_regions['ArcsTypelines']['id_typeline']]);
+                            $arc_typeline = $this->Arcs->ArcsTypelines->patchEntity($entity, $arc_typeline);
+                        }
                     }
-                }
-                
-                if($this->Arcs->ArcsTypelines->save($arc_typeline)){
-                    $this->Flash->success('Arc has been saved.');
-                }else{
-                    $error = true;
+
+                    $bd = $this->Arcs->ArcsTypelines->save($arc_typeline);
+                    if($bd){
+                        $this->Flash->success('Arc has been saved.');
+                    }else{
+                        $error = true;
+                    }
                 }
 
             } else {
@@ -190,21 +203,31 @@ class ArcsController extends AppController
     /**
      * Delete method
      *
-     * @param string|null $id_arc Arc id.
+     * @param string|null Arc id.
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id_arc)
-    {
+    public function delete(){
+
+        $id_arc = $this->request->data['id'];
+
         if(!$this->request->is('get')){
             $arc = $this->Arcs->get($id_arc);
-            if ($this->Arcs->delete($arc)) {
-                $this->Flash->success('Arc has been deleted.');
-            } else {
-                $this->Flash->error('Arc could not be deleted. Please, try again.');
+
+            //Comprobamos si esta asociado con alguna otra entidad.
+            $arcs_typelines = $this->Arcs->ArcsTypelines->findByIdArc($id_arc)->toArray();
+            if(empty($arcs_typelines)){
+                if ($this->Arcs->delete($arc)) {
+                    echo 'OK';
+                } else {
+                    echo __('An error has occurred while we were deleting this arc.');
+                }
+            }else{
+                echo __('An error was ocurred. This arc is associated with an arc typeline.');
             }
+
         }
-        return $this->redirect(['controller' => 'arcs', 'action' => 'home']);
+        $this->autoRender = false;
     }
 
 }

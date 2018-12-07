@@ -75,6 +75,7 @@ class ArcsTable extends Table {
         $query->select(['Arcs.id', 'Arcs.id_region_1', 'Arcs.id_region_2', 'Arcs.distance']);
         $query->select(['Regions.id', 'Regions.name']);
 		$query->select(['Regions2.id', 'Regions2.name']);
+		$query->select(['Typelines.lin_cap']);
 		$query->select(['ArcsTypelines.num_lines']);
 		$query->where($filters);
 		$query->join([
@@ -92,6 +93,11 @@ class ArcsTable extends Table {
 				'table' => 'arcs_typelines',
 				'type' => 'LEFT',
 				'conditions' => 'ArcsTypelines.id_arc = Arcs.id'
+			],
+			'Typelines' => [
+				'table' => 'typelines',
+				'type' => 'LEFT',
+				'conditions' => 'ArcsTypelines.id_typeline = Typelines.id'
 			],
 		]);
 		

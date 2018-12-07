@@ -37,7 +37,7 @@ class ArcsTypelinesTable extends Table {
     {
         $validator->notEmpty('id_arc');
 		$validator->notEmpty('id_typeline');
-		$validator->notEmpty('num_lines');
+		$validator->allowEmpty('num_lines');
 
 		$validator->add('num_lines',[
 			'num_lines'=>[

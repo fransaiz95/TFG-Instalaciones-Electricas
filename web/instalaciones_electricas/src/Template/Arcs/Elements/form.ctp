@@ -1,5 +1,6 @@
-<?php $action = $this->request->action ?>
+<?php echo $this->Html->script('arcs.js'); ?>
 
+<?php $action = $this->request->action ?>
 
 <?php echo $this->Form->create( ($action == 'add') ? $arc : $arc_with_regions); ?>
 
@@ -84,11 +85,16 @@ if($action == 'edit'){
         <div class="large-3 p-1 input_field">
             <?php
             echo $this->Form->input(
-                'ArcsTypelines.num_lines', 
+                'Typelines.id', 
                 [
-                    'label' => __('Num lines'),
-                    'type' => 'number',
-                    'required' => true
+                    'label' => __('Typeline (Lin Cap)'),
+                    'type' => 'select',
+                    'id' => 'typeline_id-js',
+                    'class' => 'js-example-basic-single',
+                    'multiple' => false,
+                    'options' => $typelines, 
+                    'empty' => true,
+                    // 'required' => true
                 ]
             );
             ?>
@@ -97,15 +103,13 @@ if($action == 'edit'){
         <div class="large-3 p-1 input_field">
             <?php
             echo $this->Form->input(
-                'Typelines.id', 
+                'ArcsTypelines.num_lines', 
                 [
-                    'label' => __('Typeline (Lin Cap)'),
-                    'type' => 'select',
-                    'class' => 'js-example-basic-single',
-                    'multiple' => false,
-                    'options' => $typelines, 
+                    'label' => __('Num lines'),
+                    'id' => 'num_lines-js',
+                    'type' => 'number',
                     'empty' => true,
-                    'required' => true
+                    // 'required' => true
                 ]
             );
             ?>

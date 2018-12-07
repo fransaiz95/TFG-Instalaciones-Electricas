@@ -27,17 +27,20 @@
                             <th class="p-left-1"><?php echo $this->Paginator->sort('Arcs.id_region_1', __('Origin Region')); ?></th>
                             <th class="ta-center"><?php echo $this->Paginator->sort('Arcs.id_region_2', __('Destination Region') ); ?></th>
                             <th class="ta-center"><?php echo $this->Paginator->sort('Arcs.distance', __('Distance') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.lin_cap', __('Typeline - Lin Cap') ); ?></th>
                             <th class="ta-center"><?php echo $this->Paginator->sort('ArcsTypelines.num_lines', __('Number of lines') ); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
+                    // debug($arcs);Exit;
                     foreach ($arcs as $arc){ ?>
                         <tr>
                             <td class="p-left-1"><?php echo h($arc['Regions']['name']) ?></td>
                             <td class="ta-center"><?php echo h($arc['Regions2']['name']) ?></td>
                             <td class="ta-center"><?php echo h($arc->distance) ?></td>
+                            <td class="ta-center"><?php echo h($arc['Typelines']['lin_cap']) ?></td>
                             <td class="ta-center"><?php echo h($arc['ArcsTypelines']['num_lines']) ?></td>
                             <td class="actions">
                                 <?php
@@ -66,17 +69,25 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'arcs',
-                                        'action' => 'delete', 
-                                        $arc->id
-                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete arc between: {0} and {1}?', $arc['Regions']['name'], $arc['Regions2']['name'])
+                                        'data-title' => __('Are you sure you want to delete arc between: {0} and {1}?', $arc['Regions']['name'], $arc['Regions2']['name']),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'arcs',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'arcs',
+                                            'action' => 'home', 
+                                        ], true),
+                                        'data-id' => $arc->id
                                     ]
                                 );
                                 ?>

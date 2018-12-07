@@ -133,10 +133,10 @@ class CountriesController extends AppController
                 if ($this->Countries->delete($country)) {
                     echo 'OK';
                 } else {
-                    echo __('An error has occurred while we were deleting the country.');
+                    echo __('An error has occurred while we were deleting this country.');
                 }
             }else{
-                echo __('An error was ocurred. The country is associated with a region.');
+                echo __('An error was ocurred. This country is associated with a region.');
             }
             
             $this->autoRender = false;
