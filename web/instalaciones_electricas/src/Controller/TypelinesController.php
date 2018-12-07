@@ -96,7 +96,7 @@ class TypelinesController extends AppController
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id_typeline = null){
+    public function delete(){
         $id_typeline = $this->request->data['id'];
         if(!$this->request->is('get')){
             $typeline = $this->Typelines->get($id_typeline);

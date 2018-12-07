@@ -64,17 +64,24 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'fuels',
-                                        'action' => 'delete', 
-                                        $fuel->id
-                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete fuel: {0}?', $fuel->name)
+                                        'data-title' => __('Are you sure you want to delete fuel: {0}?', $fuel->name),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'fuels',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'fuels',
+                                            'action' => 'home', 
+                                        ], true),
+                                        'data-id' => $fuel->id
                                     ]
                                 );
                                 ?>
