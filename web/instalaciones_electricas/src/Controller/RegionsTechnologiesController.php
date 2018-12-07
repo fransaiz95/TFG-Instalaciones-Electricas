@@ -72,17 +72,19 @@ class RegionsTechnologiesController extends AppController
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id_region, $id_technology)
-    {
+    public function delete(){
+        $ids = explode("/", $this->request->data['id']);
+        $id_region = $ids[0];
+        $id_technology = $ids[1];
         if(!$this->request->is('get')){
             $region_technology = $this->RegionsTechnologies->get([$id_region, $id_technology]);
             if ($this->RegionsTechnologies->delete($region_technology)) {
-                $this->Flash->success('Region technology has been deleted.');
+                echo 'OK';
             } else {
-                $this->Flash->error('Region technology could not be deleted. Please, try again.');
+                echo __('An error has occurred while we were deleting this arc.');
             }
         }
-        return $this->redirect(['controller' => 'regions', 'action' => 'view', $id_region]);
+        $this->autoRender = false;
     }
 
 }

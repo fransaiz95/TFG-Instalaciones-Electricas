@@ -44,17 +44,25 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        // 'controller' => 'arcs',
-                                        // 'action' => 'delete', 
-                                        // $arc['Arcs']['id']
-                                    ],
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete arc between: {0} and: {1}?', $arc['name'], $arc['Regions2']['name'])
+                                        'data-title' => __('Are you sure you want to delete arc between: {0} and: {1}?', $arc['name'], $arc['Regions2']['name']),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'arcs',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'regions',
+                                            'action' => 'view',
+                                            $arc['Arcs']['id_region_1']
+                                        ], true),
+                                        'data-id' => $arc['Arcs']['id']
                                     ]
                                 );
                                 ?>

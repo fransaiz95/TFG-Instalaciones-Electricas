@@ -47,17 +47,25 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'regions_technologies',
-                                        'action' => 'delete', 
-                                        $region_technology['RegionTechnology']['id_region'],
-                                        $region_technology['RegionTechnology']['id_technology']                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete technology: {0} of region: {1}?', $region_technology['Technology']['name'], $region_technology->name)
+                                        'data-title' => __('Are you sure you want to delete technology: {0} of region: {1}?', $region_technology['Technology']['name'], $region_technology->name),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'regions_technologies',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'regions',
+                                            'action' => 'view',
+                                            $region_technology->id
+                                        ], true),
+                                        'data-id' => $region_technology['RegionTechnology']['id_region'] . '/' . $region_technology['RegionTechnology']['id_technology']
                                     ]
                                 );
                                 ?>
