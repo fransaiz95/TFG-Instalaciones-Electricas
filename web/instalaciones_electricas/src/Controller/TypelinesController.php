@@ -96,17 +96,17 @@ class TypelinesController extends AppController
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id_typeline = null)
-    {
+    public function delete($id_typeline = null){
+        $id_typeline = $this->request->data['id'];
         if(!$this->request->is('get')){
             $typeline = $this->Typelines->get($id_typeline);
             if ($this->Typelines->delete($typeline)) {
-                $this->Flash->success('Typeline has been deleted.');
+                echo 'OK';
             } else {
-                $this->Flash->error('Typeline could not be deleted. Please, try again.');
+                echo __('An error has occurred while we were deleting this arc.');
             }
         }
-        return $this->redirect(['action' => 'home']);
+        $this->autoRender = false;
     }
 
 }

@@ -70,17 +70,24 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'typelines',
-                                        'action' => 'delete', 
-                                        $typeline->id
-                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete typeline with line_cap: {0}?', $typeline->lin_cap)
+                                        'data-title' => __('Are you sure you want to delete typeline with line cap: {0}?', $typeline->lin_cap),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'typelines',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'typelines',
+                                            'action' => 'home', 
+                                        ], true),
+                                        'data-id' => $typeline->id
                                     ]
                                 );
                                 ?>
