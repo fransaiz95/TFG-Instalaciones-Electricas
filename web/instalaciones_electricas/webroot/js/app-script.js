@@ -100,10 +100,9 @@ var Weblectric  = (function(){
                             swal({
                                 title: data,
                                 type: "error",
-                                showCancelButton: true,
+                                showCancelButton: false,
                                 confirmButtonColor: '#5bcb90',
-                                confirmButtonText: 'Yes',
-                                cancelButtonText: 'No'
+                                confirmButtonText: 'OK',
                             });
                         }
                     })

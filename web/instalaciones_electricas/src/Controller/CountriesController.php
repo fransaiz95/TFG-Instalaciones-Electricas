@@ -136,7 +136,7 @@ class CountriesController extends AppController
                     echo __('An error has occurred while we were deleting this country.');
                 }
             }else{
-                echo __('An error was ocurred. This country is associated with a region.');
+                echo __('An error was ocurred. The country is associated with a region. Please, remove all its region first.');
             }
             
             $this->autoRender = false;
