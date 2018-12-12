@@ -4,7 +4,7 @@
             <h1><?php echo __('Typelines')?></h1>
         </div>
         <?php 
-        $url = ['controller' => 'home' , 'action' => 'home'];
+        $url = ['controller' => 'home' , 'action' => 'home_technologies'];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
 
         <div class="large-12 cell ta-right">

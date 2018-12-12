@@ -28,9 +28,17 @@ class RangedemandsController extends AppController
         if ($this->request->is('post')) {
             $file = $this->request->data['excel_file'];
 
-            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
-            $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
-            $this->_load_demands($sheetData);
+            // $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
+            // $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+            // $this->_load_demands($sheetData);
+
+            $file_tmp = "/files/tmp_range_demands/_test rangedemands.xlsx";
+            $path = ROOT . $file_tmp;
+            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+
+            // // rangedemands - Dem
+            $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
+            $this->_load_demands_disk($demands_tmp);
 
         }
 
@@ -125,6 +133,77 @@ class RangedemandsController extends AppController
 
         } catch(\Cake\ORM\Exception\PersistenceFailedException $e) {
             debug('here3!');Exit;
+            $connection->rollback();
+        }
+
+    }
+
+    private function _load_demands_disk($demands_tmp){
+
+        unset($demands_tmp[1]);
+        $header = $demands_tmp[2];
+        unset($demands_tmp[2]);
+        unset($demands_tmp[3]);
+        
+        try {
+
+            $connection = ConnectionManager::get('default');
+            $connection->begin();
+            $error = false;
+
+            $this->Regions = TableRegistry::get('Regions');
+            $this->Rangedemands = TableRegistry::get('Rangedemands');
+
+            $regions = $this->Regions->find('list', [
+                'keyField' => 'id',
+                'valueField' => 'name'
+            ])
+            ->toArray();
+
+            foreach($demands_tmp as $demand_tmp){
+
+                if($demand_tmp['A'] != null){
+
+                    $year = $demand_tmp['A'];
+                    $month = $demand_tmp['B'];
+                    $day = $demand_tmp['C'];
+                    $hour = $demand_tmp['D'] - 1;
+                    $date = new \DateTime($year . '-' . $month . '-' . $day . ' ' . $hour .':00:00');
+
+                    $start = $date->format("Y-m-d H:i:s");
+
+                    $date->modify("+1 hours");
+                    $date->modify("-1 second");
+
+                    $end = $date->format("Y-m-d H:i:s");
+
+                    foreach($header as $letter => $region_id){
+                        if(in_array($region_id, $regions)){
+                            $rangedemand_to_save = [
+                                'id_region' => $region_id,
+                                'start' => $start,
+                                'end' => $end,
+                                'demand' => $demand_tmp[$letter]
+                            ];
+
+                            $rangedemand = $this->Rangedemands->newEntity();
+                            $rangedemand = $this->Rangedemands->patchEntity($rangedemand, $rangedemand_to_save);
+                            $rangedemand_bd = $this->Rangedemands->save($rangedemand);
+                            
+                            if(!$rangedemand_bd){
+                                $error = true;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            if($error == false){
+                $connection->commit();
+            }
+
+        } catch(\Cake\ORM\Exception\PersistenceFailedException $e) {
             $connection->rollback();
         }
 

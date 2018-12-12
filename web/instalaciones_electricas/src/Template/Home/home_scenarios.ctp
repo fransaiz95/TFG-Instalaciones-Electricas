@@ -5,64 +5,7 @@
         <div class="large-3 medium-3 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/countries.png',array('class'=>'')), 
-                array(
-                    'controller' => 'home',
-                    'action' => 'homeCountries'
-                ), 
-                array(
-                    'escape' => false,
-                    'class' => 'countries',
-                    'title' => __('Countries data')
-                )
-            );
-            ?>
-            <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Countries data') ?>
-            </div>
-        </div>
-        <div class="large-3 medium-3 cell p-top-1">
-            <?php
-            echo $this->Html->link( 
-                $this->Html->image('/img/portal/regions.png',array('class'=>'')), 
-                array(
-                    'controller' => 'home',
-                    'action' => 'homeTechnologies',
-                ), 
-                array(
-                    'escape' => false,
-                    'class' => 'technologies',
-                    'title' => __('Technologies')
-                )
-            );
-            ?>
-            <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Technologies') ?>
-            </div>
-        </div>
-        <div class="large-3 medium-3 cell p-top-1">
-            <?php
-            echo $this->Html->link( 
-                $this->Html->image('/img/portal/objectives.png',array('class'=>'')), 
-                array(
-                    'controller' => 'home',
-                    'action' => 'homeObjectives'
-                ), 
-                array(
-                    'escape' => false,
-                    'class' => 'objectives',
-                    'title' => __('Objectives')
-                )
-            );
-            ?>
-            <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Objectives') ?>
-            </div>
-        </div>
-        <div class="large-3 medium-3 cell p-top-1">
-            <?php
-            echo $this->Html->link( 
-                $this->Html->image('/img/portal/scenarios.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/demand_forecast.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
                     'action' => 'homeScenarios'
@@ -70,14 +13,72 @@
                 array(
                     'escape' => false,
                     'class' => 'scenarios',
-                    'title' => __('Scenarios')
+                    'title' => __('Demand forecast')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Scenarios') ?>
+                <?php echo __('Demand forecast') ?>
             </div>
         </div>
+        <div class="large-3 medium-3 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/fuel_cost.png',array('class'=>'')), 
+                array(
+                    'controller' => 'home',
+                    'action' => 'homeScenarios'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'scenarios',
+                    'title' => __('Fuel cost')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Fuel cost') ?>
+            </div>
+        </div>
+        <div class="large-3 medium-3 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/development_curve.png',array('class'=>'')), 
+                array(
+                    'controller' => 'home',
+                    'action' => 'homeScenarios'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'scenarios',
+                    'title' => __('Development curve')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Development curve') ?>
+            </div>
+        </div>
+        <div class="large-3 medium-3 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/reliability.png',array('class'=>'')), 
+                array(
+                    'controller' => 'home',
+                    'action' => 'homeScenarios'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'scenarios',
+                    'title' => __('Reliability')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Reliability') ?>
+            </div>
+        </div>
+
     </div>
 
 </div>

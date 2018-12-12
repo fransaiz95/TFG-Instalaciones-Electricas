@@ -4,7 +4,7 @@
             <h1><?php echo __('Countries')?></h1>
         </div>
         <?php 
-        $url = ['controller' => 'home' , 'action' => 'home'];
+        $url = ['controller' => 'home' , 'action' => 'home_countries'];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
         
         <div class="large-12">
@@ -44,7 +44,7 @@
                                     ], 
                                     [
                                         'escape' => false,
-                                        'title' => __('View')
+                                        'title' => __('View regions')
                                     ]
                                 );
                                 echo $this->Html->link( 

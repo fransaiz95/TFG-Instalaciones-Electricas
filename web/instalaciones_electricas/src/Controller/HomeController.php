@@ -20,6 +20,22 @@ class HomeController extends AppController
         
     }
 
+    public function homeCountries(){
+        
+    }
+
+    public function homeTechnologies(){
+        
+    }
+
+    public function homeObjectives(){
+        
+    }
+
+    public function homeScenarios(){
+        
+    }
+
     public function loadData(){
 
         ini_set('memory_limit', '-1'); //All
@@ -65,9 +81,9 @@ class HomeController extends AppController
         // $arcs_tmp = $spreadsheet->setActiveSheetIndexByName('ExiLin')->toArray(null, true, true, true);
         // $this->_load_arcs($arcs_tmp);
 
-        // // rangedemands - Dem
-        // $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
-        // $this->_load_demands($demands_tmp);
+        // rangedemands - Dem
+        $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
+        $this->_load_demands($demands_tmp);
     }
 
     private function _load_regions($regions_tmp){

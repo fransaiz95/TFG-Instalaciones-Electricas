@@ -39,8 +39,8 @@
     &.countries:hover {
       background-color: $countries-color;
     }
-    &.fuels:hover {
-      background-color: $fuels-color;
+    &.scenarios:hover {
+      background-color: $scenarios-color;
     }
     &.technologies:hover {
       background-color: $technologies-color;
@@ -51,8 +51,8 @@
     &.typelines:hover {
       background-color: $typelines-color;
     } 
-    &.range:hover {
-      background-color: $range-color;
+    &.objectives:hover {
+      background-color: $objectives-color;
     } 
 
   }
@@ -74,4 +74,5 @@
   text-transform: uppercase;
   text-align: center;
   font-weight: 100 !important;
+  line-height: 40px;
 }

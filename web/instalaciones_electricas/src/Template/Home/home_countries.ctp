@@ -7,77 +7,78 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/countries.png',array('class'=>'')), 
                 array(
+                    'controller' => 'countries',
+                    'action' => 'home'
+                ), 
+                array(
+                    'escape' => false,
+                    'class' => 'countries',
+                    'title' => __('Country')
+                )
+            );
+            ?>
+            <div class="large-12 medium-12 cell div-font">
+                <?php echo __('Country') ?>
+            </div>
+        </div>
+        <div class="large-3 medium-3 cell p-top-1">
+            <?php
+            echo $this->Html->link( 
+                $this->Html->image('/img/portal/rangerenewable.png',array('class'=>'')), 
+                array(
                     'controller' => 'home',
                     'action' => 'homeCountries'
                 ), 
                 array(
                     'escape' => false,
                     'class' => 'countries',
-                    'title' => __('Countries data')
+                    'title' => __('Renewable source')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Countries data') ?>
+                <?php echo __('Renewable source') ?>
             </div>
         </div>
         <div class="large-3 medium-3 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/regions.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/rangemeteos.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
-                    'action' => 'homeTechnologies',
+                    'action' => 'homeCountries'
                 ), 
                 array(
                     'escape' => false,
-                    'class' => 'technologies',
-                    'title' => __('Technologies')
+                    'class' => 'countries',
+                    'title' => __('Climate')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Technologies') ?>
+                <?php echo __('Climate') ?>
             </div>
         </div>
         <div class="large-3 medium-3 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/objectives.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/current_system.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
-                    'action' => 'homeObjectives'
+                    'action' => 'homeCountries'
                 ), 
                 array(
                     'escape' => false,
-                    'class' => 'objectives',
-                    'title' => __('Objectives')
+                    'class' => 'countries',
+                    'title' => __('Current system')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Objectives') ?>
+                <?php echo __('Current system') ?>
             </div>
         </div>
-        <div class="large-3 medium-3 cell p-top-1">
-            <?php
-            echo $this->Html->link( 
-                $this->Html->image('/img/portal/scenarios.png',array('class'=>'')), 
-                array(
-                    'controller' => 'home',
-                    'action' => 'homeScenarios'
-                ), 
-                array(
-                    'escape' => false,
-                    'class' => 'scenarios',
-                    'title' => __('Scenarios')
-                )
-            );
-            ?>
-            <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Scenarios') ?>
-            </div>
-        </div>
+
     </div>
 
 </div>
