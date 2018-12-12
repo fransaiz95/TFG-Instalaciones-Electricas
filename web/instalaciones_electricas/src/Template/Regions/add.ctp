@@ -5,7 +5,7 @@
             <h1><?= __('New Region') ?></h1>
         </div>
         <?php 
-        $url = ['controller' => 'regions' , 'action' => 'home'];
+        $url = ['controller' => 'countries' , 'action' => 'view', $id_country];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
     </div>
 

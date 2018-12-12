@@ -46,7 +46,7 @@ class RegionsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id_country = null)
     {
         $region = $this->Regions->newEntity();
         $countries = $this->Regions->Countries->search_list();
@@ -55,13 +55,13 @@ class RegionsController extends AppController
             $region = $this->Regions->patchEntity($region, $this->request->data);
             if ($this->Regions->save($region)) {
                 $this->Flash->success('Region has been saved.');
-                return $this->redirect(['action' => 'home']);
+                return $this->redirect(['controller' => 'countries', 'action' => 'view', $id_country]);
             } else {
                 $this->Flash->error('Region could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('region', 'countries'));
-        $this->set('_serialize', ['region', 'countries']);
+        $this->set(compact('region', 'countries', 'id_country'));
+        $this->set('_serialize', ['region', 'countries', 'id_country']);
     }
 
     /**
@@ -101,38 +101,43 @@ class RegionsController extends AppController
         $region = $this->Regions->get($id);
         $countries = $this->Regions->Countries->search_list();
 
+        $id_country = $region->id_country;
+
         if(!$this->request->is('get')){
             $region = $this->Regions->patchEntity($region, $this->request->data);
             if ($this->Regions->save($region)) {
                 $this->Flash->success('Region has been saved.');
-                return $this->redirect(['action' => 'home']);
+                return $this->redirect(['controller' => 'countries', 'action' => 'view', $id_country]);
             } else {
                 $this->Flash->error('Region could not be saved. Please, try again.');
             }
         }
                 
-        $this->set(compact('region', 'countries'));
-        $this->set('_serialize', ['region', 'countries']);
+        $this->set(compact('region', 'countries', 'id_country'));
+        $this->set('_serialize', ['region', 'countries', 'id_country']);
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id Country id.
+     * @param string|null $id_region Country id.
      * @return void Redirects to home.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete($id_region = null)
     {
+        $id_region = $this->request->data['id'];
         if(!$this->request->is('get')){
-            $region = $this->Regions->get($id);
+           
+            $region = $this->Regions->get($id_region);
+
             if ($this->Regions->delete($region)) {
-                $this->Flash->success('Region has been deleted.');
+                echo 'OK';
             } else {
-                $this->Flash->error('Region could not be deleted. Please, try again.');
+                echo __('An error has occurred while we were deleting this country.');
             }
         }
-        return $this->redirect(['action' => 'home']);
+        $this->autoRender = false;
     }
 
 }

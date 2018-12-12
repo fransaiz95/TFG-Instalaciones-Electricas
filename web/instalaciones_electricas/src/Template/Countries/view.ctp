@@ -1,11 +1,11 @@
-<?php echo $this->element('Comun/tabs_home');  ?>
+<?php //echo $this->element('Comun/tabs_home');  ?>
 
 <div class="grid-container" >
     <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
             <h1><?= __('Country') ?></h1>
         </div>  
-        <div class="large-3 medium-3 cell p-top-1">
+        <div class="large-3 medium-3 cell">
             <span class="titles-view">
                 <?php echo __('Name:') ?>
             </span>
@@ -14,9 +14,7 @@
     </div>
 </div>
 
-<?php $class = ($active_tab != ConstantesTabs::REGIONS) ? 'd-none' : '';?>
-
-<div class="grid-container cnt-tabs <?php echo $class?>" id="cnt-regions">
+<div class="grid-container cnt-tabs p-top-1" id="cnt-regions">
     <div class="grid-x grid-padding-x">
 
         <div class="large-10 cell">
@@ -30,7 +28,14 @@
             <?php echo $this->element('../Countries/Elements/search_regions'); ?>
         </div>
 
-        <div class="large-12 cell p-top-1">
+        <div class="large-12 cell ta-right p-top-1">
+            <?php
+            $url = ['controller' => 'regions' , 'action' => 'add', $country['id']];
+            $label = __('New Region');
+            echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
+        </div>
+
+        <div class="large-12 cell">
             <div class="large-12 cell">
                 
                 <table cellpadding="0" cellspacing="0">
@@ -78,17 +83,25 @@
                                         'title' => __('Edit')
                                     ]
                                 );
-                                echo $this->Form->postLink( 
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'regions',
-                                        'action' => 'delete', 
-                                        $region->id
-                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete region: {0}?', $region->name)
+                                        'data-title' => __('Are you sure you want to delete region: {0}?', $region->name),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'regions',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'countries',
+                                            'action' => 'view', 
+                                            $country['id']
+                                        ], true),
+                                        'data-id' => $region->id
                                     ]
                                 );
                                 ?>

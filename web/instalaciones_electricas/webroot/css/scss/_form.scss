@@ -118,3 +118,9 @@
 		font-style: italic;
 	}
 }
+
+//Para los select disabled
+.select2-container--disabled .select2-selection__rendered
+{
+	background: #eee;
+}

@@ -75,18 +75,12 @@ class CountriesController extends AppController
         $query = $this->Countries->Regions->getQueryRegionsAndCountry($filters);
         $regions = $this->paginate($query);
 
-        $enabled_tabs = [
-            ConstantesTabs::REGIONS,
-        ];
-
-        $active_tab = ConstantesTabs::REGIONS;
-
         $this->request->data = $_GET;
 
         $this->set(
-            compact('country', 'regions', 'enabled_tabs', 'active_tab')
+            compact('country', 'regions')
         );
-        $this->set('_serialize', ['country', 'regions', 'enabled_tabs', 'active_tab']);
+        $this->set('_serialize', ['country', 'regions']);
     }
 
     /**

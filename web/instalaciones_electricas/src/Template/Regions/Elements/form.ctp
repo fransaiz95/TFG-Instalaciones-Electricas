@@ -1,5 +1,6 @@
 
 <?php 
+$action = $this->request->action;
 echo $this->Form->create($region); ?>
 
 <div class="grid-x cnt-form">
@@ -25,9 +26,20 @@ echo $this->Form->create($region); ?>
                 'multiple' => false,
                 'options' => $countries, 
                 'required' => false,
-                'empty' => false
+                'default' => $id_country,
+                'empty' => false,
+                'disabled' => ($id_country != null && $action == 'add') ? true : false
                 ]
         );
+
+        if($id_country != null && $action == 'add'){
+            echo $this->Form->hidden(
+                'id_country', 
+                [
+                    'value' => $id_country,
+                ]
+            );
+        }
         ?>
     </div>
     
@@ -62,7 +74,7 @@ echo $this->Form->create($region); ?>
 
 
 <?php
-$url = ['controller' => 'regions' , 'action' => 'home'];
+$url = ['controller' => 'countries' , 'action' => 'view', $id_country];
 echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
 
 <?php echo $this->Form->end() ?>

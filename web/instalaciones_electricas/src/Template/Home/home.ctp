@@ -24,7 +24,7 @@
         <div class="large-3 medium-3 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/regions.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/technologies.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
                     'action' => 'homeTechnologies',

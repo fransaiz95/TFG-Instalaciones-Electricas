@@ -5,7 +5,7 @@
         <div class="large-3 medium-3 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/countries.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/country_region.png',array('class'=>'')), 
                 array(
                     'controller' => 'countries',
                     'action' => 'home'
