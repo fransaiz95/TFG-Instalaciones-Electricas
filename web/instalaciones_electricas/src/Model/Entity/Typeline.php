@@ -16,13 +16,7 @@ class Typeline extends Entity {
 	protected $_accessible = [
 		'id' => true,
 		'lin_cap' => true,
-		'new_line_cos' => true,
-		'man_lin_cos' => true,
-		'flo_cos' => true,
-		'new_lim_emp' => true,
-		'man_lim_emp' => true,
-		'flo_emp' => true,
-		'eff_lin' => true,
+		'tension' => true,
 	];
 
 }

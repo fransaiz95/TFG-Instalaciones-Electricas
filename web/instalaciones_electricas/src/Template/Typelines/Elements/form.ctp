@@ -18,81 +18,9 @@
             <div class="large-4 p-1 input_field">
                 <?php
                 echo $this->Form->input(
-                    'new_line_cos',
+                    'tension',
                     [
-                        'label' => __('New line cos'),
-                        'type' => 'number'
-                    ]
-                );
-                ?>
-            </div>
-
-            <div class="large-4 p-1 input_field">
-                <?php
-                echo $this->Form->input(
-                    'man_lin_cos',
-                    [
-                        'label' => __('Man lin cos'),
-                        'type' => 'number'
-                    ]
-                );
-                ?>
-            </div>
-
-            <div class="large-4 p-1 input_field">
-                <?php
-                echo $this->Form->input(
-                    'flo_cos',
-                    [
-                        'label' => __('Flo cos'),
-                        'type' => 'number'
-                    ]
-                );
-                ?>
-            </div>
-
-            <div class="large-4 p-1 input_field">
-                <?php
-                echo $this->Form->input(
-                    'new_lim_emp',
-                    [
-                        'label' => __('New lim emp'),
-                        'type' => 'number'
-                    ]
-                );
-                ?>
-            </div>
-
-            <div class="large-4 p-1 input_field">
-                <?php
-                echo $this->Form->input(
-                    'man_lim_emp',
-                    [
-                        'label' => __('Man lim emp'),
-                        'type' => 'number'
-                    ]
-                );
-                ?>
-            </div>
-
-            <div class="large-4 p-1 input_field">
-                <?php
-                echo $this->Form->input(
-                    'flo_emp',
-                    [
-                        'label' => __('Flo emp'),
-                        'type' => 'number'
-                    ]
-                );
-                ?>
-            </div>
-
-            <div class="large-4 p-1 input_field">
-                <?php
-                echo $this->Form->input(
-                    'eff_lin',
-                    [
-                        'label' => __('Eff lin'),
+                        'label' => __('Tension'),
                         'type' => 'number'
                     ]
                 );

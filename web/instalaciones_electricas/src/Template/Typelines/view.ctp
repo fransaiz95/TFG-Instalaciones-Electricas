@@ -12,65 +12,16 @@
             <span class="titles-view">
                 <?php echo __('Lin cap:') ?>
             </span>
-            <?php echo $typeline['lin_cap']; ?>
+            <?php echo h($typeline['lin_cap']) . ' MW'; ?>
         </div>
 
         <div class="large-4 medium-4 cell p-form">
             <span class="titles-view">
-                <?php echo __('New line cos:') ?>
+                <?php echo __('Tension:') ?>
             </span>
             <?php 
-            echo $typeline['new_line_cos']; ?>
+            echo h($typeline['tension']) . ' kV'; ?>
         </div>
-
-        <div class="large-4 medium-4 cell p-form">
-            <span class="titles-view">
-                <?php echo __('Man lin cos:') ?>
-            </span>
-            <?php 
-            echo $typeline['man_lin_cos']; ?>
-        </div>
-
-        <div class="large-4 medium-4 cell p-form">
-            <span class="titles-view">
-                <?php echo __('Flo cos:') ?>
-            </span>
-            <?php 
-            echo $typeline['flo_cos']; ?>
-        </div>
-
-        <div class="large-4 medium-4 cell p-form">
-            <span class="titles-view">
-                <?php echo __('New lim emp:') ?>
-            </span>
-            <?php 
-            echo $typeline['new_lim_emp']; ?>
-        </div>
-
-        <div class="large-4 medium-4 cell p-form">
-            <span class="titles-view">
-                <?php echo __('Man lim emp:') ?>
-            </span>
-            <?php 
-            echo $typeline['man_lim_emp']; ?>
-        </div>
-
-        <div class="large-4 medium-4 cell p-form">
-            <span class="titles-view">
-                <?php echo __('Flo emp:') ?>
-            </span>
-            <?php 
-            echo $typeline['flo_emp']; ?>
-        </div>
-
-        <div class="large-4 medium-4 cell p-form">
-            <span class="titles-view">
-                <?php echo __('Eff lin:') ?>
-            </span>
-            <?php 
-            echo $typeline['eff_lin']; ?>
-        </div>
-
 
     </div>
 </div>

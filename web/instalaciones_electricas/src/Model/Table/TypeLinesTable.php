@@ -31,7 +31,7 @@ class TypelinesTable extends Table {
 
 	public function getQueryTypelines ($filters = array()){
 		$query = $this->find('all');
-        $query->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.new_line_cos', 'Typelines.man_lin_cos', 'Typelines.flo_cos', 'Typelines.new_lim_emp', 'Typelines.man_lim_emp', 'Typelines.flo_emp', 'Typelines.eff_lin']);
+        $query->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.tension']);
 		$query->where($filters);
 		
 		return $query;	
