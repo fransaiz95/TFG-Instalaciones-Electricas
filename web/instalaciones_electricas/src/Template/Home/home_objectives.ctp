@@ -24,7 +24,7 @@
         <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/enviromental.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/environmental.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
                     'action' => 'homeObjectives'

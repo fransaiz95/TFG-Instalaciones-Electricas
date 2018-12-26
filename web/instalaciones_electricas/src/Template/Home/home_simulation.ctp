@@ -5,45 +5,45 @@
         <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/countries.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/objectives.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
-                    'action' => 'homeCountries'
+                    'action' => 'homeObjectives'
                 ), 
                 array(
                     'escape' => false,
-                    'class' => 'countries',
-                    'title' => __('Countries data')
+                    'class' => 'objectives',
+                    'title' => __('Objectives')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Countries data') ?>
+                <?php echo __('Objectives') ?>
             </div>
         </div>
         <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/technologies.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/scenarios.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
-                    'action' => 'homeTechnologies',
+                    'action' => 'homeScenarios'
                 ), 
                 array(
                     'escape' => false,
-                    'class' => 'technologies',
-                    'title' => __('Technologies')
+                    'class' => 'scenarios',
+                    'title' => __('Scenarios')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Technologies') ?>
+                <?php echo __('Scenarios') ?>
             </div>
         </div>
         <div class="large-4 medium-4 cell p-top-1">
             <?php
             echo $this->Html->link( 
-                $this->Html->image('/img/portal/simulation.png',array('class'=>'')), 
+                $this->Html->image('/img/portal/download.png',array('class'=>'')), 
                 array(
                     'controller' => 'home',
                     'action' => 'homeSimulation'
@@ -51,14 +51,15 @@
                 array(
                     'escape' => false,
                     'class' => 'simulation',
-                    'title' => __('Simulation')
+                    'title' => __('Download')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Simulation') ?>
+                <?php echo __('Download') ?>
             </div>
         </div>
+
     </div>
 
 </div>
