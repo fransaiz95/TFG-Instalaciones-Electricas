@@ -8,26 +8,26 @@ Para el desarrollo del proyecto y para lograr alcanzar tanto los objetivos acad�
 
 A la hora de gestionar un proyecto, podemos clasificar el método usado para su gestión en dos grandes grupos: Metodología tradicional y metodología ágil.
 
-Analizando las diferencias entre ellas podemos afirmar:
+Analizando las diferencias entre ellas podemos afirmar~\cite{web:diferencias-metodologias}:
 
 \begin{itemize}
 	\item En la metodología tradicional, esta presente la figura de un Project Manager que basa sus conocimientos en el PMBoK\footnote{Libro donde se recogen técnicas y acciones a llevar a cabo dentro de un proyecto para obtener un resultado próspero.}.
 	\item La metodología tradicional se centra en un enfoque proactivo y predictivo. Busca desde los orígenes del proyecto definir todo lo definible antes de empezar, anticiparse a cualquier cambio, buscar proyección, es decir, dar un alcance lo más completo posible y ajustar el coste al máximo.
 	
 	\item La metodología ágil surge como necesidad del cliente a proyectos no muy grandes. No existe una necesidad por parte del cliente de una planificación inicial exhaustiva, sino que necesita un producto en un espacio corto de tiempo y no hay tiempo para grandes planificaciones.
-	\item Es probable que el producto demandado por el cliente en un principio, sea diferente del demandado a final del proyecto. Esto se debe al continuo cambio sobretodo en el mundo de las TIC. El cliente sabe que necesita pero desconoce como se va a concretar a X días vista
+	\item Es probable que el producto demandado por el cliente en un principio, sea diferente del demandado a final del proyecto. Esto se debe al continuo cambio sobretodo en el mundo de las TIC. El cliente sabe que necesita pero desconoce como se va a concretar a $X$ días vista
 \end{itemize}
 
-Estando delante de un proyecto no muy grande y aprovechando los conocimientos recibidos en el grado, hemos decidido utilizar metodología ágil para gestionar nuestro proyecto.
+Estando delante de un proyecto no muy grande y aprovechando los conocimientos recibidos en el grado, hemos decidido utilizar una metodología ágil para gestionar nuestro proyecto.
 
 \subsubsection{SCRUM}
 
-SCRUM\footnote{No son siglas. Su significado viene de la palabra melé. Jugada de rugby en la que 
+Scrum\footnote{No son siglas. Su significado viene de la palabra melé. Jugada de rugby en la que 
 	jugadores de ambos equipos se agrupan en una formación en la cual lucharán por obtener el balón que se introduce por el centro. \cite{web:scrum_origen}} es uno de los métodos ágiles más extendidos. Se trata de un método incremental e iterativo que divide el desarrollo del producto en ciclos llamados \textit{sprints}.
 
 Al inicio de cada \textit{sprint}, se realiza una reunión entre todos los integrantes del proyecto donde se definen los objetivos y requisitos de cada ciclo. Cada una de esas tareas se denomina \textit{issues}.
 
-Este tipo de metodología ha sido muy eficiente en el desarrollo. Una de las ventajas que nos ha proporcionado, ha sido la capacidad de reaccionar ante los cambios. En cada \textit{sprint}, ir creando especificaciones y requerimientos nuevos.
+Este tipo de metodología ha sido muy eficiente en el desarrollo. Una de las ventajas que nos ha proporcionado, ha sido la capacidad de reaccionar ante los cambios teniendo la oportunidad de ir creando en cada \textit{sprint}, especificaciones y requerimientos nuevos.
 
 \subsubsection{ZenHub}
 
@@ -46,25 +46,11 @@ En la figura \ref{fig:ZenHub} tenemos presentes las diferentes columnas del tabl
 
 \subsection{Control de versiones}
 
-Como repositorio y control de versiones, hemos elegido \textit{Git} a través de la herramienta \textit{GitHub}\footnote{Software de código abierto y gratuito que permite un control de versiones a través de ramas (\textit{branchs}) en las que cada usuario puede editar y publicar cambios.} (figura \ref{fig:github})
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.6\textwidth]{/conceptosTeoricos/github}
-	\caption{Logo de GitHub.}
-	\label{fig:github}
-\end{figure}
+Como repositorio y control de versiones, hemos elegido \textit{Git} a través de la herramienta \textit{GitHub}\footnote{Software de código abierto y gratuito que permite un control de versiones a través de ramas (\textit{branchs}) en las que cada usuario puede editar y publicar cambios.}
 
 GitHub es una plataforma online basada en Git, que permite la creación de repositorios tanto públicos como privados en los que posteriormente un equipo puede alojar su trabajo.
 
-Además, GitHub ofrece una version para escritorio (\textit{GitHub Desktop}) con la que poder realizar subidas y bajadas (\textit{push - pull}) directamente desde el escritorio. Nosotros, en cambio hemos utilizado \textit{Sourcetree} (figura \ref{fig:sourcetree}). Un cliente Git que proporciona una interfaz amigable para interactuar con nuestros repositorios. Pertenece a la empresa \textit{Atlassian.}
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.6\textwidth]{/conceptosTeoricos/sourcetree}
-	\caption{Logo de Sourcetree.}
-	\label{fig:sourcetree}
-\end{figure}
+Además, GitHub ofrece una version para escritorio (\textit{GitHub Desktop}) con la que poder realizar subidas y bajadas (\textit{push - pull}) directamente desde el escritorio. Nosotros, en cambio hemos utilizado \textit{Sourcetree}. Un cliente Git que proporciona una interfaz amigable para interactuar con nuestros repositorios. Pertenece a la empresa \textit{Atlassian.}
 
 \newpage
 
@@ -78,31 +64,17 @@ Para ello necesitamos de la siguiente herramienta.
 
 \subsection{XAMPP}
 
-XAMPP (figura \ref{fig:xampp}) es un paquete de software libre que consiste principalmente en el sistema de gestión de bases de datos MySQL, el servidor web Apache e intérpretes para lenguajes PHP y Perl. \cite{wiki:xampp}
+XAMPP es un paquete de software libre que consiste principalmente en el sistema de gestión de bases de datos MySQL, el servidor web Apache e intérpretes para lenguajes PHP y Perl~\cite{wiki:xampp}.
 
 La ventaja de utilizar esta herramienta es que te ahorras el tiempo y la dificultad de configuración de cada uno de los servicios por separado. 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/xampp}
-	\caption{Logo de XAMPP.}
-	\label{fig:xampp}
-\end{figure}
-
 \subsection{HeidiSQL}
 
-Aunque XAMPP trae consigo el servicio phpMyAdmin para gestionar las bases de datos MySQL, nosotros hemos decidido utilizar \textit{HeidiSQL} (figura \ref{fig:heidisql}) ya que tiene una interfaz más amigable y permite más opciones.
+Aunque XAMPP trae consigo el servicio phpMyAdmin para gestionar las bases de datos MySQL, nosotros hemos decidido utilizar \textit{HeidiSQL} ya que tiene una interfaz más amigable y permite más opciones.
 
 HeidiSQL es un software libre de código abierto que nos da la facilidad de conectarnos a servidores MySQL.
 
 Para administrar las bases de datos con esta herramienta, el usuario tiene que iniciar sesión en un servidor MySQL local o remoto. 
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/heidisql}
-	\caption{Logo de HeidiSQL.}
-	\label{fig:heidisql}
-\end{figure}
 
 \subsection{Filezilla}
 
@@ -110,25 +82,13 @@ Una vez que tenemos nuestro entorno de desarrollo en local, es común necesitar 
 
 Tras establecer la conexión con el servidor, el manejo de los archivos y la navegación ente los directorios es fácil e intuitiva. Además, permite arrastrar y soltar, lo que facilita su uso.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/filezilla}
-	\caption{Logo de Filezilla.}
-	\label{fig:filezilla}
-\end{figure}
-
 \subsection{Visual Studio Code}
 
-Visual Studio Code (figura \ref{fig:vscode}) es un editor de código fuente desarrollado por Microsoft. Al incluir control integrado de Git, hace que el resultado y el control de versiones de nuestro código sea más manejable.
+Visual Studio Code es un editor de código fuente desarrollado por Microsoft. Al incluir control integrado de Git, hace que el resultado y el control de versiones de nuestro código sea más manejable.
 
-No es un IDE como tal pero gracias a numerosas extensiones hace que el trato con el sea mucho más satisfactorio. Acepta extensiones para hacer más facil la lectura de los lenguajes PHP, HTML, CSS y Javascript. 
+No es un IDE como tal, pero gracias a numerosas extensiones hace que el trato con él sea mucho más satisfactorio. Acepta extensiones para hacer más facil la lectura de los lenguajes PHP, HTML, CSS y Javascript. 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.5\textwidth]{/conceptosTeoricos/vscode}
-	\caption{Logo de Visual Studio Code.}
-	\label{fig:vscode}
-\end{figure}
+
 
 \subsection{Prepros}
 
@@ -150,11 +110,11 @@ Tenemos un directorio con cada uno de los archivos \textit{.scss} que se agrupan
 
 \section{Frameworks }
 
-A continuación, iremos mencionando los diferentes\textit{frameworks \footnote{Entorno de trabajo.}} que tras integrarlos entre si, han hecho posible el desarrollo del proyecto.
+A continuación, iremos mencionando los diferentes\textit{frameworks \footnote{Entorno de trabajo.}} que tras integrarlos entre sí, han hecho posible el desarrollo del proyecto.
 
 \subsection{CakePHP}
 
-\textit{CakePHP}\cite{web:cakephp} es un \textit{framework} que facilita el desarrollo de aplicaciones web en PHP, utilizando el patrón de diseño MVC\footnote{Modelo Vista Controlador}. \cite{wiki:cakephp}
+\textit{CakePHP}~\cite{web:cakephp} es un \textit{framework} que facilita el desarrollo de aplicaciones web en PHP, utilizando el patrón de diseño MVC~\cite{wiki:cakephp}.
 
 Facilita alguna ayuda para integrar \textit{Ajax}\footnote{Asynchronous JavaScript And XML (JavaScript asíncrono y XML), es una técnica de desarrollo web para crear aplicaciones interactivas. \cite{wiki:ajax}}, Javascript, formularios... por lo que hace de su uso una herramienta interesante.
 
@@ -173,25 +133,19 @@ Separar las funciones de la aplicación en modelos, vistas y controladores hace 
 
 \subsection{Zurb Foundation}
 
-\textit{Foundation\cite{web:foundation}} (figura XX) es un \textit{framework} de interfaz de usuario. Proporciona una cuadrícula responsive e incluye diferentes componentes:
+\textit{Foundation}~\cite{web:foundation} es un \textit{framework} de interfaz de usuario. Proporciona una cuadrícula responsive e incluye diferentes componentes:
 \begin{itemize}
 	\item Interfaz de usuario HTML y CSS.
-	\item Plantillas
-	\item Fragmentos de código reutilizables
-	\item Tipografías
-	\item Formularios
-	\item Botones, barras de navegación y otros componentes de interfaz usuario
-	\item Extensiones de Javascript opcionales
+	\item Plantillas.
+	\item Fragmentos de código reutilizables.
+	\item Tipografías.
+	\item Formularios.
+	\item Botones, barras de navegación y otros componentes de interfaz usuario.
+	\item Extensiones de Javascript opcionales.
 \end{itemize}
 
-\textit{Foundation} está mantenida por zurb.com y es un proyecto de código abierto.
+\textit{Foundation} está mantenida por \href{zurb.com}{Zurb} y es un proyecto de código abierto.
 
-La competencia más directa de \textit{Foundation} como \textit{framework de CSS}, es \textit{Bootstrap}. Aunque en nuestra aplicación hemos usado \textit{Foundation}, cabe destacar que \textit{Bootstrap} ofrece unos servicios parecidos y quizá más amplios pues la comunidad de usuarios es mayor.
+La competencia más directa de \textit{Foundation} como \textit{framework de CSS}, es \textit{Bootstrap}. Aunque en nuestra aplicación hemos usado \textit{Foundation}, cabe destacar que \textit{Bootstrap} ofrece unos servicios muy parecidos y una documentación de calidad como la de \textit{Foundation}. 
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.6\textwidth]{/conceptosTeoricos/foundation}
-	\caption{Logo de Zurb Foundation.}
-	\label{fig:foundation}
-\end{figure}
-
+Por destacar alguna ventaja a favor de \textit{Bootstrap}, podemos decir que es más popular. Tiene más plugins desarrollados y una comunidad de usuarios más grande, lo que facilita cualquier tipo de consulta en la web. Sin embargo, nosotros hemos decidido utilizar Foundation, ya que no considerábamos insignificante la diferencia de prestaciones entre ambos \textit{frameworks}. Además, \textit{Foundation} viene con un archivo de ejemplo con el que hemos podido practicar y obtener conocimientos iniciales.
