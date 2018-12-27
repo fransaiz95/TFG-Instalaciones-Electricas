@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="es" >
+<link rel="shortcut icon" href="favicon.png">
 <head>
     <?php echo $this->Html->charset(); ?>
     <meta name="viewport" content="width=device-width, user-scalable=no" />

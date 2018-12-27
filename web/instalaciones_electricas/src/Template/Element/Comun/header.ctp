@@ -9,10 +9,7 @@
  
 <body></body>
 	<header id="main-header">
-		<a id="logo-header" href="#">
-			<span class="site-name"><?php echo __('WEBLECTRIC'); ?></span>
-			<span class="site-desc"><?php echo __('La herramienta web ...'); ?></span>
-		</a>
+		<?php echo $this->Html->image('/img/logos/white_2.png',array('class'=>'header_logo'))?>
  
 		<nav>
 			<ul>
