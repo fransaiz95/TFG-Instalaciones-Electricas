@@ -10,11 +10,43 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
+
+
 use ConstantesBooleanas;
 use ConstantesFuels;
 
 class HomeController extends AppController
 {
+
+    public function ajaxDeleteDatabase(){
+
+        ini_set('memory_limit', '-1'); //All
+        set_time_limit(0); //Infinite
+
+        $path_delete = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'delete_tables.sql';
+        $file_delete = file_get_contents($path_delete);
+
+        $conn = ConnectionManager::get('default'); 
+        $stmt = $conn->execute($file_delete); 
+
+        $this->autoRender = false;
+
+    }
+
+    public function ajaxCreateDatabase(){
+
+        ini_set('memory_limit', '-1'); //All
+        set_time_limit(0); //Infinite
+
+        $path_create = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'weblectric_final_26_12_2018.sql';
+        $file_create = file_get_contents($path_create);
+
+        $conn = ConnectionManager::get('default'); 
+        $stmt = $conn->execute($file_create); 
+
+        $this->autoRender = false;
+
+    }
 
     public function home(){
         

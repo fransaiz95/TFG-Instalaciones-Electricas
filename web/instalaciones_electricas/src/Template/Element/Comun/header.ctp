@@ -30,6 +30,29 @@
 				<li>
 					<?php
 					echo $this->Html->link( 
+						__('RESTORE DATA BASE'),
+						array(
+							'controller' => 'home',
+							'action' => 'restoreDatabase'
+						), 
+						array(
+							'escape' => false,
+							'id' => 'restore_bd-js',
+							'data-url_delete' => \Cake\Routing\Router::url([
+								'controller' => 'home',
+								'action' => 'ajaxDeleteDatabase', 
+							], true),
+							'data-url_create' => \Cake\Routing\Router::url([
+								'controller' => 'home',
+								'action' => 'ajaxCreateDatabase', 
+							], true),
+						)
+					);
+					?>
+				</li>
+				<li>
+					<?php
+					echo $this->Html->link( 
 						__('ABOUT US'),
 						array(
 							'controller' => 'home',

@@ -111,11 +111,51 @@ var Weblectric  = (function(){
         });
     }
 
+    var restoreBD = function(){
+        $('#restore_bd-js').off('click').on('click', function(e){
+            e.preventDefault();
+            var element = $(this);
+            var url_delete = element.data('url_delete');
+            var url_create = element.data('url_create');
+
+            data = {};
+            
+            swal({
+                title: 'Do you want to restore the database?',
+                text: 'Changes can\'t be revert',
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: '#5bcb90',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then(function (result) {
+                if (result.value) {
+
+                    PeticionAjax.mostrarCargando();
+                    var request = PeticionAjax.post(url_delete, data);
+                    request.done(function (data){
+                        var request = PeticionAjax.post(url_create, data);
+                        request.done(function (data){
+                            PeticionAjax.ocultarCargando();
+                            swal({
+                                title: 'It has been done successfully',
+                                type: "success",
+                                confirmButtonColor: '#5bcb90',
+                                confirmButtonText: 'Ok',
+                            })
+                        })
+                    })
+                }
+            });
+        });
+    }
+
     return {
         load: function($context){
             loadSelect2Single();
             loadSelect2Multiple();
             deleteFunction();
+            restoreBD();
         }
     }
 })();
