@@ -23,7 +23,7 @@ La optimización clásica garantiza el óptimo numérico y permite un numero ele
 	\item Teoría de grafos u optimización en redes.
 \end{itemize}
 
-La optimización metaherística\footnote{Inteligencia Artificial} trata de imitar fenómenos sencillos ocurrentes en la naturaleza, mecanismos específicos para evitar óptimos locales sino tener una mirada mas "global". No garantizan la obtención de un óptimo así como tampoco permiten un gran número de restricciones.
+La optimización metaheurística trata de imitar fenómenos sencillos ocurrentes en la naturaleza, mecanismos específicos para evitar óptimos locales y tener una mirada mas "global". No garantizan la obtención de un óptimo absoluto así como tampoco permiten un gran número de restricciones.
 
 Son soluciones aplicados generalmente a problemas combinatorios que exploran un gran número de soluciones en un tiempo muy corto.
 
@@ -50,7 +50,7 @@ Por ejemplo: Un problema de optimización puede ser representado de la siguiente
 
 Dada: una función $f : A \rightarrow R$
 
-Buscar: un elemento $x_{0}$ en $A$ tal que $f(x_{0}) \leq f(x)$ para todo $x$ en $A$ si hablamos de minimización o tal que $f(x_{0}) \geq f(x)$ para todo $x$ en $A$ si se trata de un problema de maximización.
+Buscar: un elemento $x_{0}$ en $A$, tal que $f(x_{0}) \leq f(x)$ para todo $x$ en $A$ si hablamos de minimización, o $f(x_{0}) \geq f(x)$ para todo $x$ en $A$ si se trata de un problema de maximización.
 
 En nuestro ejemplo, $A$ sería un subconjunto del \textit{espacio euclídeo}. Si trabajamos con una dimensión, denominaríamos \textit{espacio euclídeo} a una recta que va desde $-\infty$ hasta $+\infty$. En cambio, si trabajamos en dos dimensiones, el \textit{espacio euclídeo} sería un plano con infinitas rectas y puntos.
 La función $f$ sería la función objetivo y se hace referencia a ella como función de costo en los problemas de 
@@ -66,28 +66,28 @@ Sin embargo, cabe destacar que dentro de los problemas de optimización tenemos 
 
 La diferencia entre ambos es que en los primeros, una solución se considera mejor que otra si con ella se obtiene una solución objetivo de menor valor si estamos minimizando, o una solución de mayor valor si estamos maximizando.
 
-Centrándonos de nuevo en nuestro análisis, la solución proporcionada para resolver el problema viene de parte de un algoritmo multi-objetivo llamado Nondominated Sorting Genetic Algorithm II (NSGA-II).
+Centrándonos de nuevo en nuestro análisis, la solución proporcionada para resolver el problema viene de parte de un algoritmo multi-objetivo llamado \textit{Nondominated Sorting Genetic Algorithm II (NSGA-II)}~\cite{pdf:nsga-ii}.
 
 \section{NSGA-II}
 
-Implementando esta solución, la meta a la que se quiere llegar es a encontrar un vector de variables $x=(x1,x2,…xj)$ que cumpla con todas las restricciones y condiciones, donde las funciones objetivos resultantes sean optimizadas~\cite{pdf:algoritmo}.
+Implementando esta solución, la meta a la que se quiere llegar es a encontrar un vector de variables $x=(x_1,x_2,…x_j)$ que cumpla con todas las restricciones y condiciones, donde las funciones objetivos resultantes sean optimizadas~\cite{pdf:algoritmo}.
 
-Se denomina espacio de solución al conjunto de todas las combinaciones posibles. Es denotado mediante: $fn(x)=z=(z1,z2,…zM)$. 
+Se denomina espacio de solución al conjunto de todas las combinaciones posibles. Es denotado mediante: $fn(x)=z=(z_1,z_2,…z_M)$. 
 
-Sin embargo, en los problemas multiobjetivo, este criterio no es correcto pues entran en juego simultáneamente funciones de minimizar y de maximizar.
+Sin embargo, en los problemas multiobjetivo, entran en juego simultáneamente funciones de minimizar y de maximizar.
 
 Para llegar a una solución, en los problemas multiobjetivo, se introduce un nuevo operador, dominancia. Que define: una solución 
-$x(1)$ domina otra solución $x(2)$ si se cumplen las siguientes condiciones~\cite{pdf:nsga-ii}:
+$x(1)$ predomina sobre otra solución $x(2)$ si se cumplen las siguientes condiciones~\cite{pdf:nsga-ii}:
 
 \begin{itemize}
 	\item La solución $x(1)$ no siempre es de menor calidad que $x(2)$ en todos los objetivos.
 	\item Al menos en uno de los objetivos, la solución $x(1)$ es estrictamente mejor que $x(2)$.
 \end{itemize}
 
-Utilizando estas reglas de manera iterativa sobre un conjunto de soluciones de un probloema de optimización multiobjetivo, se puede llegar a establecer cuales son las alternativas dominantes. Las conocemos como Conjunto No Dominado.
-El resto de soluciones pasan a formar parte del Conjunto de Soluciones Dominadas. 
+Utilizando estas reglas de manera iterativa sobre un conjunto de soluciones de un problema de optimización multiobjetivo, se puede llegar a establecer cuáles son las alternativas dominantes. Las conocemos como \textit{Conjunto No Dominado}.
+El resto de soluciones pasan a formar parte del \textit{Conjunto de Soluciones Dominadas}. 
 
-Logrando establecer este conjunto de Soluciones Dominantes en un espacio objetivo, podemos hablar de Frente óptimo de Pareto~\cite{img:frente_pareto}. (Figura~\ref{fig:frentePareto})
+Logrando establecer este conjunto de Soluciones Dominantes en un espacio objetivo, podemos hablar de \textit{Frente óptimo de Pareto}~\cite{img:frente_pareto}. (Figura~\ref{fig:frentePareto})
 
 \begin{figure}[ht]
 	\centering
@@ -95,30 +95,3 @@ Logrando establecer este conjunto de Soluciones Dominantes en un espacio objetiv
 	\caption{Frente de pareto en un problema de minimización. Ilustración extraida de~\cite{img:frente_pareto}}
 	\label{fig:frentePareto}
 \end{figure}
-
-\subsection{Pseudocódigo NSGA-II \cite{pdf:nsga-ii}}
-
-\begin{enumerate}
-	\item Generar una población P de tamaño N. 
-	\item Identificar los frentes de dominancia y evaluar las 
-	distancias de apilamiento en cada frente. 
-	\item Usando selección (<c)\footnote{Selección por torneo según operador de 
-		apilamiento. La selección retorna la solución ganadora $i$ basándose en 
-		dos criterios fundamentales.  
-		\begin{itemize}
-			\item Si tiene mejor rango: ri<rj.
-			\item Si tienen el mismo rango pero i tiene mejor distancia de apilamiento: di>d.
-		\end{itemize}
-	}, cruzamiento y mutación se 
-	genera una población descendiente del mismo 
-	tamaño de P.  	
-	\item Reunir Padres e hijos en un conjunto de tamaño 2N y 
-	clasificar los frentes de dominancia. 
-	\item Determinar el conjunto descendiente final 
-	seleccionando los frentes de mejor rango. Si se 
-	supera el límite de población N, eliminar las 
-	soluciones con menor distancia de apilamiento en el 
-	último frente seleccionado. 
-	\item Sí se cumple el criterio de convergencia, Fin del 
-	proceso. De lo contrario retornar al paso 3.
-\end{enumerate}

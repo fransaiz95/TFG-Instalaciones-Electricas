@@ -1,15 +1,12 @@
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 DROP TABLE `fuels`;
 DROP TABLE `fuels_technologies`;
-DROP TABLE `rangedemands`;
 DROP TABLE `arcs`;
 DROP TABLE `arcs_typelines`;
 DROP TABLE `countries`;
 DROP TABLE `regions_technologies`;
 DROP TABLE `technologies`;
 DROP TABLE `typelines`;
-DROP TABLE `rangemeteos`;
-DROP TABLE `rangerenowables`;
 DROP TABLE `regions`;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SHOW DATABASES;
