@@ -1,6 +1,6 @@
 \capitulo{3}{Conceptos teóricos}
 
-Aunque el proyecto está enfocado a la administración a través de una aplicación web de unos datos que nos facilita el cliente, la base del proyecto se cimienta sobre un algoritmo de optimización capaz de proporcionarnos soluciones acerca de la mejor distribución de plantas energéticas en México. 
+Aunque el proyecto está enfocado a la administración a través de una aplicación web de unos datos que nos facilita el cliente, la base del proyecto se cimienta sobre un algoritmo de optimización capaz de proporcionarnos soluciones acerca de la mejor distribución de plantas energéticas en distintas regiones. 
 
 Antes de explicar cómo se ha enfocado el planteamiento de la aplicación, es necesario hablar un poco sobre la optimización.
 
@@ -10,39 +10,43 @@ Antes de explicar cómo se ha enfocado el planteamiento de la aplicación, es ne
 
 Podríamos referirnos a la optimización como un proceso de selección del mejor elemento (con respecto a algún criterio) dentro de un conjunto de elementos disponibles~\cite{wiki:optimizacion}.
 
-Si hablamos de problemas de optimización, el proceso consiste en minimizar o maximizar una función real escogiendo de manera sistemática valores de entrada (tomados de un conjunto permitido) y computando el valor de la función~\cite{wiki:optimizacion}.
+Si hablamos de problemas de optimización, el proceso consiste en minimizar o maximizar una función real escogiendo de manera sistemática valores de entrada (tomados de un conjunto permitido) y calculando el valor de la función~\cite{wiki:optimizacion}.
 
 \subsection{Optimización clásica vs. Metaheurística}
 
-La optimización clásica garantiza el óptimo numérico y permite un numero elevado de restricciones. Algún método clásico es:
+La optimización clásica garantiza el óptimo numérico global y permite un numero elevado de restricciones. Algún método clásico es:
 \begin{itemize}
-	\item Programación lineal.
-	\item Programación cuadrática.
-	\item Programación no lineal.
-	\item Programación dinámica.
-	\item Teoría de grafos u optimización en redes.
+	\item Programación lineal~\cite{web:programacionLineal}.
+	\item Programación cuadrática~\cite{web:programacionCuadratica}.
+	\item Programación no lineal~\cite{web:programacionNoLineal}.
+	\item Programación dinámica~\cite{web:programacionDinamica}.
+	\item Teoría de grafos u optimización en redes~\cite{pdf:teoriaGrafos}.
 \end{itemize}
 
 La optimización metaheurística trata de imitar fenómenos sencillos ocurrentes en la naturaleza, mecanismos específicos para evitar óptimos locales y tener una mirada mas "global". No garantizan la obtención de un óptimo absoluto así como tampoco permiten un gran número de restricciones.
 
-Son soluciones aplicados generalmente a problemas combinatorios que exploran un gran número de soluciones en un tiempo muy corto.
+Son soluciones aplicadas generalmente a problemas combinatorios que exploran un gran número de soluciones en un tiempo muy corto.
 
 Algún método metaheurístico es:
 \begin{itemize}
-	\item Algoritmos evolutivos (genéticos).
-	\item Recocido o simulado.
-	\item Sistemas multiagente.
+	\item Algoritmos evolutivos (genéticos)~\cite{pdf:algoritmosGeneticos}.
+	\item Recocido o simulado~\cite{web:recocidoSimulado}.
+	\item Sistemas multiagente~\cite{web:sistemasMultiagente}.
 \end{itemize}
 
-\subsection{Componentes~\cite{pdf:optimizacion}}
+En esta aplicación, al igual que en muchas otras, se utilizan algoritmos de optimización metaherísticos porque el cálculo de un óptimo global es imposible de obtener en un tiempo razonable. Los métodos metaheurísticos, ofrecen un óptimo "razonablemente" bueno.
+
+\subsection{Componentes}
+A continuación, se van a describir los componentes de un sistema de optimización~\cite{pdf:optimizacion}.
 
 \subsubsection{Función objetivo}
-Medida cuantitativa de un sistema que se desea maximizar o minimizar
+Medida cuantitativa de un sistema que se desea maximizar o minimizar.
 
 \subsubsection{Variables}
 Podemos hablar de ellas como las decisiones que afectan al valor de la función objetivo. Pueden ser dependientes o independientes.
+
 \subsubsection{Restricciones}
-Conjunto de relaciones que las variables están obligadas a satisfacer
+Conjunto de relaciones que las variables están obligadas a satisfacer.
 
 \subsubsection{Ejemplos básicos}
 
@@ -64,7 +68,7 @@ Sin embargo, cabe destacar que dentro de los problemas de optimización tenemos 
 	\item Multi-objetivo.
 \end{itemize}
 
-La diferencia entre ambos es que en los primeros, una solución se considera mejor que otra si con ella se obtiene una solución objetivo de menor valor si estamos minimizando, o una solución de mayor valor si estamos maximizando.
+La diferencia entre ambos es que en los primeros solo hay un objetivo mientras que en los segundos hay más de uno y además pueden y suelen ir en direcciones opuestas.
 
 Centrándonos de nuevo en nuestro análisis, la solución proporcionada para resolver el problema viene de parte de un algoritmo multi-objetivo llamado \textit{Nondominated Sorting Genetic Algorithm II (NSGA-II)}~\cite{pdf:nsga-ii}.
 
@@ -92,6 +96,6 @@ Logrando establecer este conjunto de Soluciones Dominantes en un espacio objetiv
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=1\textwidth]{/conceptosTeoricos/frentePareto}
-	\caption{Frente de pareto en un problema de minimización. Ilustración extraida de~\cite{img:frente_pareto}}
+	\caption{Frente de pareto en un problema de minimización. Ilustración extraida de~\cite{img:frente_pareto}.}
 	\label{fig:frentePareto}
 \end{figure}

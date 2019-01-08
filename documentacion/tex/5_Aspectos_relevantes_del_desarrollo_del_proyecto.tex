@@ -4,11 +4,11 @@
 
 \subsection{Lectura de datos}
 
-Teniendo en cuenta los objetivos del proyecto ya comentados en apartados anteriores y queriendo lograr la construcción de una aplicación estable para que el usuario final pueda cargar sus datos y administrarlos, nos vimos obligados en primera instancia a buscar una librería en PHP capaz de leer una serie de datos desde un Excel, pues el cliente nos envió los datos en dicho formato, para que en un futuro fuesen administrables y poder ser alojados en nuestra base de datos.
+Teniendo en cuenta los objetivos del proyecto ya comentados en apartados anteriores y queriendo lograr la construcción de una aplicación estable para que el usuario final pueda cargar sus datos y administrarlos, nos vimos obligados en primera instancia a buscar una librería en PHP capaz de leer una serie de datos desde una hoja de cálculo, pues el cliente nos envió los datos en dicho formato, para que en un futuro fuesen administrables y poder ser alojados en nuestra base de datos.
 
 \subsubsection{Phpspreadsheet}
 
-Para realizar esta operación, el alumno conocía una librería llamada \textit{PHPExcel} pero que actualmente a día de hoy está deprecada, por tanto, hubo que investigar y buscar cuál era la solución actualmente. Así se consiguió dar con \textit{Phpoffice/Phpspreadsheet}. Mediante esta librería, que podemos encontrar su documentación en \href{https://phpspreadsheet.readthedocs.io/en/develop/}{phpspreadsheet}~\cite{web:spreadsheet}, se puede realizar lecturas y escrituras sobre un Excel. 
+Para realizar esta operación, el alumno conocía una librería llamada \textit{PHPExcel} pero que actualmente a día de hoy está deprecada, por tanto, hubo que investigar y buscar cuál era la solución actualmente. Así se consiguió dar con \textit{Phpoffice/Phpspreadsheet}. Mediante esta librería, que podemos encontrar su documentación en \href{https://phpspreadsheet.readthedocs.io/en/develop/}{phpspreadsheet}~\cite{web:spreadsheet}, se puede realizar lecturas y escrituras sobre una hoja de cálculo. 
 
 En la figura~\ref{fig:spreadsheet} se puede ver que la librería cubre con creces los requisitos necesarios, además de ofrecer alguna opción extra por si en un futuro o en próximas versiones del proyecto fuesen de interés~\cite{web:spreadsheet}.
 
@@ -41,29 +41,29 @@ En cuanto al manejo de los datos, aquí si que ha habido más problemas. Se nos 
 
 Ha habido problemas a la hora de subir al servidor archivos muy grandes pues se agotaba la memoria al procesar los datos~\footnote{Rondando las 400K registros.} y se quedaba atascado. 
 
-En nuestro entorno de desarrollo local, el problema del tamaño de los archivos lo solucionamos modificando la propiedad $upload\_max\_file\_size$ en el archivo $php.ini$ pero al no tener acceso a este archivo en el servidor, no podemos modificarlo. 
+En nuestro entorno de desarrollo local, el problema del tamaño de los archivos lo solucionamos modificando la propiedad \verb|upload_max_file_size| en el archivo $php.ini$ pero al no tener acceso a este archivo en el servidor, no podemos modificarlo. 
 
-El problema de la memoria al procesar los datos, no se ha podido solucionar ni con la sentencia $ini\_set('memory\_limit', '-1');$ para indicar que puede utilizar toda la memoria que necesite, ni con la sentencia $set\_time\_limit(0);$ para indicar que tiene el tiempo de ejecución ilimitado. 
+El problema de la memoria al procesar los datos, no se ha podido solucionar ni con la sentencia \verb|ini_set('memory_limit', '-1');| para indicar que puede utilizar toda la memoria que necesite, ni con la sentencia \verb|set_time_limit(0);| para indicar que tiene el tiempo de ejecución ilimitado. 
 
 Por esta razón es por lo que hemos tenido que fragmentar las cargas y administraciones de ciertos datos aunque lo ideal de cara a la usabilidad del usuario hubiera sido poder hacerlo todo en un mismo paso.
 
-Para almacenar todos estos datos y poder dar al usuario la posibilidad de administrarlos, se ha construido una base de datos relacional. Para gestionarla, se ha utilizado el software \textit{HeidiSQL} que ofrece la posibilidad de conectarse a servidores \textit{MySQL}\footnote{Sistema de gestión de bases de datos relacional}.
+Para almacenar todos estos datos y poder dar al usuario la posibilidad de administrarlos, se ha construido una base de datos relacional. Para gestionarla, se ha utilizado el software \textit{HeidiSQL} que ofrece la posibilidad de conectarse a servidores \textit{MySQL}.
 
 \section{Estructura de la aplicación}
 
 La estructura de directorios de nuestro proyecto se puede ver en la figura~\ref{fig:estructuraProyecto}. Destacamos los siguientes directorios:
 
 \begin{itemize}
-	\item \textit{config}: En la figura~\ref{fig:estructuraProyectoConfig} vemos los ficheros de configuración de nuestra aplicación. Con una importancia especial podemos destacar: 
+	\item \verb|config|: En la figura~\ref{fig:estructuraProyectoConfig} vemos los ficheros de configuración de nuestra aplicación. Con una importancia especial podemos destacar: 
 	\begin{itemize}
-		\item app.php: Archivo donde se establecen los parámetros de configuración para el email, la base de datos, los logs, la sesión, el debug, etc.
-		\item constantes.php: Como indica el nombre del archivo, aquí se declaran clases con constantes comunes para poder usarlas desde el resto de la aplicación.
-		\item paths.php: Definir variables globales para rutas de directorios concretos.
+		\item \verb|app.php|: Archivo donde se establecen los parámetros de configuración para el email, la base de datos, los logs, la sesión, el debug, etc.
+		\item \verb|constantes.php|: Como indica el nombre del archivo, aquí se declaran clases con constantes comunes para poder usarlas desde el resto de la aplicación.
+		\item \verb|paths.php|: Definir variables globales para rutas de directorios concretos.
 	\end{itemize}
 		
-	\item \textit{webroot}: Dentro de la estructura cliente-servidor, en la figura~\ref{fig:estructuraProyectoWebroot} se encuentra lo relacionado con el cliente. Nuestra hoja de estilos, los archivos $*.js$, las imágenes, las fuentes y el favicon.pnp\footnote{Se conoce como favicon al icono que aparece en la pestaña del navegador junto con el nombre de la aplicación.}.
+	\item \verb|webroot|: Dentro de la estructura cliente-servidor, en la figura~\ref{fig:estructuraProyectoWebroot} se encuentra lo relacionado con el cliente. Nuestra hoja de estilos, los archivos $*.js$, las imágenes, las fuentes y el favicon.pnp\footnote{Se conoce como favicon al icono que aparece en la pestaña del navegador junto con el nombre de la aplicación.}.
 	
-	\item \textit{src}: Aquí se almacenarán los archivos de tu aplicación.
+	\item \verb|src|: Aquí se almacenarán los archivos de tu aplicación.
 \end{itemize}
 
 \begin{figure}[ht]
