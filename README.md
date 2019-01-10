@@ -14,6 +14,6 @@ La aplicación está disponible en el siguiente enlace: [Weblectric.](http://ser
 ## Autores: 
 - Francisco Saiz Güemes.
 ## Tutores:
-- Alvar Arnaiz Gonzalez.
-- Jesus Manuel Maudes Raedo.
+- Álvar Arnaiz González.
+- Jesús Manuel Maudes Raedo.
 - Rodrigo Palacios Saldaña.
