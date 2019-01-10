@@ -2,11 +2,213 @@
 
 \section{Introducción}
 
+En el siguiente apartado se presentará la planificación del proyecto y la metodología adoptada junto con las técnicas y herramientas utilizadas.
+
+La metodología que se ha utilizado para el desarrollo del proyecto ha sido \textit{Scrum}, una metodología de desarrollo ágil.
+
+Para saber qué recursos se necesitan, hay que analizar todas las partes que forman el proyecto. El analisis podemos desglosarlo en:
+
+\begin{itemize}
+	\item Planificación temporal: Tiempo que tendremos que invertir en cada una de las fases del desarrollo.
+	\item Estudio de viabilidad: Aquí tendremos en cuenta las licencias necesarias, beneficios, costes y normativas de leyes a cumplir.
+\end{itemize}
+
+
 \section{Planificación temporal}
+
+La metodología comentada anteriormente, \textit{Scrum}, facilita nuestra organización pues está diseñada para poder realizar entregas parciales y periódicas en pequeños y cortos espacios de tiempo, donde unos prontos resultados y una flexibilidad considerable son fundamentales. Para concretar todo lo comentado, necesitábamos una herramienta que nos permitiera desarrollar el producto acorde a esta metodología y así es como se empezó a utilizar \textit{GitHub} como plataforma donde alojar el proyecto. 
+
+\textit Tanto {Scrum} como la herramienta \textit{GitHub}, contienen numerosos términos, pero a continuación explicaremos aquellos que se han utilizado en el proyecto.
+
+\begin{itemize}
+	\item \textit{Milestone:} También llamado \textit{Sprint}. En nuestro caso, tiempo comprendido entre una o dos semanas. A cada \textit{Milestone} le corresponde un número determinado de \textit{issues}. Al inicio de cada \textit{Sprint} hemos tenido como costumbre realizar una pequeña reunión de nos más de una hora para comentar dificultades tenidas hasta ese momento y qué cosas nuevas íbamos a planificar.
+	
+	\item \textit{Issue:} Así llamamos a cada una de las pequeñas tareas a realizar en este periodo de tiempo. No hay número máximo de \textit{issues} por \textit{milestone}. En nuestro caso, ha oscilado entre siete o quince, en función de la duración del sprint y del tiempo del que disponíamos.
+	
+	\item \textit{ZenHub:} A través de \textit{ZenHub}\footnote{Se ha valorado la utilización de alguna alternativa como puede ser \textit{Trello} pero nos hemos decantado por \textit{ZenHub} al integrarse perfectamente en \textit{GitHub.}}, una plataforma que se integra en \textit{GitHub} mediante la instalación de una extensión para el navegador, podemos gestionar nuestro tiempo de una manera más eficiente ya que permite asignar tiempos a cada una de las \textit{issues}. De esta manera, te permitía hacer cálculos para evitar crear más issues de las que ibas a ser capaz de realizar y poder organizar mejor los siguientes \textit{sprints}.
+	
+	\item \textit{Board:} Otro de los elementos más significativos de \textit{ZenHub} es el tablero. Cuenta con numerosas \textit{pipelines} personalizables entre las que mover \textit{issues} en función de su estado de realización. 
+\end{itemize}
+
+A continuación se mostrará el avance a lo largo de las iteracciones del proyecto:
+
+\subsection{Sprint 0: Inicio del proyecto:}
+
+Reunión inicial en la que se comenta en rasgos generales la estructura y finalidad del desarrollo de este proyecto. 
+
+\textit{Issues:}
+\begin{itemize}
+	\item Elegir el \textit{framework} que se va a utilizar. Ver qué versión de \textit{CakePHP} es la más estable hoy en día.
+	\item Diseñar la base de datos \textit{MySQL} a través de un modelo Entidad-Relación. 
+	\item Buscar un servidor gratuito donde poder alojar la aplicación.
+	\item Crear la estructura de directorios del proyecto.
+\end{itemize}
+
+Este \textit{sprint} me ha servido para tomar un primer contacto con el proyecto, preparar el entorno de desarrollo en el que a través de \textit{XAMPP} se ha tenido que simular en local un servidor \textit{Apache} con \textit{PHP} y \textit{MySQL}. Además, se ha realizado una primera búsqueda de lo que sería el servidor donde lo vamos a alojar, me ha servido para refrescar conceptos de base de datos y realizar el modelo entidad relación.
+
+En cuanto al framework a utilizar, me decanté por \textit{CakePHP 3.5} pues aunque en el trabajo utilizamos una versión bastante más antigua\footnote{ CakePHP 2.x} no deja de ser el mismo \textit{framework} y satisfacía las necesidades presentadas.
+
+\subsection{Sprint 1: Base de datos y administración:}
+
+\textit{Issues:}
+\begin{itemize}
+	\item Subir proyecto base al servidor.
+	\item Contactar con el cliente: Carga inicial de datos: Necesitábamos conocer qué estructura de ficheros venía utilizando hasta ahora para poder nosotros diseñar la base de datos en función de sus necesidades. 
+	\item Crear tablas en Base de Datos MySQL.
+	\item Documentación: Cargar la plantilla Latex.
+\end{itemize}
+
+Una vez que teníamos claro qué \textit{framework} se iba a utilizar, que habíamos creado correctamente la estructura del proyecto, el paso fue subirlo a un servidor. La opción que elegimos en este primer momento, fue la más económica, eligiendo un hosting gratuito en \url{https://domitienda.com/hosting-ilimitado/} con las siguientes características:
+
+\begin{itemize}
+	\item Hosting 1 Dominio.
+	\item 250 MB de espacio en disco. 
+	\item 1 buzón de correo.
+	\item Certificado Let's Encrypt.
+	\item Protección permanente de aplicaciones
+	\item Soporte 24 horas.
+\end{itemize}
+
+El cliente envió una hoja de cálculo con los datos que manejaba hasta ahora por lo que se decidió dejar para el siguiente \textit{sprint} la carga de tablas en base de datos mientras se desgranaba el documento.
+
+Para la realización de la documentación, elegimos \textit{LaTeX} acompañado del editor \textit{TeXstudio} por lo que importamos la plantilla facilitada desde la universidad.
+
+\subsection{Sprint 2: Base de datos y carga inicial:}
+
+\textit{Issues:}
+\begin{itemize}
+	\item Crear diagrama relacional y crear estructura de tablas en base de datos.
+	\item Carga inicial de datos en la aplicación.
+\end{itemize}
+
+Los objetivos de este \textit{sprint} son claros. Una vez desgranados los datos de la hoja de cálculo facilitada por el cliente, modelar un diagrama relacional y crear la estructura de tablas en base de datos. Con esto cumplido, el siguiente paso era alimentar nuestra base de datos con datos reales. Esta carga inicial la hemos hecho leyendo los datos directamente de la hoja de cálculo facilitada por el cliente.
+
+Dado que existían pequeñas disconcordancias entre los propios datos y no teniendo la seguridad de que ser los datos y estructura definitiva, nos limitamos a hacer un primer boceto de lo que sería nuestro diagrama relacional y se empezó a preparar la estructura MVC (Modelo, Vista y Controlador) para las entidades que teníamos fijas. Desde el \textit{framework} es necesario establecer una comunicación entre el cliente y la base de datos. Esto es lo que se trató de hacer en este \textit{sprint}.
+
+\subsection{Sprint 3: Carga de datos con una primera administración:}
+\textit{Issues:}
+\begin{itemize}
+	\item Renombrar tablas de base de datos.
+	\item Cargar en base de datos los datos facilitados en un excel. II 
+	\item Empezar la administración de los datos.
+\end{itemize}
+
+Una vez que teníamos la estructura montada en el proyecto, seguimos dando forma a nuestro diagrama hasta su versión definitiva. Con la base de datos ya bien montada, utilizando la librería \textit{PhpSpreadsheet} empezamos a cargar los datos.
+
+En cuanto a la administración de los datos, no fue viable por lo que lo dejamos para el siguiente \textit{sprint}.
+
+\subsection{Sprint 4: Terminar la carga de datos y empezar la administración de las entidades:}
+\textit{Issues:}
+\begin{itemize}
+	\item Terminar de cargar la información en base de datos.
+	\item Administración de la tabla \textit{countries}.
+	\item Administración de la tabla \textit{regions}.
+	\item Administración de la tabla \textit{fuels}.
+	\item Administración de la tabla \textit{technologies}.
+\end{itemize}
+
+En este \textit{sprint} ha habido problemas a la hora de cerrar la carga inicial de todos los datos pues nos dimos cuenta de que había tablas cuyos datos no existían y es que el cliente estaba pendiente de facilitarlos.
+
+Sin embargo, con la mayoría de tablas con sus datos correspondientes cargados, se ha empezado a construir la administración para cada una de ellas. 
+
+El primer proceso es laborioso pues tienes que realizar los \textit{mockups} de las pantallas que se quieren construir. 
+
+En este \textit{sprint} se ha invertido más tiempo del planificado pues los tiempos de elaboración de \textit{mockups}, maquetación de una cabecera y plantilla común a toda la aplicación no han sido los previstos. Esto nos vino bien para a partir de ahora, ser más cuidadosos con el presupuesto de horas pues las tareas eran menos previsibles y más complejas.
+
+\subsection{Sprint 5: Terminar la administración:}
+\textit{Issues:}
+\begin{itemize}
+	\item Administración de la tabla \textit{arcs}.
+	\item Administración de la tabla \textit{typelines}.
+	\item Administración entre \textit{arcs} y \textit{typelines} (\textit{arcs\_typelines}).
+	\item Administración entre \textit{regions} y \textit{technologies} (\textit{regions\_technologies}).
+	\item Administración entre \textit{regions} y \textit{arcs} (\textit{regions\_arcs}).
+	\item Administración de la tabla \textit{rangedemands}.
+\end{itemize}
+
+Mientras que para las tablas en las que la administración era a través de un formulario no existía mayor problema, la tabla \textit{rangedemands} se abastece de un fichero con formato hoja de cálculo que el usuario sube a la aplicación. Esto ha resultado bastante problemático por el gran número de registros a insertar en la tabla dándonos problemas con la memoria disponible y el tiempo de ejecución empleado.
+
+Otro problema detectado ha sido el tamaño máximo de fichero que podemos subir a la aplicación. Por defecto, en la configuración de \textit{PHP} que trae \textit{Apache}, este valor viene limitado. Nosotros hemos tenido que entrar al fichero \verb|php.ini| y modificar el valor de una propiedad dejándola como: \verb|upload_max_filesize=100M|
+
+Al margen del problema con tamaño del archivo que ha quedado corregido y tras muchas horas de pruebas, se han intentado solucionar los inconvenientes pero en este \textit{sprint} no ha sido posible, por lo que arrastramos el desarrollo de esta funcionalidad al siguiente.
+
+
+\subsection{Sprint 6: Logotipo de Weblectric y documentación del proyecto:}
+\textit{Issues:}
+\begin{itemize}
+	\item Logotipo para la aplicación: \textit{Weblectric}.
+	\item Documentación: 2 Objetivos del proyecto.
+	\item Documentación: 3 Conceptos teóricos.
+	\item Documentación: 4 Técnicas y herramientas.
+	\item Documentación: 5 Aspectos relevantes del desarrollo del proyecto.
+	\item Documentación: 6 Trabajos relacionados.
+\end{itemize}
+
+Aprovechando el parón de navidades, se ha decidido aprovechar para diseñar un logotipo para la aplicación y formalizar por escrito en la documentación del proyecto todas aquellas cosas que estaban en el aire.
+
+Escribir el apartado "Objetivos del proyecto"(2) y "Técnicas y herramientas"(4) no nos ha llevado demasiado tiempo porque era material ya trabajado y comentado previamente, en cambio, si que ha requerido de una labor más a fondo los apartados "Conceptos teóricos"(3), "Aspectos relevantes del desarrollo del proyecto"(5) y "Trabajos relacionados"(6) pues ha requerido labor de investigación sobre algún algoritmo de optimización para el apartado número 3 y de competencias profesionales ya existentes en el mercado para el apartado número 6. 
+
+
+...
+
+...
+
+...
 
 \section{Estudio de viabilidad}
 
+En esta sección se hablará del presupuesto económico equivalente al desarrollo del proyecto y de su viabilidad legal.
+
 \subsection{Viabilidad económica}
+
+Se va a proceder a hacer un estudio de viabilidad económica del proyecto justificando todos los gastos que se hubieran tenido si este desarrollo formara parte del mundo laboral en lugar del plan de estudios del grado.
+
+A través de \textit{ZenHub} podemos asignar el tiempo que estimamos en la planificación del \textit{sprint} para el desarrollo de una \textit{issue}. En nuestro caso, salen un total de: XXX horas. Suponiendo que la hora de trabajo del desarrollador está pagada a 8~\euro, tenemos un total de:
+
+\[8\text{\euro}/\text{h}\times 000\text{h}=280\text{\euro} \]
+
+Además se tendrá en cuenta el trabajo llevado a cabo por los tutores del proyecto. Sumando al valor anterior 1 hora de reunión por \textit{sprint} y 3 horas extras para revisar documentación, plataforma y correos electronicos con consultas procedentes del desarrollador y cobrando a 10~\euro/\text{h}, hacen un total de:
+
+\[7\text{\textit{sprints}}\times 10\text{\euro}/\text{h}\times 4\text{\text{h}}=0000\text{\euro} \]
+
+De momento sumamos un total de XXXX~\euro que si le aplicamos el XX\% de seguridad social, se queda en un total de:
+
+\[\text{XXXX} +  \left( \text{XXXX} \times 0.00 \right) = \text{YYYY} \]
+
+Por último, destacar el coste material. En la parte software no tenemos gastos pues las aplicaciones y herramientas son todas gratuitas. En la parte hardware, podríamos valorar:
+
+\begin{itemize}
+	\item Ordenador portátil: 600~\euro.
+	\item Monitor: 150~\euro.
+	\item Teclado y ratón: 25~\euro.
+\end{itemize}
+
+Sumando el todo nos da un total de 775~\euro y según la agencia tributaria~\footnote{Tablas de amortización en 2018: \url{https://bit.ly/2ND4vCw}}, los equipos para procesos de información tienen una vida útil de 8 años (70.080 horas) y como nuestro proyecto ha tenido una duración de XXX horas, deja un total de:
+
+\[\frac{775\text{\euro}}{12 \text{ Meses} \times 8 \text{ Años}} \times 3.5 \text{ Meses} = 28,26\text{\euro} \]
+
+Por último, sumar el gasto producido por el servidor donde hemos tenido alojada la web. Aunque gran parte de la duración del proyecto lo hemos tenido en un \textit{hosting} gratuito, en la recta final y por causa de las limitaciones que nos ofrecía el plan, en el último mes de proyecto, los gastos han sido:
+
+\[\frac{18\text{\euro}}{3 \text{ Meses} } = 6\text{\euro} \]
+
+Con todos los costes mencionados, el desglose e importe final se recoge en la tabla \ref{tabla:costes}:
+
+\begin{table}[]
+	\centering
+	\caption{Costes totales del proyecto}
+	\label{tabla:costes}
+	\rowcolors {2}{gray!15}{}
+	\begin{tabular}{p{6cm} p{2cm}}
+		\toprule
+		Costes & Importe \\ \midrule
+		Desarrolladores         	 & \text{XXXX} \euro   	\\ 
+		Tutores del proyecto         & 280 \euro   	\\
+		Seguridad Social 			 & \text{XXXX} \euro 	\\ 
+		Material hardware	         & 28,26 \euro   		\\ 
+		Servidor					 & 6 \euro			\\
+		Totales             		 & \text{YYYY} \euro 	\\ \bottomrule
+	\end{tabular}
+\end{table}
 
 \subsection{Viabilidad legal}
 
