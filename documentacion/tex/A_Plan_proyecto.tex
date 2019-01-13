@@ -193,11 +193,11 @@ Por último, sumar el gasto producido por el servidor donde hemos tenido alojada
 
 Con todos los costes mencionados, el desglose e importe final se recoge en la tabla \ref{tabla:costes}:
 
-\begin{table}[]
+\begin{table}[h]
 	\centering
 	\caption{Costes totales del proyecto}
 	\label{tabla:costes}
-	\rowcolors {2}{gray!15}{}
+	\rowcolors {2}{gray!20}{}
 	\begin{tabular}{p{6cm} p{2cm}}
 		\toprule
 		Costes & Importe \\ \midrule
@@ -211,5 +211,26 @@ Con todos los costes mencionados, el desglose e importe final se recoge en la t
 \end{table}
 
 \subsection{Viabilidad legal}
+
+A continuación se hará un análisis de las librerías que hemos utilizado en nuestro proyecto. El análisis consistirá en buscar los tipos de licencias y después de analizar las compatibilidades, seleccionaremos la más restrictiva. En la tabla~\ref{tabla:licencias} se puede ver un listado de todas las licencias.
+
+Puesto que la licencia \textit{GNU General Public Licence} indica que en caso de utilizar un software bajo dicha licencia, es obligatorio calificar el software distribuido de la misma manera, establecemos a \textit{Weblectric} una licencia \textit{GNU General Public Licence}.
+
+\begin{table}[h]
+	\centering
+	\caption{Herramientas utilizadas y sus licencias}
+	\label{tabla:licencias}
+	\rowcolors {2}{gray!20}{}
+	\begin{tabular}{p{4cm} p{6cm}}
+		\toprule
+		Herramienta & Licencia \\ \midrule
+		CakePHP				         & MIT   								\\
+		Foundation Zurb		         & MIT   								\\
+		jQuery				         & MIT   								\\
+		Visual Studio Code 			 & MIT 									\\ 
+		XAMPP				         & GNU General Public Licence   		\\ 
+		Heidi SQL					 & GNU General Public Licence			\\ \bottomrule
+	\end{tabular}
+\end{table}
 
 
