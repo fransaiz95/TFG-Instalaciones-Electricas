@@ -31,10 +31,7 @@
 					<?php
 					echo $this->Html->link( 
 						__('RESTORE DATA BASE'),
-						array(
-							'controller' => 'home',
-							'action' => 'restoreDatabase'
-						), 
+						array(), 
 						array(
 							'escape' => false,
 							'id' => 'restore_bd-js',

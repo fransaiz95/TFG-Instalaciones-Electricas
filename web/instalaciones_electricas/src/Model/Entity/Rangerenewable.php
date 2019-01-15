@@ -1,0 +1,24 @@
+<?php
+namespace App\Model\Entity;
+
+use Cake\ORM\Entity;
+
+/**
+ * Rangerenewable Entity.
+ */
+class Rangerenewable extends Entity {
+
+	/**
+	 * Fields that can be mass assigned using newEntity() or patchEntity().
+	 *
+	 * @var array
+	 */
+	protected $_accessible = [
+		'id_region' => true,
+		'id_technology' => true,
+		'start' => true,
+		'gen_ava' => true,
+		'end' => true,
+	];
+
+}

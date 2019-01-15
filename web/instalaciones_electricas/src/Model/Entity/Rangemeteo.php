@@ -6,7 +6,7 @@ use Cake\ORM\Entity;
 /**
  * RegionTechnology Entity.
  */
-class Rangerenewable extends Entity {
+class Rangedemand extends Entity {
 
 	/**
 	 * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -15,10 +15,11 @@ class Rangerenewable extends Entity {
 	 */
 	protected $_accessible = [
 		'id_region' => true,
-		'id_technology' => true,
 		'start' => true,
-		'gen_ava' => true,
 		'end' => true,
+		'temp' => true,
+		'wind' => true,
+		'hum' => true,
 	];
 
 }

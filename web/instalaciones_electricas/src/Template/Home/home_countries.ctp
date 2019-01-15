@@ -26,8 +26,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/rangerenewable.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeCountries'
+                    'controller' => 'rangerenewables',
+                    'action' => 'technologies'
                 ), 
                 array(
                     'escape' => false,
@@ -45,8 +45,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/rangemeteos.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeCountries'
+                    'controller' => 'rangemeteos',
+                    'action' => 'home'
                 ), 
                 array(
                     'escape' => false,

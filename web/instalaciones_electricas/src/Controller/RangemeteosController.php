@@ -29,7 +29,8 @@ class RangemeteosController extends AppController
 
             $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
             $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
-            $this->_load_demands($sheetData);
+
+            $this->_load_meteos($sheetData);
 
         }
 
@@ -38,11 +39,6 @@ class RangemeteosController extends AppController
     }
 
     private function _load_meteos($meteos_tmp){
-        ini_set('memory_limit', '-1');
-        set_time_limit(0); 
-
-        //Antes de insertar nada, borramos todo.
-        $this->Rangedemands->deleteAll(array());
 
         unset($meteos_tmp[1]);
         $header = $meteos_tmp[2];
@@ -53,17 +49,26 @@ class RangemeteosController extends AppController
 
             $connection = ConnectionManager::get('default');
             $connection->begin();
+
+            //Antes de insertar nada, borramos todo.
+            // $tmp = $this->Rangemeteos->deleteAll(array());
+            $connection->execute('truncate rangemeteos'); 
+            $connection->commit();
+            
             $error = false;
 
-            $regions = $this->Rangedemands->Regions->find('list', [
+            $regions = $this->Rangemeteos->Regions->find('list', [
                 'keyField' => 'id',
                 'valueField' => 'name'
             ])
             ->toArray();
 
-            foreach($meteos_tmp as $meteo_tmp){
+            $connection = ConnectionManager::get('default');
+            $connection->begin();
 
-                if($meteo_tmp['A'] != null){
+            foreach($meteos_tmp as $key => $meteo_tmp){
+
+                if($meteo_tmp['A'] != null && $error == false){
 
                     $year = $meteo_tmp['A'];
                     $month = $meteo_tmp['B'];
@@ -84,34 +89,37 @@ class RangemeteosController extends AppController
                                 'id_region' => $region_id,
                                 'start' => $start,
                                 'end' => $end,
-                                'demand' => $meteo_tmp[$letter]
+                                'temp' => $meteo_tmp[$letter]
                             ];
 
                             $rangemeteo = $this->Rangemeteos->newEntity();
                             $rangemeteo = $this->Rangemeteos->patchEntity($rangemeteo, $rangemeteo_to_save);
                             $rangemeteo_bd = $this->Rangemeteos->save($rangemeteo);
-                            $connection->commit();
                             if(!$rangemeteo_bd){
                                 $error = true;
-                                $connection->rollback();
-                                $this->Rangemeteos->deleteAll();
+                                break;
                             }
 
                         }
                     }
+                }else{
+                    $error = true;
+                    break;
                 }
+
+                unset($meteos_tmp[$key]);
             }
 
             if($error == false){
                 $connection->commit();
                 return $this->redirect(['action' => 'home']);
             }else{
-                $this->Rangemeteos->deleteAll();
-                $connection->commit();
+                $connection->rollback();
+                debug('rollback hecho');exit;
             }
 
         } catch(\Cake\ORM\Exception\PersistenceFailedException $e) {
-            $connection->rollback();
+            echo 'error';
         }
 
     }

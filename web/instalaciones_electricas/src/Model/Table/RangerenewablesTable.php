@@ -18,8 +18,14 @@ class RangerenewablesTable extends Table {
  */
 	public function initialize(array $config) {
 		$this->table('rangerenewables');
-		$this->displayField('gen_Ava');
 		$this->primaryKey(['id_region', 'id_technology', 'start']);
+
+		$this->belongsTo('Regions', [
+			'foreignKey' => 'id_region',
+		]);
+		$this->belongsTo('Technologies', [
+			'foreignKey' => 'id_technology',
+		]);
 
 		// $this->belongsTo('Countries', [
 		// 	'foreignKey' => 'id_country',
