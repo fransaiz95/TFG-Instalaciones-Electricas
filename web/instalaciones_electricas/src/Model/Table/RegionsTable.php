@@ -75,6 +75,16 @@ class RegionsTable extends Table {
 		return $query;
 	}
 
+	public function search_list_reverse (){
+		$query = $this->find('list', [
+			'keyField' => 'name',
+			'valueField' => 'id'
+		])
+		->toArray();
+
+		return $query;
+	}
+
 	public function findRegionByName(Query $query, $name){
         return $query
 			->select(['id' => 'Regions.id'])

@@ -12,13 +12,19 @@
                 <?php
                 echo $this->Html->link( 
                     $this->Html->image('/img/icons/excel.png',array('class'=>'', 'style' => 'width: 25px;')) . __('Download template'), 
-                    array(), 
+                    array(
+                        'controller' => 'rangemeteos',
+                        'action' => 'ajaxDownloadExcel', 
+                    ), 
                     array(
                         'label' => __('as'),
                         'escape' => false,
-                        'class' => 'download-excel',
-                        'style' => '  pointer-events: none; cursor: default;',
-                        'title' => __('Download template')
+                        'class' => 'download-excel btn_excel-js',
+                        'title' => __('Download template'),
+                        'data-url' => \Cake\Routing\Router::url([
+                            'controller' => 'rangemeteos',
+                            'action' => 'ajaxDownloadExcel', 
+                        ], true),
                     )
                 );
                 ?>

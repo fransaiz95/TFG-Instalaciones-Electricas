@@ -78,7 +78,7 @@ class RangerenewablesController extends AppController
         unset($rangerenewables_tmp[2]);
         unset($rangerenewables_tmp[3]);
 
-        $ano = 2018;
+        $year = 2018;
         
         try {
 
@@ -88,7 +88,7 @@ class RangerenewablesController extends AppController
             //Antes de insertar nada, borramos todo.
             // $tmp = $this->Rangerenewables->deleteAll(array());
 
-            $connection->execute("delete from rangerenewables where start LIKE '%" . $ano . "-%' and id_technology = " . $id_technology ); 
+            $connection->execute("delete from rangerenewables where start LIKE '%" . $year . "-%' and id_technology = " . $id_technology ); 
             $connection->commit();
             
             $error = false;

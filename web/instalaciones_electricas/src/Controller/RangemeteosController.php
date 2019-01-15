@@ -124,4 +124,110 @@ class RangemeteosController extends AppController
 
     }
 
+    public function ajaxDownloadExcel(){
+
+        // We'll be outputting an excel file
+        header('Content-type: application/vnd.ms-excel');
+
+        // It will be called file.xls
+        header('Content-Disposition: attachment; filename="file.xlsx"');
+
+        ini_set('memory_limit', '-1');
+        set_time_limit(0); 
+
+        $year = 2018;
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Todos los ids de las regiones.
+        $regions_ids = $this->Rangemeteos->Regions->search_list_reverse();
+
+        // Los datos que vamos a exportar.
+        $rangemeteos = $this->Rangemeteos->getAllByYear($year); 
+
+        // Luego lo concatenaremos. Esto es para indicar de donde empieza a escribir.
+        $start_cell = 'A';
+        $cont_row = 1;
+
+        // Insertamos a piñon la primera fila
+        $row_1 = array('Región de Control');
+        $sheet->fromArray($row_1, null, $start_cell . $cont_row);
+        $cont_row ++;
+
+        // Insertamos a piñon la segunda fila
+        $row_2 = array('Región de Transmisión', '', '', '');
+        foreach($regions_ids as $id_region){
+            $row_2[] = $id_region;
+        }
+        $sheet->fromArray($row_2, null, $start_cell . $cont_row);
+        $cont_row ++;
+
+        // Insertamos a piñon la tercera fila
+        $row_3 = array('AÑO', 'MES', 'DIA', 'HORA');
+        $sheet->fromArray($row_3, null, $start_cell . $cont_row);
+        $cont_row ++;
+
+        //Este es el $row que ira cambiando de valor.
+        $row = array();
+
+        foreach($rangemeteos as $rangemeteo){
+            $date_froozen = $rangemeteo['start'];
+            $start = $date_froozen->i18nFormat('yyyy-MM-dd HH:mm:ss');
+            
+            $date = new \DateTime($date_froozen->i18nFormat('yyyy-MM-dd HH:mm:ss'));
+
+            $day = $date->format('d');
+            $month = $date->format('m');
+            $year = $date->format('Y');
+            $hour = $date->format('H') + 1;
+
+            $row = array();
+            $row[] = $year;
+            $row[] = $month;
+            $row[] = $day;
+            $row[] = $hour;
+
+            foreach($regions_ids as $id_region){
+                $meteos_by_region = $this->Rangemeteos->findByIdRegionAndStart($id_region, $start)->first();
+                $value = $meteos_by_region['temp'];
+
+                $row[] = $value;
+            }
+
+            $sheet->fromArray($row, null, $start_cell . $cont_row);
+            $cont_row ++;
+
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('rangemeteos.xlsx');
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment; filename="rangemeteos.xlsx"');
+        $writer->save("php://output");
+        exit;
+        
+    }
+
+
+
+    public function exportExcel() {
+        $spreadsheet = new Spreadsheet();  /*----Spreadsheet object-----*/
+        $Excel_writer = new Xlsx($spreadsheet);  /*----- Excel (Xls) Object*/
+
+	
+        $spreadsheet->setActiveSheetIndex(0);
+        $activeSheet = $spreadsheet->getActiveSheet();
+
+        $activeSheet->setCellValue('A1' , 'New file content')->getStyle('A1')->getFont()->setBold(true);
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('export.xlsx');
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment; filename="export.xlsx"');
+        $writer->save("php://output");
+        exit;
+	
+    }
+
 }

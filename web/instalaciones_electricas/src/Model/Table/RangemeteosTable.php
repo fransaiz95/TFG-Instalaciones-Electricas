@@ -33,6 +33,21 @@ class RangemeteosTable extends Table {
             // to decrease the ability of your users to block other requests.
             'photo' => []
         ]);
-	}
+    }
+    
+    public function getAllByYear($year){
+
+        $query = $this->find('all');
+		$query
+			->select(['Rangemeteos.id_region', 'Rangemeteos.start', 'Rangemeteos.end', 'Rangemeteos.temp', 'Rangemeteos.wind', 'Rangemeteos.hum'])
+			->where([
+				"Rangemeteos.start LIKE '%" . $year . "%'"
+            ])
+            ->order(['Rangemeteos.start'])
+            ->group(['Rangemeteos.start']);
+		
+		return $query->toArray();
+
+    }
 
 }
