@@ -157,4 +157,86 @@ class RangerenewablesController extends AppController
 
     }
 
+    public function ajaxDownloadExcel(){
+
+        ini_set('memory_limit', '-1');
+        set_time_limit(0); 
+
+        $year = 2018;
+        $id_technology = $this->request->query['id_technology'];
+        $technology = $this->Rangerenewables->Technologies->findById($id_technology)->first();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        
+        // Todos los ids de las regiones.
+        $regions_ids = $this->Rangerenewables->Regions->search_list_reverse();
+
+        // Los datos que vamos a exportar.
+        $rangerenewables = $this->Rangerenewables->getAllByYearAndTechnology($year, $id_technology); 
+
+        // Luego lo concatenaremos. Esto es para indicar de donde empieza a escribir.
+        $start_cell = 'A';
+        $cont_row = 1;
+
+        // Insertamos a piñon la primera fila
+        $row_1 = array('Región de Control');
+        $sheet->fromArray($row_1, null, $start_cell . $cont_row);
+        $cont_row ++;
+
+        // Insertamos a piñon la segunda fila
+        $row_2 = array('Región de Transmisión', '', '', '');
+        foreach($regions_ids as $id_region){
+            $row_2[] = $id_region;
+        }
+        $sheet->fromArray($row_2, null, $start_cell . $cont_row);
+        $cont_row ++;
+
+        // Insertamos a piñon la tercera fila
+        $row_3 = array('AÑO', 'MES', 'DIA', 'HORA');
+        $sheet->fromArray($row_3, null, $start_cell . $cont_row);
+        $cont_row ++;
+
+        //Este es el $row que ira cambiando de valor.
+        $row = array();
+
+        foreach($rangerenewables as $rangerenewable){
+            $date_froozen = $rangerenewable['start'];
+            $start = $date_froozen->i18nFormat('yyyy-MM-dd HH:mm:ss');
+            
+            $date = new \DateTime($date_froozen->i18nFormat('yyyy-MM-dd HH:mm:ss'));
+
+            $day = $date->format('d');
+            $month = $date->format('m');
+            $year = $date->format('Y');
+            $hour = $date->format('H') + 1;
+
+            $row = array();
+            $row[] = $year;
+            $row[] = $month;
+            $row[] = $day;
+            $row[] = $hour;
+
+            foreach($regions_ids as $id_region){
+                $renewables_by_region = $this->Rangerenewables->findByIdRegionAndIdTechnologyAndStart($id_region, $id_technology, $start)->first();
+                $value = $renewables_by_region['gen_ava'];
+
+                $row[] = $value;
+            }
+
+            $sheet->fromArray($row, null, $start_cell . $cont_row);
+            $cont_row ++;
+
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('rangemeteos.xlsx');
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment; filename="rangerenewables_' . strtolower($technology['name']) . '.xlsx"');
+        header('Set-Cookie: fileDownload=true; path=/');
+        $writer->save("php://output");
+        exit;
+        
+    }
+
 }

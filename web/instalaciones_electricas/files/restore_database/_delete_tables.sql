@@ -1,0 +1,20 @@
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+DROP TABLE `fuels`;
+DROP TABLE `fuels_technologies`;
+DROP TABLE `arcs`;
+DROP TABLE `arcs_typelines`;
+DROP TABLE `countries`;
+DROP TABLE `regions_technologies`;
+DROP TABLE `technologies`;
+DROP TABLE `typelines`;
+DROP TABLE `regions`;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SHOW DATABASES;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='weblectric';
+SHOW TABLE STATUS FROM `weblectric`;
+SHOW FUNCTION STATUS WHERE `Db`='weblectric';
+SHOW PROCEDURE STATUS WHERE `Db`='weblectric';
+SHOW TRIGGERS FROM `weblectric`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='weblectric';
+SHOW CREATE TABLE `weblectric`.`users`;
+/* Entrando a la sesión "localhost" */

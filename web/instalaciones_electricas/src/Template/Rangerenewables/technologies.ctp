@@ -9,11 +9,7 @@
         $url = ['controller' => 'home' , 'action' => 'homeCountries'];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
         
-        <div class="large-12">
-            <?php echo $this->element('../Technologies/Elements/search'); ?>
-        </div>
-
-        <div class="large-12 cell ">
+        <div class="large-12 cell p-top-1">
             <div class="large-12 cell">
                 
                 <table cellpadding="0" cellspacing="0">

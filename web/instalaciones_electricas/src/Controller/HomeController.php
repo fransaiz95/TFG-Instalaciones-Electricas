@@ -38,7 +38,7 @@ class HomeController extends AppController
         ini_set('memory_limit', '-1'); //All
         set_time_limit(0); //Infinite
 
-        $path_create = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'weblectric_final_26_12_2018.sql';
+        $path_create = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'restore_tables.sql';
         $file_create = file_get_contents($path_create);
 
         $conn = ConnectionManager::get('default'); 

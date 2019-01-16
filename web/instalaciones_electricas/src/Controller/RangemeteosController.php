@@ -126,12 +126,6 @@ class RangemeteosController extends AppController
 
     public function ajaxDownloadExcel(){
 
-        // We'll be outputting an excel file
-        header('Content-type: application/vnd.ms-excel');
-
-        // It will be called file.xls
-        header('Content-Disposition: attachment; filename="file.xlsx"');
-
         ini_set('memory_limit', '-1');
         set_time_limit(0); 
 
@@ -204,6 +198,7 @@ class RangemeteosController extends AppController
         $writer->save('rangemeteos.xlsx');
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment; filename="rangemeteos.xlsx"');
+        header('Set-Cookie: fileDownload=true; path=/');
         $writer->save("php://output");
         exit;
         

@@ -32,4 +32,20 @@ class RangerenewablesTable extends Table {
 		// ]);
 	}
 
+	public function getAllByYearAndTechnology($year, $id_technology){
+
+        $query = $this->find('all');
+		$query
+			->select(['Rangerenewables.id_region', 'Rangerenewables.id_technology', 'Rangerenewables.start', 'Rangerenewables.end', 'Rangerenewables.gen_ava'])
+			->where([
+				"Rangerenewables.start LIKE '%" . $year . "%'",
+				'Rangerenewables.id_technology = ' => $id_technology
+            ])
+            ->order(['Rangerenewables.start'])
+            ->group(['Rangerenewables.start']);
+		
+		return $query->toArray();
+
+    }
+
 }

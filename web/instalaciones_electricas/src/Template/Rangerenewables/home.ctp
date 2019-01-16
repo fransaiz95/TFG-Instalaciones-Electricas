@@ -1,3 +1,6 @@
+<?php echo $this->Html->script('jquery.fileDownload.js', array('block' => 'script'));?>
+<?php echo $this->Html->script('excels.js', array('block' => 'script'));?>
+
 <div class="grid-container p-1">
     <div class="grid-x grid-padding-x">
         <div class="large-10 cell ta-left">
@@ -18,9 +21,13 @@
                 array(
                     'label' => __('as'),
                     'escape' => false,
-                    'class' => 'download-excel',
-                    'style' => '  pointer-events: none; cursor: default;',
-                    'title' => __('Download template')
+                    'class' => 'download-excel btn_excel_rangerenewables-js',
+                    'title' => __('Download template'),
+                    'data-url' => \Cake\Routing\Router::url([
+                        'controller' => 'rangerenewables',
+                        'action' => 'ajaxDownloadExcel', 
+                    ], true),
+                    'data-id_technology' => $technology['id']
                 )
             );
             ?>
