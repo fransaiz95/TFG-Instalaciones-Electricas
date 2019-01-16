@@ -1,0 +1,14 @@
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+INSERT INTO weblectric.arcs SELECT * FROM weblectric_restore.arcs;
+INSERT INTO weblectric.arcs_typelines SELECT * FROM weblectric_restore.arcs_typelines;
+INSERT INTO weblectric.countries SELECT * FROM weblectric_restore.countries;
+INSERT INTO weblectric.fuels SELECT * FROM weblectric_restore.fuels;
+INSERT INTO weblectric.fuels_technologies SELECT * FROM weblectric_restore.fuels_technologies;
+INSERT INTO weblectric.rangedemands SELECT * FROM weblectric_restore.rangedemands;
+INSERT INTO weblectric.rangemeteos SELECT * FROM weblectric_restore.rangemeteos;
+INSERT INTO weblectric.rangerenewables SELECT * FROM weblectric_restore.rangerenewables;
+INSERT INTO weblectric.regions SELECT * FROM weblectric_restore.regions;
+INSERT INTO weblectric.regions_technologies SELECT * FROM weblectric_restore.regions_technologies;
+INSERT INTO weblectric.technologies SELECT * FROM weblectric_restore.technologies;
+INSERT INTO weblectric.typelines SELECT * FROM weblectric_restore.typelines;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
