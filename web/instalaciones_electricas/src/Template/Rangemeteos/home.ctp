@@ -14,16 +14,15 @@
             <div class="large-2 cell ta-right">
                 <?php
                 echo $this->Html->link( 
-                    $this->Html->image('/img/icons/excel.png',array('class'=>'', 'style' => 'width: 25px;')) . __('Download template'), 
+                    $this->Html->image('/img/icons/excel.png',array('class'=>'', 'style' => 'width: 25px;')) . __('Download current data'), 
                     array(
                         'controller' => 'rangemeteos',
                         'action' => 'ajaxDownloadExcel', 
                     ), 
                     array(
-                        'label' => __('as'),
                         'escape' => false,
                         'class' => 'download-excel btn_excel_rangemeteos-js',
-                        'title' => __('Download template'),
+                        'title' => __('Download current data'),
                         'data-url' => \Cake\Routing\Router::url([
                             'controller' => 'rangemeteos',
                             'action' => 'ajaxDownloadExcel', 

@@ -141,7 +141,9 @@ var Weblectric  = (function(){
                                 type: "success",
                                 confirmButtonColor: '#5bcb90',
                                 confirmButtonText: 'Ok',
-                            })
+                            }).then(function (result) {
+                            	location.reload();
+                            });
                         })
                     })
                 }
