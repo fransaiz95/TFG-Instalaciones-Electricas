@@ -24,21 +24,7 @@ class RangerenewablesController extends AppController
         $is_renewable_yes = (isset($_GET['is_renewable_yes'])) ? $_GET['is_renewable_yes'] : '';
         $is_renewable_no = (isset($_GET['is_renewable_no'])) ? $_GET['is_renewable_no'] : '';
 
-        $filters = [];
-
-        if( $technology_name != '' ){
-            $filters['Technologies.name LIKE'] = '%' . $technology_name . '%';
-        }
-        if( $is_renewable_yes == ConstantesBooleanas::SI ){
-            $filters['Technologies.renewable'] = ConstantesBooleanas::SI;
-        }
-        if( $is_renewable_no == ConstantesBooleanas::SI ){
-            $filters['Technologies.renewable'] = ConstantesBooleanas::NO;
-        }
-        if( $is_renewable_yes == ConstantesBooleanas::SI && $is_renewable_no == ConstantesBooleanas::SI ){
-            // Así coge todas las renewables y no renewables.
-            unset($filters['Technologies.renewable']);
-        }
+        $filters['Technologies.renewable'] = ConstantesBooleanas::SI;
 
         $query = $this->Rangerenewables->Technologies->getQueryTechnologies($filters);
         $technologies = $this->paginate($query);

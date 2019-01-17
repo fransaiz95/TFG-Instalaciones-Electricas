@@ -14,7 +14,6 @@ var PeticionAjax  = (function(){
     };
 
     var post = function(url, data){
-        console.log(data);
         return $.ajax({
             type : "POST",
             // encoding: "UTF-8",
