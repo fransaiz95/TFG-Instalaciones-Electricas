@@ -2,17 +2,17 @@
 
 \section{Introducción}
 
-A continuación presentaremos los diseños que se elaborado para poder realizar los objetivos anteriores. Se ha incluido el diseño de datos, el diseño procedimental y el diseño arquitectónico.
+A continuación se presentan los diseños elaborados para poder realizar los objetivos anteriores. Se ha incluido el diseño de datos, el diseño procedimental y el diseño arquitectónico.
 
 \section{Diseño de datos}
 
-La estructura de datos presentada en este proyecto se recoge en una base de datos relacional \textit{MySQL}. En un primer momento se construyó el diagrama entidad relación a través del cual se obtuvo el diagrama relacional. En las figuras~\ref{img:modeloER} y~\ref{img:modeloRelacional} presentamos los modelos entidad relación y relacional respectivamente.
+La estructura de datos presentada en este proyecto se recoge en una base de datos relacional \textit{MySQL}. En un primer momento se construyó el diagrama entidad relación a través del cual se obtuvo el diagrama relacional. En las figuras~\ref{img:modeloER} y~\ref{img:modeloRelacional} se presentan los modelos entidad relación y relacional respectivamente.
 
 A continuación se describirán cada una de las entidades:
 
 \begin{itemize}
 	
-	\item \textit{countries}: Los países presentes en nuestra instalación.
+	\item \textit{countries}: Los países presentes en la instalación.
 	
 	\item \textit{regions}: Cada una de las regiones pertenecientes a un país.
 	
@@ -26,7 +26,7 @@ A continuación se describirán cada una de las entidades:
 	
 	\item \textit{arcs\_typelines}: Relación entre el arco y el tipo de arco.
 	
-	\item \textit{fuels\_technologies}: Relación entre el aceite y la tecnología.
+	\item \textit{fuels\_technologies}: Relación entre el combustible y la tecnología.
 	
 	\item \textit{regions\_technologies}: Relación entre la región y qué tecnología hay presente.
 	
@@ -52,8 +52,9 @@ A continuación se describirán cada una de las entidades:
 	\label{img:modeloRelacional}
 \end{figure}
 
-\newpage
 
+
+\newpage
 
 \section{Diseño procedimental}
 
@@ -62,7 +63,7 @@ En esta sección se realizará un diagrama de secuencia del caso de uso 1 que re
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{/anexos/Diseno/DiagramaSecuencial}
-	\caption{Diagrama secuencial.}
+	\caption{Diagrama secuencial del caso de uso 1: Administración mediante formularios.~\ref{tabla:cu1}.}
 	\label{img:modeloSecuencial}
 \end{figure}
 
@@ -78,13 +79,13 @@ Para el diseño de \textit{Weblectric} se ha seguido un patrón Modelo-Vista-Con
 	
 	\item \textit{Modelo:} Se destinan a esta parte todas las funciones de interacción directa con la base de datos.
 	
-	\item \textit{Vista:} Aquí guardamos las pantallas que interactúan con el cliente.
+	\item \textit{Vista:} Aquí se guardan las pantallas que interactúan con el cliente.
 	
-	\item \textit{Controlador:} Aquí encontramos lo que es la lógica de la aplicación. Hace de unión entre la vista y el modelo.
+	\item \textit{Controlador:} Aquí se encuentra la lógica de la aplicación. Hace de unión entre la vista y el modelo.
 
 \end{itemize}
 
-En la tabla~\ref{tabla:estructuraMVC} podemos ver que directorio corresponde en nuestro proyecto a cada una de estas tres grandes secciones.
+En la tabla~\ref{tabla:estructuraMVC} podemos ver qué directorio corresponde en nuestro proyecto a cada una de estas tres grandes secciones.
 
 \begin{table}[h]
 	\centering
@@ -113,11 +114,11 @@ Una vez conocida la estructura de la aplicación, mostraremos los pasos seguidos
 
 \subsection{Mockups} 
 
-El primer paso fue diseñar una plantilla (\textit{layout}). Esta plantilla, que podemos ver en la figura~\ref{img:layout} es común a todas las vistas.
+El primer paso fue diseñar una plantilla (\textit{layout}). Esta plantilla, que se puede ver en la figura~\ref{img:layout} es común a todas las vistas.
 
 Posteriormente, pasamos a diseñar la pantalla principal~\ref{img:home}. Aquí se iban a listar todas las entidades para que el usuario pudiese acceder a administrarlas.
 
-Como se puede ver en la figura~\ref{img:home}, al pasar el ratón por encima, aparecerá una pequeña animación diferenciando cada una de las entidades. La siguiente pantalla que vamos a presentar es la administración. Tenemos dos tipos de administraciones, las que son a partir de formularios y las que son mediante la subida de una hoja de cálculo. Pulsando en una de las entidades, nos iremos a su pantalla principal, a cada entidad la que le corresponda. 
+Como se puede ver en la figura~\ref{img:home}, al pasar el ratón por encima, aparecerá una pequeña animación diferenciando cada una de las entidades. La siguiente pantalla que se va a presentar es la administración. Se tienen dos tipos de administraciones, las que son a partir de formularios y las que son mediante la subida de una hoja de cálculo. Pulsando en una de las entidades, nos iremos a su pantalla principal, a cada entidad la que le corresponda. 
 
 \subsubsection{Administración mediante formularios} 
 
@@ -303,7 +304,7 @@ En la figura~\ref{img:FentidadExcel} encontramos un ejemplo de como se administr
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/FentidadHome}
-	\caption{Resultado final: Pantalla principal de la entidad 1.}
+	\caption{Resultado final: Pantalla principal de la entidad Technology.}
 	\label{img:FentidadHome}
 \end{figure}
 
