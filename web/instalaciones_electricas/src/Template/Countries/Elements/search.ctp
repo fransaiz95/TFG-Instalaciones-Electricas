@@ -3,7 +3,7 @@ echo $this->Form->create(
     'Searcher',
     array(
         'url' => array(
-            'controller' => 'fuels',
+            'controller' => 'countries',
             'action' => 'home'
         ),
         'type' => 'get',

@@ -1,3 +1,5 @@
+<?php echo $this->Html->script('fuels.js'); ?>
+
 <?php echo $this->element('Comun/tabs_home');  ?>
 
 <div class="grid-container" >
@@ -81,17 +83,39 @@
                                 //         'title' => __('Edit')
                                 //     ]
                                 // );
-                                echo $this->Form->postLink( 
+                                // echo $this->Form->postLink( 
+                                //     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
+                                //     [
+                                //         'controller' => 'fuels_technologies',
+                                //         'action' => 'delete', 
+                                //         $fuel_technology['FuelsTechnology']['id_fuel'],
+                                //         $fuel_technology['FuelsTechnology']['id_technology']                                    ], 
+                                //     [
+                                //         'escape' => false,
+                                //         'title' => __('Delete?'),
+                                //         'confirm' => __('Are you sure you want to delete technology: {0} of fuel: {1}?', $fuel_technology['Technology']['name'], $fuel_technology->name)
+                                //     ]
+                                // );
+
+                                echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                    [
-                                        'controller' => 'fuels_technologies',
-                                        'action' => 'delete', 
-                                        $fuel_technology['FuelsTechnology']['id_fuel'],
-                                        $fuel_technology['FuelsTechnology']['id_technology']                                    ], 
+                                    [], 
                                     [
                                         'escape' => false,
+                                        'class' => 'delete-js',
                                         'title' => __('Delete?'),
-                                        'confirm' => __('Are you sure you want to delete technology: {0} of region: {1}?', $fuel_technology['Technology']['name'], $fuel_technology->name)
+                                        'data-title' => __('Are you sure you want to delete technology: {0} of fuel: {1}?', $fuel_technology['Technology']['name'], $fuel_technology->name),
+                                        'data-text' => __('Changes can\'t be revert'),
+                                        'data-url' => \Cake\Routing\Router::url([
+                                            'controller' => 'fuels_technologies',
+                                            'action' => 'delete', 
+                                        ], true),
+                                        'data-url_redirect' => \Cake\Routing\Router::url([
+                                            'controller' => 'fuels',
+                                            'action' => 'home', 
+                                        ], true),
+                                        'data-id_fuel' => $fuel_technology['FuelsTechnology']['id_fuel'],
+                                        'data-id_technology' => $fuel_technology['FuelsTechnology']['id_technology']
                                     ]
                                 );
                                 ?>
