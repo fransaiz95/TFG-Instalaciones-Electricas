@@ -60,18 +60,6 @@ class HomeController extends AppController
         
     }
 
-    public function homeObjectives(){
-        
-    }
-
-    public function homeScenarios(){
-        
-    }
-
-    public function homeSimulation(){
-        
-    }
-
     public function loadData(){
 
         ini_set('memory_limit', '-1'); //All

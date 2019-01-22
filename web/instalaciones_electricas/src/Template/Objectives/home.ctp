@@ -15,8 +15,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/economic.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeObjectives'
+                    'controller' => 'objectives',
+                    'action' => 'homeEconomic'
                 ), 
                 array(
                     'escape' => false,
@@ -34,8 +34,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/environmental.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeObjectives'
+                    'controller' => 'objectives',
+                    'action' => 'homeEnvironmental'
                 ), 
                 array(
                     'escape' => false,
@@ -53,8 +53,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/social.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeObjectives'
+                    'controller' => 'objectives',
+                    'action' => 'homeSocial'
                 ), 
                 array(
                     'escape' => false,

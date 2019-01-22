@@ -23,6 +23,8 @@
                             <th class="p-left-1"><?php echo __('Origin region') ?></th>
                             <th class="ta-center"><?php echo __('Destination region') ?></th>
                             <th class="ta-center"><?php echo __('Distance') ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.lin_cap', __('Typeline - Lin Cap') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('ArcsTypelines.num_lines', __('Number of lines') ); ?></th>
                             <th class="actions"><?php echo __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -33,6 +35,8 @@
                             <td class="p-left-1"><?php echo h($arc['name']); ?></td>
                             <td class="ta-center"><?php echo h($arc['Regions2']['name']) ?></td>
                             <td class="ta-center"><?php echo ($arc['Arcs']['distance']) . ' km' ?></td>
+                            <td class="ta-center"><?php echo h($arc['Typelines']['lin_cap']) ?></td>
+                            <td class="ta-center"><?php echo h($arc['ArcsTypelines']['num_lines']) ?></td>
                             <td class="actions">
                             <?php
                                 echo $this->Html->link( 

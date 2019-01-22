@@ -34,7 +34,7 @@
                         <tr class="table100-head">
                             <th class="p-left-1"><?php echo $this->Paginator->sort('Fuels.name', __('Name')); ?></th>
                             <th class="ta-center"><?php echo $this->Paginator->sort('Fuels.fue_cos', __('Fue cos') ); ?></th>
-                            <th class="ta-center"><?php echo $this->Paginator->sort('Fuels.production', __('Production') ); ?></th>
+                            <!-- <th class="ta-center"><?php echo $this->Paginator->sort('Fuels.production', __('Production') ); ?></th> -->
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
                         <tr>
                             <td class="p-left-1"><?php echo h($fuel->name) ?></td>
                             <td class="ta-center"><?php echo h($fuel->fue_cos) ?></td>
-                            <td class="ta-center"><?php echo h($fuel->production) ?></td>
+                            <!-- <td class="ta-center"><?php echo h($fuel->production) ?></td> -->
                             <td class="actions">
                                 <?php
                                 echo $this->Html->link( 

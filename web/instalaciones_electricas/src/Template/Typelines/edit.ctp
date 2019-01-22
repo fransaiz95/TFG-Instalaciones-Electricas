@@ -1,3 +1,11 @@
+<div class="breadcrumbs">
+    <?php 
+    $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Technologies'), ['controller' => 'home', 'action' => 'homeTechnologies'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Types of lines'), ['controller' => 'typelines', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Type line') . ': ' . $typeline['lin_cap'] . ' MW', ['controller' => 'typelines', 'action' => 'edit', $typeline['id']], ['class' => 'cf']); 
+    echo $this->Breadcrumbs->render();?>
+</div>
 
 <div class="grid-container p-1">
 

@@ -8,7 +8,7 @@
                 echo $this->Form->input(
                     'lin_cap',
                     [
-                        'label' => __('Line cap'),
+                        'label' => __('Line cap') . ' (MW)',
                         'type' => 'number'
                     ]
                 );
@@ -20,7 +20,7 @@
                 echo $this->Form->input(
                     'tension',
                     [
-                        'label' => __('Tension'),
+                        'label' => __('Voltage') . __(' (kV)'),
                         'type' => 'number'
                     ]
                 );

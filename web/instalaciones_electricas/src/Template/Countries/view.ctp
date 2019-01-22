@@ -43,8 +43,8 @@
                         <tr class="table100-head">
                             <th class="p-left-1"><?php echo __('Name')?></th>
                             <th class="ta-center"><?php echo __('Country') ?></th>
-                            <th class="ta-center"><?php echo __('Dem For') ?></th>
-                            <th class="ta-center"><?php echo __('Ren For') ?></th>
+                            <!-- <th class="ta-center"><?php echo __('Dem For') ?></th> -->
+                            <!-- <th class="ta-center"><?php echo __('Ren For') ?></th> -->
                             <th class="actions"><?php echo __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -54,8 +54,8 @@
                         <tr>
                             <td class="p-left-1"><?php echo h($region->name) ?></td>
                             <td class="ta-center"><?php echo h($region->Countries['name']) ?></td>
-                            <td class="ta-center"><?php echo h($region->dem_for) ?></td>
-                            <td class="ta-center"><?php echo h($region->ren_for) ?></td>
+                            <!-- <td class="ta-center"><?php echo h($region->dem_for) ?></td> -->
+                            <!-- <td class="ta-center"><?php echo h($region->ren_for) ?></td> -->
                             <td class="actions">
                                 <?php
                                 echo $this->Html->link( 

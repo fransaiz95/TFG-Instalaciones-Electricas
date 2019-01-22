@@ -161,6 +161,8 @@ class RegionsTable extends Table {
 			->select(['Regions.id', 'Regions.name'])
 			->select(['Arcs.id', 'Arcs.id_region_1', 'Arcs.id_region_2', 'Arcs.distance'])
 			->select(['Regions2.id', 'Regions2.name'])
+			->select(['ArcsTypelines.id_arc', 'ArcsTypelines.id_typeline', 'ArcsTypelines.num_lines'])
+			->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.tension'])
 			->where([
 				'Arcs.id_region_1' => $id_region
 			])
@@ -177,7 +179,17 @@ class RegionsTable extends Table {
 					'table' => 'regions',
 					'type' => 'INNER',
 					'conditions' => 'Regions2.id = Arcs.id_region_2'
-				]
+				],
+				'ArcsTypelines' => [
+					'table' => 'arcs_typelines',
+					'type' => 'LEFT',
+					'conditions' => 'ArcsTypelines.id_arc = Arcs.id'
+				],
+				'Typelines' => [
+					'table' => 'typelines',
+					'type' => 'LEFT',
+					'conditions' => 'ArcsTypelines.id_typeline = Typelines.id'
+				],
 			]);
 		
 		return $query->toArray();

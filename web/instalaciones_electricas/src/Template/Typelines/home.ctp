@@ -29,7 +29,7 @@
                     <thead>
                         <tr class="table100-head">
                             <th class="p-left-1 ta-center"><?php echo $this->Paginator->sort('Typelines.lin_cap', __('Line cap')); ?></th>
-                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.tension', __('Eff lin') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.tension', __('Voltage') ); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
