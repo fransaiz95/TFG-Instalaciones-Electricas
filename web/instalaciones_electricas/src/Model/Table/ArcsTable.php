@@ -100,6 +100,7 @@ class ArcsTable extends Table {
 				'conditions' => 'ArcsTypelines.id_typeline = Typelines.id'
 			],
 		]);
+		$query->group(['Arcs.id']);
 		
 		return $query;	
 	}
@@ -114,9 +115,7 @@ class ArcsTable extends Table {
 				'Arcs.id' => $id_arc
 			])
 			->select(['ArcsTypelines.id_arc', 'ArcsTypelines.id_typeline', 'ArcsTypelines.num_lines'])
-			->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.new_line_cos', 'Typelines.man_lin_cos', 'Typelines.flo_cos', 
-					  'Typelines.new_lim_emp', 'Typelines.man_lim_emp', 'Typelines.flo_emp', 'Typelines.eff_lin'
-					])
+			->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.tension'])
         	->join([
 				'Regions' => [
 					'table' => 'regions',
@@ -151,9 +150,7 @@ class ArcsTable extends Table {
 			->select(['Regions2.id', 'Regions2.name'])
 			->select(['Arcs.id_region_1', 'Arcs.id_region_2', 'Arcs.distance'])
 			->select(['ArcsTypelines.num_lines'])
-			->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.new_line_cos', 'Typelines.man_lin_cos', 'Typelines.flo_cos', 
-					  'Typelines.new_lim_emp', 'Typelines.man_lim_emp', 'Typelines.flo_emp', 'Typelines.eff_lin'
-					])
+			->select(['Typelines.id', 'Typelines.lin_cap', 'Typelines.tension'])
 			->where([
 				'Arcs.id' => $id_arc
 			])
@@ -181,7 +178,7 @@ class ArcsTable extends Table {
 			]);
 			
 		
-		return $query->first()->toArray();
+		return $query->first();
 	}
 
 }

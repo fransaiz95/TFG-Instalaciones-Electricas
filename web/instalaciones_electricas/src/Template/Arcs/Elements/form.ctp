@@ -21,33 +21,21 @@ if($action == 'edit'){
     <div class="grid-x">
         <div class="large-6 p-1 input_field">
             <?php
-            if( $action == 'add' ){
-                echo $this->Form->input(
-                    'id_region_1', 
-                    [
-                        'label' => __('Origin region'),
-                        'type' => 'select',
-                        'class' => 'js-example-basic-single',
-                        'multiple' => false,
-                        'options' => $regions, 
-                        'required' => true,
-                        'empty' => false
-                        ]
-                );
-            }else{
-                echo $this->Form->hidden(
-                    'id_region_1'
-                );
-                echo $this->Form->input(
-                    ' ',
-                    [
-                        'label' => __('Origin region'),
-                        'readonly' => true,
-                        'value' => $arc_with_regions['Regions']['name'],
-                        'required' => true
-                    ]
-                );
-            }
+            echo $this->Form->hidden(
+                'id_region_1',
+                [
+                    'value' => $region->id,
+                ]
+            );
+            echo $this->Form->input(
+                ' ',
+                [
+                    'label' => __('Origin region'),
+                    'readonly' => true,
+                    'value' => $region->name,
+                    'required' => true
+                ]
+            );
             ?>
         </div>
 
@@ -85,7 +73,7 @@ if($action == 'edit'){
         <div class="large-3 p-1 input_field">
             <?php
             echo $this->Form->input(
-                'Typelines.id', 
+                'ArcsTypelines.id_typeline', 
                 [
                     'label' => __('Typeline (Lin Cap)'),
                     'type' => 'select',
@@ -119,7 +107,7 @@ if($action == 'edit'){
 </div>
 
 <?php
-$url = ['controller' => 'arcs' , 'action' => 'home'];
+$url = ['controller' => 'regions' , 'action' => 'view', $region->id];
 echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
 
 <?php echo $this->Form->end() ?>

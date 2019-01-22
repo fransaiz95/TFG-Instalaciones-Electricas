@@ -53,7 +53,7 @@ En primer lugar, será necesario descargar \textit{XAMPP} en su versión 7.2.10.
 
 La ventaja que proporciona la instalación de todas estas herramientas a través del paquete \href{https://www.apachefriends.org/es/index.html}{\textit{XAMPP}}\footnote{\textit{XAMPP}: \url{https://www.apachefriends.org/es/index.html}} es que la configuración ya viene hecha, no obstante, si el futuro desarrollador desea realizar la instalación y configuración de cada uno de los servicios por su cuenta en su máquina local, no hay ningún problema.
 
-Si ejecutamos el archivo descargado, como podemos ver en la figura~\ref{img:XAMPP_Opciones}, nos dará a elegir entre qué servicios queremos instalar. El siguiente y último paso, figura~\ref{img:XAMPP_Ruta}, es indicar en que ruta queremos realizar la instalación. 
+Si ejecutamos el archivo descargado, como podemos ver en la figura~\ref{img:XAMPP_Opciones}, nos dará a elegir entre qué servicios queremos instalar. El siguiente y último paso, figura~\ref{img:XAMPP_Ruta}, es indicar en qué ruta queremos realizar la instalación. 
 
 \begin{figure}[h]
 	\centering
@@ -101,14 +101,14 @@ Si se inicia el servicio de \textit{Apache} correctamente, se puede ver que acce
 	\label{img:XAMPP_Correct}
 \end{figure}
 
-Con \textit{XAMPP} funcionando, toca configurar las direcciones para indicar donde tenemos nuestro proyecto. Para ello habrá que cambiar alguna linea de código en el fichero de configuración $httpd.conf$ que se encuentra en la ruta \textit{\text{C:/xampp7/apache/conf}}.
+Con \textit{XAMPP} funcionando, toca configurar las direcciones para indicar dónde tenemos nuestro proyecto. Para ello habrá que cambiar alguna linea de código en el fichero de configuración $httpd.conf$ que se encuentra en la ruta \textit{\text{C:/xampp7/apache/conf}}.
 
 Buscamos las lineas: 
 \begin{lstlisting}[language=bash]
 DocumentRoot "/xampp7/htdocs"
 <Directory "/xampp7/htdocs">
 \end{lstlisting}
-y las cambiamos por la dirección donde hayamos colocado nuestro proyecto, en este caso: 
+y las cambiamos por la dirección dónde hayamos colocado nuestro proyecto, en este caso: 
 \begin{lstlisting}[language=bash]
 DocumentRoot "C:\Users\fran_\Documents\GitHub\TFG-Instalaciones-Electricas\web\instalaciones_electricas"
 <Directory "C:\Users\fran_\Documents\GitHub\TFG-Instalaciones-Electricas\web\instalaciones_electricas">
@@ -116,7 +116,7 @@ DocumentRoot "C:\Users\fran_\Documents\GitHub\TFG-Instalaciones-Electricas\web\i
 
 De esta manera, ya no redireccionará a la página anterior sino que cogerá la ruta especificada.
 
-Aunque lo que se va a comentar a continuación no es obligatorio, si que es aconsejable pues si se desea tener varios proyectos, es incómodo trabajar con la dirección \textit{localhost} pues tendríamos que andar modificando estos archivos continuamente. Para ello existe la posibilidad de configurar todos los \textit{virtual hosts} que se deseen. Esto significa que se podrán dar direcciones concretas a cada uno de los proyectos. Para ello, se descomentará la siguiente linea:
+Aunque lo que se va a comentar a continuación no es obligatorio, si que es aconsejable pues si se desea tener varios proyectos, es incómodo trabajar con la dirección \textit{localhost}, pues tendríamos que andar modificando estos archivos continuamente. Para ello existe la posibilidad de configurar todos los \textit{virtual hosts} que se deseen. Esto significa que se podrán dar direcciones concretas a cada uno de los proyectos. Para ello, se descomentará la siguiente linea:
 
 \begin{lstlisting}[language=bash]
 # Virtual hosts
@@ -136,13 +136,13 @@ Require all granted
 \end{lstlisting}
 
 \begin{itemize}
-\item \textit{DocumentRoot}: Aquí se indica la ruta del proyecto hasta la carpeta \textit{webroot} que como se ha explicado antes es la parte pública, la que tiene acceso el usuario.
+\item \textit{DocumentRoot}: Aquí se indica la ruta del proyecto hasta la carpeta \textit{webroot}, que como se ha explicado antes es la parte pública a la que tiene acceso el usuario.
 \item \textit{ServerName}: Dirección url para ese proyecto.
 \end{itemize}
 
 Cabe destacar que siempre que se modifique cualquier fichero de configuración se tendrán que reiniciar los servicios afectados, por lo que a continuación, el último paso será acceder de nuevo al panel de control~\ref{img:XAMPP_Panel} y reiniciar el servicio.
 
-Por último, lo que queda de configurar es la base de datos \textit{MySQL}. Aunque con el paquete \textit{XAMPP} viene preparado para su uso \textit{phpMyAdmin}, se ha decidido descargar \href{https://www.heidisql.com/download.php}{\textit{HeidiSQL}}\footnote{\textit{HeidiSQL}: \url{https://www.heidisql.com/download.php}} pues presenta una interfaz más amigable y estable. Ademas, existe una versión portable que no requiere de instalación.
+Por último, lo que queda de configurar es la base de datos \textit{MySQL}. Aunque con el paquete \textit{XAMPP} viene preparado para su uso desde \textit{phpMyAdmin}, se ha decidido descargar \href{https://www.heidisql.com/download.php}{\textit{HeidiSQL}}\footnote{\textit{HeidiSQL}: \url{https://www.heidisql.com/download.php}} pues presenta una interfaz más amigable y estable. Además, existe una versión portable que no requiere de instalación.
 
 Si ejecutamos la aplicación, aparecerá una pantalla como la de la figura~\ref{img:Heidi}, donde nos aparecerán todas las sesiones que tengamos activas:
 
@@ -157,7 +157,7 @@ Procedemos a crear una nueva sesión con los parámetros que se ven en la figura
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{/anexos/ManualProgramador/Xampp/9Heidi_2}
+	\includegraphics[width=0.9\textwidth]{/anexos/ManualProgramador/Xampp/9Heidi_2}
 	\caption{Parámetros para una nueva sesión en entorno local.}
 	\label{img:Heidi_2}
 \end{figure}
@@ -166,7 +166,7 @@ Con la sesión ya creada, se podrá crear una base de datos nueva con las tabas 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{/anexos/ManualProgramador/Xampp/10Heidi_3}
+	\includegraphics[width=0.9\textwidth]{/anexos/ManualProgramador/Xampp/10Heidi_3}
 	\caption{Parámetros para asociar un usuario a la base de datos.}
 	\label{img:Heidi_3}
 \end{figure}
@@ -198,14 +198,14 @@ En este proyecto, que se ha utilizado \textit{Visual Studio Code} como herramien
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{/anexos/ManualProgramador/Xampp/7VscodeWeblectric}
+	\includegraphics[width=1\textwidth]{/anexos/ManualProgramador/Xampp/7VscodeWeblectric}
 	\caption{Estructura de directorios con el proyecto importado.}
 	\label{img:VsCodeWeblectric}
 \end{figure}
 
 \newpage
 
-Para acabar, en el archivo $app.conf$ que se encuentra dentro de la carpeta $config$ es necesario reemplazar las lineas que a continuación se van a describir para enlazar el proyecto con la base de datos:
+Para acabar, en el archivo $app.conf$ que se encuentra dentro de la carpeta \textit{config}, es necesario reemplazar las lineas que a continuación se van a describir para enlazar el proyecto con la base de datos:
 
 \begin{lstlisting}[language=php]
 'Datasources' => [

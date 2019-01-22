@@ -6,9 +6,6 @@
         <div class="large-10 cell">
             <h1><?= __('Technologies') ?></h1>
         </div>  
-        <?php 
-        $url = ['controller' => 'regions' , 'action' => 'home'];
-        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
 
         <div class="large-12 cell p-top-1">
             <div class="large-12 cell">

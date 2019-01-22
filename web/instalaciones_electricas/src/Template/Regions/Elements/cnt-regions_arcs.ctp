@@ -6,9 +6,13 @@
         <div class="large-10 cell">
             <h1><?= __('Arcs') ?></h1>
         </div>  
-        <?php
-        $url = ['controller' => 'regions' , 'action' => 'home'];
-        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
+
+        <div class="large-2 cell p-top-1">
+            <?php
+            $url = ['controller' => 'arcs' , 'action' => 'add', $region['id']];
+            $label = __('New Arc');
+            echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
+        </div>  
 
         <div class="large-12 cell p-top-1">
             <div class="large-12 cell">
