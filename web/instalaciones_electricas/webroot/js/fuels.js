@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 var Fuels  = (function(){
 
-    var deleteFuel = function(){
+    var deleteFuelTechnology = function(){
         $('.delete-js').off('click').on('click', function(e){
             e.preventDefault();
             var element = $(this);
@@ -60,7 +60,7 @@ var Fuels  = (function(){
     
     return {
         load: function($context){
-            deleteFuel();
+            deleteFuelTechnology();
         }
     }
 })();

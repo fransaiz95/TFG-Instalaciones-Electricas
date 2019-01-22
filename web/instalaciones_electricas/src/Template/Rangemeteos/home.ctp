@@ -1,6 +1,14 @@
 <?php echo $this->Html->script('jquery.fileDownload.js', array('block' => 'script'));?>
 <?php echo $this->Html->script('excels.js', array('block' => 'script'));?>
 
+<div class="breadcrumbs">
+    <?php 
+    $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Countries data'), ['controller' => 'home', 'action' => 'homeCountries'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Climate'), ['controller' => 'rangemeteos', 'action' => 'home'], ['class' => 'cf']); 
+    echo $this->Breadcrumbs->render();?>
+</div>
+
 <div class="grid-container p-1">
     <div class="grid-x grid-padding-x">
         <div class="large-10 cell ta-left">

@@ -1,3 +1,10 @@
+<div class="breadcrumbs">
+    <?php 
+    $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Simulation'), ['controller' => 'home', 'action' => 'homeSimulation'], ['class' => 'cf']); 
+    echo $this->Breadcrumbs->render();?>
+</div>
+
 <div class="grid-container" style="max-width: 80rem">
 
     <div class="grid-x grid-padding-x buttons-portal ta-center p-bottom-1">
