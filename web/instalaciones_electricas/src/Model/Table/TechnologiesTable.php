@@ -153,4 +153,14 @@ class TechnologiesTable extends Table {
 		return $query;	
 	}
 
+	public function search_list (){
+		$query = $this->find('list', [
+			'keyField' => 'id',
+			'valueField' => 'name'
+		])
+		->toArray();
+
+		return $query;
+	}
+
 }

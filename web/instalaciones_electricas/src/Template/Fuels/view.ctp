@@ -51,9 +51,16 @@
 <div class="grid-container p-top-1 cnt-tabs <?php echo $class?>" id="cnt-technologies">
     <div class="grid-x grid-padding-x">
 
-        <div class="large-12 cell">
+        <div class="large-6 cell">
             <h1><?= __('Technologies') ?></h1>
-        </div>  
+        </div> 
+
+        <div class="large-6 cell p-top-1">
+            <?php
+            $url = ['controller' => 'fuels_technologies' , 'action' => 'add', $fuel['id']];
+            $label = __('New Fuel Technology');
+            echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
+        </div>   
 
         <div class="large-12 cell p-top-1">
             <div class="large-12 cell">
@@ -80,33 +87,20 @@
                             <td class="ta-center"><?php echo h($fuel_technology['FuelsTechnology']['fue_con']) ?></td>
                             <td class="actions">
                                 <?php
-                                // echo $this->Html->link( 
-                                //     '<span class="c-primary"><ion-icon name="create"></ion-icon></span>',
-                                //     [
-                                //         'controller' => 'fuels_technologies',
-                                //         'action' => 'edit',
-                                //         $fuel_technology['FuelsTechnology']['id_fuel'],
-                                //         $fuel_technology['FuelsTechnology']['id_technology']
-                                //     ],
-                                //     [
-                                //         'escape' => false,
-                                //         'style' => 'padding-left:4px;',
-                                //         'title' => __('Edit')
-                                //     ]
-                                // );
-                                // echo $this->Form->postLink( 
-                                //     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
-                                //     [
-                                //         'controller' => 'fuels_technologies',
-                                //         'action' => 'delete', 
-                                //         $fuel_technology['FuelsTechnology']['id_fuel'],
-                                //         $fuel_technology['FuelsTechnology']['id_technology']                                    ], 
-                                //     [
-                                //         'escape' => false,
-                                //         'title' => __('Delete?'),
-                                //         'confirm' => __('Are you sure you want to delete technology: {0} of fuel: {1}?', $fuel_technology['Technology']['name'], $fuel_technology->name)
-                                //     ]
-                                // );
+                                echo $this->Html->link( 
+                                    '<span class="c-primary"><ion-icon name="create"></ion-icon></span>',
+                                    [
+                                        'controller' => 'fuels_technologies',
+                                        'action' => 'edit',
+                                        $fuel_technology['FuelsTechnology']['id_fuel'],
+                                        $fuel_technology['FuelsTechnology']['id_technology']
+                                    ],
+                                    [
+                                        'escape' => false,
+                                        'style' => 'padding-left:4px;',
+                                        'title' => __('Edit')
+                                    ]
+                                );
 
                                 echo $this->Html->link( 
                                     '<span class="c-primary"><ion-icon name="trash"></ion-icon></span>',
@@ -123,7 +117,8 @@
                                         ], true),
                                         'data-url_redirect' => \Cake\Routing\Router::url([
                                             'controller' => 'fuels',
-                                            'action' => 'home', 
+                                            'action' => 'view',
+                                            $fuel['id']
                                         ], true),
                                         'data-id_fuel' => $fuel_technology['FuelsTechnology']['id_fuel'],
                                         'data-id_technology' => $fuel_technology['FuelsTechnology']['id_technology']

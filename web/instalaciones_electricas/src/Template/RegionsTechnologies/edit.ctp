@@ -11,7 +11,16 @@
 
 <div class="grid-container p-1">
 
-        <h1><?= __('Edit Region Technology') ?></h1>
+        <div class="grid-x">
+            <div class="large-6 cell">
+                <h1><?= __('Edit Region Technology') ?></h1>
+            </div>  
+            <div class="large-6 cell">
+                <?php 
+                $url = ['controller' => 'regions' , 'action' => 'view', $region['id']];
+                echo $this->element('Comun/btn_back', array('url' => $url)); ?>
+            </div>  
+        </div>  
     
         <?php 
         echo $this->Form->create($region_technology); ?>

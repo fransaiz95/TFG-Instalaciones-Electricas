@@ -21,20 +21,26 @@ class RegionsTechnologiesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id_region)
     {
-        $region = $this->Regions->newEntity();
-        if ($this->request->is('post')) {
-            $region = $this->Regions->patchEntity($region, $this->request->data);
-            if ($this->Regions->save($region)) {
-                $this->Flash->success('Region has been saved.');
-                return $this->redirect(['action' => 'home']);
+        $region = $this->RegionsTechnologies->Regions->get($id_region);
+        $country = $this->RegionsTechnologies->Regions->Countries->get([$region->id_country]);
+        $technologies = $this->RegionsTechnologies->Technologies->search_list();
+        $region_technology = $this->RegionsTechnologies->newEntity();
+
+        if(!$this->request->is('get')){
+            //find if exists other region_technology with this pk.
+            $region_technology = $this->RegionsTechnologies->patchEntity($region_technology, $this->request->data);
+            if ($this->RegionsTechnologies->save($region_technology)) {
+                $this->Flash->success('Region technology has been saved.');
+                return $this->redirect(['controller' => 'regions', 'action' => 'view', $id_region]);
             } else {
-                $this->Flash->error('Region could not be saved. Please, try again.');
+                $this->Flash->error('Region technology could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('region'));
-        $this->set('_serialize', ['region']);
+                
+        $this->set(compact('region', 'country', 'region_technology', 'technologies'));
+        $this->set('_serialize', ['region', 'country', 'region_technology', 'technologies']);
     }
 
     /**

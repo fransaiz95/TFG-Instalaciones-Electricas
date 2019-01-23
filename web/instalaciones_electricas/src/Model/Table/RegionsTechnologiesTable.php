@@ -52,6 +52,12 @@ class RegionsTechnologiesTable extends Table {
 			]
 		]);
 
+		$validator->add('id_technology',[
+			'id_technology'=>[
+				'rule'=>[$this, 'region_technology_add'],
+			]
+		]);
+
         return $validator;
 	}
 

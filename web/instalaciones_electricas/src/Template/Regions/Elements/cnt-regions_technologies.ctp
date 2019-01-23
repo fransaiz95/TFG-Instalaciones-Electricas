@@ -3,8 +3,15 @@
 <div class="grid-container p-top-1 cnt-tabs <?php echo $class?>" id="cnt-technologies">
     <div class="grid-x grid-padding-x">
 
-        <div class="large-10 cell">
+        <div class="large-6 cell">
             <h1><?= __('Technologies') ?></h1>
+        </div>  
+
+        <div class="large-6 cell p-top-1">
+            <?php
+            $url = ['controller' => 'regions_technologies' , 'action' => 'add', $region['id']];
+            $label = __('New Region - Technology');
+            echo $this->element('Comun/btn_new_item', array('url' => $url, 'label' => $label)); ?>
         </div>  
 
         <div class="large-12 cell p-top-1">

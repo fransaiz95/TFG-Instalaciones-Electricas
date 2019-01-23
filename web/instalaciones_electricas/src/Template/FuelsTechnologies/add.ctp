@@ -1,31 +1,29 @@
 <div class="breadcrumbs">
     <?php 
     $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( __('Countries data'), ['controller' => 'home', 'action' => 'homeCountries'], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( __('Countries'), ['controller' => 'countries', 'action' => 'home'], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( $country['name'], ['controller' => 'countries', 'action' => 'view', $country['id']], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( $region['name'], ['controller' => 'regions', 'action' => 'view', $region['id']], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( __('New Region Technology'), ['controller' => 'regions_technologies', 'action' => 'add', $region->id], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Technologies'), ['controller' => 'home', 'action' => 'homeTechnologies'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Fuels'), ['controller' => 'fuels', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( $fuel['name'], ['controller' => 'fuels', 'action' => 'view', $fuel['id']], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('New Fuel Technology'), ['controller' => 'fuels_technologies', 'action' => 'add', $fuel->id], ['class' => 'cf']); 
     echo $this->Breadcrumbs->render();?>
 </div>
-
 <?php $action = $this->request->action ?>
 
 <div class="grid-container p-1">
 
         <div class="grid-x">
             <div class="large-6 cell">
-                <h1><?= __('Add Region Technology') ?></h1>
+                <h1><?= __('Add Fuel Technology') ?></h1>
             </div>  
             <div class="large-6 cell">
                 <?php 
-                $url = ['controller' => 'regions' , 'action' => 'view', $region['id']];
+                $url = ['controller' => 'fuels' , 'action' => 'view', $fuel['id']];
                 echo $this->element('Comun/btn_back', array('url' => $url)); ?>
             </div>  
         </div>  
     
         <?php 
-        echo $this->Form->create($region_technology); ?>
+        echo $this->Form->create($fuel_technology); ?>
         <div class="cnt-form">
 
             <?php
@@ -41,17 +39,17 @@
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->hidden(
-                        'id_region',
+                        'id_fuel',
                         [
-                            'value' => $region->id,
+                            'value' => $fuel->id,
                         ]
                     );
                     echo $this->Form->input(
                         ' ',
                         [
-                            'label' => __('Region name'),
+                            'label' => __('Fuel name'),
                             'readonly' => true,
-                            'value' => $region->name,
+                            'value' => $fuel->name,
                             'required' => true
                         ]
                     );
@@ -77,7 +75,7 @@
             </div>
 
             <div class="grid-x">
-                <div class="large-6 p-1 input_field">
+                <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'power',
@@ -89,12 +87,24 @@
                     ?>
                 </div>
 
-                <div class="large-6 p-1 input_field">
+                <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
-                        'cap_ava',
+                        'perc_con',
                         [
-                            'label' => __('Cap ava'),
+                            'label' => __('Perc con'),
+                            'type' => 'number'
+                        ]
+                    );
+                    ?>
+                </div>
+
+                <div class="large-4 p-1 input_field">
+                    <?php
+                    echo $this->Form->input(
+                        'fue_con',
+                        [
+                            'label' => __('Fue con'),
                             'type' => 'number'
                         ]
                     );
@@ -105,7 +115,7 @@
         </div>
 
         <?php
-        $url = ['controller' => 'regions' , 'action' => 'view', $region->id];
+        $url = ['controller' => 'fuels' , 'action' => 'view', $fuel->id];
         echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
 
         <?php echo $this->Form->end() ?>

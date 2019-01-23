@@ -21,20 +21,25 @@ class FuelsTechnologiesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id_fuel)
     {
-        $region = $this->Regions->newEntity();
-        if ($this->request->is('post')) {
-            $region = $this->Regions->patchEntity($region, $this->request->data);
-            if ($this->Regions->save($region)) {
-                $this->Flash->success('Region has been saved.');
-                return $this->redirect(['action' => 'home']);
+        $fuel = $this->FuelsTechnologies->Fuels->get($id_fuel);
+        $technologies = $this->FuelsTechnologies->Technologies->search_list();
+        $fuel_technology = $this->FuelsTechnologies->newEntity();
+
+        if(!$this->request->is('get')){
+            //find if exists other fuel_technology with this pk.
+            $fuel_technology = $this->FuelsTechnologies->patchEntity($fuel_technology, $this->request->data);
+            if ($this->FuelsTechnologies->save($fuel_technology)) {
+                $this->Flash->success('Fuel technology has been saved.');
+                return $this->redirect(['controller' => 'fuels', 'action' => 'view', $id_fuel]);
             } else {
-                $this->Flash->error('Region could not be saved. Please, try again.');
+                $this->Flash->error('Fuel technology could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('region'));
-        $this->set('_serialize', ['region']);
+                
+        $this->set(compact('fuel', 'fuel_technology', 'technologies'));
+        $this->set('_serialize', ['fuel', 'fuel_technology', 'technologies']);
     }
 
     /**
@@ -44,24 +49,24 @@ class FuelsTechnologiesController extends AppController
      * @return void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id_region, $id_technology)
+    public function edit($id_fuel, $id_technology)
     {
-        $region_technology = $this->RegionsTechnologies->get([$id_region, $id_technology]);
-        $region = $this->RegionsTechnologies->Regions->get($id_region);
-        $technology = $this->RegionsTechnologies->Technologies->get($id_technology);
+        $fuel_technology = $this->FuelsTechnologies->get([$id_fuel, $id_technology]);
+        $fuel = $this->FuelsTechnologies->Fuels->get($id_fuel);
+        $technology = $this->FuelsTechnologies->Technologies->get($id_technology);
 
         if(!$this->request->is('get')){
-            $region_technology = $this->RegionsTechnologies->patchEntity($region_technology, $this->request->data);
-            if ($this->RegionsTechnologies->save($region_technology)) {
-                $this->Flash->success('Region technology has been saved.');
-                return $this->redirect(['controller' => 'regions', 'action' => 'view', $id_region]);
+            $fuel_technology = $this->FuelsTechnologies->patchEntity($fuel_technology, $this->request->data);
+            if ($this->FuelsTechnologies->save($fuel_technology)) {
+                $this->Flash->success('Fuel technology has been saved.');
+                return $this->redirect(['controller' => 'fuels', 'action' => 'view', $id_fuel]);
             } else {
-                $this->Flash->error('Region technology could not be saved. Please, try again.');
+                $this->Flash->error('Fuel technology could not be saved. Please, try again.');
             }
         }
                 
-        $this->set(compact('region', 'technology', 'region_technology'));
-        $this->set('_serialize', ['region', 'technology', 'region_technology']);
+        $this->set(compact('fuel', 'technology', 'fuel_technology'));
+        $this->set('_serialize', ['fuel', 'technology', 'fuel_technology']);
     }
 
     /**
