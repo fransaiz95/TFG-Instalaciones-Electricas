@@ -37,20 +37,62 @@ class AppController extends Controller
      *
      * @return void
      */
+    // public function initialize()
+    // {
+    //     parent::initialize();
+
+    //     $this->loadComponent('RequestHandler');
+    //     $this->loadComponent('Flash');
+    //     $this->loadComponent('Paginator');
+
+    //     /*
+    //      * Enable the following components for recommended CakePHP security settings.
+    //      * see https://book.cakephp.org/3.0/en/controllers/components/security.html
+    //      */
+    //     //$this->loadComponent('Security');
+    //     //$this->loadComponent('Csrf');
+    // }
+
+
     public function initialize()
     {
-        parent::initialize();
-
-        $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Paginator');
+        $this->loadComponent('Auth', [
+            // 'authorize' => ['Controller'], // Added this line
+            'loginRedirect' => [
+                'controller' => 'home',
+                'action' => 'home'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'users',
+                'action' => 'login',
+                'home'
+            ]
+        ]);
+    }
+    
+    public function isAuthorized($user)
+    {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+    
+        // Default deny
+        return false;
+    }
 
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see https://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(
+            ['controller' => 'users', 
+            'action' => 'add']
+        );
+    }
+
+    public function beforeRender(Event $event) {
+    
+        $this->set('Auth', $this->Auth);
     }
 
     /**

@@ -38,6 +38,9 @@
     echo $this->Html->script('lib/sweetalert2/promise.min.js');
     ?>
 
+    <!-- Select molón -->
+    <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+
     <?php echo $this->Html->script('app-script.js'); ?>
 </head>
 

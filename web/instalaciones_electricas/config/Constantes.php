@@ -47,3 +47,8 @@ class ConstantesLimitDataTypes{
     const LIMIT_14 = '99999999999999';
     const LIMIT_15 = '999999999999999';
 }
+
+class ConstantesRoles{
+    const ADMIN = 1;
+    const USER = 2;
+}

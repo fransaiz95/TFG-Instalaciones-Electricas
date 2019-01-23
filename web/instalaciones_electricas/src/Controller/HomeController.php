@@ -10,24 +10,30 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-
-
 use ConstantesBooleanas;
 use ConstantesFuels;
+use ConstantesRoles;
 
 class HomeController extends AppController
 {
 
     public function ajaxDeleteDatabase(){
 
-        ini_set('memory_limit', '-1'); //All
-        set_time_limit(0); //Infinite
+        $user = $this->Auth->user();
 
-        $path_delete = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'delete_tables.sql';
-        $file_delete = file_get_contents($path_delete);
+        if($user['id_role'] == ConstantesRoles::ADMIN){
+            ini_set('memory_limit', '-1'); //All
+            set_time_limit(0); //Infinite
+    
+            $path_delete = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'delete_tables.sql';
+            $file_delete = file_get_contents($path_delete);
+    
+            $conn = ConnectionManager::get('default'); 
+            $stmt = $conn->execute($file_delete);
+        }else{
+            return $this->redirect(['controller' => 'home', 'action' => 'home']);
+        }
 
-        $conn = ConnectionManager::get('default'); 
-        $stmt = $conn->execute($file_delete); 
 
         $this->autoRender = false;
 
@@ -35,14 +41,20 @@ class HomeController extends AppController
 
     public function ajaxCreateDatabase(){
 
-        ini_set('memory_limit', '-1'); //All
-        set_time_limit(0); //Infinite
+        $user = $this->Auth->user();
 
-        $path_create = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'restore_tables.sql';
-        $file_create = file_get_contents($path_create);
+        if($user['id_role'] == ConstantesRoles::ADMIN){
+            ini_set('memory_limit', '-1'); //All
+            set_time_limit(0); //Infinite
 
-        $conn = ConnectionManager::get('default'); 
-        $stmt = $conn->execute($file_create); 
+            $path_create = ROOT . DS . 'files' . DS . 'restore_database' . DS . 'restore_tables.sql';
+            $file_create = file_get_contents($path_create);
+
+            $conn = ConnectionManager::get('default'); 
+            $stmt = $conn->execute($file_create); 
+        }else{
+            return $this->redirect(['controller' => 'home', 'action' => 'home']);
+        }
 
         $this->autoRender = false;
 

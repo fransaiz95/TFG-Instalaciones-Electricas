@@ -129,22 +129,31 @@ var Weblectric  = (function(){
                 cancelButtonText: 'No'
             }).then(function (result) {
                 if (result.value) {
-
                     PeticionAjax.mostrarCargando();
                     var request = PeticionAjax.post(url_delete, data);
                     request.done(function (data){
-                        var request = PeticionAjax.post(url_create, data);
-                        request.done(function (data){
-                            PeticionAjax.ocultarCargando();
+                        if(data != 'error'){
+                            var request = PeticionAjax.post(url_create, data);
+                            request.done(function (data){
+                                PeticionAjax.ocultarCargando();
+                                swal({
+                                    title: 'It has been done successfully',
+                                    type: "success",
+                                    confirmButtonColor: '#5bcb90',
+                                    confirmButtonText: 'Ok',
+                                }).then(function (result) {
+                                    location.reload();
+                                });
+                            })
+                        }else{
                             swal({
-                                title: 'It has been done successfully',
-                                type: "success",
+                                title: 'You can\'t restore database.',
+                                type: "you aren\'t an administrator.",
                                 confirmButtonColor: '#5bcb90',
                                 confirmButtonText: 'Ok',
-                            }).then(function (result) {
-                            	location.reload();
-                            });
-                        })
+                            })
+                        }
+                        
                     })
                 }
             });

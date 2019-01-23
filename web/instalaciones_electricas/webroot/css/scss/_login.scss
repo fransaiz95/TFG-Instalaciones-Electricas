@@ -1,0 +1,58 @@
+.cnt-login
+{
+  max-width: 400px;
+  text-align: center;
+  margin: auto;
+  background: transparent;
+}
+
+.login-cnt-img {
+  display: block;
+  text-align: center;
+  padding-top: 45px;
+  padding-bottom: 25px;
+}
+
+.login-input{
+  input{
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-bottom: 2px solid $secondary-color;
+    font-size: 20px;
+    
+    &:focus{
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      border-bottom: 2px solid $header-tabs-color;
+    }
+  }
+
+  label{
+    font-size: 22px;
+    color: $primary-color;
+  }
+}
+
+.login-cnt-bnt-save {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.login-bnt-save {
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+  background-color: $header-tabs-color;
+  border-radius: 25px;
+  cursor: pointer;
+}
