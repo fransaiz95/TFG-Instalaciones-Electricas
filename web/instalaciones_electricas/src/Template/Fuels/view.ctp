@@ -13,8 +13,13 @@
 
 <div class="grid-container" >
     <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
+        <div class="large-10 cell">
             <h1><?= __('Fuel') ?></h1>
+        </div> 
+        <div class="large-2 cell">
+            <?php 
+            $url = ['controller' => 'fuels' , 'action' => 'home'];
+            echo $this->element('Comun/btn_back', array('url' => $url)); ?>
         </div>  
         <div class="large-3 medium-3 cell p-top-1">
             <span class="titles-view">
@@ -46,12 +51,9 @@
 <div class="grid-container p-top-1 cnt-tabs <?php echo $class?>" id="cnt-technologies">
     <div class="grid-x grid-padding-x">
 
-        <div class="large-10 cell">
+        <div class="large-12 cell">
             <h1><?= __('Technologies') ?></h1>
         </div>  
-        <?php 
-        $url = ['controller' => 'fuels' , 'action' => 'home'];
-        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
 
         <div class="large-12 cell p-top-1">
             <div class="large-12 cell">

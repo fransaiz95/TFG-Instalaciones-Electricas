@@ -50,6 +50,7 @@ class RegionsController extends AppController
     {
         $region = $this->Regions->newEntity();
         $countries = $this->Regions->Countries->search_list();
+        $country = $this->Regions->Countries->get([$id_country]);
         
         if ($this->request->is('post')) {
             $region = $this->Regions->patchEntity($region, $this->request->data);
@@ -60,7 +61,7 @@ class RegionsController extends AppController
                 $this->Flash->error('Region could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('region', 'countries', 'id_country'));
+        $this->set(compact('region', 'countries', 'id_country', 'countries', 'country'));
         $this->set('_serialize', ['region', 'countries', 'id_country']);
     }
 
@@ -72,6 +73,7 @@ class RegionsController extends AppController
     public function view($id_region)
     {
         $region = $this->Regions->getRegionAndCountryByRegionId($id_region);
+        $country = $this->Regions->Countries->get([$region['id_country']]);
 
         $region_technologies = $this->Regions->getTechnologiesByRegionId($id_region); 
         $region_arcs = $this->Regions->getArcsByRegionId($id_region); 
@@ -84,7 +86,7 @@ class RegionsController extends AppController
         $active_tab = ConstantesTabs::TECHNOLOGIES;
 
         $this->set(
-            compact('region', 'region_technologies', 'region_arcs', 'enabled_tabs', 'active_tab')
+            compact('region', 'region_technologies', 'region_arcs', 'enabled_tabs', 'active_tab', 'country')
         );
         $this->set('_serialize', ['region', 'region_technologies', 'region_arcs', 'enabled_tabs', 'active_tab']);
     }
@@ -100,6 +102,7 @@ class RegionsController extends AppController
     {
         $region = $this->Regions->get($id);
         $countries = $this->Regions->Countries->search_list();
+        $country = $this->Regions->Countries->get([$region['id_country']]);
 
         $id_country = $region->id_country;
 
@@ -113,7 +116,7 @@ class RegionsController extends AppController
             }
         }
                 
-        $this->set(compact('region', 'countries', 'id_country'));
+        $this->set(compact('region', 'countries', 'id_country', 'country'));
         $this->set('_serialize', ['region', 'countries', 'id_country']);
     }
 

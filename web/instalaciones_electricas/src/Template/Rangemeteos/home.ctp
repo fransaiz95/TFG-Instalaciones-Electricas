@@ -62,8 +62,8 @@
 
         <div class="large-12 cell p-1">
             <?php
-            $url = ['controller' => 'rangemeteos' , 'action' => 'home'];
-            echo $this->element('Comun/btn_actions_form_ajax', array('url' => $url)); ?>
+            $url = ['controller' => 'home', 'action' => 'homeCountries'];
+            echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
         </div>
 
         <?php echo $this->Form->end() ?>

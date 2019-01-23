@@ -1,10 +1,24 @@
 <?php //echo $this->element('Comun/tabs_home');  ?>
 
+<div class="breadcrumbs">
+    <?php 
+    $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Countries data'), ['controller' => 'home', 'action' => 'homeCountries'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Countries'), ['controller' => 'countries', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( $country['name'], ['controller' => 'countries', 'action' => 'view', $country['id']], ['class' => 'cf']); 
+    echo $this->Breadcrumbs->render();?>
+</div>
+
 <div class="grid-container" >
     <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
+        <div class="large-10 cell">
             <h1><?= __('Country') ?></h1>
         </div>  
+        <div class="large-2 cell p-top-1">
+            <?php   
+            $url = ['controller' => 'countries' , 'action' => 'home'];
+            echo $this->element('Comun/btn_back', array('url' => $url)); ?>
+        </div>
         <div class="large-3 medium-3 cell">
             <span class="titles-view">
                 <?php echo __('Name:') ?>
@@ -17,12 +31,9 @@
 <div class="grid-container cnt-tabs p-top-1" id="cnt-regions">
     <div class="grid-x grid-padding-x">
 
-        <div class="large-10 cell">
+        <div class="large-12 cell">
             <h1><?= __('Regions') ?></h1>
         </div>  
-        <?php 
-        $url = ['controller' => 'countries' , 'action' => 'home'];
-        echo $this->element('Comun/btn_back', array('url' => $url)); ?>
 
         <div class="large-12">
             <?php echo $this->element('../Countries/Elements/search_regions'); ?>

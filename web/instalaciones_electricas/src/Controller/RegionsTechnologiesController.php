@@ -48,6 +48,7 @@ class RegionsTechnologiesController extends AppController
     {
         $region_technology = $this->RegionsTechnologies->get([$id_region, $id_technology]);
         $region = $this->RegionsTechnologies->Regions->get($id_region);
+        $country = $this->RegionsTechnologies->Regions->Countries->get([$region->id_country]);
         $technology = $this->RegionsTechnologies->Technologies->get($id_technology);
 
         if(!$this->request->is('get')){
@@ -60,7 +61,7 @@ class RegionsTechnologiesController extends AppController
             }
         }
                 
-        $this->set(compact('region', 'technology', 'region_technology'));
+        $this->set(compact('region', 'technology', 'region_technology', 'country'));
         $this->set('_serialize', ['region', 'technology', 'region_technology']);
     }
 

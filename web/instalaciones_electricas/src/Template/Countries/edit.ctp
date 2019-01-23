@@ -1,3 +1,11 @@
+<div class="breadcrumbs">
+    <?php 
+    $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Countries data'), ['controller' => 'home', 'action' => 'homeCountries'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Countries'), ['controller' => 'countries', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( $country['name'], ['controller' => 'countries', 'action' => 'edit', $country['id']], ['class' => 'cf']); 
+    echo $this->Breadcrumbs->render();?>
+</div>
 
 <div class="grid-container p-1">
 
