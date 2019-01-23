@@ -18,7 +18,7 @@
         $url = ['controller' => 'objectives' , 'action' => 'home'];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
         
-        <div class="large-12 p-form input_field p-form">
+        <div class="large-12 input_field p-left-1 p-top-1">
             <?php echo $this->Form->input(
                 'cost_new_plant',
                 array(
@@ -29,7 +29,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_oper_maint_plant',
                 array(
@@ -40,7 +40,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_generation',
                 array(
@@ -51,7 +51,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_new_lines',
                 array(
@@ -62,7 +62,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_new_lines',
                 array(
@@ -75,7 +75,7 @@
         </div>
 
 
-        <div class="large-12 p-form input_field p-form">
+        <div class="large-12 input_field p-top-1 p-left-1">
             <?php echo $this->Form->input(
                 'cost_new_plant',
                 array(
@@ -86,7 +86,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_oper_maint_plant',
                 array(
@@ -97,7 +97,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_generation',
                 array(
@@ -108,7 +108,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_new_lines',
                 array(
@@ -121,7 +121,7 @@
         </div>
 
 
-        <div class="large-12 p-form input_field p-form">
+        <div class="large-12 p-top-1 input_field p-left-1">
             <?php echo $this->Form->input(
                 'cost_new_plant',
                 array(
@@ -132,7 +132,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_oper_maint_plant',
                 array(
@@ -143,7 +143,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_generation',
                 array(
@@ -154,7 +154,7 @@
             );
             ?>
         </div>
-        <div class="large-4 input_field p-left-5">
+        <div class="large-12 input_field p-left-5">
             <?php echo $this->Form->input(
                 'cost_new_lines',
                 array(

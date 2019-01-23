@@ -15,7 +15,7 @@
         $url = ['controller' => 'objectives' , 'action' => 'home'];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
         
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'environmental_impact',
                 array(
@@ -25,7 +25,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'emission_gases',
                 array(
@@ -35,7 +35,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'water_usage',
                 array(
@@ -45,7 +45,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'water_withdrawal',
                 array(

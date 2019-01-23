@@ -15,7 +15,7 @@
         $url = ['controller' => 'objectives' , 'action' => 'home'];
         echo $this->element('Comun/btn_back', array('url' => $url));?>
         
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_new_plant',
                 array(
@@ -25,7 +25,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_oper_maint_plant',
                 array(
@@ -35,7 +35,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_generation',
                 array(
@@ -45,7 +45,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_new_lines',
                 array(
@@ -55,7 +55,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_oper_maint_lines',
                 array(
@@ -65,7 +65,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_import_fuel',
                 array(
@@ -75,7 +75,7 @@
             );
             ?>
         </div>
-        <div class="large-4 p-1 input_field p-form">
+        <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
                 'cost_public_politics',
                 array(
