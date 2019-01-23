@@ -2822,4 +2822,34 @@ class Table implements RepositoryInterface, EventListenerInterface, EventDispatc
         }
         return true;
 	}
+    
+    public function region_technology_add($value, $context){
+
+        if(isset($context['data']['action'])){
+            $RegionsTechnologies = TableRegistry::get('RegionsTechnologies');
+            $region_technology_bd = $RegionsTechnologies->findByIdRegionAndIdTechnology($context['data']['id_region'], $context['data']['id_technology'])->toArray();
+            if(empty($region_technology_bd)){
+                return true;
+            }else{
+                return 'There\'s another region with this technology.';
+            }
+        }else{
+            return true;
+        }
+    }
+    
+    public function fuel_technology_add($value, $context){
+
+        if(isset($context['data']['action'])){
+            $FuelsTechnologies = TableRegistry::get('FuelsTechnologies');
+            $fuel_technology_bd = $FuelsTechnologies->findByIdFuelAndIdTechnology($context['data']['id_fuel'], $context['data']['id_technology'])->toArray();
+            if(empty($fuel_technology_bd)){
+                return true;
+            }else{
+                return 'There\'s another fuel with this technology.';
+            }
+        }else{
+            return true;
+        }
+	}
 }
