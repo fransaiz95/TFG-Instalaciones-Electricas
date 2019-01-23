@@ -11,4 +11,6 @@ TRUNCATE TABLE weblectric.arcs;
 TRUNCATE TABLE weblectric.fuels;
 TRUNCATE TABLE weblectric.technologies;
 TRUNCATE TABLE weblectric.typelines;
+TRUNCATE TABLE weblectric.users;
+TRUNCATE TABLE weblectric.roles;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

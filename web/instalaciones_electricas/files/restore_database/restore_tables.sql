@@ -11,4 +11,6 @@ INSERT INTO weblectric.regions SELECT * FROM weblectric_restore.regions;
 INSERT INTO weblectric.regions_technologies SELECT * FROM weblectric_restore.regions_technologies;
 INSERT INTO weblectric.technologies SELECT * FROM weblectric_restore.technologies;
 INSERT INTO weblectric.typelines SELECT * FROM weblectric_restore.typelines;
+INSERT INTO weblectric.roles SELECT * FROM weblectric_restore.roles;
+INSERT INTO weblectric.users SELECT * FROM weblectric_restore.users;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
