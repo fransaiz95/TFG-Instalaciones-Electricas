@@ -2,6 +2,11 @@
   background: $primary-color;
   color: white;
   height: 85px;
+  position: fixed;
+  z-index: 999;
+  // position: inherit;
+
+  width: 100%;
   a {
     color: white;
   }
@@ -16,7 +21,7 @@ nav {
     padding-right: 20px;
     li {
       display: inline-block;
-      line-height: 80px;
+      line-height: 85px;
       a {
         display: block;
         padding: 0 10px;
@@ -28,7 +33,27 @@ nav {
         }
       }
     }
+    div.cnt-img-user-header{
+      user-select: none;
+      .cnt-user-name{
+        min-width: 225px;
+        text-align: left;
+        span{
+          padding-left: 80px;
+        }
+      }
+      &:hover{
+        background: $header-tabs-color;
+      }
+    }
   }
+}
+
+.img-user-header
+{
+  max-width: 70px;
+  position: absolute;
+  padding: 15px 0 0 15px;
 }
 
 #main-content {
@@ -50,3 +75,38 @@ nav {
   top: 7px;
   left: 25px;
 }
+
+/* menu desplegable */
+
+#nav-header ul ul {
+  display: none;
+  top: 100%;
+  left: 0;
+  background: #333;
+  padding: 0;
+  float: right;
+  // width: -moz-min-content;   
+  width: min-content;
+}
+
+/* items del menu desplegable */
+
+#nav-header ul ul li {
+  float:none;
+  width:150px
+}
+
+/* enlaces de los items del menu desplegable */
+
+#nav-header ul ul a {
+  line-height:120%;
+  padding:10px 15px;
+}
+
+/* items del menu desplegable al pasar el ratón */
+
+#nav-header ul li:hover > ul {
+  display:block;
+}
+
+

@@ -21,7 +21,8 @@ echo $this->Form->create($user); ?>
             'password',
             [
                 'label' => __('Password'),
-                'type' => 'password'
+                'type' => 'password',
+                'value' => ''
             ]
         );
         ?>
@@ -60,7 +61,8 @@ echo $this->Form->create($user); ?>
                 'multiple' => false,
                 'options' => $roles, 
                 'empty' => false,
-                'required' => true
+                'required' => true,
+                'disabled' => ($user['id_role'] == ConstantesRoles::ADMIN) ? false : true
             ]
         );
         ?>

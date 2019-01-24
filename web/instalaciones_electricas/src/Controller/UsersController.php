@@ -21,32 +21,52 @@ use Cake\Event\Event;
 class UsersController extends AppController
 {
 
-    // public function beforeFilter(Event $event)
-    // {
-    //     parent::beforeFilter($event);
-    //     $this->Auth->allow('add');
-    // }
+    public function home(){
 
-    public function index()
-    {
-        $this->set('users', $this->Users->find('all'));
-    }
-
-    public function view($id)
-    {
-        if (!$id) {
-            debug('fail!!');Exit;
+        if(!$this->Auth->id_admin()){
+            return $this->redirect(['controller' => 'home', 'action' => 'home']);
         }
 
-        $user = $this->Users->get($id);
-        $this->set(compact('user'));
+        $name = (isset($_GET['name'])) ? $_GET['name'] : '';
+        $surname = (isset($_GET['surname'])) ? $_GET['surname'] : '';
+        $username = (isset($_GET['username'])) ? $_GET['username'] : '';
+        $id_role = (isset($_GET['id_role'])) ? $_GET['id_role'] : '';
+
+        $filters = [];
+
+        if($name != '' ){
+            $filters['Users.name LIKE'] = '%' . $name . '%';
+        }
+        if($surname != '' ){
+            $filters['Users.surname LIKE'] = '%' . $surname . '%';
+        }
+        if($username != '' ){
+            $filters['Users.username LIKE'] = '%' . $username . '%';
+        }
+        if($id_role != '' ){
+            $filters['Users.id_role '] = $id_role;
+        }
+
+        $query = $this->Users->getQueryUsersAndRole($filters);
+        $users = $this->paginate($query);
+
+        $roles = $this->Users->Roles->search_list();
+
+        $this->request->data = $_GET;
+
+        $this->set(compact('users', 'roles'));
+        $this->set('_serialize', ['users', 'roles']);
     }
 
-    public function add()
-    {
+    public function add(){
+
+        if(!$this->Auth->id_admin()){
+            return $this->redirect(['controller' => 'home', 'action' => 'home']);
+        }
+
         $user = $this->Users->newEntity();
         $roles = $this->Users->Roles->search_list();
-        if ($this->request->is('post')) {
+        if (!$this->request->is('get')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -60,8 +80,42 @@ class UsersController extends AppController
 
     }
 
-    public function login()
+    public function edit($id_user){
+
+        $user = $this->Users->get($id_user);
+        $roles = $this->Users->Roles->search_list();
+        if (!$this->request->is('get')) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['controller' => 'home', 'action' => 'home']);
+            }else{
+                $this->Flash->error(__('Unable to add the user.'));
+            }
+        }
+        // $this->set(['user', 'roles']);
+        $this->set(compact('user', 'roles'));
+
+    }
+
+    public function delete($id_user = null)
     {
+        $id_user = $this->request->data['id'];
+        if(!$this->request->is('get')){
+           
+            $user = $this->Users->get($id_user);
+
+            if ($this->Users->delete($user)) {
+                echo 'OK';
+            } else {
+                echo __('An error has occurred while we were deleting this country.');
+            }
+        }
+        $this->autoRender = false;
+    }
+
+    public function login(){
+
         $this->viewBuilder()->setLayout(false);
 
         if ($this->request->is('post')) {
@@ -77,7 +131,6 @@ class UsersController extends AppController
             $this->Flash->error(__('Invalid username or password, try again'));
         }
 
-        // $this->render('login'); 
     }
 
     public function logout()

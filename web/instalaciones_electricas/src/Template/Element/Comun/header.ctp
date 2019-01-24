@@ -11,7 +11,7 @@
 	<header id="main-header">
 		<?php echo $this->Html->image('/img/logos/white_2.png',array('class'=>'header_logo'))?>
 		<?php $user = $Auth->user(); ?>
-		<nav>
+		<nav id="nav-header">
 			<ul>
 				<li>
 					<?php
@@ -50,47 +50,50 @@
 					</li>
 				<?php
 				} ?>
-				<!-- <li>
-					<?php
-					echo $this->Html->link( 
-						__('ABOUT US'),
-						array(
-							'controller' => 'home',
-							'action' => 'home'
-						), 
-						array(
-							'escape' => false,
-						)
-					);
-					?>
-				</li> -->
-				<!-- <li>
-					<?php
-					echo $this->Html->link( 
-						__('CONTACT US'),
-						array(
-							'controller' => 'home',
-							'action' => 'home'
-						), 
-						array(
-							'escape' => false,
-						)
-					);
-					?>
-				</li> -->
 				<li>
-					<?php
-					echo $this->Html->link( 
-						__('LOGOUT'),
-						array(
-							'controller' => 'users',
-							'action' => 'logout'
-						), 
-						array(
-							'escape' => false,
-						)
-					);
-					?>
+					<div class="cnt-img-user-header">
+
+						<div class="div-img-user-header">
+							<?php echo $this->Html->image('/img/header/user.png',array('class'=>'img-user-header'));?>
+						</div>
+						<div class="cnt-user-name">
+							<span class="ta-left">
+								<?php echo $user['name'] . ' ' . $user['surname']?>
+							</span>
+						</div>
+					</div>
+
+					<ul>
+						<li>
+							<?php
+							echo $this->Html->link( 
+								__('MY DATA'),
+								array(
+									'controller' => 'users',
+									'action' => 'edit',
+									$user['id']
+								), 
+								array(
+									'escape' => false,
+								)
+							);
+							?>
+						</li>
+						<li>
+							<?php
+							echo $this->Html->link( 
+								__('LOGOUT'),
+								array(
+									'controller' => 'users',
+									'action' => 'logout'
+								), 
+								array(
+									'escape' => false,
+								)
+							);
+							?>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</nav>

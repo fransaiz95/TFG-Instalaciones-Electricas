@@ -30,4 +30,20 @@ class UsersTable extends Table
             ->notEmpty('id_role', 'A role is required');
     }
 
+
+    public function getQueryUsersAndRole ($filters){
+		$query = $this->find('all');
+        $query->select(['Roles.name']);
+        $query->select(['Users.id', 'Users.name', 'Users.surname', 'Users.username', 'Users.id_role']);
+        $query->join([
+            'alias' => 'Roles',
+            'table' => 'roles',
+            'type' => 'INNER',
+            'conditions' => 'Roles.id = Users.id_role'
+		]);
+		$query->where($filters);
+		
+		return $query;
+	}
+
 }

@@ -46,9 +46,7 @@
 
 <div id="container">
     <?php echo $this->fetch('header'); ?>
-    <div id="contenido" class="contain-to-grid">
-        <?php echo $this->fetch('content'); ?>
-    </div>
+    <?php echo $this->fetch('content'); ?>
 </div>
 
 <?php echo $this->Html->script('../css/lib/foundation-6.4.2/js/vendor/foundation.min.js'); ?>

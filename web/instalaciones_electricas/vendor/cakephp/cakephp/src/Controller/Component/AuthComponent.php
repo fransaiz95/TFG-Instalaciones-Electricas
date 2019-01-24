@@ -27,6 +27,8 @@ use Cake\Network\Exception\ForbiddenException;
 use Cake\Routing\Router;
 use Cake\Utility\Hash;
 
+use ConstantesRoles;
+
 /**
  * Authentication control component class.
  *
@@ -719,6 +721,16 @@ class AuthComponent extends Component
         }
 
         return Hash::get($user, $key);
+    }
+
+    public function id_admin(){
+        $user = $this->storage()->read();
+
+        if($user['id_role'] == ConstantesRoles::ADMIN){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
