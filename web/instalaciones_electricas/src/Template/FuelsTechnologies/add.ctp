@@ -36,6 +36,8 @@
             ?>
 
             <div class="grid-x">
+
+                <?php $title = __('Name of the fuel.')?>
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->hidden(
@@ -47,27 +49,30 @@
                     echo $this->Form->input(
                         ' ',
                         [
-                            'label' => __('Fuel name'),
+                            'label' => __('Fuel name') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'readonly' => true,
                             'value' => $fuel->name,
-                            'required' => true
+                            'required' => true,
+                            'escape' => false
                         ]
                     );
                     ?>
                 </div>
 
+                <?php $title = __('Name of the technology.')?>
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'id_technology',
                         [
-                            'label' => __('Technology name'),
+                            'label' => __('Technology name') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'type' => 'select',
                             'class' => 'js-example-basic-single',
                             'multiple' => false,
                             'options' => $technologies, 
                             'empty' => false,
-                            'required' => true
+                            'required' => true,
+                            'escape' => false
                         ]
                     );
                     ?>
@@ -75,37 +80,44 @@
             </div>
 
             <div class="grid-x">
+
+                <?php $title = __('')?>
                 <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'power',
                         [
-                            'label' => __('Power'),
+                            'label' => __('Power') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'type' => 'number',
+                            'escape' => false
                         ]
                     );
                     ?>
                 </div>
 
+                <?php $title = __('Percentage of fuel contribution for generation.')?>
                 <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'perc_con',
                         [
-                            'label' => __('Perc con'),
-                            'type' => 'number'
+                            'label' => __('Perc con') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
+                            'type' => 'number',
+                            'escape' => false
                         ]
                     );
                     ?>
                 </div>
 
+                <?php $title = __('Fuel consumption needed to generate a megawatt. (MMBTU/MWh)')?>
                 <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'fue_con',
                         [
-                            'label' => __('Fue con'),
-                            'type' => 'number'
+                            'label' => __('Fue con') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
+                            'type' => 'number',
+                            'escape' => false
                         ]
                     );
                     ?>

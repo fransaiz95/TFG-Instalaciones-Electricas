@@ -2,6 +2,15 @@ $(document).ready(function(){
     Weblectric.load();
 });
 
+var tooltipster = function(){
+
+    $('.tooltip-info-js').tooltipster({
+        theme: 'tooltipster-punk',
+        contentAsHTML: true,
+    });
+
+}
+
 var PeticionAjax  = (function(){
 
     var get = function(url, data){
@@ -166,6 +175,7 @@ var Weblectric  = (function(){
             loadSelect2Multiple();
             deleteFunction();
             restoreBD();
+            tooltipster();
         }
     }
 })();

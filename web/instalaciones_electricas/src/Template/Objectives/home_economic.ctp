@@ -20,7 +20,7 @@
                 'cost_new_plant',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de inversión en nuevas plantas'),
+                    'label' => __('Cost of investment in new plants.'),
                 )
             );
             ?>
@@ -30,7 +30,7 @@
                 'cost_oper_maint_plant',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de operación y mantenimiento en plantas'),
+                    'label' => __('Cost of operation and maintenance in plants.'),
                 )
             );
             ?>
@@ -40,7 +40,7 @@
                 'cost_generation',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de generación'),
+                    'label' => __('Generation cost.'),
                 )
             );
             ?>
@@ -50,7 +50,7 @@
                 'cost_new_lines',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de inversión en nuevas líneas'),
+                    'label' => __('Cost of investment in new lines.'),
                 )
             );
             ?>
@@ -60,7 +60,7 @@
                 'cost_oper_maint_lines',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de operación y mantenimiento de líneas'),
+                    'label' => __('Cost of operation and maintenance of lines.'),
                 )
             );
             ?>
@@ -70,7 +70,7 @@
                 'cost_import_fuel',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de importación de combustible'),
+                    'label' => __('Fuel import cost.'),
                 )
             );
             ?>
@@ -80,7 +80,7 @@
                 'cost_public_politics',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Coste de políticas públicas'),
+                    'label' => __('Cost of public policies.'),
                 )
             );
             ?>

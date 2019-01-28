@@ -41,6 +41,13 @@
     <!-- Select molón -->
     <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
 
+    <!-- Tooltipster -->
+    <?php
+    echo $this->Html->css('../js/lib/tooltipster-master/dist/css/tooltipster.bundle.min.css');
+    echo $this->Html->css('../js/lib/tooltipster-master/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css');
+    echo $this->Html->script('lib/tooltipster-master/dist/js/tooltipster.bundle.min.js');
+    ?>
+
     <?php echo $this->Html->script('app-script.js'); ?>
 </head>
 

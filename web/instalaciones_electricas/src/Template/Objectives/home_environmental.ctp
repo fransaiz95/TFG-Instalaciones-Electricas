@@ -20,7 +20,7 @@
                 'environmental_impact',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Impacto ambiental'),
+                    'label' => __('Environmental impact.'),
                 )
             );
             ?>
@@ -30,7 +30,7 @@
                 'emission_gases',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Emisión de gases de efecto invernadero'),
+                    'label' => __('Emission of greenhouse gases.'),
                 )
             );
             ?>
@@ -40,7 +40,7 @@
                 'water_usage',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Consumo de agua'),
+                    'label' => __('Water consumption.'),
                 )
             );
             ?>
@@ -50,7 +50,7 @@
                 'water_withdrawal',
                 array(
                     'type' => 'checkbox',
-                    'label' => __('Retiro de agua'),
+                    'label' => __('Water withdrawal.'),
                 )
             );
             ?>

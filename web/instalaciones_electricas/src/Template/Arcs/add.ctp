@@ -6,7 +6,7 @@
         <h1><?= __('New Arc') ?></h1>
     </div>
     <?php 
-    $url = ['controller' => 'arcs' , 'action' => 'home'];
+    $url = ['controller' => 'regions' , 'action' => 'view', $region->id];
     echo $this->element('Comun/btn_back', array('url' => $url));?>
 </div>
 

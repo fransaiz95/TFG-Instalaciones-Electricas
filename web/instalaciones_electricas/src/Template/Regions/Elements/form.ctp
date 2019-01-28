@@ -4,23 +4,30 @@ $action = $this->request->action;
 echo $this->Form->create($region); ?>
 
 <div class="grid-x cnt-form">
+
+    <?php $title = '0asdfasdfasdf'; ?>
+
+    <?php $title = __('Name of the region.')?>
     <div class="large-6 p-1 input_field">
         <?php
         echo $this->Form->input(
             'name',
             [
-                'label' => __('Name'),
-                'required' => true
+                'label' => __('Name') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
+                'required' => true,
+                'escape' => false,
             ]
         );
         ?>
     </div>
 
+    <?php $title = __('Name of the country.')?>
     <div class="large-6 p-1 input_field">
         <?php
         echo $this->Form->input(
             'id_country', 
             [
+                'label' => __('Country') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                 'type' => 'select',
                 'class' => 'js-example-basic-single',
                 'multiple' => false,
@@ -28,7 +35,8 @@ echo $this->Form->create($region); ?>
                 'required' => false,
                 'default' => $id_country,
                 'empty' => false,
-                'disabled' => ($id_country != null && $action == 'add') ? true : false
+                'disabled' => ($id_country != null && $action == 'add') ? true : false,
+                'escape' => false
                 ]
         );
 
@@ -43,29 +51,33 @@ echo $this->Form->create($region); ?>
         ?>
     </div>
     
+    <?php $title = __('Demand Forecast.')?>
     <div class="large-6 p-1 input_field">
         <?php
         echo $this->Form->input(
             'dem_for',
             [
-                'label' => __('Dem for'),
+                'label' => __('Dem for') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                 'type' => 'number',
                 'required' => false,
-                'empty' => true
+                'empty' => true,
+                'escape' => false
             ]
         );
         ?>
     </div>
 
+    <?php $title = __('Renewable fluctuation.')?>
     <div class="large-6 p-1 input_field">
         <?php
         echo $this->Form->input(
             'ren_for',
             [
-                'label' => __('Ren for'),
+                'label' => __('Ren for') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                 'type' => 'number',
                 'required' => false,
-                'empty' => true
+                'empty' => true,
+                'escape' => false
             ]
         );
         ?>

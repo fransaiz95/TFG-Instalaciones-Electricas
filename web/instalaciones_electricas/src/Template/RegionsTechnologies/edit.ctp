@@ -27,6 +27,7 @@
         <div class="cnt-form">
 
             <div class="grid-x">
+                <?php $title = __('Name of the region.')?>
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->hidden(
@@ -35,15 +36,17 @@
                     echo $this->Form->input(
                         ' ',
                         [
-                            'label' => __('Region name'),
+                            'label' => __('Region name') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'readonly' => true,
                             'value' => $region->name,
-                            'required' => true
+                            'required' => true,
+                            'escape' => false
                         ]
                     );
                     ?>
                 </div>
 
+                <?php $title = __('Name of the technology.')?>
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->hidden(
@@ -52,10 +55,11 @@
                     echo $this->Form->input(
                         ' ',
                         [
-                            'label' => __('Technology name'),
+                            'label' => __('Technology name') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'readonly' => true,
                             'value' => $technology->name,
-                            'required' => true
+                            'required' => true,
+                            'escape' => false
                         ]
                     );
                     ?>
@@ -63,25 +67,29 @@
             </div>
 
             <div class="grid-x">
+                <?php $title = __('Installed power in each region. (MW)')?>
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'power',
                         [
-                            'label' => __('Power'),
+                            'label' => __('Power') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'type' => 'number',
+                            'escape' => false
                         ]
                     );
                     ?>
                 </div>
 
+                <?php $title = __('Available capacity by region and by technology. (MW)')?>
                 <div class="large-6 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'cap_ava',
                         [
-                            'label' => __('Cap ava'),
-                            'type' => 'number'
+                            'label' => __('Cap ava') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
+                            'type' => 'number',
+                            'escape' => false
                         ]
                     );
                     ?>

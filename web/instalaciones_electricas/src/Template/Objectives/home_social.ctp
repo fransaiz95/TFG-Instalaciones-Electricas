@@ -24,7 +24,7 @@
                 array(
                     'type' => 'checkbox',
                     'id' => 'check-employee-1-js',
-                    'label' => __('Empleos en plantas de generación'),
+                    'label' => __('Jobs in generation plants.'),
                 )
             );
             ?>
@@ -35,7 +35,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-1-js',
-                    'label' => __('Empleo en construcción de plantas'),
+                    'label' => __('Employment in plant construction.'),
                 )
             );
             ?>
@@ -46,7 +46,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-1-js',
-                    'label' => __('Desmantelamiento de plantas'),
+                    'label' => __('Dismantling of plants.'),
                 )
             );
             ?>
@@ -57,7 +57,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-1-js',
-                    'label' => __('Operación y mantenimiento en plantas'),
+                    'label' => __('Plant\'s operations and maintenances.'),
                 )
             );
             ?>
@@ -68,7 +68,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-1-js',
-                    'label' => __('Empleo generado en producción y transporte de combustible'),
+                    'label' => __('Employment generated in fuel production and transportation.'),
                 )
             );
             ?>
@@ -81,7 +81,7 @@
                 array(
                     'type' => 'checkbox',
                     'id' => 'check-employee-2-js',
-                    'label' => __('Empleo en línea de transmisión'),
+                    'label' => __('Employment on transmission line.'),
                 )
             );
             ?>
@@ -92,7 +92,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-2-js',
-                    'label' => __('Empleo en instalaciones en nuevas líneas'),
+                    'label' => __('Employment in installations on new lines.'),
                 )
             );
             ?>
@@ -103,7 +103,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-2-js',
-                    'label' => __('Empleo en operación en líneas'),
+                    'label' => __('Employment in operation on lines.'),
                 )
             );
             ?>
@@ -114,7 +114,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-2-js',
-                    'label' => __('Empleo en mantenimiento en líneas'),
+                    'label' => __('Employment in line maintenance.'),
                 )
             );
             ?>
@@ -127,7 +127,7 @@
                 array(
                     'type' => 'checkbox',
                     'id' => 'check-employee-3-js',
-                    'label' => __('Costos sociales'),
+                    'label' => __('Social costs.'),
                 )
             );
             ?>
@@ -138,7 +138,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-3-js',
-                    'label' => __('Coste para pública'),
+                    'label' => __('Cost to the public.'),
                 )
             );
             ?>
@@ -149,7 +149,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-3-js',
-                    'label' => __('Coste en accidentes producidos'),
+                    'label' => __('Cost of accidents produced.'),
                 )
             );
             ?>
@@ -160,7 +160,7 @@
                 array(
                     'type' => 'checkbox',
                     'class' => 'check-employee-3-js',
-                    'label' => __('Coste energía para usuario'),
+                    'label' => __('Cost of energy for the user.'),
                 )
             );
             ?>

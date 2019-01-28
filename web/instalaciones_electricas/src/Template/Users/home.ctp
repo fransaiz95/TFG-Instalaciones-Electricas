@@ -17,7 +17,7 @@
         echo $this->element('Comun/btn_back', array('url' => $url));?>
         
         <div class="large-12">
-            <?php //echo $this->element('../Users/Elements/search'); ?>
+            <?php echo $this->element('../Users/Elements/search'); ?>
         </div>
 
         <div class="large-12 cell ta-right">

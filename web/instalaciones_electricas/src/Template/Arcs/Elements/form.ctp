@@ -19,6 +19,7 @@ if($action == 'edit'){
 <div class="cnt-form">
 
     <div class="grid-x">
+        <?php $title = __('Name of the origin region.')?>
         <div class="large-6 p-1 input_field">
             <?php
             echo $this->Form->hidden(
@@ -30,27 +31,30 @@ if($action == 'edit'){
             echo $this->Form->input(
                 ' ',
                 [
-                    'label' => __('Origin region'),
+                    'label' => __('Origin region') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                     'readonly' => true,
                     'value' => $region->name,
-                    'required' => true
+                    'required' => true,
+                    'escape' => false
                 ]
             );
             ?>
         </div>
 
+        <?php $title = __('Name of the destination region.')?>
         <div class="large-6 p-1 input_field">
             <?php
             echo $this->Form->input(
                 'id_region_2', 
                 [
-                    'label' => __('Destination region'),
+                    'label' => __('Destination region') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                     'type' => 'select',
                     'class' => 'js-example-basic-single',
                     'multiple' => false,
                     'options' => $regions, 
                     'empty' => false,
-                    'required' => true
+                    'required' => true,
+                    'escape' => false
                 ]
             );
             ?>
@@ -58,46 +62,53 @@ if($action == 'edit'){
     </div>
 
     <div class="grid-x">
+
+        <?php $title = __('Distance between the two regions. (Km)')?>
         <div class="large-6 p-1 input_field">
             <?php
             echo $this->Form->input(
                 'distance',
                 [
-                    'label' => __('Distance'),
+                    'label' => __('Distance') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                     'type' => 'number',
+                    'escape' => false
                 ]
             );
             ?>
         </div>
 
+        <?php $title = __('Type of line.')?>
         <div class="large-3 p-1 input_field">
             <?php
             echo $this->Form->input(
                 'ArcsTypelines.id_typeline', 
                 [
-                    'label' => __('Typeline (Lin Cap)'),
+                    'label' => __('Typeline (Lin Cap)') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                     'type' => 'select',
                     'id' => 'typeline_id-js',
                     'class' => 'js-example-basic-single',
                     'multiple' => false,
                     'options' => $typelines, 
                     'empty' => true,
-                    // 'required' => true
+                    // 'required' => true,
+                    'escape' => false
                 ]
             );
             ?>
         </div>
-
+        
+        <?php $title = __('Number of lines of each type.')?>
         <div class="large-3 p-1 input_field">
             <?php
             echo $this->Form->input(
                 'ArcsTypelines.num_lines', 
                 [
-                    'label' => __('Num lines'),
+                    'label' => __('Num lines') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                     'id' => 'num_lines-js',
                     'type' => 'number',
                     'empty' => true,
-                    // 'required' => true
+                    // 'required' => true,
+                    'escape' => false
                 ]
             );
             ?>
