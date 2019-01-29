@@ -142,7 +142,7 @@ echo $this->Form->create($technology); ?>
         ?>
     </div>
 
-    <?php $title = __('')?>
+    <?php $title = __('Useful life of generation plants. (Years)')?>
     <div class="large-4 p-1 input_field">
         <?php
         echo $this->Form->input(
@@ -170,7 +170,7 @@ echo $this->Form->create($technology); ?>
         ?>
     </div>
 
-    <?php $title = __('')?>
+    <?php $title = __('Use in the construction of generation plants.')?>
     <div class="large-4 p-1 input_field">
         <?php
         echo $this->Form->input(
@@ -184,7 +184,7 @@ echo $this->Form->create($technology); ?>
         ?>
     </div>
 
-    <?php $title = __('')?>
+    <?php $title = __('Employment in the maintenance of generation plants.')?>
     <div class="large-4 p-1 input_field">
         <?php
         echo $this->Form->input(
@@ -198,7 +198,7 @@ echo $this->Form->create($technology); ?>
         ?>
     </div>
 
-    <?php $title = __('')?>
+    <?php $title = __('Use in the dismantling of generation plants.')?>
     <div class="large-4 p-1 input_field">
         <?php
         echo $this->Form->input(
@@ -212,7 +212,7 @@ echo $this->Form->create($technology); ?>
         ?>
     </div>
 
-    <?php $title = __('')?>
+    <?php $title = __('Employment in the operation of generation plants.')?>
     <div class="large-4 p-1 input_field">
         <?php
         echo $this->Form->input(
@@ -226,7 +226,7 @@ echo $this->Form->create($technology); ?>
         ?>
     </div>
 
-    <?php $title = __('')?>
+    <?php $title = __('Employment in the production, processing and transport of fuels.')?>
     <div class="large-4 p-1 input_field">
         <?php
         echo $this->Form->input(

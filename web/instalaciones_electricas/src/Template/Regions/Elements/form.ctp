@@ -51,7 +51,7 @@ echo $this->Form->create($region); ?>
         ?>
     </div>
     
-    <?php $title = __('Demand Forecast.')?>
+    <?php $title = __('Reserve margin due to error in demand forecasting.')?>
     <div class="large-6 p-1 input_field">
         <?php
         echo $this->Form->input(
@@ -67,7 +67,7 @@ echo $this->Form->create($region); ?>
         ?>
     </div>
 
-    <?php $title = __('Renewable fluctuation.')?>
+    <?php $title = __('Reserve margin due to error in the renewable generation forecast.')?>
     <div class="large-6 p-1 input_field">
         <?php
         echo $this->Form->input(

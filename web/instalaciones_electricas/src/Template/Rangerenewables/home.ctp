@@ -66,7 +66,7 @@
         
         <div class="large-12 cell p-1">
             <?php
-            $url = ['controller' => 'rangemeteos' , 'action' => 'home'];
+            $url = ['controller' => 'rangerenewables' , 'action' => 'technologies'];
             echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
         </div>
 
