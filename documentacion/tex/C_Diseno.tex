@@ -2,39 +2,140 @@
 
 \section{Introducción}
 
-A continuación se presentan los diseños elaborados para poder realizar los objetivos anteriores. Se ha incluido el diseño de datos, el diseño procedimental y el diseño arquitectónico.
+A continuación se presentan los diseños elaborados para poder realizar los objetivos anteriores. Se ha incluido el diagrama de despliegue, el diseño de datos, el diseño procedimental y el diseño arquitectónico.
+
+\section{Diagrama de despliegue}
+
+Como se puede ver reflejado en la figura~\ref{img:diagramaDespliegue}, la aplicación cuenta con 3 bloques claramente diferenciados:
+
+\begin{itemize}
+	\item El navegador personal del cliente donde se ejecuta la aplicación. 
+	\item Un servidor web con \textit{Apache} instalado en el que se despliega un proyecto en \textit{CakePHP}.
+	\item Un servidor de base de datos donde se aloja una base de datos relacional de \textit{MySQL}.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/DiagramaDespliegue}
+	\caption{Diagrama de despliegue de la aplicación.}
+	\label{img:diagramaDespliegue}
+\end{figure}
 
 \section{Diseño de datos}
 
 La estructura de datos presentada en este proyecto se recoge en una base de datos relacional \textit{MySQL}. En un primer momento se construyó el diagrama entidad relación a través del cual se obtuvo el diagrama relacional. En las figuras~\ref{img:modeloER} y~\ref{img:modeloRelacional} se presentan los modelos entidad relación y relacional respectivamente.
 
-A continuación se describirán cada una de las entidades:
+A continuación se recogerá en un diccionario de datos cada una de las entidades con sus correspondientes campos y las unidades en función de si es relevante:
 
 \begin{itemize}
 	
 	\item \textit{countries}: Los países presentes en la instalación.
+	\begin{itemize}
+		\item \textit{id}: Identificador del país.		
+		\item \textit{name}: Nombre del país.
+	\end{itemize}
 	
 	\item \textit{regions}: Cada una de las regiones pertenecientes a un país.
-	
+	\begin{itemize}
+		\item \textit{id}: Identificador de la región.		
+		\item \textit{id\_country}: Identificador del country al que pertenece.
+		\item \textit{dem\_for}: Margen de reserva por error en el pronostico de demanda.
+		\item \textit{ren\_for}: Margen de reserva por error en el pronostico de generación renovable.
+	\end{itemize}
+
 	\item \textit{arcs}: Comunicación entre dos regiones.
+	\begin{itemize}
+		\item \textit{id}: Identificador del arco.		
+		\item \textit{id\_region\_1}: Identificador de la región de origen.
+		\item \textit{id\_region\_2}: Identificador de la región de destino.
+		\item \textit{distance}: Distancia entre 2 regiones (Km).
+	\end{itemize}
 	
-	\item \textit{fuels}: Tipos de aceites.
+	\item \textit{fuels}: Tipos de combustibles.
+	\begin{itemize}
+		\item \textit{id}: Identificador del combustible.		
+		\item \textit{name}: Nombre del combustible.
+		\item \textit{fue\_cos}: Coste por unidad de combustible importado. (\textdollar/MMBTU).
+		\item \textit{production}: Reserva nacional de combustible. (MMBTU).
+	\end{itemize}
 	
 	\item \textit{technologies}: Tipos de tecnologías renovables y no renovables.
-	
+	\begin{itemize}
+		\item \textit{id}: Identificador de la tecnología.		
+		\item \textit{name}: Nombre de la tecnologia.
+		\item \textit{renewable}: Si es una tecnología renovable $ (0 - 1) $
+		\item \textit{wat\_wit}: Desperdicio de agua por generación de un \textit{megawhatt}. $ (m^{3}/MWh) $.
+		\item \textit{genco\_pri}: Precio de mercado por \textit{megawhatt} $ (\textdollar/MWh) $.
+		\item \textit{cap}: Capacidad de planta $ (MW) $.
+		\item \textit{new\_cap\_cos}: Costo por \textit{megawhatt} debido a la instalación. $ (\textdollar/MW) $.
+		\item \textit{man\_cos}: Costo por \textit{megawhatt} debido al mantenimiento de plantas viejas $ (\textdollar/MWh) $.
+		\item \textit{man\_cos\_new\_cap}: Costo por \textit{megawhatt} debido al mantenimiento de plantas nuevas. $ (\textdollar/MWh) $.
+		\item \textit{gen\_cos}: Costo por \textit{megawhatt-hora} generado para plantas viejas. $ (\textdollar/MWh) $.
+		\item \textit{gen\_cos\_new\_cap}: Costo por \textit{megawhatt-hora} generado para plantas nuevas. $ (\textdollar/MWh) $.
+		\item \textit{life\_time}: Vida util de las plantas de generación.
+		\item \textit{ghg\_emi}: Toneladas de $CO_{2}$ producidas por \textit{megawhatt-hora}. $(CO_{2}/MWh)$.
+		\item \textit{inv\_cap\_emp}: Empleo en la construcción de las plantas de generación.
+		\item \textit{man\_cap\_emp}: Empleo en el mantenimiento de las plantas de generación.
+		\item \textit{dec\_cam\_emp}: Empleo en el desmantelamiento de plantas de generación.
+		\item \textit{om\_cap\_emp}: Empleo en la operación de plantas de generación.
+		\item \textit{fue\_cap\_emp}: Empleo en la producción, procesamiento y transporte de combustibles.
+		\item \textit{wat\_con}: Consumo de agua por generación de un \textit{megawhatt} $ (m^{3}/MWh) $.
+	\end{itemize}
+
 	\item \textit{typelines}: Tipo de conexión de los arcos entre dos regiones.
-	
+	\begin{itemize}
+		\item \textit{id}: Identificador del tipo de linea.		
+		\item \textit{lin\_cap}: Capacidad de transmisión de linea.
+		\item \textit{tension}: Tensión de la linea. $ (MW) $
+	\end{itemize}
+
 	\item \textit{arcs\_typelines}: Relación entre el arco y el tipo de arco.
+	\begin{itemize}
+		\item \textit{id\_arc}: Identificador del arco.
+		\item \textit{id\_typeline}: Identificador del tipo de linea.
+		\item \textit{num\_lines}: Número de lineas de cada tipo.
+	\end{itemize}
 	
 	\item \textit{fuels\_technologies}: Relación entre el combustible y la tecnología.
-	
+	\begin{itemize}
+		\item \textit{id\_fuel}: Identificador del combustible.
+		\item \textit{id\_technology}: Identificador de la tecnología.
+		\item \textit{perc\_con}: Porcentaje de aportación de combustibles para generación. $ (0 - 1) $
+		\item \textit{fue\_con}: Consumo de combustible necesario para generar un \textit{megawhatt} $ (MMBTU/MWh) $
+	\end{itemize}
+
 	\item \textit{regions\_technologies}: Relación entre la región y qué tecnología hay presente.
+	\begin{itemize}
+		\item \textit{id\_region}: Identificador de la región.
+		\item \textit{id\_technology}: Identificador de la tecnología.
+		\item \textit{power}: Potencia instalada en cada región. $ (MW) $
+		\item \textit{cap\_ava}: Capacidad disponible por región y por tecnología. $ (MW) $
+	\end{itemize}
 	
 	\item \textit{rangedemands}: Datos de demanda en un instante de tiempo concreto.
+	\begin{itemize}
+		\item \textit{id\_region}: Identificador de la región
+		\item \textit{start}: Hora de inicio
+		\item \textit{end}: Hora de fin
+		\item \textit{demand}: Demanda por registro de transmisión. $ (MWh) $.
+	\end{itemize}
 	
 	\item \textit{rangemeteos}: Datos meteorológicos en un instante de tiempo concreto.
+	\begin{itemize}
+		\item \textit{id\_region}: Identificador de la región
+		\item \textit{start}: Hora de inicio
+		\item \textit{end}: Hora de fin
+		\item \textit{temp}: Temperatura promedio de cada región. $ (ºC) $
+	\end{itemize}
 	
 	\item \textit{rangerenowables}: Datos de fuentes renovables en un instante de tiempo concreto.
+	\begin{itemize}
+		\item \textit{id\_region}: Identificador de la región.
+		\item \textit{id\_technology}: Identificador de la tecnología.
+		\item \textit{start}: Hora de inicio.
+		\item \textit{end}: Hora de fin.
+		\item \textit{gen\_ava}: Porcentaje de capacidad de generación $ (0 - 1) $
+	\end{itemize}
 
 \end{itemize}
 
@@ -143,6 +244,8 @@ Una vez presentados los mockups, comentaremos los cambios que se han ido produci
 
 La plantilla de la aplicación ha sufrido modificaciones pues además de añadir un logotipo personalizado para \textit{Weblectric}, se ha tenido que incluir una nueva funcionalidad, un botón para restablecer la base de datos a su situación inicial. Estos cambios se contemplan en la figura~\ref{img:Flayout}.
 
+Puesto que las etiquetas de los campos de los formularios no tienen un nombre representativo, se ha decidido añadir un título a cada una de las etiquetas del formulario con la finalidad de aportar información acerca del significado del campo. Además, como resultaba de interés conocer qué usuario ha iniciado sesión en la aplicación, se creó en la cabecera una nueva sección. Por último, para facilitar la navegación por la aplicación, se han creado migas de pan. Todos estos resultados pueden verse en la figura~\ref{img:Ftooltips}.
+
 Sin embargo, el cambio más significativo viene dado en la pantalla principal. Una vez enseñado el resultado al cliente, nos mandó reestructurar la forma en que distribuimos cada una de las entidades. Actualmente, ya no se representan así, sino que existen diferentes agrupaciones, cada una con su color y animación identificativos.
 
 La estructura de la aplicación, con los cambios aplicados, queda de la siguiente manera:
@@ -179,7 +282,6 @@ La estructura de la aplicación, con los cambios aplicados, queda de la siguient
 		\begin{itemize}
 			
 			\item Objectives.
-			\item Scenarios.
 			\item Download.
 			
 		\end{itemize}
@@ -341,4 +443,11 @@ En la figura~\ref{img:FentidadExcel} encontramos un ejemplo de como se administr
 	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/FentidadExcel}
 	\caption{Resultado final: Administración de entidades mediante hoja de cálculo.}
 	\label{img:FentidadExcel}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Ftooltips}
+	\caption{Resultado final: Etiquetas con iconos y títulos, migas de pan y seccion de usuario.}
+	\label{img:Ftooltips}
 \end{figure}

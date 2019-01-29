@@ -64,6 +64,8 @@ Los requisitos que debe satisfacer la aplicación son:
 	
 	\item \textbf{RF-5:} El usuario tras realizar pruebas de funcionalidad sobre la aplicación, podrá restablecer la base de datos a un punto de partida pulsando un botón situado en la cabecera.
 	
+	\item \textbf{RF-6:} Existirá un control de usuarios en el que haya usuarios con dos posibles roles: administrador y participante.
+	
 \end{itemize}
 
 \subsection{Requisitos no funcionales}
@@ -87,8 +89,12 @@ En este apartado se describirán los actores y casos de uso asociados a cada uno
 Actores presentes en la aplicación:
 
 \begin{itemize}
-	\item Administrador: Realiza la primera carga de datos iniciales y prepara la consulta \textit{sql} para poder restablecer la base de datos.
+	\item Administrador de la aplicación: Realiza la primera carga de datos iniciales y prepara la consulta \textit{sql} para poder restablecer la base de datos.
 	\item Usuario: Interactúa con la aplicación web.
+	\begin{itemize}
+		\item Usuario con rol administrador: Tiene acceso al control de usuarios y al botón para restablecer la base de datos.
+		\item Usuario con rol participante: Interactúa con la aplicación web sin tener acceso a ninguna funcionalidad especial.
+	\end{itemize}
 \end{itemize}
 
 \subsection{Diagrama de casos de uso}
@@ -112,6 +118,13 @@ Actores presentes en la aplicación:
 	\includegraphics[width=1\textwidth]{/anexos/Requisitos/CasosUsoBBDD}
 	\caption{Diagrama del casos de uso 5: Restablecer base de datos.~\ref{tabla:cu5}.}
 	\label{fig:CasosUsoBBDD}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Requisitos/CasosUsoUsers}
+	\caption{Diagrama del casos de uso 6: Administración de usuarios.~\ref{tabla:cu6}.}
+	\label{fig:CasosUsoUsers}
 \end{figure}
 
 % Caso de uso 1
@@ -280,39 +293,44 @@ Actores presentes en la aplicación:
 	\caption{Caso de uso 4 - Exportar datos en hoja de cálculo.}
 \end{table}
 
-% Caso de uso 5
+% Caso de uso 6
 
 \begin{table}[h]
 	\centering
-	\label{tabla:cu5}
+	\label{tabla:cu6}
 	\begin{tabular}{@{}
 			>{\columncolor[HTML]{FFFFFF}}p {.25\textwidth} p {.75\textwidth}@{}}
 		\toprule
-		\textbf{Caso de uso 5}   &  \textbf{Restablecer base de datos.} \\ \midrule
+		\textbf{Caso de uso 6}   &  \textbf{Administración de usuarios.} \\ \midrule
 		\textbf{Versión}         &  1.0 \\ \midrule
 		\textbf{Requisitos}	     &  \begin{tabular}[c]{@{}l@{}}
-										RF-5
+										RF-6
 									\end{tabular} \\ \midrule
 		\textbf{Descripción}     &  \begin{tabular}[c]{@{}l@{}}
-										El usuario podrá restablecer la base de datos \\
-										a un punto de partida pulsando un botón situado en la\\
-										cabecera.
+										Existirá la posibilidad de administrar los usuarios de \\
+										la aplicación. Los usuarios con rol administrador \\
+										podrán visualizar y modificar los datos de cualquier\\
+										usuario mientras que un usuario con rol participante \\
+										solo podrá administrar los suyos propios.
 									\end{tabular} \\ \midrule
 		\textbf{Precondiciones}  &  \begin{tabular}[c]{@{}l@{}}
 										 \\
 									\end{tabular} \\ \midrule
 		\textbf{Acciones}        &  \begin{tabular}[c]{@{}l@{}}
-										1. Pulsar sobre el botón situado en la cabecera. \\
-										2. Aceptar el mensaje de confirmación.
+										1. Usuario administrador accede a la pantalla de \\
+										usuarios. \\
+										2. De los resultados listados en la tabla, elige el usuario \\
+										a modificar.\\
+										3. Mediante la acción correspondiente, crea, edita \\
+										y elimina un usuario.
 									\end{tabular} \\ \midrule
 		\textbf{Postcondiciones} &  \begin{tabular}[c]{@{}l@{}}
-										Mensaje de información anunciando que la base de \\
-										datos ha vuelto al punto de partida.
+										Redirección a la pantalla principal de los usuarios.
 									\end{tabular} \\ \midrule
 		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
 										Error al ejecutar la acción.\\ 
 									\end{tabular} \\ \midrule
 		\textbf{Importancia}     &  Media \\ \bottomrule
 	\end{tabular}
-	\caption{Caso de uso 5 - Restablecer base de datos.}
+	\caption{Caso de uso 6 - Administración de usuarios.}
 \end{table}
