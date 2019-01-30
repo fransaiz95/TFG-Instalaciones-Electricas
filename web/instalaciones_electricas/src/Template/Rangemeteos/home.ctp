@@ -41,6 +41,13 @@
             </div>
         </div>
 
+        <div class="grid-x grid-padding-x cnt-info-download">
+            <div class="large-12 cell p-0 p-left-1">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span><?php echo __('The process of downloading and importing may take several minutes depending on the number of records transported.')?></span>
+            </div>
+        </div>
+
         <?php 
         echo $this->Form->create($rangemeteos, ['type' => 'file', 'id' => 'form-excel']); 
         ?>

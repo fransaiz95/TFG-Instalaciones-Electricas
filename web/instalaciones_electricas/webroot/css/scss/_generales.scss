@@ -248,4 +248,23 @@ h2{
   .breadcrumbs li:last-child a:after {
 	display: none;
   }
-  
+	
+	.cnt-info-download
+	{
+		border: 1px solid $primary-color;
+		margin: 20px 16px 5px 19px !important;
+		padding: 5px 0 3px 0;
+
+		ion-icon{
+			font-size: 30px;
+			position: relative;
+			left: -5px;
+			top: 2px;
+			color: $primary-color;
+			// padding-top: 3px;
+		}
+		span{
+			position: relative;
+			top: -7px;
+		}
+	}
