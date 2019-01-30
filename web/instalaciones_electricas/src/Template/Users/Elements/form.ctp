@@ -1,5 +1,6 @@
 
 <?php 
+$user_loged = $Auth->user();
 echo $this->Form->create($user); ?>
 
 <div class="grid-x cnt-form">
@@ -75,7 +76,7 @@ echo $this->Form->create($user); ?>
                 'options' => $roles, 
                 'empty' => false,
                 'required' => true,
-                'disabled' => ($user['id_role'] == ConstantesRoles::ADMIN) ? false : true,
+                'disabled' => ($user_loged['id_role'] == ConstantesRoles::ADMIN) ? false : true,
                 'escape' => false,
             ]
         );
