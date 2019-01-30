@@ -6,6 +6,10 @@
     $this->Breadcrumbs->add( __('Environmental'), ['controller' => 'objectives', 'action' => 'homeEnvironmental'], ['class' => 'cf']); 
     echo $this->Breadcrumbs->render();?>
 </div>
+
+<?php 
+echo $this->Form->create(); ?>
+
 <div class="grid-container p-1">
     <div class="grid-x grid-padding-x">
         <div class="large-10 cell ta-left">
@@ -17,43 +21,54 @@
         
         <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
-                'environmental_impact',
+                'en_environmental_impact',
                 array(
                     'type' => 'checkbox',
                     'label' => __('Environmental impact.'),
+                    'checked' => $session->read('Objectives.en_environmental_impact')
                 )
             );
             ?>
         </div>
         <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
-                'emission_gases',
+                'en_emission_gases',
                 array(
                     'type' => 'checkbox',
                     'label' => __('Emission of greenhouse gases.'),
+                    'checked' => $session->read('Objectives.en_emission_gases')
                 )
             );
             ?>
         </div>
         <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
-                'water_usage',
+                'en_water_usage',
                 array(
                     'type' => 'checkbox',
                     'label' => __('Water consumption.'),
+                    'checked' => $session->read('Objectives.en_water_usage')
                 )
             );
             ?>
         </div>
         <div class="large-12 p-1 input_field">
             <?php echo $this->Form->input(
-                'water_withdrawal',
+                'en_water_withdrawal',
                 array(
                     'type' => 'checkbox',
                     'label' => __('Water withdrawal.'),
+                    'checked' => $session->read('Objectives.en_water_withdrawal')
                 )
             );
             ?>
         </div>
     </div>
+    
+    <?php
+    $url = ['controller' => 'objectives' , 'action' => 'home'];
+    echo $this->element('Comun/btn_actions_form', array('url' => $url)); ?>
+
 </div>
+
+<?php echo $this->Form->end() ?>
