@@ -12,6 +12,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 use ConstantesBooleanas;
 use ConstantesTabs;
+use ConstantesRoles;
 
 // src/Controller/UsersController.php
 
@@ -84,6 +85,13 @@ class UsersController extends AppController
 
         $user = $this->Users->get($id_user);
         $roles = $this->Users->Roles->search_list();
+
+
+        $query = $this->Users->find();
+        $query->select(['count' => $query->func()->count('*')]);
+        $query->where(['id_role' => ConstantesRoles::ADMIN]);
+        $count_users_admin = $query->first()->toArray()['count'];
+
         if (!$this->request->is('get')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
@@ -94,7 +102,7 @@ class UsersController extends AppController
             }
         }
         // $this->set(['user', 'roles']);
-        $this->set(compact('user', 'roles'));
+        $this->set(compact('user', 'roles', 'count_users_admin'));
 
     }
 

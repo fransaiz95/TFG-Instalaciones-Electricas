@@ -39,33 +39,58 @@ class RangerenewablesController extends AppController
         ini_set('memory_limit', '-1');
         set_time_limit(0); 
 
+        $years = [
+            '2017' => '2017',
+            '2018' => '2018',
+            '2019' => '2019',
+            '2020' => '2020'
+        ];
+
         $technology = $this->Rangerenewables->Technologies->findById($id_technology)->first()->toArray();
 
         $rangerenewables = $this->Rangerenewables->newEntity();
 
         if ($this->request->is('post')) {
             $file = $this->request->data['excel_file'];
+            $year = $this->request->data['year'];
 
             $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
             $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
-            $this->_load_renewables($sheetData, $id_technology);
+            $this->_load_renewables($sheetData, $id_technology, $year);
 
         }
 
-        $this->set(compact('rangerenewables', 'technology'));
-        $this->set('_serialize', ['rangerenewables', 'technology']);
+        $this->set(compact('rangerenewables', 'technology', 'years'));
+        $this->set('_serialize', ['rangerenewables', 'technology', 'years']);
     }
 
-    private function _load_renewables($rangerenewables_tmp, $id_technology){
+    public function ajaxCountResults (){
+
+        $year = $this->request->data['year'];
+        $id_technology = $this->request->data['id_technology'];
+
+        $query = $this->Rangerenewables->find();
+        $query->select(['count' => $query->func()->count('*')]);
+        $query->where(["start LIKE '%" . $year . "-%'"]);
+        $query->where(['id_technology' => $id_technology]);
+        $count_registries = $query->first()->toArray();
+
+        $total_registries = number_format($count_registries['count'], 0 , ',', '.');
+
+        echo $total_registries;
+
+        $this->autoRender = false;
+
+    }
+
+    private function _load_renewables($rangerenewables_tmp, $id_technology, $year){
 
         unset($rangerenewables_tmp[1]);
         $header = $rangerenewables_tmp[2];
         unset($rangerenewables_tmp[2]);
         unset($rangerenewables_tmp[3]);
 
-        $year = 2018;
-        
         try {
 
             $connection = ConnectionManager::get('default');
@@ -77,6 +102,7 @@ class RangerenewablesController extends AppController
             $connection->execute("delete from rangerenewables where start LIKE '%" . $year . "-%' and id_technology = " . $id_technology ); 
             $connection->commit();
             
+            debug('heree!!');Exit;
             $error = false;
 
             $regions = $this->Rangerenewables->Regions->find('list', [
@@ -148,8 +174,8 @@ class RangerenewablesController extends AppController
         ini_set('memory_limit', '-1');
         set_time_limit(0); 
 
-        $year = 2018;
-        $id_technology = $this->request->query['id_technology'];
+        $year = $this->request->data['year'];
+        $id_technology = $this->request->data['id_technology'];
         $technology = $this->Rangerenewables->Technologies->findById($id_technology)->first();
 
         $spreadsheet = new Spreadsheet();

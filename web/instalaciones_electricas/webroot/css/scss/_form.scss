@@ -61,7 +61,34 @@
 			
 		}
 	}
-	
+}
+
+.input_field_year{
+	.select2 .select2-selection
+	{
+		border: 2px solid $secondary-color !important;
+		background-color: transparent;
+		box-shadow: none !important;
+		border-bottom: 2px solid $secondary-color !important;
+		color: $primary-color !important;
+		border-radius: 0px !important;
+		position: relative;
+		height: 48px;
+		&:focus
+		{
+			border: none;
+			box-shadow: none;
+			// border-bottom: 2px solid $primary-color !important;
+			color: $primary-color;
+		}
+		.select2-selection__rendered
+		{
+			position: relative;
+			top: 9px;
+			right: 27px;
+			font-size: 25px;
+		}
+	}
 }
 
 .input.checkbox

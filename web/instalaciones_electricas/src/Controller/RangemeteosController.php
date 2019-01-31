@@ -24,21 +24,46 @@ class RangemeteosController extends AppController
 
         $rangemeteos = $this->Rangemeteos->newEntity();
 
+        $years = [
+            '2017' => '2017',
+            '2018' => '2018',
+            '2019' => '2019',
+            '2020' => '2020'
+        ];
+
         if ($this->request->is('post')) {
             $file = $this->request->data['excel_file'];
+            $year = $this->request->data['year'];
 
             $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
             $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
-            $this->_load_meteos($sheetData);
+            $this->_load_meteos($sheetData, $year);
 
         }
 
-        $this->set(compact('rangemeteos'));
-        $this->set('_serialize', ['rangemeteos']);
+        $this->set(compact('rangemeteos', 'years'));
+        $this->set('_serialize', ['rangemeteos', 'years']);
     }
 
-    private function _load_meteos($meteos_tmp){
+    public function ajaxCountResults (){
+
+        $year = $this->request->data['year'];
+
+        $query = $this->Rangemeteos->find();
+        $query->select(['count' => $query->func()->count('*')]);
+        $query->where(["start LIKE '%" . $year . "-%'"]);
+        $count_registries = $query->first()->toArray();
+
+        $total_registries = number_format($count_registries['count'], 0 , ',', '.');
+
+        echo $total_registries;
+
+        $this->autoRender = false;
+
+    }
+
+    private function _load_meteos($meteos_tmp, $year){
 
         unset($meteos_tmp[1]);
         $header = $meteos_tmp[2];
@@ -51,11 +76,14 @@ class RangemeteosController extends AppController
             $connection->begin();
 
             //Antes de insertar nada, borramos todo.
-            // $tmp = $this->Rangemeteos->deleteAll(array());
-            $connection->execute('truncate rangemeteos'); 
+            // $tmp = $this->Rangerenewables->deleteAll(array());
+
+            $connection->execute("delete from rangemeteos where start LIKE '%" . $year . "-%'"); 
             $connection->commit();
             
             $error = false;
+
+            debug('here!!');Exit;
 
             $regions = $this->Rangemeteos->Regions->find('list', [
                 'keyField' => 'id',
@@ -129,7 +157,7 @@ class RangemeteosController extends AppController
         ini_set('memory_limit', '-1');
         set_time_limit(0); 
 
-        $year = 2018;
+        $year = $this->request->data['year'];
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();

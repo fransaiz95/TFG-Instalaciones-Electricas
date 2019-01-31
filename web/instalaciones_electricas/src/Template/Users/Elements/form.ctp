@@ -1,6 +1,7 @@
 
 <?php 
 $user_loged = $Auth->user();
+$action = $this->request->action;
 echo $this->Form->create($user); ?>
 
 <div class="grid-x cnt-form">
@@ -76,7 +77,8 @@ echo $this->Form->create($user); ?>
                 'options' => $roles, 
                 'empty' => false,
                 'required' => true,
-                'disabled' => ($user_loged['id_role'] == ConstantesRoles::ADMIN) ? false : true,
+                'disabled' => ( ($action == 'edit' && $count_users_admin == 1) || $user_loged['id_role'] != ConstantesRoles::ADMIN) ? true : false,
+                // 'disabled' => false ,
                 'escape' => false,
             ]
         );
