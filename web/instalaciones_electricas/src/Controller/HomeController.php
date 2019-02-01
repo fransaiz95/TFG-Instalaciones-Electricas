@@ -16,7 +16,7 @@ use ConstantesRoles;
 
 class HomeController extends AppController
 {
-
+    
     public function ajaxDeleteDatabase(){
 
         $user = $this->Auth->user();

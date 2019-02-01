@@ -52,8 +52,8 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/download.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeSimulation'
+                    'controller' => 'simulations',
+                    'action' => 'home'
                 ), 
                 array(
                     'escape' => false,

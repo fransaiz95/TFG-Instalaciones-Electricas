@@ -17,7 +17,8 @@ class UsersTable extends Table
 
 		$this->belongsTo('Roles')
 		->setForeignKey('id_role');
-
+		$this->hasMany('Simulations')
+		->setForeignKey('id_user');
 	}
 
     public function validationDefault(Validator $validator)

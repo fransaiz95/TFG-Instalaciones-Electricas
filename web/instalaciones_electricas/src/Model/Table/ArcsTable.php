@@ -181,4 +181,21 @@ class ArcsTable extends Table {
 		return $query->first();
 	}
 
+	public function getArcsWithTypeLine(){
+		$query = $this->find('all');
+		$query
+			->select(['Arcs.id_region_1', 'Arcs.id_region_2', 'Arcs.distance'])
+			->select(['ArcsTypelines.id_typeline'])
+			->join([
+				'ArcsTypelines' => [
+					'table' => 'arcs_typelines',
+					'type' => 'LEFT',
+					'conditions' => 'ArcsTypelines.id_arc = Arcs.id'
+				],
+			]);
+			
+		
+		return $query->toArray();
+	}
+
 }
