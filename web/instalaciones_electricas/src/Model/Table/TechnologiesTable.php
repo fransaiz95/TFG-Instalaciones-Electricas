@@ -28,6 +28,9 @@ class TechnologiesTable extends Table {
 		$this->belongsToMany('Fuels', [
 			'joinTable' => 'fuels_technologies',
 		])->setForeignKey('id_technology');
+
+		$this->hasMany('FuelsTechnologies')
+    	->setForeignKey([ 'id_technology' ]);
 	}
 
 	
@@ -161,6 +164,20 @@ class TechnologiesTable extends Table {
 		->toArray();
 
 		return $query;
+	}
+
+	public function getQueryTechnologiesTypPla (){
+		$query = $this->find('all');
+        $query->select(['Technologies.id', 'Technologies.cap', 'Technologies.new_cap_cos', 'Technologies.man_cos', 'Technologies.man_cos_new_cap', 'Technologies.gen_cos', 'Technologies.gen_cos_new_cap', 'Technologies.ghg_emi', 'Technologies.wat_con', 'Technologies.wat_wit', 'Technologies.genco_pri']);
+
+		$technologies = $query->toArray();
+
+		foreach($technologies as $key => &$technology){
+			$fuel_technology = $this->FuelsTechnologies->findByIdTechnology($technology->id)->toArray();
+			$technology['FuelsTechnologies'] = $fuel_technology;
+		}
+
+		return $technologies;
 	}
 
 }

@@ -114,6 +114,7 @@ class SimulationsController extends AppController
         $zip = $this->fileReg($zip, $separator_txt, 'Reg.txt');
         $zip = $this->fileTec($zip, $separator_txt, 'Tec.txt');
         $zip = $this->fileTypFue($zip, $separator_txt, 'TypFue.txt');
+        $zip = $this->fileTypPla($zip, $separator_txt, 'TypPla.txt');
 
         //Antes de cerrar el zip, lo guardamos.
         $this->Simulations = TableRegistry::get('Simulations');
@@ -420,9 +421,61 @@ class SimulationsController extends AppController
 
         $fuels = $this->Fuels->find('all')->toArray();
 
-        fputcsv($txt, ['FueCos', 'FueNat'], "\t");
+        fputcsv($txt, ['FueCos', 'FueNat'], $separator_txt);
         foreach($fuels as $fuel){
             fputcsv($txt, [$fuel->fue_cos, $fuel->production], $separator_txt);
+        }
+
+        return $txt;
+
+    }
+
+    //TypPla
+    public function fileTypPla($zip, $separator_txt, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $txt = $this->exportTxtTechnologiesTypPla($txt, $separator_txt);
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
+    //TypPla
+    public function exportTxtTechnologiesTypPla($txt, $separator_txt){
+
+        $this->Technologies = TableRegistry::get('Technologies');
+
+        $technologies = $this->Technologies->getQueryTechnologiesTypPla();
+
+        fputcsv($txt, ['FueCos', 'FueNat'], $separator_txt);
+
+        foreach($technologies as $technology){
+            $tmp = [
+                $technology->cap,
+                $technology->new_cap_cos,
+                $technology->man_cos,
+                $technology->man_cos_new_cap,
+                $technology->gen_cos,
+                $technology->gen_cos_new_cap,
+                $technology->ghg_emi,
+                $technology->wat_con,
+                $technology->wat_wit,
+            ];
+            foreach($technology['FuelsTechnologies'] as $fuel_technology){
+                $tmp[] = $fuel_technology->perc_con;
+            }
+            foreach($technology['FuelsTechnologies'] as $fuel_technology){
+                $tmp[] = $fuel_technology->fue_con;
+            }
+                $tmp[] = $technology->genco_pri;
+            fputcsv($txt, $tmp, $separator_txt);
         }
 
         return $txt;

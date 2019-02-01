@@ -25,6 +25,7 @@ class FuelsTechnologiesTable extends Table {
 
 		$this->belongsTo('Technologies')
 		->setForeignKey('id_technology');
+
 	}
 
 	/**
