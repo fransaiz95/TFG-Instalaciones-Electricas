@@ -16,7 +16,7 @@ Para saber qué recursos se necesitan, hay que analizar todas las partes que for
 
 \section{Planificación temporal}
 
-La metodología comentada anteriormente, \textit{Scrum}, facilita nuestra organización pues está diseñada para poder realizar entregas parciales y periódicas en pequeños y cortos espacios de tiempo, donde unos resultados y una flexibilidad considerable son fundamentales. Para concretar todo lo comentado, necesitábamos una herramienta que nos permitiera desarrollar el producto acorde a esta metodología y así es como se empezó a utilizar \textit{GitHub} como plataforma donde alojar el proyecto. 
+La metodología comentada anteriormente, \textit{Scrum}, facilita la organización pues está diseñada para poder realizar entregas parciales y periódicas en pequeños y cortos espacios de tiempo, donde unos resultados y una flexibilidad considerable son fundamentales. Para concretar todo lo comentado, se necesitaba una herramienta que nos permitiera desarrollar el producto acorde a esta metodología y así es como se empezó a utilizar \textit{GitHub} como plataforma donde alojar el proyecto. 
 
 \textit Tanto {Scrum} como la herramienta \textit{GitHub}, contienen numerosos términos, pero a continuación explicaremos aquellos que se han utilizado en el proyecto.
 
@@ -25,7 +25,7 @@ La metodología comentada anteriormente, \textit{Scrum}, facilita nuestra organi
 	
 	\item \textit{Issue:} Así llamamos a cada una de las pequeñas tareas a realizar en este periodo de tiempo. No hay número máximo de \textit{issues} por \textit{milestone}. En nuestro caso, ha oscilado entre siete o quince, en función de la duración del sprint y del tiempo del que disponíamos.
 	
-	\item \textit{ZenHub:} A través de \textit{ZenHub}\footnote{Se ha valorado la utilización de alguna alternativa como puede ser \textit{Trello} pero nos hemos decantado por \textit{ZenHub} al integrarse perfectamente en \textit{GitHub.}}, una plataforma que se integra en \textit{GitHub} mediante la instalación de una extensión para el navegador, podemos gestionar nuestro tiempo de una manera más eficiente ya que permite asignar tiempos a cada una de las \textit{issues}. De esta manera, te permite hacer cálculos para evitar crear más issues de las que ibas a ser capaz de realizar y poder organizar mejor los siguientes \textit{sprints}.
+	\item \textit{ZenHub:} A través de \textit{ZenHub}\footnote{Se ha valorado la utilización de alguna alternativa como puede ser \textit{Trello} pero nos hemos decantado por \textit{ZenHub} al integrarse perfectamente en \textit{GitHub.}}, una plataforma que se integra en \textit{GitHub} mediante la instalación de una extensión para el navegador, se puede gestionar el tiempo de una manera más eficiente ya que permite asignar tiempos a cada una de las \textit{issues}. De esta manera, te permite hacer cálculos para evitar crear más issues de las que ibas a ser capaz de realizar y poder organizar mejor los siguientes \textit{sprints}.
 	
 	\item \textit{Board:} Otro de los elementos más significativos de \textit{ZenHub} es el tablero. Cuenta con numerosas \textit{pipelines} personalizables entre las que mover \textit{issues} en función de su estado de realización. 
 \end{itemize}
@@ -46,7 +46,7 @@ Reunión inicial en la que se comenta en rasgos generales la estructura y finali
 
 Este \textit{sprint} ha servido para tomar un primer contacto con el proyecto, preparar el entorno de desarrollo en el que, a través de \textit{XAMPP}, se ha tenido que simular en local un servidor \textit{Apache} con \textit{PHP} y \textit{MySQL}. Además, se ha realizado una primera búsqueda de lo que sería el servidor donde se va a alojar y ha servido para refrescar conceptos de bases de datos y realizar el modelo entidad relación.
 
-En cuanto al \textit{framework} a utilizar, el alumno se decantó por \textit{CakePHP 3.5} pues aunque en la empresa en la que trabaja el alumno se utiliza esta herramienta, es una versión más antigua, por lo que es una buena forma de actualizarse y adquirir nuevos conocimientos. 
+En cuanto al \textit{framework} a utilizar, el alumno se decantó por \textit{CakePHP 3.5} pues aunque en la empresa en la que trabaja el alumno se utiliza esta herramienta, se hace en una versión más antigua, por lo que es una buena forma de actualizarse y adquirir nuevos conocimientos. 
 
 \subsection{Sprint 1: Base de datos y administración}
 
@@ -123,10 +123,10 @@ En este \textit{sprint} se ha invertido más tiempo del planificado pues los tie
 	\item Administración entre \textit{arcs} y \textit{typelines} (\textit{arcs\_typelines}).
 	\item Administración entre \textit{regions} y \textit{technologies} (\textit{regions\_technologies}).
 	\item Administración entre \textit{regions} y \textit{arcs} (\textit{regions\_arcs}).
-	\item Administración de la tabla \textit{rangedemands}.
+	\item Administración de la tabla \textit{rangerenewables y rangemeteos}.
 \end{itemize}
 
-Mientras que para las tablas en las que la administración era a través de un formulario no existía mayor problema, la tabla \textit{rangedemands} se abastece de un fichero con formato hoja de cálculo que el usuario sube a la aplicación. Esto ha resultado bastante problemático por el gran número de registros a insertar en la tabla dándonos problemas con la memoria disponible y el tiempo de ejecución empleado.
+Mientras que para las tablas en las que la administración era a través de un formulario no existía mayor problema, las tablas \textit{rangerenewables y rangemeteos} se abastecen de un fichero con formato hoja de cálculo que el usuario sube a la aplicación. Esto ha resultado bastante problemático por el gran número de registros a insertar en la tabla dándonos problemas con la memoria disponible y el tiempo de ejecución empleado.
 
 Otro problema detectado ha sido el tamaño máximo de fichero que podemos subir a la aplicación. Por defecto, en la configuración de \textit{PHP} que trae \textit{Apache}, este valor viene limitado, por lo que se ha modificado la propiedad  \verb|upload_max_filesize=100M| del fichero \verb|php.ini|.
 
@@ -149,11 +149,41 @@ Aprovechando el parón de navidades, se ha decidido aprovechar para diseñar un 
 Escribir el apartado \guillemotleft Objetivos del proyecto\guillemotright(2) y \guillemotleft Técnicas y herramientas\guillemotright(4) lo cual no nos ha llevado demasiado tiempo porque era material ya trabajado y comentado previamente, en cambio, si que ha requerido de una labor más a fondo los apartados \guillemotleft Conceptos teóricos\guillemotright(3), \guillemotleft Aspectos relevantes del desarrollo del proyecto\guillemotright(5) y \guillemotleft Trabajos relacionados\guillemotright(6); pues ha requerido labor de investigación sobre algún algoritmo de optimización para el apartado número 3 y de competencias profesionales ya existentes en el mercado para el apartado número 6. 
 
 
-...
+\subsection{Sprint 7: Anexos y terminar administración mediante hojas de cálculo}
+\textit{Issues:}
+\begin{itemize}
+	\item Anexos: A Plan de proyecto.
+	\item Anexos: B Requisitos.
+	\item Anexos: C Diseño.
+	\item Anexos: D Manual del programador.
+	\item Terminar la administración mediante hojas de cálculo.
+\end{itemize}
 
-...
+Retomando el problema de tratamiento de los excels en los que no se lograba completar la transacción debido al gran volumen de datos, se decidió plantear la función de procesamiento de forma diferente y se logró optimizar el código por lo que el problema llegó a su fin. Además, quitando el \textit{debug} de la aplicación, hacía que el funcionamiento fuese más fluido recortando varios minutos de procesamiento.
 
-...
+Por otro lado se empezaron a escribir los anexos, lugar donde se ha ido detallando cada uno de los grandes bloques que lo forman.
+
+\subsection{Sprint 8: Corregir Anexos y añadir extras a la aplicación}
+\textit{Issues:}
+\begin{itemize}
+	\item Añadir migas de pan.
+	\item Funcionalidad a la pantalla de objetivos.
+	\item Administración de usuarios.
+	\item Funcionalidad a la pantalla de simulación.
+	\item Anexos: Explicar y actualizar diagramas entidad-relación y relacional.
+	\item Anexos: Añadir el diagrama de despliegue al anexo de diseño.
+	\item Anexos: Crear diagramas de secuencia.
+\end{itemize}
+
+Viendo que con el cambio de la estructura de la aplicación producido por la petición del cliente, el flujo de las pantallas quedaba poco intuitivo y usable, se vió conveniente añadir migas de pan para facilitar la navegación entre las pantallas de la aplicación. 
+
+Además se ha introducido una administración de usuarios con dos roles diferentes. De esta manera el acceso a funcionalidades como restablecer la base de datos y crear y eliminar usuarios, ha quedado restringida a los usuarios con rol administrador.
+
+En la pantalla de objetivos que hasta ahora estaba sin funcionalidad, se guardan los valores de los \textit{checkbox} en sesión para que en un futuro se puedan integrar con la lógica de la aplicación.
+
+Por último, desde la pantalla de simulación se genera un archivo \textit{.zip} con parte de los archivos necesarios para la ejecución del algoritmo del cliente.
+
+En cuanto a los anexos, se han ido corrigiendo detalles y explicando más en profundidad diferentes secciones como son los requisitos y casos de uso y el diseño.
 
 \section{Estudio de viabilidad}
 
@@ -163,17 +193,17 @@ En esta sección se hablará del presupuesto económico equivalente al desarroll
 
 A continuación, se va a proceder a hacer un estudio de viabilidad económica del proyecto. Se van a justificar todos los gastos como si el desarrollo formara parte del mundo laboral en lugar del plan de estudios del grado.
 
-A través de \textit{ZenHub} podemos asignar el tiempo que estimamos en la planificación del \textit{sprint} para el desarrollo de una \textit{issue}. En nuestro caso, salen un total de: XXX horas. Suponiendo que la hora de trabajo del desarrollador está pagada a 8~\euro{}, tenemos un total de:
+A través de \textit{ZenHub} podemos asignar el tiempo que estimamos en la planificación del \textit{sprint} para el desarrollo de una \textit{issue}. En nuestro caso, salen un total de: 330 horas aproximadas. Suponiendo que la hora de trabajo del desarrollador está pagada a 8~\euro{}, tenemos un total de:
 
-\[8\text{\euro{}}/\text{h}\times 000\text{h}=280\text{\euro{}} \]
+\[8\text{\euro{}}/\text{h}\times 375\text{h}=3000\text{\euro{}} \]
 
-Además se tendrá en cuenta el trabajo llevado a cabo por los tutores del proyecto. Sumando al valor anterior 1 hora de reunión por \textit{sprint} y 3 horas extras para revisar documentación, plataforma y correos electronicos con consultas procedentes del desarrollador y cobrando a 10~\euro{}/\text{h}, hacen un total de:
+Además se tendrá en cuenta el trabajo llevado a cabo por los tutores del proyecto. Sumando al valor anterior 1 hora de reunión por \textit{sprint} y 3 horas extras para revisar documentación, plataforma y correos electrónicos con consultas procedentes del desarrollador y cobrando a 10~\euro{}/\text{h}, hacen un total de:
 
-\[7\text{\textit{sprints}}\times 10\text{\euro{}}/\text{h}\times 4\text{\text{h}}=0000\text{\euro{}} \]
+\[8\text{\textit{sprints}}\times 10\text{\euro{}}/\text{h}\times 4\text{\text{h}}=320\text{\euro{}} \]
 
-De momento sumamos un total de XXXX~\euro{} que si le aplicamos el XX\% de seguridad social, se queda en un total de:
+De momento sumamos un total de 3320~\euro{} que si le aplicamos alrededor del 30\% de seguridad social, se queda en un total de:
 
-\[\text{XXXX} +  \left( \text{XXXX} \times 0.00 \right) = \text{YYYY} \]
+\[\text{3320} +  \left( \text{3320} \times 0.30 \right) = \text{4316\euro{}} \]
 
 Por último, destacar el coste material. En la parte software no se tienen gastos pues las aplicaciones y herramientas son todas gratuitas. En la parte hardware, podríamos valorar:
 
@@ -183,13 +213,13 @@ Por último, destacar el coste material. En la parte software no se tienen gasto
 	\item Teclado y ratón: 25~\euro{}.
 \end{itemize}
 
-Sumando el todo nos da un total de 775~\euro{} y según la agencia tributaria~\footnote{Tablas de amortización en 2018: \url{https://bit.ly/2ND4vCw}}, los equipos para procesos de información tienen una vida útil de 4 años (35.040 horas) y como el proyecto ha tenido una duración de XXX horas, deja un total de:
+Sumando el todo nos da un total de 775~\euro{} y según la agencia tributaria~\footnote{Tablas de amortización en 2018: \url{https://bit.ly/2ND4vCw}}, los equipos para procesos de información tienen una vida útil de 4 años (35.040 horas) y como el proyecto ha tenido una duración de 3 meses y medio, deja un total de:
 
 \[\frac{775\text{\euro{}}}{12 \text{ Meses} \times 4 \text{ Años}} \times 3.5 \text{ Meses} = 28,26\text{\euro{}} \]
 
 Por último, sumar el gasto producido por el servidor donde hemos tenido alojada la web. Aunque gran parte de la duración del proyecto se ha tenido en un \textit{hosting} gratuito, en la recta final y por causa de las limitaciones que nos ofrecía el plan, nos hemos visto obligados a alojarlo en otro plan diferente. En consecuencia, los gastos han sido:
 
-\[\frac{18\text{\euro{}}}{3 \text{ Meses} } = 6\text{\euro{}} \]
+\[\frac{36\text{\euro{} al año}}{12 \text{ Meses} } = 3\text{\euro{} al mes. Nosotros: 1 mes: 3\euro{} totales.} \]
 
 Con todos los costes mencionados, el desglose e importe final se recoge en la tabla~\ref{tabla:costes}:
 
@@ -201,12 +231,12 @@ Con todos los costes mencionados, el desglose e importe final se recoge en la ta
 	\begin{tabular}{p{6cm} r}
 		\toprule
 		Costes & Importe \\ \midrule
-		Desarrolladores         	 & \text{XXXX} \euro{}   	\\ 
-		Tutores del proyecto         & 280 \euro{}   	\\
-		Seguridad Social 			 & \text{XXXX} \euro{} 	\\ 
+		Desarrolladores         	 & \text{3000} \euro{}   	\\ 
+		Tutores del proyecto         & 320 \euro{}   	\\
+		Seguridad Social 			 & \text{996} \euro{} 	\\ 
 		Material hardware	         & 28,26 \euro{}   		\\ 
-		Servidor					 & 6 \euro{}			\\
-		Totales             		 & \text{YYYY} \euro{} 	\\ \bottomrule
+		Servidor					 & 3 \euro{}			\\
+		Totales             		 & \text{4347,26} \euro{} 	\\ \bottomrule
 	\end{tabular}
 \end{table}
 
