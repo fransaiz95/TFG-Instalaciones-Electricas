@@ -68,7 +68,7 @@
 
             <div class="grid-x">
                 <?php $title = __('Installed power in each region. (MW)')?>
-                <div class="large-6 p-1 input_field">
+                <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'power',
@@ -82,12 +82,26 @@
                 </div>
 
                 <?php $title = __('Available capacity by region and by technology. (MW)')?>
-                <div class="large-6 p-1 input_field">
+                <div class="large-4 p-1 input_field">
                     <?php
                     echo $this->Form->input(
                         'cap_ava',
                         [
                             'label' => __('Cap ava') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
+                            'type' => 'number',
+                            'escape' => false
+                        ]
+                    );
+                    ?>
+                </div>
+
+                <?php $title = __('Percentage of generation capacity (Values between 0 and 1)')?>
+                <div class="large-4 p-1 input_field">
+                    <?php
+                    echo $this->Form->input(
+                        'gen_ava',
+                        [
+                            'label' => __('Gen ava') . '<img src="/img/icons/tooltip.png"  class="tooltip-info-js tooltipster-light-preview info-icon" title="' . $title . '" >' ,
                             'type' => 'number',
                             'escape' => false
                         ]

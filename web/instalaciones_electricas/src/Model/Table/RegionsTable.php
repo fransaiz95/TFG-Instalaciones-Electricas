@@ -131,7 +131,7 @@ class RegionsTable extends Table {
 		$query
 			->select(['Regions.id', 'Regions.name'])
 			->select(['Technology.id', 'Technology.name', 'Technology.renewable'])
-			->select(['RegionTechnology.id_region', 'RegionTechnology.id_technology', 'RegionTechnology.power', 'RegionTechnology.cap_ava'])
+			->select(['RegionTechnology.id_region', 'RegionTechnology.id_technology', 'RegionTechnology.power', 'RegionTechnology.cap_ava', 'RegionTechnology.gen_ava'])
 			->where([
 				'Regions.id' => $id_region
 			])

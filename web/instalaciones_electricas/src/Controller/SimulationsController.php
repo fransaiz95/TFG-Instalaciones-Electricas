@@ -107,6 +107,7 @@ class SimulationsController extends AppController
         $zip->open($zipname, \ZipArchive::CREATE);
 
         $zip = $this->fileCapAva($zip, $separator_txt, 'CapAva.txt');
+        $zip = $this->fileGenAva($zip, $separator_txt, 'GenAva.txt');
         $zip = $this->fileExiCap($zip, $separator_txt, 'ExiCap.txt');
         $zip = $this->fileExiLin($zip, $separator_txt, 'ExiLin.txt');
         $zip = $this->fileForMar($zip, $separator_txt, 'ForMar.txt');
@@ -115,6 +116,7 @@ class SimulationsController extends AppController
         $zip = $this->fileTec($zip, $separator_txt, 'Tec.txt');
         $zip = $this->fileTypFue($zip, $separator_txt, 'TypFue.txt');
         $zip = $this->fileTypPla($zip, $separator_txt, 'TypPla.txt');
+        $zip = $this->fileTypLin($zip, $separator_txt, 'TypLin.txt');
 
         //Antes de cerrar el zip, lo guardamos.
         $this->Simulations = TableRegistry::get('Simulations');
@@ -187,6 +189,47 @@ class SimulationsController extends AppController
                 $actual_region = $region_technology->id_region;
             }
             $technologies_val[] = $region_technology->cap_ava;
+        }
+        fputcsv($txt, $technologies_val, $separator_txt);
+
+        return $txt;
+
+    }
+
+    //Gen Ava
+    public function fileGenAva($zip, $separator_txt, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $txt = $this->exportTxtRegionTechnologiesGenAva($txt, $separator_txt);
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
+    //Cap Ava
+    public function exportTxtRegionTechnologiesGenAva($txt, $separator_txt){
+
+        $this->Regions = TableRegistry::get('Regions');
+        $this->RegionsTechnologies = TableRegistry::get('RegionsTechnologies');
+
+        $regions_technologies = $this->RegionsTechnologies->find('all')->toArray();
+
+        $technologies_val = [];
+        $actual_region = $regions_technologies[0]->id_region;
+        foreach($regions_technologies as $region_technology){
+            if($actual_region != $region_technology->id_region){
+                fputcsv($txt, $technologies_val, $separator_txt);
+                $technologies_val = [];
+                $actual_region = $region_technology->id_region;
+            }
+            $technologies_val[] = $region_technology->gen_ava;
         }
         fputcsv($txt, $technologies_val, $separator_txt);
 
@@ -449,6 +492,58 @@ class SimulationsController extends AppController
 
     //TypPla
     public function exportTxtTechnologiesTypPla($txt, $separator_txt){
+
+        $this->Technologies = TableRegistry::get('Technologies');
+
+        $technologies = $this->Technologies->getQueryTechnologiesTypPla();
+
+        fputcsv($txt, ['FueCos', 'FueNat'], $separator_txt);
+
+        foreach($technologies as $technology){
+            $tmp = [
+                $technology->cap,
+                $technology->new_cap_cos,
+                $technology->man_cos,
+                $technology->man_cos_new_cap,
+                $technology->gen_cos,
+                $technology->gen_cos_new_cap,
+                $technology->ghg_emi,
+                $technology->wat_con,
+                $technology->wat_wit,
+            ];
+            foreach($technology['FuelsTechnologies'] as $fuel_technology){
+                $tmp[] = $fuel_technology->perc_con;
+            }
+            foreach($technology['FuelsTechnologies'] as $fuel_technology){
+                $tmp[] = $fuel_technology->fue_con;
+            }
+                $tmp[] = $technology->genco_pri;
+            fputcsv($txt, $tmp, $separator_txt);
+        }
+
+        return $txt;
+
+    }
+
+    //TypLin
+    public function fileTypLin($zip, $separator_txt, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $txt = $this->exportTxtTypLin($txt, $separator_txt);
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
+    //TypPla
+    public function exportTxtTypLin($txt, $separator_txt){
 
         $this->Technologies = TableRegistry::get('Technologies');
 

@@ -24,6 +24,7 @@
                             <th class="ta-center"><?php echo __('Renewable') ?></th>
                             <th class="ta-center"><?php echo __('Power') ?></th>
                             <th class="ta-center"><?php echo __('Cap Ava') ?></th>
+                            <th class="ta-center"><?php echo __('Gen Ava') ?></th>
                             <th class="actions"><?php echo __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -35,6 +36,7 @@
                             <td class="ta-center"><?php echo ($region_technology['Technology']['renewable'] == ConstantesBooleanas::SI) ? __('YES') : __('NO') ?></td>
                             <td class="ta-center"><?php echo h($region_technology['RegionTechnology']['power']) ?></td>
                             <td class="ta-center"><?php echo h($region_technology['RegionTechnology']['cap_ava']) ?></td>
+                            <td class="ta-center"><?php echo h($region_technology['RegionTechnology']['gen_ava']) ?></td>
                             <td class="actions">
                                 <?php
                                 echo $this->Html->link( 

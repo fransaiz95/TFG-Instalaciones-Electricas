@@ -18,6 +18,7 @@ class RegionTechnology extends Entity {
 		'id_technology' => true,
 		'power' => true,
 		'cap_ava' => true,
+		'gen_ava' => true,
 	];
 
 }

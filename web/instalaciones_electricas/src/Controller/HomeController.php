@@ -105,25 +105,25 @@ class HomeController extends AppController
         // $tyipelines_tmp = $spreadsheet->setActiveSheetIndexByName('TypLin')->toArray(null, true, true, true);
         // $this->_load_typelines($tyipelines_tmp);
         
-        // // Region - Technology
-        // // ExiCap -  (power)
-        // $regions_techs_tmp = $spreadsheet->setActiveSheetIndexByName('ExiCap')->toArray(null, true, true, true);
-        // $this->_load_region_tech($regions_techs_tmp, 'power');
-        // // CapAva - (cap_ava)
-        // $regions_techs_tmp = $spreadsheet->setActiveSheetIndexByName('CapAva')->toArray(null, true, true, true);
-        // $this->_load_region_tech($regions_techs_tmp, 'cap_ava');
-
-        // // Rangerenewables - GenAva
-        // $rangerenewables_tmp = $spreadsheet->setActiveSheetIndexByName('GenAva')->toArray(null, true, true, true);
-        // $this->_load_region_tech($regions_techs_tmp, 'power');
+        // Region - Technology
+        // ExiCap -  (power)
+        $regions_techs_tmp = $spreadsheet->setActiveSheetIndexByName('ExiCap')->toArray(null, true, true, true);
+        $this->_load_region_tech($regions_techs_tmp, 'power');
+        // CapAva - (cap_ava)
+        $regions_techs_tmp = $spreadsheet->setActiveSheetIndexByName('CapAva')->toArray(null, true, true, true);
+        $this->_load_region_tech($regions_techs_tmp, 'cap_ava');
+        // Region - Technology
+        // GenAva
+        $regions_techs_tmp = $spreadsheet->setActiveSheetIndexByName('GenAva')->toArray(null, true, true, true);
+        $this->_load_region_tech($regions_techs_tmp, 'gen_ava');
 
         // // Arcs & arcs_typelines - ExiLin
         // $arcs_tmp = $spreadsheet->setActiveSheetIndexByName('ExiLin')->toArray(null, true, true, true);
         // $this->_load_arcs($arcs_tmp);
 
-        // rangedemands - Dem
-        $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
-        $this->_load_demands($demands_tmp);
+        // // rangedemands - Dem
+        // $demands_tmp = $spreadsheet->setActiveSheetIndexByName('Dem')->toArray(null, true, true, true);
+        // $this->_load_demands($demands_tmp);
     }
 
     private function _load_regions($regions_tmp){
@@ -433,25 +433,29 @@ class HomeController extends AppController
                         if($value != null){
 
                             $technology_name = $header[$letter];
-                            $technology_id = $technologies[$technology_name];
+                            
+                            if(!empty($technology_name)){
+                                $technology_id = $technologies[$technology_name];
 
-                            $region_tech_to_save = [
-                                'id_region' => $region_id,
-                                'id_technology' => $technology_id,
-                                $field => $value
-                            ];
-
-                            $region_technology = $this->RegionsTechnologies->newEntity();
-                            $region_technology = $this->RegionsTechnologies->patchEntity($region_technology, $region_tech_to_save);
-                            $region_technology_bd = $this->RegionsTechnologies->save($region_technology);
-                            if(!$region_technology_bd){
-                                $error = true;
+                                $region_tech_to_save = [
+                                    'id_region' => $region_id,
+                                    'id_technology' => $technology_id,
+                                    $field => $value
+                                ];
+                                
+                                $region_technology = $this->RegionsTechnologies->newEntity();
+                                $region_technology = $this->RegionsTechnologies->patchEntity($region_technology, $region_tech_to_save);
+                                $region_technology_bd = $this->RegionsTechnologies->save($region_technology);
+                                
+                                if(!$region_technology_bd){
+                                    $error = true;
+                                }
                             }
 
                         }
 
                     }
-
+                    
                 }
             }
             if($error == false){
