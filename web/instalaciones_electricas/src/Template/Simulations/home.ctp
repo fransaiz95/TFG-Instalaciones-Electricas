@@ -3,7 +3,8 @@
 <div class="breadcrumbs">
     <?php 
     $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( __('Users'), ['controller' => 'users', 'action' => 'home'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Simulation'), ['controller' => 'home' , 'action' => 'home-simulation'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Download'), ['controller' => 'simulations', 'action' => 'home'], ['class' => 'cf']); 
     echo $this->Breadcrumbs->render();?>
 </div>
 

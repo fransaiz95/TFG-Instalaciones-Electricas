@@ -2,7 +2,7 @@
     <?php 
     $this->Breadcrumbs->add( __('Home'), ['controller' => 'home', 'action' => 'home'], ['class' => 'cf']); 
     $this->Breadcrumbs->add( __('Simulation'), ['controller' => 'home', 'action' => 'homeSimulation'], ['class' => 'cf']); 
-    $this->Breadcrumbs->add( __('Objectives'), ['controller' => 'home', 'action' => 'homeObjectives'], ['class' => 'cf']); 
+    $this->Breadcrumbs->add( __('Objectives'), ['controller' => 'objectives', 'action' => 'home'], ['class' => 'cf']); 
     echo $this->Breadcrumbs->render();?>
 </div>
 
