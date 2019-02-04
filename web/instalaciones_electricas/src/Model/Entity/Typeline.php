@@ -17,6 +17,10 @@ class Typeline extends Entity {
 		'id' => true,
 		'lin_cap' => true,
 		'tension' => true,
+		'new_lin_cos' => true,
+		'man_lin_cos' => true,
+		'flo_cos' => true,
+		'eff_lin_bas' => true,
 	];
 
 }

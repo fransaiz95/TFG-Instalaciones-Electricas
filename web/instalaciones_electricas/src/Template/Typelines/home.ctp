@@ -30,6 +30,10 @@
                         <tr class="table100-head">
                             <th class="p-left-1 ta-center"><?php echo $this->Paginator->sort('Typelines.lin_cap', __('Line cap')); ?></th>
                             <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.tension', __('Voltage') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.new_lin_cos', __('New lin cos') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.man_lin_cos', __('Man lin cos') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.flo_cos', __('Flo cos') ); ?></th>
+                            <th class="ta-center"><?php echo $this->Paginator->sort('Typelines.eff_lin_bas', __('Eff lin bas') ); ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                     </thead>
@@ -37,8 +41,12 @@
                     <?php
                     foreach ($typelines as $typeline){?>
                         <tr>
-                            <td class="p-left-1 ta-center"><?php echo h($typeline->lin_cap) . ' MW' ?></td>
-                            <td class="ta-center"><?php echo h($typeline->tension) . ' kV'?></td>
+                            <td class="p-left-1 ta-center"><?php echo h($typeline->lin_cap)?></td>
+                            <td class="ta-center"><?php echo h($typeline->tension)?></td>
+                            <td class="ta-center"><?php echo h($typeline->new_lin_cos)?></td>
+                            <td class="ta-center"><?php echo h($typeline->man_lin_cos)?></td>
+                            <td class="ta-center"><?php echo h($typeline->flo_cos)?></td>
+                            <td class="ta-center"><?php echo h($typeline->eff_lin_bas)?></td>
                             <td class="actions">
                                 <?php
                                 echo $this->Html->link( 
