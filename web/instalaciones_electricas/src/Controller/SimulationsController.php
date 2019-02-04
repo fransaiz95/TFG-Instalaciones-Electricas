@@ -545,31 +545,21 @@ class SimulationsController extends AppController
     //TypPla
     public function exportTxtTypLin($txt, $separator_txt){
 
-        $this->Technologies = TableRegistry::get('Technologies');
+        $this->Typelines = TableRegistry::get('Typelines');
 
-        $technologies = $this->Technologies->getQueryTechnologiesTypPla();
+        $typelines = $this->Typelines->find('all')->toArray();
 
-        fputcsv($txt, ['FueCos', 'FueNat'], $separator_txt);
+        fputcsv($txt, ['LinCap', 'NewLinCos', 'ManLinCos', 'FloCos', 'EffLinBas'], $separator_txt);
 
-        foreach($technologies as $technology){
+        foreach($typelines as $typeline){
             $tmp = [
-                $technology->cap,
-                $technology->new_cap_cos,
-                $technology->man_cos,
-                $technology->man_cos_new_cap,
-                $technology->gen_cos,
-                $technology->gen_cos_new_cap,
-                $technology->ghg_emi,
-                $technology->wat_con,
-                $technology->wat_wit,
+                $typeline->lin_cap,
+                $typeline->new_cap_cos,
+                $typeline->new_lin_cos,
+                $typeline->man_lin_cos,
+                $typeline->flo_cos,
+                $typeline->eff_lin_bas,
             ];
-            foreach($technology['FuelsTechnologies'] as $fuel_technology){
-                $tmp[] = $fuel_technology->perc_con;
-            }
-            foreach($technology['FuelsTechnologies'] as $fuel_technology){
-                $tmp[] = $fuel_technology->fue_con;
-            }
-                $tmp[] = $technology->genco_pri;
             fputcsv($txt, $tmp, $separator_txt);
         }
 
