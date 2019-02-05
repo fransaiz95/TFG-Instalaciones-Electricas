@@ -102,7 +102,6 @@ class RangerenewablesController extends AppController
             $connection->execute("delete from rangerenewables where start LIKE '%" . $year . "-%' and id_technology = " . $id_technology ); 
             $connection->commit();
             
-            debug('heree!!');Exit;
             $error = false;
 
             $regions = $this->Rangerenewables->Regions->find('list', [
