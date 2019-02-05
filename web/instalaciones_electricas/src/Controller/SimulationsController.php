@@ -117,6 +117,8 @@ class SimulationsController extends AppController
         $zip = $this->fileTypFue($zip, $separator_txt, 'TypFue.txt');
         $zip = $this->fileTypPla($zip, $separator_txt, 'TypPla.txt');
         $zip = $this->fileTypLin($zip, $separator_txt, 'TypLin.txt');
+        $zip = $this->fileHours($zip, $separator_txt, 'Hours.txt');
+
 
         //Antes de cerrar el zip, lo guardamos.
         $this->Simulations = TableRegistry::get('Simulations');
@@ -561,6 +563,51 @@ class SimulationsController extends AppController
                 $typeline->eff_lin_bas,
             ];
             fputcsv($txt, $tmp, $separator_txt);
+        }
+
+        return $txt;
+
+    }
+
+    //TypLin
+    public function fileHours($zip, $separator_txt, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $txt = $this->exportHours($txt, $separator_txt);
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
+    //TypPla
+    public function exportHours($txt, $separator_txt){
+
+        $this->Rangemeteos = TableRegistry::get('Rangemeteos');
+
+
+        //Calcular en un array todos los años que tenemos.
+        $query = $this->Rangemeteos->find();
+        $query->select(['start'])->distinct(['year(start)']);
+        $query->order('year(start)');
+
+        $year_objs = $query->toArray();
+
+        foreach($year_objs as $year){
+
+            $year = $year->start->format('Y');
+
+            $query = $this->Rangemeteos->getNumberHoursByYear($year);
+    
+            $hours = $query->first()->toArray();
+
+            fputcsv($txt, [$hours['count']], $separator_txt);
         }
 
         return $txt;

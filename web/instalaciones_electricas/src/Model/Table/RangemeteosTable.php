@@ -50,4 +50,15 @@ class RangemeteosTable extends Table {
 
     }
 
+    public function getNumberHoursByYear($year){
+        $query = $this->find();
+        $query->select(['count' => $query->func()->count('*')]);
+        $query->where(["year(start) = " => $year]);
+        $query->group(["id_region"]);
+        $query->order('count desc');
+        $query->limit(1);
+
+        return $query;
+    }
+
 }
