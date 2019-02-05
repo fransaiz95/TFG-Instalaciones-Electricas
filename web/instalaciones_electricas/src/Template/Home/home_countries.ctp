@@ -71,18 +71,18 @@
             echo $this->Html->link( 
                 $this->Html->image('/img/portal/current_system.png',array('class'=>'')), 
                 array(
-                    'controller' => 'home',
-                    'action' => 'homeCountries'
+                    'controller' => 'rangedemands',
+                    'action' => 'home'
                 ), 
                 array(
                     'escape' => false,
                     'class' => 'countries',
-                    'title' => __('Current system')
+                    'title' => __('Demand')
                 )
             );
             ?>
             <div class="large-12 medium-12 cell div-font">
-                <?php echo __('Current system') ?>
+                <?php echo __('Demand') ?>
             </div>
         </div>
 

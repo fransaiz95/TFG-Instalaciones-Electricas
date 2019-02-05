@@ -83,8 +83,6 @@ class RangemeteosController extends AppController
             
             $error = false;
 
-            debug('here!!');Exit;
-
             $regions = $this->Rangemeteos->Regions->find('list', [
                 'keyField' => 'id',
                 'valueField' => 'name'

@@ -5,7 +5,7 @@ $(document).ready(function(){
 var Excels  = (function(){
 
     var download_excels = function(){
-        $('.btn_excel_rangemeteos-js').off('click').on('click', function(e){
+        $('.btn_excel_rangemeteos-js, .btn_excel_rangedemands-js').off('click').on('click', function(e){
             e.preventDefault();
 
             var element = $(this);

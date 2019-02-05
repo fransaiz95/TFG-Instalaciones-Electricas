@@ -36,6 +36,10 @@ class RegionsTable extends Table {
 
 		$this->hasMany('Rangedemands')
     	->setForeignKey([ 'id_region' ]);
+		$this->hasMany('Rangemeteos')
+    	->setForeignKey([ 'id_region' ]);
+		$this->hasMany('Rangerenewables')
+    	->setForeignKey([ 'id_region' ]);
 	}
 
 	/**
