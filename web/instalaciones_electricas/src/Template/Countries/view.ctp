@@ -52,6 +52,7 @@
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                         <tr class="table100-head">
+                            <th class="p-left-1"><?php echo __('Id')?></th>
                             <th class="p-left-1"><?php echo __('Name')?></th>
                             <th class="ta-center"><?php echo __('Country') ?></th>
                             <!-- <th class="ta-center"><?php echo __('Dem For') ?></th> -->
@@ -63,6 +64,7 @@
                     <?php
                     foreach ($regions as $region){ ?>
                         <tr>
+                            <td class="p-left-1"><?php echo h($region->id) ?></td>
                             <td class="p-left-1"><?php echo h($region->name) ?></td>
                             <td class="ta-center"><?php echo h($region->Countries['name']) ?></td>
                             <!-- <td class="ta-center"><?php echo h($region->dem_for) ?></td> -->

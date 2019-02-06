@@ -13,6 +13,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use ConstantesBooleanas;
 use ConstantesTabs;
 use ConstantesRoles;
+use ConstantesRoutes;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
@@ -93,6 +94,7 @@ class SimulationsController extends AppController
         ini_set('memory_limit', '-1');
         
         $user = $this->Auth->user();
+        $session = $this->request->session();
 
         $separator_txt = "\t";
 
@@ -102,23 +104,31 @@ class SimulationsController extends AppController
         $date_name_file = $date_tmp->format('Y-m-d H_i_s');
         $simulation_name = $this->request->data['simulation_name'];
 
-        $zipname = 'parameters_' . $date_name_file . '.zip';
+        $zipname = ConstantesRoutes::SIMULATION_CNT_TO_EXPORTS . DS .'parameters_' . $date_name_file . '.zip';
         $zip = new \ZipArchive;
         $zip->open($zipname, \ZipArchive::CREATE);
 
-        $zip = $this->fileCapAva($zip, $separator_txt, 'CapAva.txt');
-        $zip = $this->fileGenAva($zip, $separator_txt, 'GenAva.txt');
-        $zip = $this->fileExiCap($zip, $separator_txt, 'ExiCap.txt');
-        $zip = $this->fileExiLin($zip, $separator_txt, 'ExiLin.txt');
-        $zip = $this->fileForMar($zip, $separator_txt, 'ForMar.txt');
-        $zip = $this->fileFue($zip, $separator_txt, 'Fue.txt');
-        $zip = $this->fileReg($zip, $separator_txt, 'Reg.txt');
-        $zip = $this->fileTec($zip, $separator_txt, 'Tec.txt');
-        $zip = $this->fileTypFue($zip, $separator_txt, 'TypFue.txt');
-        $zip = $this->fileTypPla($zip, $separator_txt, 'TypPla.txt');
-        $zip = $this->fileTypLin($zip, $separator_txt, 'TypLin.txt');
-        $zip = $this->fileHours($zip, $separator_txt, 'Hours.txt');
+        //Nuestra exportacion
+        $zip = $this->fileCapAva($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'CapAva.txt');
+        $zip = $this->fileGenAva($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'GenAva.txt');
+        $zip = $this->fileExiCap($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ExiCap.txt');
+        $zip = $this->fileExiLin($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ExiLin.txt');
+        $zip = $this->fileForMar($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ForMar.txt');
+        $zip = $this->fileFue($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Fue.txt');
+        $zip = $this->fileReg($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Reg.txt');
+        $zip = $this->fileTec($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tec.txt');
+        $zip = $this->fileTypFue($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypFue.txt');
+        $zip = $this->fileTypPla($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypPla.txt');
+        $zip = $this->fileTypLin($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypLin.txt');
+        $zip = $this->fileHours($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Hours.txt');
+        $zip = $this->fileDem($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Dem.txt');
+        $zip = $this->fileTem($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tem.txt');
 
+        //Los datos del cliente.
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros.zip', ConstantesRoutes::SIMULATION_PARAMETROS . DS . '_Parametros_ client.zip');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Codigo/individuo.R', ConstantesRoutes::SIMULATION_CODIGO . DS . 'individuo.R');
+
+        $zip = $this->fileObjectives($zip, $session, ConstantesRoutes::SIMULATION_DATA . DS . 'objectives.json');
 
         //Antes de cerrar el zip, lo guardamos.
         $this->Simulations = TableRegistry::get('Simulations');
@@ -544,7 +554,7 @@ class SimulationsController extends AppController
         return $zip;
     }
 
-    //TypPla
+    //TypLin
     public function exportTxtTypLin($txt, $separator_txt){
 
         $this->Typelines = TableRegistry::get('Typelines');
@@ -569,7 +579,7 @@ class SimulationsController extends AppController
 
     }
 
-    //TypLin
+    //Hours
     public function fileHours($zip, $separator_txt, $txt_name){
         $txt = fopen('php://temp/maxmemory:1048576', 'w');
         fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
@@ -586,7 +596,7 @@ class SimulationsController extends AppController
         return $zip;
     }
 
-    //TypPla
+    //Hours
     public function exportHours($txt, $separator_txt){
 
         $this->Rangemeteos = TableRegistry::get('Rangemeteos');
@@ -613,5 +623,148 @@ class SimulationsController extends AppController
         return $txt;
 
     }
+
+    //Dem
+    public function fileDem($zip, $separator_txt, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $txt = $this->exportDem($txt, $separator_txt);
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
+    //Dem
+    public function exportDem($txt, $separator_txt){
+
+        
+        $this->Rangedemands = TableRegistry::get('Rangedemands');
+        
+        
+        //Calcular en un array todos los años que tenemos.
+        $query = $this->Rangedemands->find();
+        $query->select(['start'])->distinct(['year(start)']);
+        $query->order('year(start)');
+        
+        $year_objs = $query->toArray();
+        
+        foreach($year_objs as $year){
+            
+            $year = $year->start->format('Y');
+            
+            $query = $this->Rangedemands->find();
+            $query 
+                ->select(['avg' => $query->func()->avg('Rangedemands.demand')])
+                ->where(['year(start) = ' . $year]);
+
+            $avg = $query->first()->toArray();
+
+            fputcsv($txt, [$avg['avg']], $separator_txt);
+        }
+
+        return $txt;
+
+    }
+
+    //Tem
+    public function fileTem($zip, $separator_txt, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $txt = $this->exportTem($txt, $separator_txt);
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
+    //Dem
+    public function exportTem($txt, $separator_txt){
+
+        
+        $this->Rangemeteos = TableRegistry::get('Rangemeteos');
+        
+        
+        //Calcular en un array todos los años que tenemos.
+        $query = $this->Rangemeteos->find();
+        $query->select(['start'])->distinct(['year(start)']);
+        $query->order('year(start)');
+        
+        $year_objs = $query->toArray();
+        
+        foreach($year_objs as $year){
+            
+            $year = $year->start->format('Y');
+            
+            $query = $this->Rangemeteos->find();
+            $query 
+                ->select(['avg' => $query->func()->avg('Rangemeteos.temp')])
+                ->where(['year(start) = ' . $year]);
+
+            $avg = $query->first()->toArray();
+
+            fputcsv($txt, [$avg['avg']], $separator_txt);
+        }
+
+        return $txt;
+
+    }
+
+    //Data/Objectives.json
+    public function fileObjectives($zip, $session, $txt_name){
+        $txt = fopen('php://temp/maxmemory:1048576', 'w');
+        fputs($txt, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) )); // para solucionar problema encoding (utf-8)
+        if (false === $txt) {
+            die('Failed to create temporary file');
+        }
+
+        $objectives = [];
+
+        $objectives['ec_cost_new_plant'] = ($session->read('Objectives.ec_cost_new_plant') != null) ? $session->read('Objectives.ec_cost_new_plant') : "0";
+        $objectives['ec_cost_oper_maint_plant'] = ($session->read('Objectives.ec_cost_oper_maint_plant') != null) ? $session->read('Objectives.ec_cost_oper_maint_plant') : "0";
+        $objectives['ec_cost_generation'] = ($session->read('Objectives.ec_cost_generation') != null) ? $session->read('Objectives.ec_cost_generation') : "0";
+        $objectives['ec_cost_new_lines'] = ($session->read('Objectives.ec_cost_new_lines') != null) ? $session->read('Objectives.ec_cost_new_lines') : "0";
+        $objectives['ec_cost_oper_maint_lines'] = ($session->read('Objectives.ec_cost_oper_maint_lines') != null) ? $session->read('Objectives.ec_cost_oper_maint_lines') : "0";
+        $objectives['ec_cost_import_fuel'] = ($session->read('Objectives.ec_cost_import_fuel') != null) ? $session->read('Objectives.ec_cost_import_fuel') : "0";
+        $objectives['ec_cost_public_politics'] = ($session->read('Objectives.ec_cost_public_politics') != null) ? $session->read('Objectives.ec_cost_public_politics') : "0";
+        $objectives['en_environmental_impact'] = ($session->read('Objectives.en_environmental_impact') != null) ? $session->read('Objectives.en_environmental_impact') : "0";
+        $objectives['en_emission_gases'] = ($session->read('Objectives.en_emission_gases') != null) ? $session->read('Objectives.en_emission_gases') : "0";
+        $objectives['en_water_usage'] = ($session->read('Objectives.en_water_usage') != null) ? $session->read('Objectives.en_water_usage') : "0";
+        $objectives['en_water_withdrawal'] = ($session->read('Objectives.en_water_withdrawal') != null) ? $session->read('Objectives.en_water_withdrawal') : "0";
+        $objectives['so_generation_plants'] = ($session->read('Objectives.so_generation_plants') != null) ? $session->read('Objectives.so_generation_plants') : "0";
+        $objectives['so_employment_contruc'] = ($session->read('Objectives.so_employment_contruc') != null) ? $session->read('Objectives.so_employment_contruc') : "0";
+        $objectives['so_dismantling_plants'] = ($session->read('Objectives.so_dismantling_plants') != null) ? $session->read('Objectives.so_dismantling_plants') : "0";
+        $objectives['so_maintenance_plants'] = ($session->read('Objectives.so_maintenance_plants') != null) ? $session->read('Objectives.so_maintenance_plants') : "0";
+        $objectives['so_generated_transport'] = ($session->read('Objectives.so_generated_transport') != null) ? $session->read('Objectives.so_generated_transport') : "0";
+        $objectives['so_employment_transmission'] = ($session->read('Objectives.so_employment_transmission') != null) ? $session->read('Objectives.so_employment_transmission') : "0";
+        $objectives['so_employment_installation'] = ($session->read('Objectives.so_employment_installation') != null) ? $session->read('Objectives.so_employment_installation') : "0";
+        $objectives['so_employment_operation'] = ($session->read('Objectives.so_employment_operation') != null) ? $session->read('Objectives.so_employment_operation') : "0";
+        $objectives['so_employment_maintenance'] = ($session->read('Objectives.so_employment_maintenance') != null) ? $session->read('Objectives.so_employment_maintenance') : "0";
+        $objectives['so_social_cost'] = ($session->read('Objectives.so_social_cost') != null) ? $session->read('Objectives.so_social_cost') : "0";
+        $objectives['so_cost_public'] = ($session->read('Objectives.so_cost_public') != null) ? $session->read('Objectives.so_cost_public') : "0";
+        $objectives['so_accidents_produced'] = ($session->read('Objectives.so_accidents_produced') != null) ? $session->read('Objectives.so_accidents_produced') : "0";
+        $objectives['so_cost_energy'] = ($session->read('Objectives.so_cost_energy') != null) ? $session->read('Objectives.so_cost_energy') : "0";
+
+        fwrite($txt, json_encode($objectives));
+
+        rewind($txt);
+        $zip->addFromString($txt_name, stream_get_contents($txt) );
+        fclose($txt);
+
+        return $zip;
+    }
+
 
 }

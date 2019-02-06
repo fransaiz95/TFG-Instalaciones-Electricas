@@ -8,6 +8,12 @@
         $url = ['controller' => 'countries' , 'action' => 'view', $region['id_country']];
         echo $this->element('Comun/btn_back', array('url' => $url)); ?>
 
+        <div class="large-1 medium-1 cell p-top-1">
+            <span class="titles-view">
+                <?php echo __('Id:') ?>
+            </span>
+            <?php echo $region['id']; ?>
+        </div>
         <div class="large-3 medium-3 cell p-top-1">
             <span class="titles-view">
                 <?php echo __('Name:') ?>
@@ -31,7 +37,7 @@
             echo $region['dem_for']; ?>
         </div>
 
-        <div class="large-3 medium-3 cell p-top-1">
+        <div class="large-2 medium-2 cell p-top-1">
             <span class="titles-view">
                 <?php echo __('Ren for:') ?>
             </span>

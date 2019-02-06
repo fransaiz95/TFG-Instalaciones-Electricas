@@ -52,3 +52,11 @@ class ConstantesRoles{
     const ADMIN = 1;
     const USER = 2;
 }
+
+class ConstantesRoutes{
+    const SIMULATION_DATA = 'Data';
+    const SIMULATION_PARAMETROS = 'Parametros';
+    const SIMULATION_CODIGO = 'Codigo';
+    const SIMULATION_CNT_TO_EXPORTS = 'files/simulations';
+    const SIMULATION_CNT_CLIENT_DATA = 'files/client_data';
+}
