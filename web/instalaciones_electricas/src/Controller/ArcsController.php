@@ -44,10 +44,10 @@ class ArcsController extends AppController
     public function add($id_region_1)
     {
         $arc = $this->Arcs->newEntity();
-        $regions = $this->Arcs->Regions->search_list(); 
+        $region = $this->Arcs->Regions->get([$id_region_1]);
+        $regions = $this->Arcs->Regions->search_list_by_id_country($region->id_country);
         $typelines = $this->Arcs->Typelines->search_list();
 
-        $region = $this->Arcs->Regions->get([$id_region_1]);
 
         if(!$this->request->is('get')){
 
@@ -122,10 +122,10 @@ class ArcsController extends AppController
     public function edit($arc_id)
     {
         $arc_with_regions = $this->Arcs->getArcsWithRegions($arc_id);
-        $regions = $this->Arcs->Regions->search_list(); 
+        $region = $this->Arcs->Regions->get($arc_with_regions['Regions']['id']);
+        $regions = $this->Arcs->Regions->search_list_by_id_country($region->id_country); 
         $typelines = $this->Arcs->Typelines->search_list();
 
-        $region = $this->Arcs->Regions->get($arc_with_regions['Regions']['id']);
 
         if(!$this->request->is('get')){
 
@@ -213,15 +213,23 @@ class ArcsController extends AppController
             $arc = $this->Arcs->get($id_arc);
 
             //Comprobamos si esta asociado con alguna otra entidad.
-            $arcs_typelines = $this->Arcs->ArcsTypelines->findByIdArc($id_arc)->toArray();
-            if(empty($arcs_typelines)){
+            $arc_typeline = $this->Arcs->ArcsTypelines->findByIdArc($id_arc)->toArray();
+            if(empty($arc_typeline)){
                 if ($this->Arcs->delete($arc)) {
                     echo 'OK';
                 } else {
                     echo __('An error has occurred while we were deleting this arc.');
                 }
             }else{
-                echo __('An error was ocurred. This arc is associated with an arc typeline.');
+                if ($this->Arcs->ArcsTypelines->delete($arc_typeline[0])) {
+                    if ($this->Arcs->delete($arc)) {
+                        echo 'OK';
+                    } else {
+                        echo __('An error has occurred while we were deleting this arc.');
+                    }
+                } else {
+                    echo __('An error was ocurred. This arc is associated with an arc typeline.');
+                }
             }
 
         }

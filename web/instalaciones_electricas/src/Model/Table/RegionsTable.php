@@ -79,6 +79,17 @@ class RegionsTable extends Table {
 		return $query;
 	}
 
+	public function search_list_by_id_country($id_country){
+		$query = $this->find('list', [
+			'keyField' => 'id',
+			'valueField' => 'name'
+		])
+		->where(['id_country' => $id_country])
+		->toArray();
+
+		return $query;
+	}
+
 	public function search_list_reverse (){
 		$query = $this->find('list', [
 			'keyField' => 'name',

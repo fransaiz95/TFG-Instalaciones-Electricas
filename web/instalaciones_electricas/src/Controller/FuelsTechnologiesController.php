@@ -24,7 +24,7 @@ class FuelsTechnologiesController extends AppController
     public function add($id_fuel)
     {
         $fuel = $this->FuelsTechnologies->Fuels->get($id_fuel);
-        $technologies = $this->FuelsTechnologies->Technologies->search_list();
+        $technologies = $this->FuelsTechnologies->Technologies->search_list_no_renewable();
         $fuel_technology = $this->FuelsTechnologies->newEntity();
 
         if(!$this->request->is('get')){

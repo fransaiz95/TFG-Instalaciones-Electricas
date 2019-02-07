@@ -110,7 +110,7 @@ class RangedemandsController extends AppController
                     $end = $date->format("Y-m-d H:i:s");
 
                     foreach($header as $letter => $region_id){
-                        if(in_array($region_id, $regions)){
+                        if(in_array($region_id, array_keys($regions))){
                             $rangedemand_to_save = [
                                 'id_region' => $region_id,
                                 'start' => $start,

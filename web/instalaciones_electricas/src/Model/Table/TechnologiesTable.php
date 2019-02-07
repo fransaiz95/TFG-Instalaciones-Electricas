@@ -166,6 +166,17 @@ class TechnologiesTable extends Table {
 		return $query;
 	}
 
+	public function search_list_no_renewable (){
+		$query = $this->find('list', [
+			'keyField' => 'id',
+			'valueField' => 'name'
+		])
+		->where(['renewable' => 0])
+		->toArray();
+
+		return $query;
+	}
+
 	public function getQueryTechnologiesTypPla (){
 		$query = $this->find('all');
         $query->select(['Technologies.id', 'Technologies.cap', 'Technologies.new_cap_cos', 'Technologies.man_cos', 'Technologies.man_cos_new_cap', 'Technologies.gen_cos', 'Technologies.gen_cos_new_cap', 'Technologies.ghg_emi', 'Technologies.wat_con', 'Technologies.wat_wit', 'Technologies.genco_pri']);
