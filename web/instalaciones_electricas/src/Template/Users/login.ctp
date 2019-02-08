@@ -2,12 +2,20 @@
 <?php
 echo $this->Html->css('lib/foundation-6.4.2/css/foundation.css');
 echo $this->Html->css('../js/lib/jquery-ui-1.10.4/themes/base/minified/jquery-ui.min.css');
-echo $this->Html->css('estilos.css');?>
+echo $this->Html->css('estilos.css'); 
+echo $this->Html->script('lib/jquery-1.11.1.min.js');
+echo $this->Html->script('lib/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js');
+echo $this->fetch('script');
+?>
+
 
 <div class="users form">
 <?php echo $this->Flash->render('auth') ?>
 
 <div class="login-form">
+
+    <?php echo $this->Flash->render('flash')?>
+
     <?php echo $this->Form->create() ?>
         <fieldset>
             <span class="login-cnt-img">
@@ -67,3 +75,10 @@ echo $this->Html->css('estilos.css');?>
     <?php echo $this->Form->end() ?>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $(".close-flash-icon-js").off('click').on('click', function(e){
+            $(this).parent().addClass('d-none');
+        });
+    });
+</script>

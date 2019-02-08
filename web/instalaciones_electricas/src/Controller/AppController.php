@@ -66,13 +66,14 @@ class AppController extends Controller
             'logoutRedirect' => [
                 'controller' => 'users',
                 'action' => 'login',
-                'home'
+                // 'home'
             ]
         ]);
     }
     
     public function isAuthorized($user)
     {
+        debug('here!');Exit;
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;

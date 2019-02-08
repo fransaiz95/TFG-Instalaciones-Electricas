@@ -169,8 +169,15 @@ var Weblectric  = (function(){
         });
     }
 
+    var flassComponent = function(){
+        $(".close-flash-icon-js").off('click').on('click', function(e){
+            $(this).parent().addClass('d-none');
+        });
+    }
+
     return {
         load: function($context){
+            flassComponent();
             loadSelect2Single();
             loadSelect2Multiple();
             deleteFunction();

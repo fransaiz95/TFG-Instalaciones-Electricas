@@ -45,10 +45,10 @@ class CountriesController extends AppController
         if ($this->request->is('post')) {
             $country = $this->Countries->patchEntity($country, $this->request->data);
             if ($this->Countries->save($country)) {
-                $this->Flash->success('The country has been saved.');
+                $this->Flash->success('Country has been saved.');
                 return $this->redirect(['action' => 'home']);
             } else {
-                $this->Flash->error('The country could not be saved. Please, try again.');
+                $this->Flash->error('Country could not be saved. Please, try again.');
             }
         }
         // $departments = $this->Employees->Departments->find('list', ['limit' => 200]);

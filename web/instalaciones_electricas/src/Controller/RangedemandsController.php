@@ -14,6 +14,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 require ROOT . DS . 'vendor' . DS . 'phpoffice/phpspreadsheet/src/Bootstrap.php';
 
 use ConstantesBooleanas;
+use ConstantesErrors;
 
 class RangedemandsController extends AppController
 {
@@ -32,14 +33,24 @@ class RangedemandsController extends AppController
         ];
 
         if ($this->request->is('post')) {
-            $file = $this->request->data['excel_file'];
-            $year = $this->request->data['year'];
+            if($this->request->data['excel_file']['size'] == 0){
+                $this->Flash->error(__(ConstantesErrors::FILE_NOT_EXISTS), ['flash']);
+            }elseif($this->request->data['excel_file']['error'] == 4){
+                $this->Flash->error(__(ConstantesErrors::FILE_INCORRECT), ['flash']);
+            }else{
+                $file = $this->request->data['excel_file'];
+                $year = $this->request->data['year'];
 
-            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
-            $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+                $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
+                $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
-            $this->_load_demands($sheetData, $year);
+                $this->_load_demands($sheetData, $year);
 
+                $this->Flash->success(__(ConstantesErrors::FILE_CORRECT_IMPORTED), [
+                    'key' => 'flash',
+                    'params' => []
+                ]);
+            }
         }
 
         $this->set(compact('rangedemands', 'years'));

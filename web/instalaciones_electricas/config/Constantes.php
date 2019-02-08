@@ -60,3 +60,9 @@ class ConstantesRoutes{
     const SIMULATION_CNT_TO_EXPORTS = 'files/simulations';
     const SIMULATION_CNT_CLIENT_DATA = 'files/client_data';
 }
+
+class ConstantesErrors{
+    const FILE_NOT_EXISTS = 'You must select a file.';
+    const FILE_CORRECT_IMPORTED = 'Your file has been import correctly.';
+    const FILE_INCORRECT = 'There is an error with this file.';
+}

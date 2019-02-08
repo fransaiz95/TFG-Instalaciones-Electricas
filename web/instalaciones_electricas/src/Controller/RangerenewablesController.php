@@ -51,13 +51,25 @@ class RangerenewablesController extends AppController
         $rangerenewables = $this->Rangerenewables->newEntity();
 
         if ($this->request->is('post')) {
-            $file = $this->request->data['excel_file'];
-            $year = $this->request->data['year'];
 
-            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
-            $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+            if($this->request->data['excel_file']['size'] == 0){
+                $this->Flash->error(__(ConstantesErrors::FILE_NOT_EXISTS), ['flash']);
+            }elseif($this->request->data['excel_file']['error'] == 4){
+                $this->Flash->error(__(ConstantesErrors::FILE_INCORRECT), ['flash']);
+            }else{
+                $file = $this->request->data['excel_file'];
+                $year = $this->request->data['year'];
+    
+                $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
+                $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+    
+                $this->_load_renewables($sheetData, $id_technology, $year);
 
-            $this->_load_renewables($sheetData, $id_technology, $year);
+                $this->Flash->success(__(ConstantesErrors::FILE_CORRECT_IMPORTED), [
+                    'key' => 'flash',
+                    'params' => []
+                ]);
+            }
 
         }
 

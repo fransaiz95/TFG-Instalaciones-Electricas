@@ -135,8 +135,9 @@ class UsersController extends AppController
                     'controller' => 'home',
                     'action' => 'home',
                 ));
+            }else{
+                $this->Flash->error(__('Invalid username or password, try again'), ['flash']);
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
         }
 
     }

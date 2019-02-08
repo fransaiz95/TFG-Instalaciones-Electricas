@@ -85,6 +85,7 @@ class ArcsController extends AppController
                     // return $this->redirect(['controller' => 'arcs', 'action' => 'home']);
                     return $this->redirect(['controller' => 'regions' , 'action' => 'view', $id_region_1]);
                 }else{
+                    $this->Flash->error('Arc could not be saved. Please, try again.');
                     $connection->rollback();
                 }
 

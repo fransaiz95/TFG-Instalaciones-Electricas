@@ -97,4 +97,7 @@
 				</li>
 			</ul>
 		</nav>
+
+		<?php echo $this->Flash->render('flash')?>
+		
 	</header>

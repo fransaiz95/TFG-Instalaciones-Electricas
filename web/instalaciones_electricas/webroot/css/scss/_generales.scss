@@ -140,39 +140,39 @@ h2{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-  }
+}
   
   
-  ul {
+ul {
 	list-style: none;
-  }
+}
   
-  .cf {
+.cf {
 	&:before, &:after { content: ' '; display: none; }
 	// &:after { clear: both; }
-  }
+}
   
-  //BREADCRUMBS
-  .breadcrumbs {
+//BREADCRUMBS
+.breadcrumbs {
 	margin-top: 10px;
 	// border-top: 1px solid $primary-color;
 	// border-bottom: 1px solid $primary-color;
 	background-color: none;
-  }
+}
   
-  .breadcrumbs ul {
+.breadcrumbs ul {
 	border-left: 1px solid $primary-color;
 	border-right: 1px solid $primary-color;
-  }
+}
   
-  .breadcrumbs li {
+.breadcrumbs li {
 	float: left;
 	min-width: 15%;
 	border-top: 1px solid $primary-color;
 	border-bottom: 1px solid $primary-color;
-  }
+}
   
-  .breadcrumbs a {
+.breadcrumbs a {
 	position: relative;
 	display: block;
 	padding: 8px;
@@ -183,19 +183,19 @@ h2{
 	text-align: center;
 	color: $letter-color;
 	cursor: pointer;
-  }
+}
   
-  .breadcrumbs a:hover {
+.breadcrumbs a:hover {
 	background: $back-ground-color;
 	text-decoration: none;   
-  }
+}
   
-  .breadcrumbs a.active {
+.breadcrumbs a.active {
 	color: $back-ground-color;
 	background-color: #fafafa;
-  }
+}
   
-  .breadcrumbs a span:first-child {
+.breadcrumbs a span:first-child {
 	display: inline-block;
 	width: 22px;
 	height: 22px;
@@ -204,16 +204,16 @@ h2{
 	border: 2px solid $secondary-color;
 	border-radius: 50%;
 	background-color: $back-ground-color;
-  }
+}
   
-  .breadcrumbs a.active span:first-child {
+.breadcrumbs a.active span:first-child {
 	color: #fff;
 	border-color: $back-ground-color;
 	background-color: $back-ground-color;
-  }
+}
   
-  .breadcrumbs a:before,
-  .breadcrumbs a:after {
+.breadcrumbs a:before,
+.breadcrumbs a:after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -225,46 +225,82 @@ h2{
 	border-top: 20px solid transparent;
 	border-bottom: 20px solid transparent;
 	border-left: 12px solid transparent;
-  }
+}
   
-  .breadcrumbs a:before {
+.breadcrumbs a:before {
 	margin-left: 1px;
 	border-left-color: #d5d5d5;
-  }
+}
   
-  .breadcrumbs a:after {
+.breadcrumbs a:after {
 	border-left-color: #f5f5f5;
-  }
+}
   
-  .breadcrumbs a:hover:after {
+.breadcrumbs a:hover:after {
 	border-left-color: $back-ground-color;
-  }
+}
   
-  .breadcrumbs a.active:after {
+.breadcrumbs a.active:after {
 	border-left-color: $back-ground-color;
-  }
+}
   
-  .breadcrumbs li:last-child a:before,
-  .breadcrumbs li:last-child a:after {
+.breadcrumbs li:last-child a:before,
+.breadcrumbs li:last-child a:after {
 	display: none;
-  }
+}
 	
-	.cnt-info-download
-	{
-		border: 1px solid $primary-color;
-		margin: 20px 16px 5px 19px !important;
-		padding: 5px 0 3px 0;
+.cnt-info-download
+{
+	border: 1px solid $primary-color;
+	margin: 20px 16px 5px 19px !important;
+	padding: 5px 0 3px 0;
 
-		ion-icon{
-			font-size: 30px;
-			position: relative;
-			left: -5px;
-			top: 2px;
-			color: $primary-color;
-			// padding-top: 3px;
-		}
-		span{
-			position: relative;
-			top: -7px;
-		}
+	ion-icon{
+		font-size: 30px;
+		position: relative;
+		left: -5px;
+		top: 2px;
+		color: $primary-color;
+		// padding-top: 3px;
 	}
+	span{
+		position: relative;
+		top: -7px;
+	}
+}
+
+.message.error{
+	margin: 20px;
+	border: 2px solid black;
+	color: black;
+	background: $color-flash-error;
+	padding: 3px;
+	text-align: center;
+	img{
+		float: right;
+		width: 16px;
+		top: 4px;
+		position: relative;
+		right: 4px;
+		cursor: pointer
+	}
+}
+
+.message.success{
+	margin: 20px;
+	border: 2px solid black;
+	color: black;
+	background: $color-flash-success;
+	padding: 3px;
+	text-align: center;
+	// position: fixed;
+	// width: 98%;
+	img{
+		float: right;
+		width: 16px;
+		top: 4px;
+		position: relative;
+		right: 4px;
+		cursor: pointer
+	}
+}

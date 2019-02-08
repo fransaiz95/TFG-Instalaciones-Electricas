@@ -26,6 +26,7 @@ class ObjectivesController extends AppController
 
         if(!$this->request->is('get')){
             $this->_set_session_values($session, $this->request->data);
+            $this->Flash->success('Economic objectives have been saved correctly.');
             return $this->redirect(['controller' => 'objectives' , 'action' => 'home']);
             
         }
@@ -40,6 +41,7 @@ class ObjectivesController extends AppController
 
         if(!$this->request->is('get')){
             $this->_set_session_values($session, $this->request->data);
+            $this->Flash->success('Environmental objectives have been saved correctly.');
             return $this->redirect(['controller' => 'objectives' , 'action' => 'home']);
         }
 
@@ -54,6 +56,7 @@ class ObjectivesController extends AppController
 
         if(!$this->request->is('get')){
             $this->_set_session_values($session, $this->request->data);
+            $this->Flash->success('Social objectives have been saved correctly.');
             return $this->redirect(['controller' => 'objectives' , 'action' => 'home']);
         }
 
