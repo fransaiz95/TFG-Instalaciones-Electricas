@@ -66,6 +66,7 @@ Los requisitos que debe satisfacer la aplicación son:
 	
 	\item \textbf{RF-6:} Existirá un control de usuarios en el que haya usuarios con dos posibles roles: administrador y participante.
 	
+	\item \textbf{RF-7:} Desde la pantalla de simulación, el usuario podrá descargar un fichero comprimido con los datos presentes en base de datos para alimentar y ejecutar el algoritmo de optimización. El ejecutable del algoritmo irá incluido dentro del fichero comprimido.
 \end{itemize}
 
 \subsection{Requisitos no funcionales}
@@ -99,6 +100,9 @@ Actores presentes en la aplicación:
 
 \subsection{Diagrama de casos de uso}
 
+A continuación se explican los casos de uso correspondientes a los requisitos funcionales del apartado anterior.
+Están clasificados por actores, diferenciando cada actor, qué operaciones puede realizar. Cabe destacar que un usuario con rol participante, puede realizar las mismas operaciones que el usuario con rol administrador a excepción de restablecer la base de datos y administrar los usuarios de la aplicación. En este caso, ha sido necesario representar las líneas del diagrama con un color diferente para una mejor visualización.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{/anexos/Requisitos/CasosUso}
@@ -125,6 +129,13 @@ Actores presentes en la aplicación:
 	\includegraphics[width=1\textwidth]{/anexos/Requisitos/CasosUsoUsers}
 	\caption{Diagrama del casos de uso 6: Administración de usuarios.~\ref{tabla:cu6}.}
 	\label{fig:CasosUsoUsers}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Requisitos/CasosUsoSimulation}
+	\caption{Diagrama del casos de uso 7: Simulación y descarga de ficheros resultantes.~\ref{tabla:cu7}.}
+	\label{fig:CasosUsoSimulation}
 \end{figure}
 
 % Caso de uso 1
@@ -293,6 +304,48 @@ Actores presentes en la aplicación:
 	\caption{Caso de uso 4 - Exportar datos en hoja de cálculo.}
 \end{table}
 
+
+% Caso de uso 5
+
+\begin{table}[h]
+	\centering
+	\label{tabla:cu5}
+	\begin{tabular}{@{}
+			>{\columncolor[HTML]{FFFFFF}}p {.25\textwidth} p {.75\textwidth}@{}}
+		\toprule
+		\textbf{Caso de uso 5}   &  \textbf{Restablecer la base de datos.} \\ \midrule
+		\textbf{Versión}         &  1.0 \\ \midrule
+		\textbf{Requisitos}	     &  \begin{tabular}[c]{@{}l@{}}
+			RF-4
+		\end{tabular} \\ \midrule
+		\textbf{Descripción}     &  \begin{tabular}[c]{@{}l@{}}
+			El usuario con rol administrador podrá restablecer\\
+			la base de datos a una versión inicial pulsando en\\
+			un botón situado en la cabecera.
+		\end{tabular} \\ \midrule
+		\textbf{Precondiciones}  &  \begin{tabular}[c]{@{}l@{}}
+			1. Base de datos iniciada.\\ 
+			2. Respaldo de la base de datos realizada. \\
+		\end{tabular} \\ \midrule
+		\textbf{Acciones}        &  \begin{tabular}[c]{@{}l@{}}
+			1. En usuario administrador deberá aceptar el \\
+			mensaje de confirmación que aparece al pulsar sobre\\
+			el botón situado en la cabecera de la aplicación.\\
+		\end{tabular} \\ \midrule
+		\textbf{Postcondiciones} &  \begin{tabular}[c]{@{}l@{}}
+			Se indicará con un mensaje si los cambios han sido \\
+			realizado con éxito y se recargará la página para\\
+			actualizar los datos.
+		\end{tabular} \\ \midrule
+		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
+			Error al conectar con la base de datos donde se \\
+			encuentra el respaldo.
+		\end{tabular} \\ \midrule
+		\textbf{Importancia}     &  Media \\ \bottomrule
+	\end{tabular}
+	\caption{Caso de uso 5 - Restablecer la base de datos.}
+\end{table}
+
 % Caso de uso 6
 
 \begin{table}[h]
@@ -333,4 +386,48 @@ Actores presentes en la aplicación:
 		\textbf{Importancia}     &  Media \\ \bottomrule
 	\end{tabular}
 	\caption{Caso de uso 6 - Administración de usuarios.}
+\end{table}
+
+% Caso de uso 7
+
+\begin{table}[h]
+	\centering
+	\label{tabla:cu7}
+	\begin{tabular}{@{}
+			>{\columncolor[HTML]{FFFFFF}}p {.25\textwidth} p {.75\textwidth}@{}}
+		\toprule
+		\textbf{Caso de uso 7}   &  \textbf{Simulación y descarga de ficheros generados.} \\ \midrule
+		\textbf{Versión}         &  1.0 \\ \midrule
+		\textbf{Requisitos}	     &  \begin{tabular}[c]{@{}l@{}}
+			RF-7
+		\end{tabular} \\ \midrule
+		\textbf{Descripción}     &  \begin{tabular}[c]{@{}l@{}}
+			Existirá la posibilidad de descargar un fichero \\
+			comprimido con los archivos necesarios para \\
+			ejecutar el algoritmo de optimización que posee\\
+			el cliente. Se hará una consulta sobre la base de \\
+			datos y se exportará un \textit{.zip} en el que se \\
+			incluirá el ejecutable del algoritmo.\\
+		\end{tabular} \\ \midrule
+		\textbf{Precondiciones}  &  \begin{tabular}[c]{@{}l@{}}
+			1. Base de datos iniciada.\\ 
+			2. Carga inicial de datos realizada. \\
+			3. Máximo número de entidades con datos.\\
+		\end{tabular} \\ \midrule
+		\textbf{Acciones}        &  \begin{tabular}[c]{@{}l@{}}
+			1. Usuario administrador accede a la pantalla de \\
+			simulación. \\
+			2. Mediante la acción correspondiente, se podrá\\
+			crear una nueva simulación o eliminar una ya existente.
+		\end{tabular} \\ \midrule
+		\textbf{Postcondiciones} &  \begin{tabular}[c]{@{}l@{}}
+			Redirección a la pantalla principal de la simulación\\
+			desde donde se podrá descargar la nueva simulación.
+		\end{tabular} \\ \midrule
+		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
+			Error al ejecutar la acción.\\ 
+		\end{tabular} \\ \midrule
+		\textbf{Importancia}     &  Media \\ \bottomrule
+	\end{tabular}
+	\caption{Caso de uso 7 - Simulación y descarga de ficheros generados.}
 \end{table}

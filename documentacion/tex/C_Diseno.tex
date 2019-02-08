@@ -25,7 +25,14 @@ Como se puede ver reflejado en la figura~\ref{img:diagramaDespliegue}, la aplica
 
 La estructura de datos presentada en este proyecto se recoge en una base de datos relacional \textit{MySQL}. En un primer momento se construyó el diagrama entidad relación a través del cual se obtuvo el diagrama relacional. En las figuras~\ref{img:modeloER} y~\ref{img:modeloRelacional} se presentan los modelos entidad relación y relacional respectivamente.
 
-A continuación se recogerá en un diccionario de datos cada una de las entidades con sus correspondientes campos y las unidades en función de si es relevante:
+Antes de continuar, se considera oportuno hacer algún apunte acerca de ambos diagramas.
+
+En el diagrama entidad-relación, se puede destacar como elemento llamativo la relación \textit{ISA}. Dado que una tecnología no puede ser renovable y fósil a la vez y no hay una tecnología que no sea renovable ni fósil, se va a clasificar esta \textit{ISA} como exclusiva total. 
+Otro punto a tener en cuenta es cómo se ha resuelto la relación ternaria, ya que se ha creado la tabla \textit{rangerenewables} para simplificar y unificar la relación.
+
+En cuanto a las entidades débiles, el discriminante se representa con lineas discontinuas. Ya para todas las tablas, al modelar un diagrama entidad relación, prescindimos de representar las claves ajenas, si presentes en el diagrama relacional.
+
+A continuación se recogerá en un diccionario de datos cada una de las tablas generadas con sus correspondientes campos y las unidades si son relevantes:
 
 \begin{itemize}
 	
@@ -39,6 +46,7 @@ A continuación se recogerá en un diccionario de datos cada una de las entidade
 	\begin{itemize}
 		\item \textit{id}: Identificador de la región.		
 		\item \textit{id\_country}: Identificador del country al que pertenece.
+		\item \textit{name}: Nombre de la región.
 		\item \textit{dem\_for}: Margen de reserva por error en el pronostico de demanda.
 		\item \textit{ren\_for}: Margen de reserva por error en el pronostico de generación renovable.
 	\end{itemize}
@@ -63,7 +71,7 @@ A continuación se recogerá en un diccionario de datos cada una de las entidade
 	\begin{itemize}
 		\item \textit{id}: Identificador de la tecnología.		
 		\item \textit{name}: Nombre de la tecnologia.
-		\item \textit{renewable}: Si es una tecnología renovable $ (0 - 1) $
+		\item \textit{renewable}: Si es una tecnología renovable $ ([0 - 1]) $
 		\item \textit{wat\_wit}: Desperdicio de agua por generación de un \textit{megawhatt}. $ (m^{3}/MWh) $.
 		\item \textit{genco\_pri}: Precio de mercado por \textit{megawhatt} $ (\textdollar/MWh) $.
 		\item \textit{cap}: Capacidad de planta $ (MW) $.
@@ -87,6 +95,10 @@ A continuación se recogerá en un diccionario de datos cada una de las entidade
 		\item \textit{id}: Identificador del tipo de linea.		
 		\item \textit{lin\_cap}: Capacidad de transmisión de linea.
 		\item \textit{tension}: Tensión de la linea. $ (MW) $
+		\item \textit{new\_lin\_cos}: Costo por kilómetro de instalación. $ (\textdollar/Km) $
+		\item \textit{man\_lin\_cos}: Costo por kilómetro de mantenimiento. $ (\textdollar/Km) $
+		\item \textit{flo\_cos}: Costo por transmisión de un MWh. $ (\textdollar/MWh) $
+		\item \textit{eff\_lin\_bas}: Porcentaje base de eficiencia de la línea (a una temperatura de 20ºC). $ ([0,1]) $
 	\end{itemize}
 
 	\item \textit{arcs\_typelines}: Relación entre el arco y el tipo de arco.
@@ -110,6 +122,7 @@ A continuación se recogerá en un diccionario de datos cada una de las entidade
 		\item \textit{id\_technology}: Identificador de la tecnología.
 		\item \textit{power}: Potencia instalada en cada región. $ (MW) $
 		\item \textit{cap\_ava}: Capacidad disponible por región y por tecnología. $ (MW) $
+		\item \textit{gen\_ava}: Porcentaje de capacidad de generación disponible por región y por tecnología. $ ([0,1]) $
 	\end{itemize}
 	
 	\item \textit{rangedemands}: Datos de demanda en un instante de tiempo concreto.
@@ -128,7 +141,7 @@ A continuación se recogerá en un diccionario de datos cada una de las entidade
 		\item \textit{temp}: Temperatura promedio de cada región. $ (ºC) $
 	\end{itemize}
 	
-	\item \textit{rangerenowables}: Datos de fuentes renovables en un instante de tiempo concreto.
+	\item \textit{rangerenewables}: Datos de fuentes renovables en un instante de tiempo concreto.
 	\begin{itemize}
 		\item \textit{id\_region}: Identificador de la región.
 		\item \textit{id\_technology}: Identificador de la tecnología.
@@ -153,13 +166,11 @@ A continuación se recogerá en un diccionario de datos cada una de las entidade
 	\label{img:modeloRelacional}
 \end{figure}
 
-
-
 \newpage
 
 \section{Diseño procedimental}
 
-En esta sección se realizará un diagrama de secuencia del caso de uso 1 que representa la actualización de datos mediante formularios. Concretamente, se representará la edición de una región. Podemos ver el diagrama de secuencia en la figura~\ref{img:modeloSecuencial}.
+En esta sección se realizará un ejemplo de diagrama de secuencia para el caso de uso 1 que representa la actualización de datos mediante formularios. Concretamente, se representará la edición de una región. Podemos ver el diagrama de secuencia en la figura~\ref{img:modeloSecuencial}.
 
 \begin{figure}[h]
 	\centering
@@ -285,6 +296,8 @@ La estructura de la aplicación, con los cambios aplicados, queda de la siguient
 			\item Download.
 			
 		\end{itemize}
+	
+		\item Users: \ref{img:Fusers}.
 		
 	\end{itemize}
 	
@@ -307,6 +320,16 @@ Cogiendo como ejemplo la entidad "technologies", los resultados son:
 \subsubsection{Administración mediante hojas de cálculo} 
 
 En la figura~\ref{img:FentidadExcel} encontramos un ejemplo de como se administran los datos climáticos. 
+
+\subsubsection{Administración de usuarios} 
+
+En la figura~\ref{img:Fusersform} encontramos un ejemplo de como se administran los usuarios. En este caso, el ejemplo es de la acción editar. 
+
+\subsubsection{Simulación y exportación de ficheros} 
+
+En la figura~\ref{img:Fobjectives}, habiendo pulsado sobre el icono de objetivos, se encuentran diferentes opciones. Los objetivos están clasificados en tres grandes bloques. Marcando las casillas, el valor se guardará en sesión y se podrá exportar desde la pantalla de descargas situada dentro de simulación.
+
+En la figura~\ref{img:Fsimulationdownloads} se puede ver un listado con las simulaciones generadas, además se podrá crear una nueva y establecer el nombre deseado, figura~\ref{img:Fsimulationname}.
 
 %MOCKUPS:
 
@@ -450,4 +473,39 @@ En la figura~\ref{img:FentidadExcel} encontramos un ejemplo de como se administr
 	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Ftooltips}
 	\caption{Resultado final: Etiquetas con iconos y títulos, migas de pan y seccion de usuario.}
 	\label{img:Ftooltips}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Fusers}
+	\caption{Resultado final: Pantalla principal de la administración de usuarios.}
+	\label{img:Fusers}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Fusersform}
+	\caption{Resultado final: Pantalla de edición de un usuario.}
+	\label{img:Fusersform}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Fobjectives}
+	\caption{Resultado final: Pantalla donde se representan los tres tipos de objetivos.}
+	\label{img:Fobjectives}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Fsimulationname}
+	\caption{Resultado final: Ejemplo de creación de una nueva simulación.}
+	\label{img:Fsimulationname}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/Diseno/Mockups/Fsimulationdownloads}
+	\caption{Resultado final: Pantalla en la que se listan las simulaciones ya creadas y disponibles para descargar.}
+	\label{img:Fsimulationdownloads}
 \end{figure}
