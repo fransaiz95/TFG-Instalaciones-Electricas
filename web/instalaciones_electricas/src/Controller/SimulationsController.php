@@ -125,7 +125,7 @@ class SimulationsController extends AppController
         $zip = $this->fileTem($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tem.txt');
 
         //Los datos del cliente.
-        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros.zip', ConstantesRoutes::SIMULATION_PARAMETROS . DS . '_Parametros_ client.zip');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros.zip', ConstantesRoutes::SIMULATION_PARAMETROS . DS . '_Parametros_client.zip');
         $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Codigo/individuo.R', ConstantesRoutes::SIMULATION_CODIGO . DS . 'individuo.R');
 
         $zip = $this->fileObjectives($zip, $session, ConstantesRoutes::SIMULATION_DATA . DS . 'objectives.json');

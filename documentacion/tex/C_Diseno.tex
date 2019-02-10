@@ -25,15 +25,15 @@ Como se puede ver reflejado en la figura~\ref{img:diagramaDespliegue}, la aplica
 
 La estructura de datos presentada en este proyecto se recoge en una base de datos relacional \textit{MySQL}. En un primer momento se construyó el diagrama entidad relación a través del cual se obtuvo el diagrama relacional. Durante el proceso de diseño del diagrama entidad relación, se construyó una segunda versión para hacer más fácil su comprensión. En las figuras~\ref{img:modeloER}, ~\ref{img:modeloER2} y~\ref{img:modeloRelacional} se presentan las dos versiones de los modelos entidad relación y relacional respectivamente.
 
-Antes de continuar, se considera oportuno hacer algún apunte acerca de ambos diagramas.
+En cuanto al mapeo a tablas de nuestro diagrama~\ref{img:modeloRelacional}, se ha eliminado la tabla correspondiente a la entidad que representaba la dimensión temporal de la relación ternaria (Rangerenowables) debido a que los momentos start no estaban prefijados, y no había necesidad de registrarlos previamente en una tabla Rangerenowables. Una vez eliminada esta tabla que se correspondía con la entidad Rangerenowables, se decidió dar a la tabla correspondiente a la ternaria ese mismo nombre, lo cual se aclara para mejor comprensión del esquema relacional resultante.
 
-En el diagrama entidad-relación, se puede destacar como elemento llamativo la relación \textit{ISA}. Dado que una tecnología no puede ser renovable y fósil a la vez y no hay una tecnología que no sea renovable ni fósil, se va a clasificar esta \textit{ISA} como exclusiva total. 
-Otro punto a tener en cuenta es cómo se ha resuelto la relación ternaria, ya que se ha creado la tabla \textit{rangerenewables} para simplificar y unificar la relación.
+Observando el resultado del diagrama entidad-relación, se puede destacar como elemento llamativo la relación \textit{ISA}. Dado que una tecnología no puede ser renovable y fósil a la vez y no hay una tecnología que no sea renovable ni fósil, se va a clasificar esta \textit{ISA} como exclusiva total. 
 
-En cuanto a las entidades débiles, el discriminante se representa con lineas discontinuas. Ya para todas las tablas, al modelar un diagrama entidad relación, prescindimos de representar las claves ajenas, si presentes en el diagrama relacional.
+En cuanto a las entidades débiles, el discriminante se representa con lineas discontinuas. 
 
-A continuación se recogerá en un diccionario de datos cada una de las tablas generadas con sus correspondientes campos y las unidades si son relevantes:
+A continuación se recogerá en un diccionario de datos cada una de las tablas generadas con sus correspondientes campos, mostrando las unidades más relevantes. Cabe destacar la presencia de algún campo adicional presente en el diccionario de datos, que en el desarrollo de los diagramas no se ha introducido por no querer sobrecargar demasiado el dibujo, siendo el campo de poca relevancia para la relación con otras entidades. 
 
+\label{title:DiccionarioDatos}
 \begin{itemize}
 	
 	\item \textit{countries}: Los países presentes en la instalación.
@@ -63,7 +63,7 @@ A continuación se recogerá en un diccionario de datos cada una de las tablas g
 	\begin{itemize}
 		\item \textit{id}: Identificador del combustible.		
 		\item \textit{name}: Nombre del combustible.
-		\item \textit{fue\_cos}: Coste por unidad de combustible importado. (\textdollar/MMBTU).
+		\item \textit{fue\_cos}: Coste por unidad de combustible importado. (\textdollar/MMBTU\footnote{Un millón de \textit{British Termal Units.}}).
 		\item \textit{production}: Reserva nacional de combustible. (MMBTU).
 	\end{itemize}
 	
@@ -260,7 +260,7 @@ Como ya hemos comentado, hay algunas entidades que se administran a través de h
 
 Una vez presentados los mockups, comentaremos los cambios que se han ido produciendo a raíz de proposiciones del cliente y mejoras personales que hemos ido realizando durante el desarrollo.
 
-La plantilla de la aplicación ha sufrido modificaciones pues además de añadir un logotipo personalizado para \textit{Weblectric}, se ha tenido que incluir una nueva funcionalidad, un botón para restablecer la base de datos a su situación inicial. Estos cambios se contemplan en la figura~\ref{img:Flayout}.
+La plantilla de la aplicación ha sufrido modificaciones pues además de añadir un logotipo personalizado para \textit{Weblectric}, se ha tenido que incluir una nueva funcionalidad, un botón para restablecer la base de datos a su situación inicial de test. Estos cambios se contemplan en la figura~\ref{img:Flayout}.
 
 Puesto que las etiquetas de los campos de los formularios no tienen un nombre representativo, se ha decidido añadir un título a cada una de las etiquetas del formulario con la finalidad de aportar información acerca del significado del campo. Además, como resultaba de interés conocer qué usuario ha iniciado sesión en la aplicación, se creó en la cabecera una nueva sección. Por último, para facilitar la navegación por la aplicación, se han creado migas de pan. Todos estos resultados pueden verse en la figura~\ref{img:Ftooltips}.
 

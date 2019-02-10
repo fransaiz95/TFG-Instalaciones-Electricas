@@ -492,7 +492,7 @@ class AuthComponent extends Component
             'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login',
-                'plugin' => null
+                // 'plugin' => null
             ],
             'logoutRedirect' => $this->_config['loginAction'],
             'authError' => __d('cake', 'You are not authorized to access that location.')

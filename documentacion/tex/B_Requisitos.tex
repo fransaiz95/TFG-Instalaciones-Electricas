@@ -62,7 +62,7 @@ Los requisitos que debe satisfacer la aplicación son:
 	
 	\item \textbf{RF-4:} El usuario podrá exportar una hoja de cálculo con los datos de las entidades cuya administración funciona con la subida de un fichero. Esta misma hoja de cálculo, podrá modificarla y subirla para actualizar los datos.
 	
-	\item \textbf{RF-5:} El usuario tras realizar pruebas de funcionalidad sobre la aplicación, podrá restablecer la base de datos a un punto de partida pulsando un botón situado en la cabecera.
+	\item \textbf{RF-5:} Un usuario con rol administrador, orientado a verificar el funcionamiento correcto de la aplicación,  tras realizar pruebas de funcionalidad sobre la aplicación, podrá restablecer la base de datos a un punto de partida pulsando un botón situado en la cabecera.
 	
 	\item \textbf{RF-6:} Existirá un control de usuarios en el que haya usuarios con dos posibles roles: administrador y participante.
 	
@@ -170,8 +170,14 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 									    de la acción. \\ 
 								   \end{tabular} \\ \midrule
 		\textbf{Excepciones}     & \begin{tabular}[c]{@{}l@{}}
-										1. No haya datos para una entidad.\\ 
-										2. Eliminar algún elemento relacionado con otra entidad.
+										1. Si se deja algúno de los campos marcados como \\
+										obligatorio o no se cumplen las validaciones de formato \\
+										para cada uno de los campos, se mostrará un mensaje de \\
+										error indicando el problema.\\ 
+										2. Si se elimina algún elemento que tiene una relación \\
+										directa con un registro de otra entidad, un clave ajena, \\
+										se mostrará un error avisando de cuál es el elemento \\
+										relacionado.
 								   \end{tabular} \\ \midrule
 		\textbf{Importancia}     & Alta \\ \bottomrule
 	\end{tabular}
@@ -211,9 +217,9 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 										subida.
 									\end{tabular} \\ \midrule
 		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
-										Introducir algún elemento extraño en la hoja de cálculo \\
-										que agote los recursos de procesado de la máquina \\
-										produciendo un error.\\ 
+										Se mostrará un error si la hoja de cálculo no tiene \\
+										una estructura o contenido conforme a la que exige \\
+										la aplicación.\\ 
 									\end{tabular} \\ \midrule
 		\textbf{Importancia}     &  Alta \\ \bottomrule
 	\end{tabular}
@@ -296,8 +302,7 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 										en base de datos.
 									\end{tabular} \\ \midrule
 		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
-										Entidad sin datos cagados. En ese caso los datos \\
-										de la exportación estarán vacíos.\\ 
+
 									\end{tabular} \\ \midrule
 		\textbf{Importancia}     &  Media \\ \bottomrule
 	\end{tabular}
@@ -325,7 +330,7 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 		\end{tabular} \\ \midrule
 		\textbf{Precondiciones}  &  \begin{tabular}[c]{@{}l@{}}
 			1. Base de datos iniciada.\\ 
-			2. Respaldo de la base de datos realizada. \\
+			2. Respaldo de la base de datos de test realizada. \\
 		\end{tabular} \\ \midrule
 		\textbf{Acciones}        &  \begin{tabular}[c]{@{}l@{}}
 			1. En usuario administrador deberá aceptar el \\
@@ -381,7 +386,14 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 										Redirección a la pantalla principal de los usuarios.
 									\end{tabular} \\ \midrule
 		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
-										Error al ejecutar la acción.\\ 
+										Se producirá un mensaje de error si no se cumple alguna \\
+										de las siguientes validaciones:\\ 
+										1. No podrá haber dos usuarios con el mismo \textit{username}.\\
+										2. La contraseña deberá de tener mínimo: 8 caracteres, una \\
+										mayúscula y un número.\\
+										3. No se podrá borrar al último usuario administrador de \\
+										la aplicación.\\
+										
 									\end{tabular} \\ \midrule
 		\textbf{Importancia}     &  Media \\ \bottomrule
 	\end{tabular}
@@ -412,7 +424,9 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 		\textbf{Precondiciones}  &  \begin{tabular}[c]{@{}l@{}}
 			1. Base de datos iniciada.\\ 
 			2. Carga inicial de datos realizada. \\
-			3. Máximo número de entidades con datos.\\
+			3. Para obtener una exportación de simulación lo más\\
+			completa posible, será necesario que todas las tablas \\
+			tengan datos.
 		\end{tabular} \\ \midrule
 		\textbf{Acciones}        &  \begin{tabular}[c]{@{}l@{}}
 			1. Usuario administrador accede a la pantalla de \\
@@ -425,7 +439,8 @@ Están clasificados por actores, diferenciando cada actor, qué operaciones pued
 			desde donde se podrá descargar la nueva simulación.
 		\end{tabular} \\ \midrule
 		\textbf{Excepciones}     &  \begin{tabular}[c]{@{}l@{}}
-			Error al ejecutar la acción.\\ 
+			Error proveniente del módulo de simulación provisto \\
+			por un tercer desarrollador.\\ 
 		\end{tabular} \\ \midrule
 		\textbf{Importancia}     &  Media \\ \bottomrule
 	\end{tabular}
