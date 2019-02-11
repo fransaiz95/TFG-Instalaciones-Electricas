@@ -86,7 +86,7 @@ solucion=function(obj,x=NULL){
     
     
     ##################################################################################
-    #                           cambiando de año                     
+    #                           cambiando de anno                     
     ##################################################################################
     if(y==1){
       Cap[[y]]=ExiCap
@@ -96,7 +96,7 @@ solucion=function(obj,x=NULL){
       Lin[[y]]=lapply(1:13,FUN= function(i){return(Lin[[y-1]][[i]]+NewLin[[y-1]][[i]])}) ##Restricción 6
     }
     #Desinstalar plantas
-    temp=UniCap[which(UniCap$AñoRetiro==y),]
+    temp=UniCap[which(UniCap$AnnoRetiro==y),]
     if(dim(temp)[1]>0){
       for(i in 1:dim(temp)[1]){
         Cap[[y]][temp$Region[i],temp$Tecnologia[i]]= max(0,Cap[[y]][temp$Region[i],temp$Tecnologia[i]]-temp$Capacidad[i])
@@ -653,8 +653,8 @@ mutacion=function(p){
     posibles=c()
     cont=1
     while(length(posibles)==0 & cont<=5){
-      año=sample(1:15,1)
-      posibles=which(p$NewCap[[año]]>0)
+      anno=sample(1:15,1)
+      posibles=which(p$NewCap[[anno]]>0)
       cont=cont+1
     }
     
@@ -665,12 +665,12 @@ mutacion=function(p){
       donde=sample(posibles,1)
     }
     
-    p$NewCap[[año]][donde]=max(0,p$NewCap[[año]][donde]-TypPla$Cap[donde%%14+1])
+    p$NewCap[[anno]][donde]=max(0,p$NewCap[[anno]][donde]-TypPla$Cap[donde%%14+1])
     
   }else{
-    año=sample(1:15,1)
+    anno=sample(1:15,1)
     donde=sample(1:(53*14),1)
-    p$NewCap[[año]][donde]=p$NewCap[[año]][donde]+TypPla$Cap[donde%%14+1]
+    p$NewCap[[anno]][donde]=p$NewCap[[anno]][donde]+TypPla$Cap[donde%%14+1]
   }
   p=solucion(p$obj,p)
   return(p)
@@ -694,7 +694,7 @@ Fue=as.character(read.delim(paste(folder,"Fue.txt",sep="/"),header=FALSE)$V1)
 #Nombres de combustibles
 Tec=as.character(read.delim(paste(folder,"Tec.txt",sep="/"),header=FALSE)$V1)
 
-#Horas por año
+#Horas por anno
 Hour=as.numeric(read.delim(paste(folder,"Hours.txt",sep="/"),header=FALSE)$V1)
 
 #Margen de reserva

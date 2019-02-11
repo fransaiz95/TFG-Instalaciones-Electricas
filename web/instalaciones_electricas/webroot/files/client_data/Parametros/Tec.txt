@@ -1,0 +1,14 @@
+Biomass
+Coal
+CombinedCycle
+Cogeneration
+InternalCombustion
+Wind
+Geothermal
+Hydroelectric
+FluidizedBed
+Nuclear
+Photovoltaic
+Thermal
+Thermosolar
+GasTurbine

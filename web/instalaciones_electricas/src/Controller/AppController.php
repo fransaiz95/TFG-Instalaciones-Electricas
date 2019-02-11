@@ -73,7 +73,6 @@ class AppController extends Controller
     
     public function isAuthorized($user)
     {
-        debug('here!');Exit;
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;

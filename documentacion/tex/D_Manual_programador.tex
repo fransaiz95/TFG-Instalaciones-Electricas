@@ -37,7 +37,7 @@ A continuación se explicará cada uno de los directorios de la aplicación con 
 
 \section{Manual del programador}
 
-En esta sección, se hablará de los puntos más importantes a tener en cuenta y de las aplicaciones necesarias con el objetivo de que en un futuro, un desarrollador pueda seguir trabajando en el proyecto.
+En esta sección, se hablará de los puntos más importantes a tener en cuenta y de las aplicaciones necesarias con el objetivo de que en un futuro, un desarrollador pueda seguir trabajando en el proyecto. Todas las rutas expuestas a continuación, hacen referencia a un sistema operativo Windows.
 
 \subsection{XAMPP}
 
@@ -101,14 +101,14 @@ Si se inicia el servicio de \textit{Apache} correctamente, se puede ver que acce
 	\label{img:XAMPP_Correct}
 \end{figure}
 
-Con \textit{XAMPP} funcionando, toca configurar las direcciones para indicar dónde tenemos nuestro proyecto. Para ello habrá que cambiar alguna linea de código en el fichero de configuración $httpd.conf$ que se encuentra en la ruta \textit{\text{C:/xampp7/apache/conf}}.
+Con \textit{XAMPP} funcionando, hay que configurar las direcciones para indicar dónde tenemos nuestro proyecto. Para ello habrá que cambiar alguna línea de código en el fichero de configuración $httpd.conf$ que se encuentra en la ruta \textit{\text{C:/xampp7/apache/conf}}.
 
-Buscamos las lineas: 
+Buscamos las líneas: 
 \begin{lstlisting}[language=bash]
 DocumentRoot "/xampp7/htdocs"
 <Directory "/xampp7/htdocs">
 \end{lstlisting}
-y las cambiamos por la dirección dónde hayamos colocado nuestro proyecto, en este caso: 
+y las cambiamos por la dirección donde hayamos colocado nuestro proyecto, en este caso: 
 \begin{lstlisting}[language=bash]
 DocumentRoot "C:\Users\fran_\Documents\GitHub\TFG-Instalaciones-Electricas\web\instalaciones_electricas"
 <Directory "C:\Users\fran_\Documents\GitHub\TFG-Instalaciones-Electricas\web\instalaciones_electricas">
@@ -116,7 +116,7 @@ DocumentRoot "C:\Users\fran_\Documents\GitHub\TFG-Instalaciones-Electricas\web\i
 
 De esta manera, ya no redireccionará a la página anterior sino que cogerá la ruta especificada.
 
-Aunque lo que se va a comentar a continuación no es obligatorio, si que es aconsejable pues si se desea tener varios proyectos, es incómodo trabajar con la dirección \textit{localhost}, pues tendríamos que andar modificando estos archivos continuamente. Para ello existe la posibilidad de configurar todos los \textit{virtual hosts} que se deseen. Esto significa que se podrán dar direcciones concretas a cada uno de los proyectos. Para ello, se descomentará la siguiente linea:
+Aunque lo que se va a comentar a continuación no es obligatorio, si que es aconsejable pues si se desea tener varios proyectos, es incómodo trabajar con la dirección \textit{localhost}, pues tendríamos que andar modificando estos archivos continuamente. Para ello existe la posibilidad de configurar todos los \textit{virtual hosts} que se deseen. Esto significa que se podrán dar direcciones concretas a cada uno de los proyectos. Para ello, se descomentará la siguiente lnea:
 
 \begin{lstlisting}[language=bash]
 # Virtual hosts
@@ -162,7 +162,7 @@ Procedemos a crear una nueva sesión con los parámetros que se ven en la figura
 	\label{img:Heidi_2}
 \end{figure}
 
-Con la sesión ya creada, se podrá crear una base de datos nueva con las tabas que se desee. A continuación, en la figura~\ref{img:Heidi_3} se va a mostrar como crear un usuario para esa base de datos para que posteriormente se pueda enlazar con el proyecto. 
+Con la sesión ya creada, se podrá crear una base de datos nueva con las tabas que se desee. A continuación, en la figura~\ref{img:Heidi_3} se va a mostrar cómo crear un usuario para esa base de datos para que posteriormente se pueda enlazar con el proyecto. 
 
 \begin{figure}[h]
 	\centering
@@ -226,6 +226,25 @@ Para acabar, en el archivo $app.conf$ que se encuentra dentro de la carpeta \tex
 ],
 \end{lstlisting}
 
+\section{Despliegue en el servidor}
+
+Como se ha comentado en secciones anteriores, la herramienta que se ha utilizado para establecer la conexión con el servidor ha sido \textit{Filezilla}. A través de esta herramienta, se realiza una conexión vía \textit{FTP} hacia la IP en la que se encuentra el servidor. En la figura~\ref{img:LoginFilezilla} se ve cómo establecer la conexión.
+
+Para realizar el despliegue, solo hay que copiar el proyecto en la ruta adecuada. En este caso, ha de ser dentro del directorio \textit{httpdocs} como queda reflejado en la figura~\ref{img:Directorios}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{/anexos/ManualProgramador/DespliegueServidor/LoginFilezilla}
+	\caption{Acceso vía FTP al servidor.}
+	\label{img:LoginFilezilla}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{/anexos/ManualProgramador/DespliegueServidor/Directorios}
+	\caption{Estructura de directorios donde dejar la estructura del proyecto.}
+	\label{img:Directorios}
+\end{figure}
 
 
 

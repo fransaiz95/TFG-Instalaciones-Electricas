@@ -6,7 +6,7 @@ A continuación se presentan los diseños elaborados para poder realizar los obj
 
 \section{Diagrama de despliegue}
 
-Como se puede ver reflejado en la figura~\ref{img:diagramaDespliegue}, la aplicación cuenta con 3 bloques claramente diferenciados:
+Como se puede ver reflejado en la figura~\ref{img:diagramaDespliegue}, la aplicación cuenta con tres bloques claramente diferenciados:
 
 \begin{itemize}
 	\item El navegador personal del cliente donde se ejecuta la aplicación. 
@@ -25,7 +25,9 @@ Como se puede ver reflejado en la figura~\ref{img:diagramaDespliegue}, la aplica
 
 La estructura de datos presentada en este proyecto se recoge en una base de datos relacional \textit{MySQL}. En un primer momento se construyó el diagrama entidad relación a través del cual se obtuvo el diagrama relacional. Durante el proceso de diseño del diagrama entidad relación, se construyó una segunda versión para hacer más fácil su comprensión. En las figuras~\ref{img:modeloER}, ~\ref{img:modeloER2} y~\ref{img:modeloRelacional} se presentan las dos versiones de los modelos entidad relación y relacional respectivamente.
 
-En cuanto al mapeo a tablas de nuestro diagrama~\ref{img:modeloRelacional}, se ha eliminado la tabla correspondiente a la entidad que representaba la dimensión temporal de la relación ternaria (Rangerenowables) debido a que los momentos start no estaban prefijados, y no había necesidad de registrarlos previamente en una tabla Rangerenowables. Una vez eliminada esta tabla que se correspondía con la entidad Rangerenowables, se decidió dar a la tabla correspondiente a la ternaria ese mismo nombre, lo cual se aclara para mejor comprensión del esquema relacional resultante.
+En cuanto al mapeo a tablas de nuestro diagrama~\ref{img:modeloRelacional}, se ha eliminado la tabla correspondiente a la entidad que representaba la dimensión temporal de la relación ternaria (Rangerenowables).
+
+Esto es debido a que los momentos start no estaban prefijados, y no había necesidad de registrarlos previamente en una tabla Rangerenowables. Una vez eliminada esta tabla que se correspondía con la entidad Rangerenowables, se decidió dar a la tabla correspondiente a la ternaria ese mismo nombre, lo cual se aclara para mejor comprensión del esquema relacional resultante.
 
 Observando el resultado del diagrama entidad-relación, se puede destacar como elemento llamativo la relación \textit{ISA}. Dado que una tecnología no puede ser renovable y fósil a la vez y no hay una tecnología que no sea renovable ni fósil, se va a clasificar esta \textit{ISA} como exclusiva total. 
 
@@ -63,42 +65,42 @@ A continuación se recogerá en un diccionario de datos cada una de las tablas g
 	\begin{itemize}
 		\item \textit{id}: Identificador del combustible.		
 		\item \textit{name}: Nombre del combustible.
-		\item \textit{fue\_cos}: Coste por unidad de combustible importado. (\textdollar/MMBTU\footnote{Un millón de \textit{British Termal Units.}}).
-		\item \textit{production}: Reserva nacional de combustible. (MMBTU).
+		\item \textit{fue\_cos}: Coste por unidad de combustible importado (\textdollar/MMBTU\footnote{Un millón de \textit{British Termal Units.}}).
+		\item \textit{production}: Reserva nacional de combustible (MMBTU).
 	\end{itemize}
 	
 	\item \textit{technologies}: Tipos de tecnologías renovables y no renovables.
 	\begin{itemize}
 		\item \textit{id}: Identificador de la tecnología.		
-		\item \textit{name}: Nombre de la tecnologia.
+		\item \textit{name}: Nombre de la tecnología.
 		\item \textit{renewable}: Si es una tecnología renovable $ ([0 - 1]) $
-		\item \textit{wat\_wit}: Desperdicio de agua por generación de un \textit{megawhatt}. $ (m^{3}/MWh) $.
-		\item \textit{genco\_pri}: Precio de mercado por \textit{megawhatt} $ (\textdollar/MWh) $.
+		\item \textit{wat\_wit}: Desperdicio de agua por generación de un \textit{megavatio} $ (m^{3}/MWh) $.
+		\item \textit{genco\_pri}: Precio de mercado por \textit{megavatio} $ (\textdollar/MWh) $.
 		\item \textit{cap}: Capacidad de planta $ (MW) $.
-		\item \textit{new\_cap\_cos}: Costo por \textit{megawhatt} debido a la instalación. $ (\textdollar/MW) $.
-		\item \textit{man\_cos}: Costo por \textit{megawhatt} debido al mantenimiento de plantas viejas $ (\textdollar/MWh) $.
-		\item \textit{man\_cos\_new\_cap}: Costo por \textit{megawhatt} debido al mantenimiento de plantas nuevas. $ (\textdollar/MWh) $.
-		\item \textit{gen\_cos}: Costo por \textit{megawhatt-hora} generado para plantas viejas. $ (\textdollar/MWh) $.
-		\item \textit{gen\_cos\_new\_cap}: Costo por \textit{megawhatt-hora} generado para plantas nuevas. $ (\textdollar/MWh) $.
-		\item \textit{life\_time}: Vida util de las plantas de generación.
-		\item \textit{ghg\_emi}: Toneladas de $CO_{2}$ producidas por \textit{megawhatt-hora}. $(CO_{2}/MWh)$.
+		\item \textit{new\_cap\_cos}: Costo por \textit{megavatio} debido a la instalación $ (\textdollar/MW) $.
+		\item \textit{man\_cos}: Costo por \textit{megavatio} debido al mantenimiento de plantas viejas $ (\textdollar/MWh) $.
+		\item \textit{man\_cos\_new\_cap}: Costo por \textit{megavatio} debido al mantenimiento de plantas nuevas $ (\textdollar/MWh) $.
+		\item \textit{gen\_cos}: Costo por \textit{megavatio-hora} generado para plantas viejas $ (\textdollar/MWh) $.
+		\item \textit{gen\_cos\_new\_cap}: Costo por \textit{megavatio-hora} generado para plantas nuevas $ (\textdollar/MWh) $.
+		\item \textit{life\_time}: Vida útil de las plantas de generación.
+		\item \textit{ghg\_emi}: Toneladas de $CO_{2}$ producidas por \textit{megavatio-hora} $(CO_{2}/MWh)$.
 		\item \textit{inv\_cap\_emp}: Empleo en la construcción de las plantas de generación.
 		\item \textit{man\_cap\_emp}: Empleo en el mantenimiento de las plantas de generación.
 		\item \textit{dec\_cam\_emp}: Empleo en el desmantelamiento de plantas de generación.
 		\item \textit{om\_cap\_emp}: Empleo en la operación de plantas de generación.
 		\item \textit{fue\_cap\_emp}: Empleo en la producción, procesamiento y transporte de combustibles.
-		\item \textit{wat\_con}: Consumo de agua por generación de un \textit{megawhatt} $ (m^{3}/MWh) $.
+		\item \textit{wat\_con}: Consumo de agua por generación de un \textit{megavatio} $ (m^{3}/MWh) $.
 	\end{itemize}
 
 	\item \textit{typelines}: Tipo de conexión de los arcos entre dos regiones.
 	\begin{itemize}
 		\item \textit{id}: Identificador del tipo de linea.		
 		\item \textit{lin\_cap}: Capacidad de transmisión de linea.
-		\item \textit{tension}: Tensión de la linea. $ (MW) $
-		\item \textit{new\_lin\_cos}: Costo por kilómetro de instalación. $ (\textdollar/Km) $
-		\item \textit{man\_lin\_cos}: Costo por kilómetro de mantenimiento. $ (\textdollar/Km) $
-		\item \textit{flo\_cos}: Costo por transmisión de un MWh. $ (\textdollar/MWh) $
-		\item \textit{eff\_lin\_bas}: Porcentaje base de eficiencia de la línea (a una temperatura de 20ºC). $ ([0,1]) $
+		\item \textit{tension}: Tensión de la linea $ (MW) $.
+		\item \textit{new\_lin\_cos}: Costo por kilómetro de instalación $ (\textdollar/Km) $.
+		\item \textit{man\_lin\_cos}: Costo por kilómetro de mantenimiento $ (\textdollar/Km) $.
+		\item \textit{flo\_cos}: Costo por transmisión de un MWh $ (\textdollar/MWh) $.
+		\item \textit{eff\_lin\_bas}: Porcentaje base de eficiencia de la línea (a una temperatura de 20ºC) $ ([0,1]) $.
 	\end{itemize}
 
 	\item \textit{arcs\_typelines}: Relación entre el arco y el tipo de arco.
@@ -112,17 +114,17 @@ A continuación se recogerá en un diccionario de datos cada una de las tablas g
 	\begin{itemize}
 		\item \textit{id\_fuel}: Identificador del combustible.
 		\item \textit{id\_technology}: Identificador de la tecnología.
-		\item \textit{perc\_con}: Porcentaje de aportación de combustibles para generación. $ (0 - 1) $
-		\item \textit{fue\_con}: Consumo de combustible necesario para generar un \textit{megawhatt} $ (MMBTU/MWh) $
+		\item \textit{perc\_con}: Porcentaje de aportación de combustibles para generación $ (0 - 1) $.
+		\item \textit{fue\_con}: Consumo de combustible necesario para generar un \textit{megavatio} $ (MMBTU/MWh) $.
 	\end{itemize}
 
 	\item \textit{regions\_technologies}: Relación entre la región y qué tecnología hay presente.
 	\begin{itemize}
 		\item \textit{id\_region}: Identificador de la región.
 		\item \textit{id\_technology}: Identificador de la tecnología.
-		\item \textit{power}: Potencia instalada en cada región. $ (MW) $
-		\item \textit{cap\_ava}: Capacidad disponible por región y por tecnología. $ (MW) $
-		\item \textit{gen\_ava}: Porcentaje de capacidad de generación disponible por región y por tecnología. $ ([0,1]) $
+		\item \textit{power}: Potencia instalada en cada región $ (MW) $.
+		\item \textit{cap\_ava}: Capacidad disponible por región y por tecnología $ (MW) $.
+		\item \textit{gen\_ava}: Porcentaje de capacidad de generación disponible por región y por tecnología $ ([0,1]) $.
 	\end{itemize}
 	
 	\item \textit{rangedemands}: Datos de demanda en un instante de tiempo concreto.
@@ -130,7 +132,7 @@ A continuación se recogerá en un diccionario de datos cada una de las tablas g
 		\item \textit{id\_region}: Identificador de la región
 		\item \textit{start}: Hora de inicio
 		\item \textit{end}: Hora de fin
-		\item \textit{demand}: Demanda por registro de transmisión. $ (MWh) $.
+		\item \textit{demand}: Demanda por registro de transmisión $ (MWh) $.
 	\end{itemize}
 	
 	\item \textit{rangemeteos}: Datos meteorológicos en un instante de tiempo concreto.
@@ -138,7 +140,7 @@ A continuación se recogerá en un diccionario de datos cada una de las tablas g
 		\item \textit{id\_region}: Identificador de la región
 		\item \textit{start}: Hora de inicio
 		\item \textit{end}: Hora de fin
-		\item \textit{temp}: Temperatura promedio de cada región. $ (ºC) $
+		\item \textit{temp}: Temperatura promedio de cada región $ (ºC) $.
 	\end{itemize}
 	
 	\item \textit{rangerenewables}: Datos de fuentes renovables en un instante de tiempo concreto.
@@ -147,7 +149,7 @@ A continuación se recogerá en un diccionario de datos cada una de las tablas g
 		\item \textit{id\_technology}: Identificador de la tecnología.
 		\item \textit{start}: Hora de inicio.
 		\item \textit{end}: Hora de fin.
-		\item \textit{gen\_ava}: Porcentaje de capacidad de generación $ (0 - 1) $
+		\item \textit{gen\_ava}: Porcentaje de capacidad de generación $ (0 - 1) $.
 	\end{itemize}
 
 \end{itemize}
@@ -270,11 +272,11 @@ La estructura de la aplicación, con los cambios aplicados, queda de la siguient
 
 \begin{itemize}
 	
-	\item Un primer grupo con tres pestañas~\ref{img:Fhome}:
+	\item Un primer grupo con tres pestañas: figura~\ref{img:Fhome}.
 	
 	\begin{itemize}
 		
-		\item Countries data: \ref{img:Fcountries}. 
+		\item Countries data: figura~\ref{img:Fcountries}. 
 		
 		\begin{itemize}
 			
@@ -285,7 +287,7 @@ La estructura de la aplicación, con los cambios aplicados, queda de la siguient
 			
 		\end{itemize}
 		
-		\item Technologies:\ref{img:Ftechnologies}.
+		\item Technologies: figura~\ref{img:Ftechnologies}.
 		
 		\begin{itemize}
 			
@@ -295,7 +297,7 @@ La estructura de la aplicación, con los cambios aplicados, queda de la siguient
 			
 		\end{itemize}
 		
-		\item Simulation: \ref{img:Fsimulation}.
+		\item Simulation: figura~\ref{img:Fsimulation}.
 		
 		\begin{itemize}
 			
@@ -304,7 +306,7 @@ La estructura de la aplicación, con los cambios aplicados, queda de la siguient
 			
 		\end{itemize}
 	
-		\item Users: \ref{img:Fusers}.
+		\item Users: figura~\ref{img:Fusers}.
 		
 	\end{itemize}
 	
@@ -314,14 +316,14 @@ A continuación, siguiendo con el mismo criterio que en el apartado de los \text
 
 \subsubsection{Administración mediante formularios} 
 
-Cogiendo como ejemplo la entidad "technologies", los resultados son: 
+Cogiendo como ejemplo la entidad ``technologies'', los resultados son: 
 
 \begin{itemize}
-	\item Pantalla principal de esa entidad~\ref{img:FentidadHome}.
-	\item Crear una nueva tecnología:~\ref{img:FentidadNew}.
-	\item Editar una tecnología:~\ref{img:FentidadEdit}.
-	\item Visualizar detalles de una tecnología:~\ref{img:FentidadView}.
-	\item Eliminar una tecnología:~\ref{img:FentidadDelete}.
+	\item Pantalla principal de esa entidad: figura~\ref{img:FentidadHome}.
+	\item Crear una nueva tecnología: figura~\ref{img:FentidadNew}.
+	\item Editar una tecnología: figura~\ref{img:FentidadEdit}.
+	\item Visualizar detalles de una tecnología: figura~\ref{img:FentidadView}.
+	\item Eliminar una tecnología: figura~\ref{img:FentidadDelete}.
 \end{itemize}
 
 \subsubsection{Administración mediante hojas de cálculo} 

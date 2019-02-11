@@ -1,0 +1,53 @@
+Hermosillo
+Cananea
+Obregón
+Los Mochis
+Culiacán
+Mazatlán
+Juárez
+Moctezuma
+Chihuahua
+Durango
+Laguna
+Río Escondido
+Nuevo Laredo
+Reynosa
+Matamoros
+Monterrey
+Saltillo
+Valles
+Huasteca
+Tamazunchale
+Güémez
+Tepic
+Guadalajara
+Aguascalientes
+San Luis Potosí
+Salamanca
+Manzanillo
+Carapan
+Lázaro Cárdenas
+Querétaro
+Central
+Poza Rica
+Veracruz
+Puebla
+Acapulco
+Temascal
+Coatzacoalcos
+Tabasco
+Grijalva
+Ixtepec
+Lerma
+Mérida
+Cancún
+Chetumal
+Cozumel
+Tijuana
+Ensenada
+Mexicali
+San Luis Río Colorado
+Villa Constitución
+La Paz
+Los Cabos
+Mulegé

@@ -1,0 +1,9 @@
+Bagase
+Biogas
+Coal
+Oil
+Coke
+Diesel
+NaturalGas
+SolidWaste
+Uranium

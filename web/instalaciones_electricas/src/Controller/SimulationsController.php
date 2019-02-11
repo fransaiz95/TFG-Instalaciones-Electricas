@@ -109,23 +109,37 @@ class SimulationsController extends AppController
         $zip->open($zipname, \ZipArchive::CREATE);
 
         //Nuestra exportacion
-        $zip = $this->fileCapAva($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'CapAva.txt');
-        $zip = $this->fileGenAva($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'GenAva.txt');
-        $zip = $this->fileExiCap($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ExiCap.txt');
-        $zip = $this->fileExiLin($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ExiLin.txt');
-        $zip = $this->fileForMar($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ForMar.txt');
-        $zip = $this->fileFue($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Fue.txt');
-        $zip = $this->fileReg($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Reg.txt');
-        $zip = $this->fileTec($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tec.txt');
-        $zip = $this->fileTypFue($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypFue.txt');
-        $zip = $this->fileTypPla($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypPla.txt');
-        $zip = $this->fileTypLin($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypLin.txt');
-        $zip = $this->fileHours($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Hours.txt');
-        $zip = $this->fileDem($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Dem.txt');
-        $zip = $this->fileTem($zip, $separator_txt, ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tem.txt');
+        $zip = $this->fileCapAva($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'CapAva.txt');
+        $zip = $this->fileGenAva($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'GenAva.txt');
+        $zip = $this->fileExiCap($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'ExiCap.txt');
+        $zip = $this->fileExiLin($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'ExiLin.txt');
+        $zip = $this->fileForMar($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'ForMar.txt');
+        $zip = $this->fileFue($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'Fue.txt');
+        $zip = $this->fileReg($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'Reg.txt');
+        $zip = $this->fileTec($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'Tec.txt');
+        $zip = $this->fileTypFue($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'TypFue.txt');
+        $zip = $this->fileTypPla($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'TypPla.txt');
+        $zip = $this->fileTypLin($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'TypLin.txt');
+        $zip = $this->fileHours($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'Hours.txt');
+        $zip = $this->fileDem($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'Dem.txt');
+        $zip = $this->fileTem($zip, $separator_txt, ConstantesRoutes::SIMULATION_DATA . DS . 'Tem.txt');
 
         //Los datos del cliente.
-        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros.zip', ConstantesRoutes::SIMULATION_PARAMETROS . DS . '_Parametros_client.zip');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/CapAva.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'CapAva.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/Dem.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Dem.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/ExiCap.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ExiCap.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/ExiLin.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ExiLin.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/ForMar.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'ForMar.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/Fue.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Fue.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/GenAva.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'GenAva.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/Hours.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Hours.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/Reg.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Reg.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/Tec.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tec.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/Tem.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'Tem.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/TypFue.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypFue.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/TypLin.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypLin.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/TypPla.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'TypPla.txt.txt');
+        $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Parametros/UniCap.txt', ConstantesRoutes::SIMULATION_PARAMETROS . DS . 'UniCap.txt.txt');
         $zip->addFile(ConstantesRoutes::SIMULATION_CNT_CLIENT_DATA . DS . 'Codigo/individuo.R', ConstantesRoutes::SIMULATION_CODIGO . DS . 'individuo.R');
 
         $zip = $this->fileObjectives($zip, $session, ConstantesRoutes::SIMULATION_DATA . DS . 'objectives.json');
