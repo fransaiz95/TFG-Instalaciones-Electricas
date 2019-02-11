@@ -1,9 +1,40 @@
 \capitulo{7}{Conclusiones y Líneas de trabajo futuras}
 
-En esta sección se exponen las conclusiones obtenidas así como comentarios de interés útiles para poder seguir con el desarrollo del proyecto.
+En este capítulo se exponen las conclusiones obtenidas así como comentarios de interés útiles para poder seguir con el desarrollo del proyecto.
 
 \section{Conclusiones}
 
+Una vez finalizado el desarrollo y aun habiendo tenido problemas a la hora de comunicarse con el cliente, se han cumplido los requisitos y se ha obtenido un resultado satisfactorio que genera valor de negocio a las condiciones actuales en las que se encuentra el cliente, por tanto, podría afirmar que se han cumplido los objetivos.
+
+A nivel personal, se han ampliado conocimientos con el uso de \textit{CakePHP} en su versión 3.5, pues siendo cierto que ya se había trabajado con este \textit{framework}, se había hecho con una versión antigua por lo que ha sido una buena oportunidad para reciclarse y ponerse al día. Unido a lo que sería el \textit{back-end}, también ha sido satisfactorio poder trabajar conjuntamente en el \textit{front-end} de la aplicación, pues el alumno no estaba acostumbrado a esas tareas.
+
+Otro aspecto novedoso para el usuario que ha servido para ampliar conocimientos, ha sido el despliegue de la aplicación web en el servidor. Hasta ahora, aunque se había trabajado en proyectos ya desplegados, nunca había sido protagonista de la acción.
+
+También, ha sido una buena oportunidad para refrescar conocimientos de bases de datos y volver a modelar diagramas entidad-relación y relacionales llevando a cabo a continuación el mapeo a sus correspondientes tablas. 
+
+El trabajo con \textit{Scrum} como metodología ágil para gestionar el proyecto, ha sido muy útil y de gran ayuda, pues al tener que reestructurar la aplicación varias veces a petición del cliente, se ha sido capaz de adaptar los plazos y planificar cada uno de los \textit{sprints}. Para futuros proyectos, se va a adoptar la idea de poder trabajar con una base de datos de respaldo como se ha hecho aquí, pues ha sido muy útil para el usuario poder restablecer la base de datos a su versión de test mediante un botón.
+
 \section{Líneas de trabajo futuras}
+
+Para un desarrollo futuro, y a expensas de las necesidades del cliente y lo que se quiera implicar, podríamos enumerar una serie de mejoras que harían de la aplicación actual, un producto más robusto y mejor estructurado:
+
+\begin{itemize}
+	
+	\item Replantear con el cliente si la estructura actual de la aplicación, diseñada a petición del cliente, es la más intuitiva y usable, pues por parte del alumno y tutores, se considera que puede haber otra estructuración mejor agrupada.
+	
+	\item Internacionalización de la aplicación para que pueda estar abierta a usuarios que no tengan por qué saber inglés.
+	
+	\item Valorar si merece la pena definir la topología de la red a través de mapas. A priori parece un trabajo bastante complejo, pero el alumno desconoce la existencia de librerías que pudiesen ser de ayuda.
+	
+	\item Integrar en la aplicación en lugar de una base de datos \textit{MySQL}, una base de datos basada en grafos, como puede ser Neo4J el ejemplo más común. Esta estructura es más apropiada para representar arcos pero se tendría que comprobar el código del algoritmo de optimización, pues es probable que hubiese que reprogramarlo para que hiciese las consultas directamente sobre el servidor en un tiempo mucho más eficiente.
+	
+	\item Para representar los arcos entre dos regiones, se podría integrar en \textit{CakePHP} la librería de \textit{Google Maps} para hacer ese módulo más vistoso e intuitivo.
+	
+	\item Para realizar pruebas sobre la aplicación, podría ser útil el uso de \textit{Selenium} como entorno de pruebas.
+	
+	\item En la actualidad, la aplicación no es usable para versiones móviles, pues al tener presente de fondo la ejecución de la simulación en un entorno que tuviese instalado\textit{R}, la aplicación no se ha hecho \textit{responsive}, pues se ha priorizado el desarrollo de nuevas funcionalidades al uso correcto sobre pantallas pequeñas.
+	
+	
+\end{itemize}
 
 
