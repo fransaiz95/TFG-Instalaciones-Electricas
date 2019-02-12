@@ -16,6 +16,14 @@
 \RequirePackage{xtab}
 \RequirePackage{multirow}
 
+\lstset{
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	frame=single,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
 % Links
 \usepackage[colorlinks]{hyperref}
 \hypersetup{
@@ -360,7 +368,7 @@
 % Datos de portada
 \title{Weblectric 2018}
 \author{\nombre}
-\tutor{Dr. Álvar Arnaiz González \\ Dr. Jesús Maudes Raedo}
+\tutor{Dr. Álvar Arnaiz González \\ Dr. Jesús Manuel Maudes Raedo}
 \date{\today}
 
 \begin{document}
@@ -377,7 +385,7 @@
 
 \noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
 
-\noindent D. Álvar Arnaiz González y D. Jesús Maudes Raedo, profesores del departamento de Ingeniería Civil del área de Lenguajes y Sistemas Informáticos.
+\noindent D. Álvar Arnaiz González y D. Jesús Manuel Maudes Raedo, profesores del departamento de Ingeniería Civil del área de Lenguajes y Sistemas Informáticos.
 
 \noindent Exponen:
 
@@ -395,14 +403,14 @@ En Burgos, {\large \today}
 \begin{minipage}{0.45\textwidth}
 \begin{flushleft} %\large
 Vº. Bº. del Tutor:\\[2cm]
-D. nombre tutor
+D. Álvar Arnaiz González
 \end{flushleft}
 \end{minipage}
 \hfill
 \begin{minipage}{0.45\textwidth}
 \begin{flushleft} %\large
 Vº. Bº. del co-tutor:\\[2cm]
-D. nombre co-tutor
+D. Jesús Manuel Maudes Raedo
 \end{flushleft}
 \end{minipage}
 \hfill
@@ -425,7 +433,7 @@ D. nombre co-tutor
 % Abstract en castellano
 \renewcommand*\abstractname{Resumen}
 \begin{abstract}
-En la actualidad, el cliente tiene en su posesión un algoritmo de optimización al que nutre con datos para sacar una serie de resultados y posteriormente analizarlos.
+En la actualidad, hay presente un investigador que tiene en su posesión un algoritmo de optimización para planteamientos de instalaciones eléctricas. Dicho algoritmo se nutre de datos con el objetivo de obtener una serie de resultados que posteriormente puedan ser analizarlos.
 
 En este proyecto se va a dejar apartado el proceso de análisis de esos resultados y se va a enfocar en el desarrollo de una aplicación web para facilitar al usuario final la administración de los datos previos a la ejecución de dicho algoritmo.
 
