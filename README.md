@@ -11,6 +11,9 @@ El proyecto está desarrollado con el Framework CakePHP en su version 3.5.
 
 La aplicación está disponible en el siguiente enlace: [Weblectric.](https://www.proyectoubu.nesiweb.com/)
 
+- Usuario administrador: Admin1111/Admin1111
+- Usuario participante: User1111/User1111
+
 ## Autores: 
 - Francisco Saiz Güemes.
 ## Tutores:
